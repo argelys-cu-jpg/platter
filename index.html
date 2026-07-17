@@ -801,16 +801,32 @@
       }
 
       .score {
-        width: 86px;
-        height: 86px;
+        width: 92px;
+        height: 92px;
         display: grid;
-        place-items: center;
+        align-content: center;
+        justify-items: center;
+        gap: 1px;
         border-radius: 999px;
         background: var(--olive);
         color: #fffaf0;
         font-family: var(--poster);
-        font-size: 34px;
         font-weight: 400;
+      }
+
+      .score strong {
+        font-size: 38px;
+        font-weight: 400;
+        line-height: 0.9;
+      }
+
+      .score span {
+        font-family: var(--sans);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        line-height: 1;
+        text-transform: uppercase;
       }
 
       .review-card h3 {
@@ -1456,7 +1472,7 @@
                     <div class="table-kicker">Current top pick</div>
                     <h3>CookUnity</h3>
                   </div>
-                  <div class="score">4.7</div>
+                  <div class="score" aria-label="Platter score: 8.7 out of 10"><strong>8.7</strong><span>/ 10</span></div>
                 </div>
                 <p class="dek">
                   Best overall for people who want prepared meals to feel closer to a chef handoff than a clinical
@@ -1477,28 +1493,28 @@
                 <div class="rank-row" role="row">
                   <span class="rank-number">1</span>
                   <span class="rank-brand"><strong>CookUnity</strong><small>Fresh prepared meals</small></span>
-                  <span>4.7</span>
+                  <span>8.7/10</span>
                   <span>$14</span>
                   <span class="tag">Chef variety</span>
                 </div>
                 <div class="rank-row" role="row">
                   <span class="rank-number">2</span>
                   <span class="rank-brand"><strong>Factor</strong><small>Macro-friendly prepared meals</small></span>
-                  <span>4.3</span>
+                  <span>8.3/10</span>
                   <span>$12</span>
                   <span class="tag">High protein</span>
                 </div>
                 <div class="rank-row" role="row">
                   <span class="rank-number">3</span>
                   <span class="rank-brand"><strong>Hungryroot</strong><small>Groceries plus meal shortcuts</small></span>
-                  <span>4.1</span>
+                  <span>8.1/10</span>
                   <span>$9</span>
                   <span class="tag">Flexible cooking</span>
                 </div>
                 <div class="rank-row" role="row">
                   <span class="rank-number">4</span>
                   <span class="rank-brand"><strong>HelloFresh</strong><small>Classic meal kits</small></span>
-                  <span>4.0</span>
+                  <span>8.0/10</span>
                   <span>$8</span>
                   <span class="tag">Family cooking</span>
                 </div>
