@@ -229,6 +229,10 @@
         display: block;
       }
 
+      .hero-grid::after {
+        content: none;
+      }
+
       .eyebrow,
       .section-kicker,
       .card-kicker,
@@ -1178,13 +1182,12 @@
         }
 
         .hero {
-          min-height: 760px;
+          min-height: auto;
+          display: block;
           align-items: flex-start;
           padding-top: 42px;
-          padding-bottom: 300px;
-          background:
-            linear-gradient(180deg, rgba(247, 247, 247, 0.98) 0%, rgba(247, 247, 247, 0.94) 44%, rgba(247, 247, 247, 0.5) 66%, rgba(247, 247, 247, 0.08) 100%),
-            url("assets/platter-hero-finished-plate-1672x941.png") 62% bottom / cover no-repeat;
+          padding-bottom: 0;
+          background: var(--canvas);
         }
 
         h1 {
@@ -1209,6 +1212,39 @@
 
         .hero-actions {
           display: grid;
+        }
+
+        .hero-note {
+          grid-template-columns: 86px minmax(0, 1fr);
+          gap: 14px;
+          margin-top: 30px;
+          border-top: 1px solid var(--rule);
+          border-bottom: 1px solid var(--line);
+          padding: 16px 0;
+          background: var(--canvas);
+        }
+
+        .hero-note img {
+          width: 86px;
+          border-radius: 6px;
+        }
+
+        .hero-note strong {
+          font-size: 17px;
+        }
+
+        .hero-note span {
+          font-size: 13px;
+        }
+
+        .hero-grid::after {
+          content: "";
+          display: block;
+          width: calc(100% + 28px);
+          height: clamp(260px, 78vw, 430px);
+          margin: 28px -14px 0;
+          border-top: 1px solid var(--rule);
+          background: url("assets/platter-hero-finished-plate-1672x941.png") 61% center / cover no-repeat;
         }
 
         .button,
