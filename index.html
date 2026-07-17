@@ -20,43 +20,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,650;0,6..72,750;1,6..72,500;1,6..72,650&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --cream: #f6f1e8;
-        --cream-deep: #ede3d5;
-        --paper: #fffaf4;
-        --surface: #fffdf8;
+        --canvas: #f7f7f7;
+        --cream: #f7f7f7;
+        --cream-deep: #e7e7e7;
+        --paper: #ffffff;
+        --surface: #ffffff;
         --white: #ffffff;
-        --sand: #dfc9a6;
-        --sand-soft: #f1e2c9;
-        --mist: #ebe7dd;
-        --smoke: #d8d3c8;
-        --sage: #d8dfc8;
-        --sage-strong: #a9b691;
-        --olive: #3a4728;
-        --olive-ink: #263018;
-        --olive-soft: #eef2e3;
+        --sand: #d6d6d6;
+        --sand-soft: #eeeeee;
+        --mist: #f1f1f1;
+        --smoke: #d6d6d6;
+        --sage: #e0e5d8;
+        --sage-strong: #aeb9a1;
+        --olive: #111111;
+        --olive-ink: #0f0f0f;
+        --olive-soft: #eeeeee;
         --black: #050505;
-        --charcoal: #2d2d2d;
-        --ink: #1e1d19;
-        --muted: #746b5a;
-        --line: #ded0b9;
+        --charcoal: #252525;
+        --ink: #151515;
+        --muted: #62625d;
+        --line: #d3d3d3;
+        --rule: #151515;
         --tomato: #984f3f;
-        --accent: #a9563e;
-        --accent-soft: #d9a28e;
-        --berry: #a92c5b;
-        --berry-deep: #5d1834;
+        --accent: #a84d37;
+        --accent-soft: #e7e2df;
+        --berry: #111111;
+        --berry-deep: #111111;
         --blue: #516a79;
-        --shadow-soft: 0 10px 30px rgba(37, 32, 22, 0.08);
-        --radius: 8px;
+        --shadow-soft: none;
+        --radius: 0;
         --card-pad: clamp(18px, 2vw, 24px);
         --card-pad-lg: clamp(22px, 3vw, 32px);
         --grid-gap: 18px;
         --hairline: 1px solid var(--line);
-        --display: "Newsreader", Georgia, serif;
+        --display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         --poster: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
         --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
@@ -71,7 +73,7 @@
 
       body {
         margin: 0;
-        background: var(--cream);
+        background: var(--canvas);
         color: var(--ink);
         font-family: var(--sans);
         -webkit-font-smoothing: antialiased;
@@ -104,9 +106,7 @@
 
       .site-shell {
         min-height: 100vh;
-        background:
-          linear-gradient(90deg, rgba(222, 208, 185, 0.34) 1px, transparent 1px) 0 0 / 128px 128px,
-          var(--cream);
+        background: var(--canvas);
       }
 
       .container {
@@ -115,9 +115,9 @@
       }
 
       .announce {
-        border-bottom: 1px solid var(--line);
-        background: var(--surface);
-        color: var(--ink);
+        border-bottom: 1px solid var(--rule);
+        background: var(--rule);
+        color: var(--white);
       }
 
       .announce a {
@@ -132,20 +132,12 @@
         text-align: center;
       }
 
-      .announce span {
-        color: var(--accent);
-        font-size: 11px;
-        font-weight: 900;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
       .site-header {
         position: sticky;
         top: 0;
         z-index: 20;
-        border-bottom: 1px solid var(--line);
-        background: rgba(255, 253, 248, 0.94);
+        border-bottom: 1px solid var(--rule);
+        background: rgba(255, 255, 255, 0.94);
         backdrop-filter: blur(16px);
       }
 
@@ -183,44 +175,46 @@
 
       .logo {
         display: inline-flex;
-        align-items: baseline;
+        align-items: center;
         justify-content: center;
-        font-family: var(--display);
-        font-size: 34px;
-        font-weight: 750;
+        gap: 9px;
+        font-family: var(--sans);
+        font-size: 18px;
+        font-weight: 900;
         line-height: 1;
         letter-spacing: 0;
-        text-transform: none;
+        text-transform: uppercase;
       }
 
       .logo::after {
         content: "";
-        width: 7px;
-        height: 7px;
-        margin-left: 3px;
-        border-radius: 999px;
-        background: var(--accent);
-        transform: translateY(-3px);
+        width: 38px;
+        height: 14px;
+        border-right: 2px solid var(--accent);
+        border-bottom: 2px solid var(--accent);
+        border-radius: 0;
+        background: transparent;
+        transform: skewX(-28deg);
       }
 
       .nav-cta {
         min-height: 34px;
         display: inline-flex;
         align-items: center;
-        border: 1px solid var(--accent);
-        border-radius: 999px;
-        color: var(--accent) !important;
+        border: 1px solid var(--rule);
+        border-radius: 0;
+        color: var(--ink) !important;
         padding: 0 14px;
       }
 
       .nav-cta:hover {
-        background: var(--accent);
-        color: #fffaf0 !important;
+        background: var(--rule);
+        color: var(--white) !important;
       }
 
       .hero {
         padding: clamp(44px, 6vw, 82px) 0 42px;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid var(--rule);
         background: var(--paper);
         color: var(--ink);
       }
@@ -276,16 +270,16 @@
       }
 
       h1 {
-        max-width: 700px;
-        font-size: clamp(52px, 7.25vw, 104px);
-        font-weight: 750;
-        line-height: 0.88;
+        max-width: 760px;
+        font-size: clamp(52px, 7.8vw, 116px);
+        font-weight: 900;
+        line-height: 0.9;
       }
 
       .italic {
-        color: var(--olive);
-        font-style: italic;
-        font-weight: 500;
+        color: var(--accent);
+        font-style: normal;
+        font-weight: 900;
       }
 
       .hero .italic {
@@ -313,13 +307,13 @@
       }
 
       .button {
-        min-height: 48px;
+        min-height: 46px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
         border: 1px solid var(--olive);
-        border-radius: 999px;
+        border-radius: 0;
         cursor: pointer;
         font-size: 14px;
         font-weight: 850;
@@ -328,15 +322,15 @@
       }
 
       .button-primary {
-        border-color: var(--accent);
-        background: var(--accent);
-        color: #fffaf0;
+        border-color: var(--rule);
+        background: var(--rule);
+        color: var(--white);
       }
 
       .button-primary:hover {
-        background: var(--accent-soft);
-        border-color: var(--accent-soft);
-        color: var(--ink);
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--white);
       }
 
       .button-secondary {
@@ -349,15 +343,15 @@
       }
 
       .hero .button-primary {
-        border-color: var(--accent);
-        background: var(--accent);
-        color: #fffaf0;
+        border-color: var(--rule);
+        background: var(--rule);
+        color: var(--white);
       }
 
       .hero .button-primary:hover {
-        border-color: var(--accent-soft);
-        background: var(--accent-soft);
-        color: var(--ink);
+        border-color: var(--accent);
+        background: var(--accent);
+        color: var(--white);
       }
 
       .hero .button-secondary {
@@ -377,7 +371,7 @@
         gap: 14px;
         max-width: 520px;
         margin-top: 30px;
-        border-top: 1px solid var(--line);
+        border-top: 1px solid var(--rule);
         padding-top: 16px;
       }
 
@@ -391,8 +385,9 @@
 
       .hero-note strong {
         display: block;
-        font-family: var(--display);
-        font-size: 21px;
+        font-family: var(--sans);
+        font-size: 19px;
+        font-weight: 900;
         line-height: 1.08;
       }
 
@@ -410,7 +405,7 @@
         gap: 14px;
         border: var(--hairline);
         border-radius: var(--radius);
-        background: var(--mist);
+        background: var(--surface);
         padding: 14px;
       }
 
@@ -498,9 +493,9 @@
       }
 
       .newsletter-band {
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-        background: var(--mist);
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+        background: var(--surface);
       }
 
       .newsletter-band .container {
@@ -515,7 +510,7 @@
 
       .newsletter-band h2 {
         font-size: clamp(26px, 3vw, 42px);
-        font-weight: 650;
+        font-weight: 900;
         line-height: 0.98;
       }
 
@@ -529,7 +524,7 @@
         min-height: 46px;
         width: 100%;
         border: 1px solid var(--line);
-        border-radius: 999px;
+        border-radius: 0;
         background: var(--white);
         color: var(--ink);
         padding: 0 16px;
@@ -537,10 +532,10 @@
 
       .signup-form button {
         min-height: 46px;
-        border: 1px solid var(--accent);
-        border-radius: 999px;
-        background: var(--accent);
-        color: #fffaf0;
+        border: 1px solid var(--rule);
+        border-radius: 0;
+        background: var(--rule);
+        color: var(--white);
         cursor: pointer;
         font-weight: 850;
         padding: 0 18px;
@@ -554,8 +549,8 @@
       }
 
       .manifesto {
-        border-top: var(--hairline);
-        border-bottom: var(--hairline);
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
         background: var(--surface);
         color: var(--ink);
       }
@@ -570,6 +565,7 @@
       }
 
       .manifesto-panel {
+        position: relative;
         display: grid;
         align-content: start;
         gap: 18px;
@@ -577,8 +573,21 @@
         border: 1px solid var(--berry-deep);
         border-radius: var(--radius);
         background: var(--berry);
-        color: var(--paper);
+        color: var(--white);
+        overflow: hidden;
         padding: var(--card-pad-lg);
+      }
+
+      .manifesto-panel::after {
+        content: "";
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        width: 148px;
+        height: 68px;
+        border-right: 2px solid var(--accent);
+        border-bottom: 2px solid var(--accent);
+        transform: skewX(-28deg);
       }
 
       .manifesto-panel strong {
@@ -594,7 +603,7 @@
 
       .manifesto-panel span {
         order: -1;
-        color: rgba(255, 250, 244, 0.78);
+        color: rgba(255, 255, 255, 0.76);
         font-family: var(--poster);
         font-size: 13px;
         font-weight: 400;
@@ -607,7 +616,7 @@
         gap: 18px;
         border: var(--hairline);
         border-radius: var(--radius);
-        background: var(--paper);
+        background: var(--surface);
         padding: var(--card-pad-lg);
       }
 
@@ -620,7 +629,7 @@
         margin-top: 8px;
         color: var(--ink);
         font-size: clamp(38px, 4.7vw, 66px);
-        font-weight: 650;
+        font-weight: 900;
         line-height: 0.96;
       }
 
@@ -643,12 +652,12 @@
         align-content: space-between;
         border: var(--hairline);
         border-radius: var(--radius);
-        background: var(--paper);
+        background: var(--surface);
         padding: 16px;
       }
 
       .pillar b {
-        color: var(--accent);
+        color: var(--muted);
         font-family: var(--poster);
         font-size: 14px;
         font-weight: 400;
@@ -658,15 +667,15 @@
 
       .pillar span {
         color: var(--ink);
-        font-family: var(--display);
+        font-family: var(--sans);
         font-size: 24px;
-        font-weight: 650;
+        font-weight: 900;
         line-height: 1;
       }
 
       .section {
         padding: clamp(52px, 7vw, 86px) 0;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid var(--rule);
       }
 
       .section-head {
@@ -680,7 +689,7 @@
       .section-head h2 {
         margin-top: 8px;
         font-size: clamp(38px, 5vw, 72px);
-        font-weight: 650;
+        font-weight: 900;
         line-height: 0.95;
       }
 
@@ -735,13 +744,13 @@
 
       .feature-title {
         font-size: clamp(32px, 4vw, 58px);
-        font-weight: 650;
+        font-weight: 900;
         line-height: 0.98;
       }
 
       .story-title {
         font-size: 30px;
-        font-weight: 650;
+        font-weight: 900;
         line-height: 1;
       }
 
@@ -809,7 +818,7 @@
         gap: 1px;
         border-radius: 999px;
         background: var(--olive);
-        color: #fffaf0;
+        color: var(--white);
         font-family: var(--poster);
         font-weight: 400;
       }
@@ -831,7 +840,7 @@
 
       .review-card h3 {
         font-size: 40px;
-        font-weight: 650;
+        font-weight: 900;
         line-height: 0.98;
       }
 
@@ -857,7 +866,7 @@
         place-items: center;
         width: 22px;
         height: 22px;
-        border-radius: 999px;
+        border-radius: 0;
         background: var(--sage);
         color: var(--olive);
       }
@@ -920,7 +929,7 @@
         width: max-content;
         min-height: 26px;
         align-items: center;
-        border-radius: 999px;
+        border-radius: 0;
         background: var(--sage);
         color: var(--olive);
         font-size: 11px !important;
@@ -945,7 +954,7 @@
 
       .article-body h3 {
         font-size: 28px;
-        font-weight: 650;
+        font-weight: 900;
         line-height: 1.02;
       }
 
@@ -995,7 +1004,7 @@
 
       .planner-progress span {
         height: 4px;
-        border-radius: 999px;
+        border-radius: 0;
         background: var(--cream-deep);
       }
 
@@ -1005,7 +1014,7 @@
 
       .planner h3 {
         font-size: 32px;
-        font-weight: 650;
+        font-weight: 900;
         line-height: 1;
       }
 
@@ -1018,7 +1027,7 @@
       .planner-option {
         min-height: 48px;
         border: 1px solid var(--line);
-        border-radius: 999px;
+        border-radius: 0;
         background: var(--white);
         color: var(--ink);
         cursor: pointer;
@@ -1076,7 +1085,7 @@
 
       .latest-item h3 {
         font-size: 25px;
-        font-weight: 650;
+        font-weight: 900;
         line-height: 1.05;
       }
 
@@ -1090,7 +1099,7 @@
         display: grid;
         gap: 14px;
         background: var(--olive-ink);
-        color: #fffaf0;
+        color: var(--white);
         padding: var(--card-pad);
       }
 
@@ -1100,12 +1109,12 @@
 
       .method-card h3 {
         font-size: 38px;
-        font-weight: 650;
+        font-weight: 900;
         line-height: 0.98;
       }
 
       .method-card p {
-        color: rgba(255, 250, 240, 0.78);
+        color: rgba(255, 255, 255, 0.76);
         font-size: 14px;
         line-height: 1.45;
       }
@@ -1117,13 +1126,13 @@
       }
 
       .method-list div {
-        border-top: 1px solid rgba(255, 250, 240, 0.24);
+        border-top: 1px solid rgba(255, 255, 255, 0.28);
         padding-top: 10px;
       }
 
       .site-footer {
         background: var(--olive-ink);
-        color: #fffaf0;
+        color: var(--white);
         padding: 48px 0;
       }
 
@@ -1135,13 +1144,13 @@
 
       .site-footer .logo {
         justify-content: flex-start;
-        color: #fffaf0;
+        color: var(--white);
       }
 
       .site-footer p {
         max-width: 620px;
         margin-top: 14px;
-        color: rgba(255, 250, 240, 0.68);
+        color: rgba(255, 255, 255, 0.68);
         font-size: 13px;
         line-height: 1.5;
       }
@@ -1152,7 +1161,7 @@
       }
 
       .footer-links a {
-        color: rgba(255, 250, 240, 0.82);
+        color: rgba(255, 255, 255, 0.82);
         font-size: 13px;
         font-weight: 850;
         letter-spacing: 0.06em;
@@ -1280,7 +1289,7 @@
   <body>
     <div class="site-shell">
       <div class="announce">
-        <a href="#manifesto"><span>New thesis</span> Kitchen intelligence for the way we live now</a>
+        <a href="#manifesto">Kitchen intelligence for the way we live now</a>
       </div>
 
       <header class="site-header">
