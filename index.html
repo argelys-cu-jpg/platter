@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Platter - Chefs to the People</title>
+    <title>Platter - Kitchen Intelligence for Real Life</title>
     <meta
       name="description"
       content="Platter brings chef knowledge to everyday eating: delivery intel, meal planning, prep strategy, nutrition context, and practical food writing for real life."
     />
-    <meta name="platter-build" content="chefs-to-the-people-2026-07-16" />
+    <meta name="platter-build" content="kitchen-intelligence-type-2026-07-16" />
     <link rel="icon" href="data:," />
-    <meta property="og:title" content="Platter - Chefs to the People" />
+    <meta property="og:title" content="Platter - Kitchen Intelligence for Real Life" />
     <meta
       property="og:description"
-      content="Chef intel, meal delivery reviews, prep strategy, nutrition context, and a weekly planning tool for people who run the food life."
+      content="Chef intel, meal delivery reviews, prep strategy, nutrition context, and a weekly planning tool for everyday food decisions."
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Sans:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,650;0,6..72,750;1,6..72,500;1,6..72,650&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -47,8 +47,9 @@
         --gold-soft: #f8db9f;
         --blue: #516a79;
         --shadow-soft: 0 10px 30px rgba(37, 32, 22, 0.08);
-        --serif: "Source Serif 4", Georgia, serif;
-        --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --display: "Newsreader", Georgia, serif;
+        --poster: "Archivo Black", Impact, sans-serif;
+        --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
       * {
@@ -161,7 +162,8 @@
       .nav button {
         color: #fffaf0;
         font-size: 13px;
-        font-weight: 850;
+        font-family: var(--poster);
+        font-weight: 400;
         letter-spacing: 0.06em;
         text-transform: uppercase;
       }
@@ -174,9 +176,9 @@
         display: inline-flex;
         align-items: baseline;
         justify-content: center;
-        font-family: var(--serif);
+        font-family: var(--display);
         font-size: 34px;
-        font-weight: 700;
+        font-weight: 750;
         line-height: 1;
         letter-spacing: 0;
         text-transform: none;
@@ -208,7 +210,7 @@
       }
 
       .hero {
-        padding: clamp(56px, 8vw, 104px) 0 42px;
+        padding: clamp(44px, 6vw, 82px) 0 42px;
         border-bottom: 1px solid var(--black);
         background: var(--black);
         color: #fffaf0;
@@ -228,7 +230,8 @@
       .table-kicker {
         color: var(--muted);
         font-size: 11px;
-        font-weight: 900;
+        font-family: var(--poster);
+        font-weight: 400;
         letter-spacing: 0.1em;
         text-transform: uppercase;
       }
@@ -259,15 +262,15 @@
       h3,
       .feature-title,
       .story-title {
-        font-family: var(--serif);
+        font-family: var(--display);
         letter-spacing: 0;
       }
 
       h1 {
-        max-width: 760px;
-        font-size: clamp(56px, 8.3vw, 118px);
-        font-weight: 650;
-        line-height: 0.9;
+        max-width: 700px;
+        font-size: clamp(52px, 7.25vw, 104px);
+        font-weight: 750;
+        line-height: 0.88;
       }
 
       .italic {
@@ -287,7 +290,7 @@
 
       .hero-copy {
         max-width: 620px;
-        margin-top: 26px;
+        margin-top: 22px;
         color: rgba(255, 250, 240, 0.78);
         font-size: clamp(17px, 1.7vw, 21px);
         line-height: 1.5;
@@ -297,7 +300,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 34px;
+        margin-top: 28px;
       }
 
       .button {
@@ -361,7 +364,7 @@
         align-items: center;
         gap: 14px;
         max-width: 520px;
-        margin-top: 36px;
+        margin-top: 30px;
         border-top: 1px solid rgba(255, 250, 240, 0.22);
         padding-top: 16px;
       }
@@ -376,7 +379,7 @@
 
       .hero-note strong {
         display: block;
-        font-family: var(--serif);
+        font-family: var(--display);
         font-size: 21px;
         line-height: 1.08;
       }
@@ -463,7 +466,7 @@
       .cover-metrics strong {
         display: block;
         color: var(--marigold);
-        font-family: var(--serif);
+        font-family: var(--poster);
         font-size: 21px;
         line-height: 1;
       }
@@ -564,10 +567,10 @@
       .manifesto-panel strong {
         display: block;
         max-width: 320px;
-        font-family: var(--serif);
-        font-size: clamp(46px, 6vw, 78px);
-        font-weight: 700;
-        line-height: 0.88;
+        font-family: var(--poster);
+        font-size: clamp(38px, 5.5vw, 70px);
+        font-weight: 400;
+        line-height: 0.92;
       }
 
       .manifesto-panel span {
@@ -626,7 +629,7 @@
 
       .pillar span {
         color: #fffaf0;
-        font-family: var(--serif);
+        font-family: var(--display);
         font-size: 24px;
         font-weight: 650;
         line-height: 1;
@@ -776,9 +779,9 @@
         border-radius: 999px;
         background: var(--olive);
         color: #fffaf0;
-        font-family: var(--serif);
+        font-family: var(--poster);
         font-size: 29px;
-        font-weight: 700;
+        font-weight: 400;
       }
 
       .review-card h3 {
@@ -850,9 +853,9 @@
 
       .rank-number {
         color: var(--olive);
-        font-family: var(--serif);
+        font-family: var(--poster);
         font-size: 28px;
-        font-weight: 700;
+        font-weight: 400;
       }
 
       .rank-brand strong {
@@ -1232,7 +1235,7 @@
   <body>
     <div class="site-shell">
       <div class="announce">
-        <a href="#manifesto"><span>New thesis</span> Chefs to the People: food intelligence for the way we live now</a>
+        <a href="#manifesto"><span>New thesis</span> Kitchen intelligence for the way we live now</a>
       </div>
 
       <header class="site-header">
@@ -1254,7 +1257,7 @@
         <section class="hero">
           <div class="container hero-grid">
             <div>
-              <div class="eyebrow">Chefs to the people</div>
+              <div class="eyebrow">Kitchen intelligence</div>
               <h1>Everything chefs know, served for <span class="italic">real life.</span></h1>
               <p class="hero-copy">
                 Platter brings chef intel to everyday eating: what to cook, what to buy, what to outsource,
@@ -1270,7 +1273,7 @@
                   alt="Soba noodle salad with chicken"
                 />
                 <span>
-                  <strong>The People's Brief</strong>
+                  <strong>The Platter Brief</strong>
                   <span>Chef moves, delivery intel, nutrition context, and the weekly systems worth stealing.</span>
                 </span>
               </a>
@@ -1293,10 +1296,10 @@
               </div>
               <article class="cover-card">
                 <div class="card-kicker">Editor's desk</div>
-                <h2>The people are busy. The chefs know shortcuts.</h2>
+                <h2>Everyone is busy. Good cooks know shortcuts.</h2>
                 <p>
                   We translate what chefs, dietitians, operators, and obsessive home cooks know into decisions
-                  regular people can use before dinner becomes another job.
+                  home cooks can use before dinner becomes another job.
                 </p>
                 <div class="cover-metrics">
                   <div><strong>9</strong><span>Services tracked</span></div>
@@ -1311,8 +1314,8 @@
         <section class="manifesto" id="manifesto">
           <div class="container manifesto-grid">
             <div class="manifesto-panel">
-              <strong>Chefs to the People.</strong>
-              <span>Platter editorial thesis</span>
+              <strong>Kitchen Intelligence.</strong>
+              <span>Platter editorial system</span>
             </div>
             <div class="manifesto-copy">
               <div>
@@ -1352,7 +1355,7 @@
             <div class="section-head">
               <div>
                 <div class="section-kicker">The briefing</div>
-                <h2>Food intel for the people who run the week.</h2>
+                <h2>Food intel for whoever runs the week.</h2>
               </div>
               <p>
                 What chefs know, what delivery platforms are changing, what actually helps at home, and what is
@@ -1615,7 +1618,7 @@
           <div>
             <a class="logo" href="/">platter</a>
             <p>
-              Platter is an independent editorial site bringing chef knowledge to the people: meal planning, meal
+              Platter is an independent editorial site bringing chef knowledge to everyday life: meal planning, meal
               prep, food delivery, wellness context, and the systems that make eating well feel possible. We may
               earn a commission through links, but editorial recommendations are written first.
             </p>
