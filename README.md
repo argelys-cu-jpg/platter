@@ -4,11 +4,12 @@ Platter editorial site, phase 1 static build.
 
 Vercel can deploy it directly from the checked-in HTML files.
 
-The Batch planner lives in the separate `fantastic-fiesta` project.
+The Batch planner is served as a first-party route at `/batch/`.
 
 ## Phase 1 Routes
 
 - `/`
+- `/batch/`
 - `/reviews/`
 - `/reviews/cookunity/`
 - `/guides/`

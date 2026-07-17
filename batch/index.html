@@ -1,0 +1,4015 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Batch by Platter - A Calmer Weekly Food Planner</title>
+    <meta name="description" content="Batch by Platter turns a few practical answers into a weekly food plan with recipes, prep notes, and prepared meal backup where it helps." />
+    <meta name="batch-build" content="platter-system-2026-07-17" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --canvas: #f7f7f7;
+        --paper: #ffffff;
+        --surface: #ffffff;
+        --white: #ffffff;
+        --cream: #f7f7f7;
+        --cream-deep: #ececea;
+        --sand: #a84d37;
+        --sand-soft: #f3f1ee;
+        --sage: #e0e5d8;
+        --sage-strong: #aeb9a1;
+        --olive: #151515;
+        --olive-soft: #f1f1ef;
+        --ink: #151515;
+        --muted: #62625d;
+        --line: #d3d3d3;
+        --rule: #151515;
+        --accent: #a84d37;
+        --accent-soft: #e7e2df;
+        --charcoal: #252525;
+        --tomato: #a84d37;
+        --marigold: #a84d37;
+        --display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --poster: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
+        --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --shadow-soft: none;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--canvas);
+        color: var(--ink);
+        font-family: var(--sans);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .batch-page {
+        min-height: 100vh;
+        background:
+          linear-gradient(90deg, rgba(21, 21, 21, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(21, 21, 21, 0.035) 1px, transparent 1px),
+          var(--canvas);
+        background-size: 120px 120px;
+        overflow-x: hidden;
+      }
+
+      .marketing-page {
+        min-height: 100vh;
+        background: var(--canvas);
+      }
+
+      .marketing-nav {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 18px clamp(24px, 5vw, 72px);
+        border-bottom: 1px solid var(--rule);
+        background: rgba(255, 255, 255, 0.94);
+        position: sticky;
+        top: 0;
+        z-index: 12;
+      }
+
+      .marketing-links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .marketing-links a {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 850;
+        letter-spacing: 0.03em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .marketing-links a:hover {
+        color: var(--ink);
+      }
+
+      .nav-cta,
+      .landing-button {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--rule);
+        border-radius: 0;
+        background: var(--ink);
+        color: #fff;
+        cursor: pointer;
+        font-weight: 850;
+        padding: 0 18px;
+        text-decoration: none;
+      }
+
+      .nav-cta:hover,
+      .landing-button:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .landing-button.is-secondary {
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      .landing-button.is-secondary:hover {
+        background: var(--olive-soft);
+        border-color: var(--rule);
+      }
+
+      .marketing-hero,
+      .landing-section {
+        width: min(100% - 48px, 1500px);
+        margin: 0 auto;
+      }
+
+      .marketing-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.72fr);
+        gap: clamp(36px, 6vw, 112px);
+        align-items: center;
+        min-height: calc(100vh - 76px);
+        padding: clamp(44px, 7vw, 96px) 0;
+      }
+
+      .landing-copy {
+        display: grid;
+        gap: 24px;
+      }
+
+      .landing-kicker,
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--muted);
+        font-family: var(--poster);
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .landing-kicker::before,
+      .section-kicker::before {
+        content: "";
+        width: 36px;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      .landing-copy h1,
+      .landing-section h2 {
+        margin: 0;
+        color: var(--ink);
+        font-family: var(--display);
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+
+      .landing-copy h1 {
+        max-width: 920px;
+        font-size: clamp(72px, 8vw, 138px);
+        line-height: 0.86;
+      }
+
+      .landing-section h2 {
+        max-width: 900px;
+        font-size: clamp(48px, 6vw, 96px);
+        line-height: 0.9;
+      }
+
+      .landing-copy p,
+      .landing-section p {
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(18px, 2vw, 23px);
+        line-height: 1.38;
+      }
+
+      .landing-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .landing-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .landing-stats div {
+        min-height: 98px;
+        display: grid;
+        align-content: center;
+        gap: 6px;
+        border-right: 1px solid var(--line);
+        padding: 16px 18px;
+      }
+
+      .landing-stats div:last-child {
+        border-right: 0;
+      }
+
+      .landing-stats strong {
+        color: var(--accent);
+        font-family: var(--poster);
+        font-size: 42px;
+        font-weight: 400;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .landing-stats span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .landing-device {
+        width: min(100%, 430px);
+        justify-self: center;
+        display: grid;
+        gap: 14px;
+      }
+
+      .landing-device .screen-stage {
+        height: min(812px, calc(100vh - 132px));
+        box-shadow: none;
+      }
+
+      .landing-caption {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .landing-section {
+        padding: clamp(54px, 8vw, 112px) 0;
+        border-top: 1px solid var(--rule);
+      }
+
+      .landing-grid,
+      .landing-index {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 32px;
+      }
+
+      .landing-card {
+        display: grid;
+        align-content: start;
+        gap: 16px;
+        min-height: 250px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        padding: clamp(22px, 3vw, 34px);
+      }
+
+      .landing-card span {
+        color: var(--accent);
+        font-family: var(--poster);
+        font-size: 34px;
+        line-height: 0.9;
+      }
+
+      .landing-card h3 {
+        margin: 0;
+        font-family: var(--display);
+        font-size: clamp(28px, 3vw, 44px);
+        font-weight: 900;
+        line-height: 0.96;
+      }
+
+      .landing-card p {
+        font-size: 16px;
+        line-height: 1.45;
+      }
+
+      .landing-feature {
+        display: grid;
+        grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+        gap: clamp(28px, 6vw, 88px);
+        align-items: center;
+      }
+
+      .feature-phone-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .feature-phone-row .preview-phone {
+        aspect-ratio: 393 / 852;
+      }
+
+      .landing-index {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .landing-index .landing-card {
+        min-height: 190px;
+      }
+
+      .marketing-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 28px clamp(24px, 5vw, 72px);
+        border-top: 1px solid var(--rule);
+        background: var(--paper);
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .top-bar {
+        min-height: 74px;
+        display: grid;
+        grid-template-columns: auto minmax(180px, 680px) auto;
+        align-items: center;
+        gap: 16px;
+        padding: 12px clamp(18px, 4vw, 56px);
+        border-bottom: 1px solid var(--rule);
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(16px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-family: var(--display);
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .brand::after {
+        content: "";
+        width: 38px;
+        height: 14px;
+        border-right: 2px solid var(--accent);
+        border-bottom: 2px solid var(--accent);
+        transform: skewX(-28deg);
+      }
+
+      .progress {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 3px;
+        font-weight: 800;
+      }
+
+      .top-progress {
+        width: 100%;
+        display: grid;
+        gap: 6px;
+      }
+
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--muted);
+        font-family: var(--poster);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .progress-track {
+        height: 5px;
+        border-radius: 0;
+        background: var(--cream-deep);
+        overflow: hidden;
+      }
+
+      .progress-track span {
+        display: block;
+        height: 100%;
+        background: var(--accent);
+        transition: width 260ms ease;
+      }
+
+      .top-controls {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .mode-toggle {
+        display: inline-flex;
+        padding: 2px;
+        border: 1px solid var(--rule);
+        border-radius: 999px;
+        background: var(--paper);
+      }
+
+      .mode-toggle button,
+      .nav-button {
+        min-height: 34px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--ink);
+        cursor: pointer;
+        font-family: var(--poster);
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        padding: 0 13px;
+        text-transform: uppercase;
+        transition: background 160ms ease, color 160ms ease;
+      }
+
+      .mode-toggle button:hover,
+      .nav-button:hover {
+        background: var(--olive-soft);
+      }
+
+      .mode-toggle .is-active,
+      .nav-button {
+        background: var(--rule);
+        color: #fff;
+      }
+
+      .mode-toggle .is-active:hover,
+      .nav-button:hover {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.48;
+      }
+
+      .flow-view {
+        width: 100%;
+        min-height: calc(100vh - 74px);
+        display: grid;
+        grid-template-columns: minmax(0, 430px) minmax(420px, 620px);
+        align-items: center;
+        justify-content: center;
+        gap: clamp(34px, 6vw, 96px);
+        padding: clamp(18px, 3vw, 36px);
+      }
+
+      .flow-primary {
+        width: min(100%, 430px);
+        display: grid;
+        gap: 14px;
+      }
+
+      .flow-controls {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+        gap: 10px;
+      }
+
+      .flow-control {
+        min-height: 48px;
+        border: 1px solid var(--rule);
+        border-radius: 0;
+        background: var(--paper);
+        color: var(--ink);
+        cursor: pointer;
+        font-family: var(--poster);
+        font-size: 17px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .flow-control.is-primary {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .flow-control:hover {
+        background: var(--olive-soft);
+      }
+
+      .flow-control.is-primary:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 4px 0 16px;
+      }
+
+      .dots button {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        border: 0;
+        border-radius: 999px;
+        background: #bebebb;
+        cursor: pointer;
+      }
+
+      .dots .is-active,
+      .dots button:hover {
+        background: var(--olive);
+      }
+
+      .screen-stage {
+        width: min(100%, 430px);
+        height: min(760px, calc(100vh - 220px));
+        overflow: hidden;
+        touch-action: pan-y;
+        border: 9px solid var(--rule);
+        border-radius: 34px;
+        background: var(--rule);
+      }
+
+      .enter-forward {
+        animation: enter-forward 260ms ease both;
+      }
+
+      .enter-backward {
+        animation: enter-backward 260ms ease both;
+      }
+
+      .screen {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 26px;
+        background: var(--surface);
+        border: 0;
+        border-radius: 24px;
+        overflow: auto;
+        scrollbar-width: none;
+      }
+
+      .screen::-webkit-scrollbar {
+        display: none;
+      }
+
+      .flow-aside {
+        width: min(100%, 560px);
+        height: min(760px, calc(100vh - 220px));
+        position: relative;
+        display: grid;
+        align-content: center;
+        gap: 22px;
+        overflow: hidden;
+        padding: clamp(28px, 4vw, 48px);
+        border-left: 1px solid var(--rule);
+        background: rgba(255, 255, 255, 0.58);
+      }
+
+      .flow-aside::before {
+        content: "B";
+        position: absolute;
+        right: -48px;
+        top: 50%;
+        color: rgba(21, 21, 21, 0.045);
+        font-family: var(--display);
+        font-size: clamp(260px, 34vw, 520px);
+        font-weight: 700;
+        line-height: 0.8;
+        transform: translateY(-50%) rotate(-10deg);
+      }
+
+      .aside-copy,
+      .aside-proof,
+      .aside-collage {
+        position: relative;
+        z-index: 1;
+      }
+
+      .aside-copy {
+        display: grid;
+        gap: 10px;
+        max-width: 420px;
+      }
+
+      .aside-copy span {
+        color: var(--muted);
+        font-family: var(--poster);
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .aside-copy strong {
+        font-family: var(--display);
+        font-size: clamp(34px, 4.2vw, 58px);
+        font-weight: 900;
+        line-height: 0.9;
+        letter-spacing: 0;
+      }
+
+      .aside-copy p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.45;
+      }
+
+      .aside-collage {
+        width: min(100%, 420px);
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        transform: rotate(-2deg);
+      }
+
+      .aside-collage img {
+        width: 100%;
+        aspect-ratio: 1;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        object-fit: cover;
+      }
+
+      .aside-collage img:nth-child(1) {
+        grid-row: span 2;
+        aspect-ratio: 1 / 2.05;
+      }
+
+      .aside-proof {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        max-width: 440px;
+      }
+
+      .aside-proof div {
+        border-top: 1px solid var(--line);
+        padding-top: 10px;
+      }
+
+      .aside-proof strong {
+        display: block;
+        color: var(--accent);
+        font-family: var(--poster);
+        font-size: 34px;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .aside-proof span {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        line-height: 1.25;
+        text-transform: uppercase;
+      }
+
+      .screen-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .kicker,
+      .screen-count,
+      .control-label,
+      .logo-row span,
+      .meal-card span,
+      .plan-card span {
+        color: var(--muted);
+        font-family: var(--poster);
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: var(--display);
+        font-size: clamp(40px, 10vw, 56px);
+        font-weight: 900;
+        line-height: 0.92;
+        letter-spacing: 0;
+      }
+
+      .accent-word {
+        color: var(--accent);
+        font-style: normal;
+      }
+
+      .lede {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.45;
+      }
+
+      .hero-plate {
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        min-height: 282px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--sand-soft);
+        overflow: hidden;
+      }
+
+      .hero-plate img {
+        width: 100%;
+        height: 232px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .hero-plate-note {
+        display: flex;
+        align-items: center;
+        min-height: 50px;
+        padding: 0 16px;
+        background: var(--sage);
+        color: var(--olive);
+        font-weight: 800;
+      }
+
+      .primary-button,
+      .secondary-button {
+        width: 100%;
+        min-height: 52px;
+        border-radius: 0;
+        border: 1px solid var(--olive);
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 0;
+        padding: 0 20px;
+        transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+      }
+
+      .primary-button {
+        margin-top: 0;
+        background: var(--olive);
+        color: #fff;
+        box-shadow: none;
+      }
+
+      .primary-button:hover {
+        background: var(--accent);
+      }
+
+      .secondary-button {
+        background: var(--white);
+        color: var(--olive);
+      }
+
+      .secondary-button:hover {
+        background: var(--olive-soft);
+      }
+
+      .choice-note {
+        margin-top: -4px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .option-stack {
+        display: grid;
+        gap: 10px;
+      }
+
+      .option-button {
+        min-height: 88px;
+        text-align: left;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--white);
+        color: var(--ink);
+        cursor: pointer;
+        padding: 15px;
+        transition: background 160ms ease, border-color 160ms ease;
+      }
+
+      .option-button:hover {
+        background: var(--olive-soft);
+        border-color: var(--sage-strong);
+      }
+
+      .option-button span,
+      .option-button small {
+        display: block;
+      }
+
+      .option-button span {
+        color: var(--ink);
+        font-weight: 850;
+        line-height: 1.2;
+      }
+
+      .option-button small {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .option-button.is-selected {
+        background: var(--sage);
+        border-color: var(--olive);
+      }
+
+      .build-orb {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        min-height: 166px;
+        align-items: end;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--sand-soft);
+      }
+
+      .build-orb span {
+        display: block;
+        height: 42%;
+        border-radius: 0;
+        background: var(--olive);
+        animation: build-bars 1200ms ease-in-out infinite;
+      }
+
+      .build-orb span:nth-child(2) {
+        animation-delay: 160ms;
+        background: var(--tomato);
+      }
+
+      .build-orb span:nth-child(3) {
+        animation-delay: 320ms;
+        background: var(--sage-strong);
+      }
+
+      .build-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .build-list div {
+        display: grid;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .build-list b {
+        display: block;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--cream-deep);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .build-list b::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        border-radius: inherit;
+        background: var(--olive);
+        transform: translateX(-100%);
+        animation: progress-fill 5s ease forwards;
+      }
+
+      .build-list div:nth-child(2) b::after {
+        animation-delay: 700ms;
+      }
+
+      .build-list div:nth-child(3) b::after {
+        animation-delay: 1400ms;
+      }
+
+      .plan-card {
+        display: grid;
+        gap: 10px;
+      }
+
+      .plan-card div,
+      .list-panel div,
+      .timeline-panel div {
+        display: grid;
+        gap: 5px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--white);
+        padding: 13px;
+      }
+
+      .plan-card strong {
+        font-size: 17px;
+        line-height: 1.22;
+      }
+
+      .stat-strip,
+      .summary-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .stat-strip span,
+      .summary-pills span {
+        min-height: 34px;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        background: var(--sage);
+        color: var(--olive);
+        font-size: 13px;
+        font-weight: 800;
+        padding: 0 13px;
+      }
+
+      .logo-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 12px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .logo-row img {
+        max-width: 134px;
+        max-height: 34px;
+        object-fit: contain;
+      }
+
+      .logo-fallback {
+        font-size: 21px;
+        font-weight: 850;
+        letter-spacing: -0.02em;
+      }
+
+      .is-hidden {
+        display: none;
+      }
+
+      .meal-card {
+        display: grid;
+        grid-template-columns: 118px minmax(0, 1fr);
+        gap: 14px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--white);
+        padding: 10px;
+      }
+
+      .meal-card img {
+        width: 118px;
+        height: 142px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        object-fit: cover;
+      }
+
+      .meal-card div {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .meal-card strong {
+        font-family: var(--display);
+        font-size: 21px;
+        font-weight: 900;
+        line-height: 1.04;
+      }
+
+      .meal-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.38;
+      }
+
+      .control-group {
+        display: grid;
+        gap: 10px;
+      }
+
+      .chip-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 0 13px;
+        transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+      }
+
+      .chip:hover {
+        background: var(--olive-soft);
+        border-color: var(--sage-strong);
+      }
+
+      .chip.is-active {
+        background: var(--olive);
+        border-color: var(--olive);
+        color: #fff;
+      }
+
+      .slider-panel {
+        display: grid;
+        gap: 13px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--sand-soft);
+        padding: 16px;
+      }
+
+      .slider-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .slider-header label {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .protein-stepper {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .protein-stepper button {
+        width: 31px;
+        height: 31px;
+        border: 1px solid var(--olive);
+        border-radius: 999px;
+        background: var(--paper);
+        color: var(--olive);
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1;
+        transition: background 160ms ease;
+      }
+
+      .protein-stepper button:hover {
+        background: var(--olive-soft);
+      }
+
+      .protein-stepper strong {
+        color: var(--olive);
+        font-size: 18px;
+        min-width: 74px;
+        text-align: center;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--olive);
+      }
+
+      .button-pair {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 10px;
+        margin-top: auto;
+      }
+
+      .button-pair .primary-button {
+        margin-top: 0;
+      }
+
+      .tab-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+        padding: 4px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--cream-deep);
+      }
+
+      .tab-bar button {
+        min-height: 38px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--olive);
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 850;
+      }
+
+      .tab-bar button:hover {
+        background: var(--olive-soft);
+      }
+
+      .tab-bar .is-active {
+        background: var(--paper);
+      }
+
+      .list-panel,
+      .timeline-panel {
+        display: grid;
+        gap: 10px;
+        max-height: 348px;
+        overflow: auto;
+        padding-right: 2px;
+      }
+
+      .list-panel strong,
+      .timeline-panel time {
+        color: var(--olive);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .list-panel span,
+      .timeline-panel span {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .timeline-panel div {
+        grid-template-columns: 72px minmax(0, 1fr);
+        align-items: start;
+      }
+
+      .success-mark {
+        display: grid;
+        place-items: center;
+        min-height: 210px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--sage);
+        color: var(--olive);
+        font-family: var(--display);
+        font-size: 52px;
+        font-weight: 900;
+      }
+
+      .end-state {
+        min-height: 42px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--sage-strong);
+        border-radius: 0;
+        background: var(--olive-soft);
+        color: var(--olive);
+        font-weight: 850;
+      }
+
+      .preview-view {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(236px, 1fr));
+        gap: 18px;
+        padding: 24px;
+      }
+
+      .preview-frame {
+        display: grid;
+        gap: 8px;
+        min-width: 0;
+        border: 1px solid transparent;
+        border-radius: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        padding: 8px;
+        text-align: left;
+      }
+
+      .preview-frame:hover,
+      .preview-frame.is-active {
+        border-color: var(--olive);
+        background: var(--olive-soft);
+      }
+
+      .preview-label {
+        color: var(--olive);
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .preview-phone {
+        width: 100%;
+        aspect-ratio: 393 / 852;
+        overflow: hidden;
+        border: 9px solid var(--rule);
+        border-radius: 32px;
+        background: var(--paper);
+        pointer-events: none;
+      }
+
+      .preview-phone .screen {
+        min-height: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 20px;
+        padding: 16px;
+        gap: 10px;
+      }
+
+      .preview-phone h1 {
+        font-size: 24px;
+      }
+
+      .preview-phone .hero-plate {
+        min-height: 184px;
+      }
+
+      .preview-phone .hero-plate img {
+        height: 138px;
+      }
+
+      .preview-phone .primary-button,
+      .preview-phone .secondary-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+      }
+
+      .preview-phone .lede {
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .preview-phone .option-button {
+        display: block;
+        min-height: 66px;
+        padding: 10px;
+      }
+
+      .preview-phone .option-button span {
+        font-size: 14px;
+      }
+
+      .preview-phone .option-button small {
+        font-size: 11px;
+        line-height: 1.25;
+      }
+
+      .preview-phone .meal-card {
+        grid-template-columns: 82px minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .preview-phone .meal-card img {
+        width: 82px;
+        height: 98px;
+      }
+
+      .preview-phone .meal-card strong {
+        font-size: 18px;
+      }
+
+      .preview-phone .meal-card p {
+        font-size: 11px;
+        line-height: 1.25;
+      }
+
+      .preview-phone .chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 32px;
+        font-size: 12px;
+        padding: 0 11px;
+      }
+
+      .preview-phone .tab-bar [role="tab"] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .preview-phone .protein-stepper [aria-label] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .preview-phone .slider-panel {
+        padding: 11px;
+      }
+
+      .preview-phone .protein-stepper strong {
+        font-size: 16px;
+      }
+
+      .preview-phone .list-panel,
+      .preview-phone .timeline-panel {
+        max-height: 252px;
+      }
+
+      .preview-phone .success-mark {
+        min-height: 154px;
+        font-size: 42px;
+      }
+
+      .range-track {
+        display: block;
+        width: 100%;
+        height: 6px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #c4c9bb 0 62%, #dfd7c7 62% 100%);
+      }
+
+      .eyebrow-pill {
+        width: fit-content;
+        min-height: 28px;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--sage-strong);
+        border-radius: 999px;
+        background: var(--olive-soft);
+        color: var(--olive);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: 0.06em;
+        padding: 0 12px;
+        text-transform: uppercase;
+      }
+
+      .formula-card,
+      .helper-note,
+      .empty-state,
+      .delivery-card,
+      .promo-card,
+      .lead-form {
+        display: grid;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--white);
+        padding: 14px;
+        box-shadow: none;
+      }
+
+      .formula-head,
+      .chef-card-head,
+      .review-card-head,
+      .delivery-row,
+      .promo-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .formula-head {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 10px;
+      }
+
+      .formula-head strong,
+      .formula-head span,
+      .chef-card-head span,
+      .review-card-head span,
+      .delivery-card span,
+      .promo-card span,
+      .slot-label,
+      .stat-box span {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .formula-copy {
+        margin: 0;
+        color: var(--muted);
+        font-family: var(--display);
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.42;
+      }
+
+      .formula-row {
+        display: grid;
+        grid-template-columns: 36px minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--olive-soft);
+        padding: 10px;
+      }
+
+      .formula-row.is-chef {
+        background: var(--accent-soft);
+        border-color: var(--accent);
+      }
+
+      .mini-badge {
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--olive);
+        font-weight: 900;
+      }
+
+      .formula-row strong,
+      .review-card strong,
+      .day-plan-card strong {
+        font-size: 14px;
+        line-height: 1.18;
+      }
+
+      .formula-row small,
+      .review-card small,
+      .day-plan-card small,
+      .helper-note,
+      .empty-state p,
+      .delivery-card p,
+      .promo-card p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .slot-badge,
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 24px;
+        border-radius: 999px;
+        background: var(--sage);
+        color: var(--olive);
+        font-size: 10px;
+        font-weight: 850;
+        padding: 0 9px;
+        text-transform: uppercase;
+      }
+
+      .discovery-strip {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .discovery-chip {
+        min-height: 58px;
+        display: grid;
+        align-content: center;
+        gap: 4px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--white);
+        padding: 10px;
+      }
+
+      .discovery-chip strong {
+        font-size: 12px;
+        line-height: 1.1;
+      }
+
+      .discovery-chip span {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .metric-grid,
+      .preset-grid,
+      .canvas-summary {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .metric-card,
+      .stat-box {
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--olive-soft);
+        padding: 12px;
+        text-align: center;
+      }
+
+      .metric-card strong,
+      .stat-box strong {
+        display: block;
+        color: var(--olive);
+        font-family: var(--poster);
+        font-size: 36px;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .metric-card span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 850;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .preset-card,
+      .profile-card {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--white);
+        color: var(--ink);
+        cursor: pointer;
+        padding: 14px;
+        text-align: left;
+        transition: background 160ms ease, border-color 160ms ease;
+      }
+
+      .preset-card:hover,
+      .profile-card:hover {
+        background: var(--olive-soft);
+        border-color: var(--sage-strong);
+      }
+
+      .preset-card.is-selected,
+      .profile-card.is-selected {
+        background: var(--olive-soft);
+        border-color: var(--olive);
+        box-shadow: inset 0 0 0 2px var(--olive);
+      }
+
+      .preset-card.is-selected > span,
+      .profile-card.is-selected .profile-meta > span {
+        color: var(--olive);
+      }
+
+      .preset-card > span,
+      .profile-meta > span {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .preset-card strong,
+      .profile-card strong {
+        display: block;
+        margin-top: 5px;
+        font-family: var(--display);
+        font-size: 20px;
+        font-weight: 900;
+        line-height: 1.08;
+      }
+
+      .preset-card small,
+      .profile-card small {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.32;
+      }
+
+      .day-grid {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 6px;
+      }
+
+      .day-chip {
+        min-height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 850;
+        transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+      }
+
+      .day-chip:hover {
+        background: var(--olive-soft);
+      }
+
+      .day-chip.is-active {
+        background: var(--olive);
+        border-color: var(--olive);
+        color: #fff;
+      }
+
+      .profile-stack,
+      .day-plan-list,
+      .meal-match-list,
+      .review-list,
+      .timeline-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .profile-card {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .profile-meta {
+        display: block;
+        min-width: 0;
+      }
+
+      .profile-mark {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--paper);
+        color: var(--olive);
+        font-family: var(--display);
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      .canvas-summary {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .day-plan-list,
+      .meal-match-list,
+      .review-list,
+      .timeline-list {
+        max-height: 394px;
+        overflow: auto;
+        padding-right: 2px;
+        scrollbar-width: none;
+      }
+
+      .day-plan-list::-webkit-scrollbar,
+      .review-list::-webkit-scrollbar,
+      .timeline-list::-webkit-scrollbar {
+        display: none;
+      }
+
+      .day-plan-card {
+        display: grid;
+        grid-template-columns: 92px minmax(0, 1fr);
+        align-items: center;
+        gap: 10px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--white);
+        padding: 12px;
+      }
+
+      .slot-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .slot-button {
+        min-height: 56px;
+        display: grid;
+        gap: 3px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--paper);
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 850;
+        transition: background 160ms ease, border-color 160ms ease;
+      }
+
+      .slot-button:hover {
+        border-color: var(--sage-strong);
+      }
+
+      .slot-home {
+        background: var(--olive-soft);
+        color: var(--olive);
+      }
+
+      .slot-chef {
+        background: var(--accent-soft);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .slot-skip {
+        background: var(--cream-deep);
+        color: var(--muted);
+      }
+
+      .chef-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--white);
+        box-shadow: none;
+      }
+
+      .chef-card-head {
+        border-bottom: 1px solid var(--line);
+        background: var(--olive-soft);
+        padding: 9px 12px;
+      }
+
+      .chef-card-main {
+        display: grid;
+        grid-template-columns: 78px minmax(0, 1fr);
+        gap: 12px;
+        padding: 12px;
+      }
+
+      .chef-card-image {
+        width: 78px;
+        height: 78px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        object-fit: cover;
+      }
+
+      .chef-card-body {
+        min-width: 0;
+        display: grid;
+        gap: 5px;
+      }
+
+      .chef-card-body strong {
+        font-family: var(--display);
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.08;
+      }
+
+      .chef-card-body p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.32;
+      }
+
+      .chef-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        border-top: 1px solid var(--line);
+        background: rgba(238, 242, 227, 0.58);
+        padding: 10px 12px;
+      }
+
+      .prep-scene {
+        position: relative;
+        min-height: 286px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background:
+          radial-gradient(circle at 50% 70%, rgba(168, 77, 55, 0.16), transparent 44%),
+          linear-gradient(180deg, var(--sand-soft), var(--paper));
+      }
+
+      .prep-pot {
+        position: absolute;
+        left: 50%;
+        bottom: 64px;
+        width: 178px;
+        height: 116px;
+        transform: translateX(-50%);
+        animation: pot-simmer 1500ms ease-in-out infinite;
+      }
+
+      .prep-pot::before,
+      .prep-pot::after {
+        content: "";
+        position: absolute;
+        top: 42px;
+        width: 30px;
+        height: 40px;
+        border: 6px solid #2f3028;
+        border-radius: 999px;
+      }
+
+      .prep-pot::before {
+        left: -16px;
+      }
+
+      .prep-pot::after {
+        right: -16px;
+      }
+
+      .pot-rim {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 166px;
+        height: 42px;
+        border: 7px solid #2b2a24;
+        border-radius: 999px;
+        background: var(--sage);
+        transform: translateX(-50%);
+        z-index: 2;
+      }
+
+      .pot-body {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 150px;
+        height: 94px;
+        border: 7px solid #2b2a24;
+        border-top: 0;
+        border-radius: 10px 10px 54px 54px;
+        background: var(--olive);
+        transform: translateX(-50%);
+      }
+
+      .prep-fire {
+        position: absolute;
+        left: 50%;
+        bottom: 35px;
+        width: 98px;
+        height: 54px;
+        transform: translateX(-50%);
+      }
+
+      .prep-fire span {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 34px;
+        height: 50px;
+        border-radius: 60% 60% 50% 50%;
+        background: var(--tomato);
+        transform: translateX(-50%) rotate(45deg);
+        transform-origin: 50% 80%;
+        animation: flame-flicker 700ms ease-in-out infinite alternate;
+      }
+
+      .prep-fire span:nth-child(2) {
+        width: 24px;
+        height: 38px;
+        background: var(--sand);
+        animation-delay: 120ms;
+      }
+
+      .prep-fire span:nth-child(3) {
+        width: 18px;
+        height: 30px;
+        background: var(--cream-deep);
+        animation-delay: 240ms;
+      }
+
+      .prep-steam,
+      .prep-ingredient {
+        position: absolute;
+        display: block;
+        pointer-events: none;
+      }
+
+      .prep-steam {
+        left: 50%;
+        bottom: 170px;
+        width: 18px;
+        height: 42px;
+        border-left: 3px solid rgba(58, 71, 40, 0.28);
+        border-radius: 999px;
+        animation: steam-rise 2200ms ease-in-out infinite;
+      }
+
+      .steam-one {
+        margin-left: -48px;
+        animation-delay: 120ms;
+      }
+
+      .steam-two {
+        margin-left: -8px;
+        animation-delay: 520ms;
+      }
+
+      .steam-three {
+        margin-left: 34px;
+        animation-delay: 920ms;
+      }
+
+      .prep-ingredient {
+        top: 18px;
+        width: 34px;
+        height: 22px;
+        border: 1px solid rgba(37, 32, 22, 0.16);
+        border-radius: 999px;
+        opacity: 0;
+        animation: ingredient-drop 3800ms ease-in-out infinite;
+      }
+
+      .ingredient-one {
+        left: 72px;
+        background: var(--sage);
+      }
+
+      .ingredient-two {
+        left: 146px;
+        width: 24px;
+        height: 24px;
+        background: var(--tomato);
+        animation-delay: 520ms;
+      }
+
+      .ingredient-three {
+        left: 216px;
+        background: var(--sand);
+        animation-delay: 1040ms;
+      }
+
+      .ingredient-four {
+        left: 282px;
+        width: 26px;
+        height: 26px;
+        background: var(--olive);
+        animation-delay: 1560ms;
+      }
+
+      .prep-spark {
+        position: absolute;
+        left: 50%;
+        bottom: 115px;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--sand);
+        opacity: 0;
+        animation: prep-spark 1800ms ease-in-out infinite;
+      }
+
+      .spark-one {
+        margin-left: -72px;
+        animation-delay: 220ms;
+      }
+
+      .spark-two {
+        margin-left: 68px;
+        animation-delay: 620ms;
+      }
+
+      .spark-three {
+        margin-left: 4px;
+        animation-delay: 1020ms;
+      }
+
+      .prep-list b::after {
+        animation-duration: 4.8s;
+      }
+
+      .screen-7 {
+        overflow: hidden;
+      }
+
+      .screen-7 .meal-match-list {
+        flex: 1 1 0;
+        min-height: 0;
+        max-height: none;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        display: grid;
+        gap: 10px;
+        align-content: start;
+        grid-auto-rows: max-content;
+        padding-right: 8px;
+        scrollbar-color: var(--sage-strong) transparent;
+        scrollbar-width: thin;
+      }
+
+      .screen-7 .meal-match-list::-webkit-scrollbar {
+        display: block;
+        width: 7px;
+      }
+
+      .screen-7 .meal-match-list::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .screen-7 .meal-match-list::-webkit-scrollbar-thumb {
+        background: var(--sage-strong);
+        border-radius: 999px;
+      }
+
+      .screen-7 .chef-card {
+        min-height: 0;
+      }
+
+      .screen-7 .primary-button {
+        flex: 0 0 auto;
+        margin-top: 0;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .text-button {
+        min-height: 32px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--olive);
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 850;
+        padding: 0 12px;
+      }
+
+      .text-button:hover {
+        background: var(--olive-soft);
+      }
+
+      .review-card {
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--white);
+        padding: 12px;
+      }
+
+      .review-card-head {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+      }
+
+      .review-row {
+        display: grid;
+        grid-template-columns: 58px minmax(0, 1fr);
+        gap: 10px;
+        padding: 5px 0;
+      }
+
+      .review-row b {
+        color: var(--olive);
+        font-size: 12px;
+      }
+
+      .timeline-list div {
+        display: grid;
+        grid-template-columns: 76px minmax(0, 1fr);
+        gap: 10px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--white);
+        padding: 12px;
+      }
+
+      .timeline-list time {
+        color: var(--olive);
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .timeline-list span {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .success-circle {
+        width: 86px;
+        height: 86px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto;
+        border: 1px solid var(--sage-strong);
+        border-radius: 999px;
+        background: var(--sage);
+        color: var(--olive);
+        font-family: var(--display);
+        font-size: 42px;
+        font-weight: 900;
+      }
+
+      .delivery-card strong,
+      .promo-card strong {
+        font-family: var(--display);
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.1;
+      }
+
+      .lead-form label {
+        color: var(--ink);
+        font-family: var(--display);
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.1;
+      }
+
+      .lead-form small {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .lead-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+      }
+
+      .lead-row input {
+        min-width: 0;
+        min-height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-size: 14px;
+        padding: 0 12px;
+      }
+
+      .lead-row input:focus {
+        border-color: var(--accent);
+        outline: 2px solid rgba(168, 77, 55, 0.18);
+        outline-offset: 0;
+      }
+
+      .lead-row button {
+        min-height: 44px;
+        border: 1px solid var(--ink);
+        border-radius: 0;
+        background: var(--ink);
+        color: #fff;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 850;
+        padding: 0 14px;
+      }
+
+      .lead-row button:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .mini-list {
+        display: grid;
+        gap: 7px;
+        max-height: 126px;
+        overflow: auto;
+      }
+
+      .mini-list div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        border-bottom: 1px dashed var(--line);
+        color: var(--ink);
+        font-size: 12px;
+        padding-bottom: 7px;
+      }
+
+      .mini-list small {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .toast {
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        z-index: 30;
+        transform: translateX(-50%);
+        max-width: min(360px, calc(100vw - 32px));
+        border-radius: 999px;
+        background: var(--ink);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 12px 16px;
+        text-align: center;
+      }
+
+      .preview-phone .screen {
+        overflow: hidden;
+      }
+
+      .preview-phone .eyebrow-pill {
+        min-height: 22px;
+        font-size: 8px;
+        padding: 0 8px;
+      }
+
+      .preview-phone .formula-card,
+      .preview-phone .helper-note,
+      .preview-phone .empty-state,
+      .preview-phone .delivery-card,
+      .preview-phone .promo-card,
+      .preview-phone .preset-card,
+      .preview-phone .profile-card,
+      .preview-phone .review-card,
+      .preview-phone .day-plan-card {
+        padding: 8px;
+        gap: 7px;
+      }
+
+      .preview-phone .formula-copy,
+      .preview-phone .formula-row small,
+      .preview-phone .helper-note,
+      .preview-phone .empty-state p,
+      .preview-phone .delivery-card p,
+      .preview-phone .promo-card p,
+      .preview-phone .review-card small,
+      .preview-phone .day-plan-card small {
+        font-size: 10px;
+        line-height: 1.25;
+      }
+
+      .preview-phone .formula-row {
+        grid-template-columns: 26px minmax(0, 1fr) auto;
+        gap: 6px;
+        padding: 7px;
+      }
+
+      .preview-phone .mini-badge {
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+      }
+
+      .preview-phone .metric-card,
+      .preview-phone .stat-box {
+        padding: 8px;
+      }
+
+      .preview-phone .metric-card strong,
+      .preview-phone .stat-box strong {
+        font-size: 18px;
+      }
+
+      .preview-phone .preset-card strong,
+      .preview-phone .profile-card strong,
+      .preview-phone .chef-card-body strong,
+      .preview-phone .delivery-card strong,
+      .preview-phone .promo-card strong {
+        font-size: 14px;
+      }
+
+      .preview-phone .day-grid {
+        gap: 4px;
+      }
+
+      .preview-phone .day-chip {
+        min-height: 30px;
+        font-size: 9px;
+        border-radius: 7px;
+      }
+
+      .preview-phone .profile-card {
+        grid-template-columns: 30px minmax(0, 1fr);
+      }
+
+      .preview-phone .profile-mark {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+      }
+
+      .preview-phone .day-plan-list,
+      .preview-phone .meal-match-list,
+      .preview-phone .review-list,
+      .preview-phone .timeline-list {
+        max-height: 230px;
+        overflow: hidden;
+      }
+
+      .preview-phone .day-plan-card {
+        grid-template-columns: 68px minmax(0, 1fr);
+      }
+
+      .preview-phone .slot-button {
+        min-height: 38px;
+        font-size: 10px;
+      }
+
+      .preview-phone .chef-card-main {
+        grid-template-columns: 52px minmax(0, 1fr);
+        gap: 8px;
+        padding: 8px;
+      }
+
+      .preview-phone .chef-card-image {
+        width: 52px;
+        height: 52px;
+      }
+
+      .preview-phone .chef-card-footer,
+      .preview-phone .chef-card-head {
+        padding: 7px 8px;
+      }
+
+      .preview-phone .prep-scene {
+        min-height: 190px;
+      }
+
+      .preview-phone .prep-pot {
+        bottom: 42px;
+        transform: translateX(-50%) scale(0.72);
+      }
+
+      .preview-phone .prep-fire {
+        bottom: 22px;
+        transform: translateX(-50%) scale(0.72);
+      }
+
+      .preview-phone .prep-steam {
+        bottom: 124px;
+      }
+
+      .preview-phone .prep-ingredient {
+        transform: scale(0.72);
+      }
+
+      .preview-phone .lead-form {
+        padding: 8px;
+      }
+
+      .preview-phone .lead-row {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-phone .lead-input-preview {
+        display: block;
+        min-height: 34px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      @keyframes enter-forward {
+        from {
+          opacity: 0;
+          transform: translateX(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes enter-backward {
+        from {
+          opacity: 0;
+          transform: translateX(-18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes build-bars {
+        0%,
+        100% {
+          height: 34%;
+        }
+        50% {
+          height: 92%;
+        }
+      }
+
+      @keyframes progress-fill {
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pot-simmer {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(-4px);
+        }
+      }
+
+      @keyframes flame-flicker {
+        from {
+          transform: translateX(-50%) rotate(39deg) scale(0.92);
+        }
+        to {
+          transform: translateX(-50%) rotate(48deg) scale(1.08);
+        }
+      }
+
+      @keyframes steam-rise {
+        0% {
+          opacity: 0;
+          transform: translateY(12px) scale(0.82);
+        }
+        35% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-36px) scale(1.15);
+        }
+      }
+
+      @keyframes ingredient-drop {
+        0% {
+          opacity: 0;
+          transform: translateY(-18px) rotate(-12deg);
+        }
+        16% {
+          opacity: 1;
+        }
+        62% {
+          opacity: 1;
+          transform: translateY(145px) rotate(90deg);
+        }
+        72%,
+        100% {
+          opacity: 0;
+          transform: translateY(164px) rotate(120deg);
+        }
+      }
+
+      @keyframes prep-spark {
+        0%,
+        100% {
+          opacity: 0;
+          transform: translateY(0) scale(0.8);
+        }
+        45% {
+          opacity: 0.82;
+          transform: translateY(-34px) scale(1);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .prep-pot,
+        .prep-fire span,
+        .prep-steam,
+        .prep-ingredient,
+        .prep-spark {
+          animation: none;
+        }
+      }
+
+      @media (max-width: 920px) {
+        .marketing-nav {
+          position: relative;
+        }
+
+        .marketing-hero,
+        .landing-feature {
+          grid-template-columns: 1fr;
+        }
+
+        .marketing-hero {
+          min-height: auto;
+        }
+
+        .landing-copy h1 {
+          font-size: clamp(58px, 14vw, 96px);
+        }
+
+        .landing-grid,
+        .landing-index {
+          grid-template-columns: 1fr;
+        }
+
+        .landing-device {
+          display: none;
+        }
+
+        .flow-view {
+          grid-template-columns: minmax(0, 430px);
+          place-items: center;
+        }
+
+        .flow-aside {
+          display: none;
+        }
+
+        .preview-view {
+          grid-template-columns: repeat(2, minmax(220px, 1fr));
+        }
+      }
+
+      @media (max-width: 620px) {
+        .marketing-page {
+          background: var(--paper);
+        }
+
+        .marketing-nav {
+          min-height: auto;
+          align-items: flex-start;
+          padding: 20px;
+        }
+
+        .marketing-links a {
+          display: none;
+        }
+
+        .nav-cta {
+          min-height: 40px;
+          padding: 0 14px;
+        }
+
+        .marketing-hero,
+        .landing-section {
+          width: 100%;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        .marketing-hero {
+          padding-top: 38px;
+          padding-bottom: 54px;
+        }
+
+        .landing-copy h1 {
+          font-size: clamp(52px, 17vw, 78px);
+        }
+
+        .landing-copy p,
+        .landing-section p {
+          font-size: 17px;
+        }
+
+        .landing-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .landing-stats div {
+          min-height: 74px;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .landing-stats div:last-child {
+          border-bottom: 0;
+        }
+
+        .landing-actions,
+        .marketing-footer {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+
+        .feature-phone-row {
+          grid-template-columns: 1fr;
+        }
+
+        .top-bar {
+          grid-template-columns: 1fr;
+          align-items: flex-start;
+          gap: 9px;
+          padding: 10px 14px;
+        }
+
+        .top-progress {
+          order: 3;
+        }
+
+        .top-controls {
+          flex-wrap: wrap;
+          gap: 6px;
+          justify-content: space-between;
+          width: 100%;
+        }
+
+        .mode-toggle button,
+        .nav-button {
+          min-height: 31px;
+          padding: 0 10px;
+        }
+
+        .flow-view {
+          min-height: calc(100vh - 72px);
+          padding: 12px 0 0;
+        }
+
+        .flow-primary {
+          width: 100%;
+        }
+
+        .flow-controls {
+          display: none;
+        }
+
+        .dots {
+          padding-bottom: 10px;
+        }
+
+        .screen-stage,
+        .screen {
+          width: 100%;
+        }
+
+        .screen-stage {
+          height: calc(100vh - 116px);
+          border: 0;
+          border-radius: 0;
+          background: transparent;
+        }
+
+        .screen {
+          height: 100%;
+        }
+
+        .screen {
+          border-left: 0;
+          border-right: 0;
+          border-bottom: 0;
+          border-radius: 0;
+          padding: 26px;
+        }
+
+        h1 {
+          font-size: 34px;
+        }
+
+        .meal-card {
+          grid-template-columns: 100px minmax(0, 1fr);
+        }
+
+        .meal-card img {
+          width: 100px;
+          height: 128px;
+        }
+
+        .preview-view {
+          grid-template-columns: minmax(0, 1fr);
+          padding: 12px;
+        }
+
+        .lead-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 390px) {
+        .screen {
+          padding: 22px;
+        }
+
+        h1 {
+          font-size: 31px;
+        }
+
+        .top-controls {
+          max-width: none;
+        }
+
+        .button-pair {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="app" class="batch-page"></main>
+
+    <script>
+      const STORAGE_KEY = "batch_flow";
+      const LAST_SCREEN = 8;
+      const PREPARED_MEALS_URL = "https://readplatter.com/reviews/";
+      const screenTitles = ["Welcome", "Days", "Cooking", "Preferences", "Prep", "Week map", "Prepared picks", "Review", "Ready"];
+      const dayOrder = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+      const dayNames = {
+        Mon: "Monday",
+        Tue: "Tuesday",
+        Wed: "Wednesday",
+        Thu: "Thursday",
+        Fri: "Friday",
+        Sat: "Saturday",
+        Sun: "Sunday",
+      };
+      const heroMealPhoto =
+        "https://cu-media.imgix.net/meal-service/meals/6774/main_image/6774_2_Cat_Cora_Grilled_Citrus_Salmon_Turmeric_Toasted_Couscous_3716.jpg?height=800&width=800&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=3840";
+      const recommendedMealPhoto =
+        "https://cu-media.imgix.net/meal-service/meals/2954/main_image/006_Esther-Choi_Chicken-soba-salad-with-sesame_lowres.jpg?height=800&width=800&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=3840";
+      const defaultRecipes = {
+        lunch: "Fresh Avocado & Hummus Wrap with crisp garden greens",
+        dinner: "Sauteed Lemon Garlic Shrimp with roasted asparagus and herbed wild rice",
+      };
+      const dietaryChips = [
+        "High protein",
+        "Vegetarian",
+        "Gluten free",
+        "Dairy free",
+        "Keto/low-carb",
+        "Pescatarian",
+        "Vegan",
+        "Healthy balance",
+      ];
+      const cookingProfiles = [
+        {
+          id: "scratch",
+          mark: "01",
+          title: "Hands-on",
+          detail: "I want recipes for most meals, with backup only where the week gets tight.",
+          summary: "Mostly cooking",
+        },
+        {
+          id: "hybrid",
+          mark: "02",
+          title: "Balanced",
+          detail: "Some meals cooked at home, some prepared by independent chefs.",
+          summary: "Cook and prepared",
+        },
+        {
+          id: "zero-prep",
+          mark: "03",
+          title: "Prepared-forward",
+          detail: "I want the week mostly covered by fresh, ready-to-heat meals.",
+          summary: "Mostly prepared",
+        },
+      ];
+      const meals = [
+        {
+          id: "soba",
+          name: "Soba Noodle Salad with Chicken",
+          chef: "Esther Choi",
+          calories: 520,
+          protein: 36,
+          carbs: 42,
+          diets: ["High protein", "Dairy free", "Healthy balance"],
+          image: recommendedMealPhoto,
+        },
+        {
+          id: "salmon",
+          name: "Seared Citrus Garlic Herb Salmon",
+          chef: "Cat Cora",
+          calories: 580,
+          protein: 38,
+          carbs: 24,
+          diets: ["High protein", "Pescatarian", "Gluten free"],
+          image: heroMealPhoto,
+        },
+        {
+          id: "bucatini",
+          name: "Lentil Bolognese Bucatini",
+          chef: "Art Smith",
+          calories: 510,
+          protein: 24,
+          carbs: 64,
+          diets: ["Vegetarian", "Vegan", "Dairy free"],
+          image:
+            "https://cu-media.imgix.net/meal-service/meals/7000/main_image/7000_art-smith_lentil-bolognese-with-bucatini-pasta_wb_lo-res.jpg?height=800&width=800&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=3840",
+        },
+        {
+          id: "chicken",
+          name: "Spiced Chicken with Roasted Broccoli",
+          chef: "Ruben Garcia",
+          calories: 540,
+          protein: 41,
+          carbs: 18,
+          diets: ["High protein", "Gluten free", "Keto/low-carb"],
+          image:
+            "https://cu-media.imgix.net/media/catalog/product/cache/x600//r/u/ruben-spiced-chicken.jpeg?height=800&width=800&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=3840",
+        },
+      ];
+
+      const defaultState = {
+        currentScreen: 0,
+        answers: {
+          q2Answer: "5-day-week",
+          dietary: ["High protein"],
+          proteinTarget: 125,
+          cookTime: "30 min max",
+        },
+        selectedDays: ["Mon", "Tue", "Wed", "Thu", "Fri"],
+        cookingStyle: "hybrid",
+        weeklyPlan: {},
+        mealSwaps: {},
+        shoppingTab: "list",
+        endState: null,
+        leadEmail: "",
+      };
+
+      let state = readState();
+      let mode = "landing";
+      let direction = "forward";
+      let pointerStartX = null;
+      let statusMessage = "";
+      let statusTimer = null;
+      let prepTimer = null;
+
+      function cloneDefaultState() {
+        return structuredClone(defaultState);
+      }
+
+      function clampScreen(index) {
+        return Math.min(Math.max(Math.round(Number(index) || 0), 0), LAST_SCREEN);
+      }
+
+      function clampProtein(value) {
+        return Math.min(Math.max(Math.round((Number(value) || 125) / 5) * 5, 70), 180);
+      }
+
+      function normalizeDays(days) {
+        if (!Array.isArray(days)) return [...defaultState.selectedDays];
+        const clean = days.filter((day, index) => dayOrder.includes(day) && days.indexOf(day) === index);
+        return clean.length ? clean.sort((a, b) => dayOrder.indexOf(a) - dayOrder.indexOf(b)) : [...defaultState.selectedDays];
+      }
+
+      function readState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return cloneDefaultState();
+          const parsed = JSON.parse(raw);
+          return {
+            currentScreen: clampScreen(parsed.currentScreen),
+            answers: {
+              q2Answer: typeof parsed.answers?.q2Answer === "string" ? parsed.answers.q2Answer : "5-day-week",
+              dietary: Array.isArray(parsed.answers?.dietary) ? parsed.answers.dietary.filter(Boolean) : ["High protein"],
+              proteinTarget: clampProtein(parsed.answers?.proteinTarget),
+              cookTime: typeof parsed.answers?.cookTime === "string" ? parsed.answers.cookTime : "30 min max",
+            },
+            selectedDays: normalizeDays(parsed.selectedDays),
+            cookingStyle: ["scratch", "hybrid", "zero-prep"].includes(parsed.cookingStyle) ? parsed.cookingStyle : "hybrid",
+            weeklyPlan: typeof parsed.weeklyPlan === "object" && parsed.weeklyPlan ? parsed.weeklyPlan : {},
+            mealSwaps: typeof parsed.mealSwaps === "object" && parsed.mealSwaps ? parsed.mealSwaps : {},
+            shoppingTab: parsed.shoppingTab === "timeline" ? "timeline" : "list",
+            endState: parsed.endState === "share" || parsed.endState === "start" ? parsed.endState : null,
+            leadEmail: typeof parsed.leadEmail === "string" ? parsed.leadEmail : "",
+          };
+        } catch {
+          return cloneDefaultState();
+        }
+      }
+
+      function defaultChoiceFor(type) {
+        if (state.cookingStyle === "scratch") return "home";
+        if (state.cookingStyle === "zero-prep") return "chef";
+        return type === "lunch" ? "home" : "chef";
+      }
+
+      function normalizeChoice(choice, type) {
+        if (choice === "cook") return "home";
+        if (["home", "chef", "skip"].includes(choice)) return choice;
+        return defaultChoiceFor(type);
+      }
+
+      function getPlan() {
+        const plan = {};
+        normalizeDays(state.selectedDays).forEach((day) => {
+          const saved = state.weeklyPlan?.[day] || {};
+          plan[day] = {
+            lunch: normalizeChoice(saved.lunch, "lunch"),
+            dinner: normalizeChoice(saved.dinner, "dinner"),
+          };
+        });
+        return plan;
+      }
+
+      function saveState() {
+        state.selectedDays = normalizeDays(state.selectedDays);
+        state.weeklyPlan = getPlan();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function setScreen(index) {
+        const nextScreen = clampScreen(index);
+        direction = nextScreen >= state.currentScreen ? "forward" : "backward";
+        state.currentScreen = nextScreen;
+        saveState();
+        render();
+      }
+
+      function nextScreen() {
+        setScreen(state.currentScreen + 1);
+      }
+
+      function previousScreen() {
+        setScreen(state.currentScreen - 1);
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function showStatus(message) {
+        statusMessage = message;
+        clearTimeout(statusTimer);
+        render();
+        statusTimer = setTimeout(() => {
+          statusMessage = "";
+          render();
+        }, 2200);
+      }
+
+      function dietarySummaryText() {
+        return state.answers.dietary.length
+          ? `Sorting for ${state.answers.dietary.join(", ")}.`
+          : "No filters yet. We will keep the plan flexible.";
+      }
+
+      function dietaryCountText() {
+        return state.answers.dietary.length ? `${state.answers.dietary.length} selected` : "No preferences selected";
+      }
+
+      function syncDietaryDom() {
+        document.querySelectorAll('[data-action="dietary"]').forEach((chipButton) => {
+          const isActive = state.answers.dietary.includes(chipButton.dataset.chip);
+          chipButton.classList.toggle("is-active", isActive);
+          chipButton.setAttribute("aria-pressed", String(isActive));
+        });
+        const helper = document.querySelector("[data-dietary-helper]");
+        const count = document.querySelector("[data-dietary-count]");
+        if (helper) helper.textContent = dietarySummaryText();
+        if (count) count.textContent = dietaryCountText();
+      }
+
+      function getChefSlots(plan = getPlan()) {
+        return state.selectedDays.flatMap((day) => {
+          const slots = [];
+          if (plan[day]?.lunch === "chef") slots.push({ id: `${day}-lunch`, day, type: "lunch" });
+          if (plan[day]?.dinner === "chef") slots.push({ id: `${day}-dinner`, day, type: "dinner" });
+          return slots;
+        });
+      }
+
+      function getCounts(plan = getPlan()) {
+        return state.selectedDays.reduce(
+          (totals, day) => {
+            ["lunch", "dinner"].forEach((type) => {
+              totals[plan[day]?.[type] || "skip"] += 1;
+            });
+            return totals;
+          },
+          { home: 0, chef: 0, skip: 0 },
+        );
+      }
+
+      function scoreMeals() {
+        const prefs = state.answers.dietary || [];
+        return meals
+          .map((meal, index) => {
+            const dietScore = prefs.reduce((score, pref) => score + (meal.diets.includes(pref) ? 3 : 0), 0);
+            const proteinScore = meal.protein >= Math.round(state.answers.proteinTarget / 4) ? 1 : 0;
+            return { meal, score: dietScore + proteinScore - index / 100 };
+          })
+          .sort((a, b) => b.score - a.score)
+          .map((item) => item.meal);
+      }
+
+      function getMealForSlot(slot, slotIndex) {
+        const rankedMeals = scoreMeals();
+        const savedMeal = meals.find((meal) => meal.id === state.mealSwaps?.[slot.id]);
+        return savedMeal || rankedMeals[slotIndex % rankedMeals.length] || meals[0];
+      }
+
+      function cycleSlot(day, type) {
+        const plan = getPlan();
+        const current = plan[day]?.[type] || defaultChoiceFor(type);
+        const next = current === "home" ? "chef" : current === "chef" ? "skip" : "home";
+        state.weeklyPlan = {
+          ...plan,
+          [day]: {
+            ...plan[day],
+            [type]: next,
+          },
+        };
+        saveState();
+        render();
+      }
+
+      function swapMeal(slotId) {
+        const slots = getChefSlots();
+        const slotIndex = Math.max(
+          slots.findIndex((slot) => slot.id === slotId),
+          0,
+        );
+        const currentMeal = getMealForSlot(slots[slotIndex] || { id: slotId }, slotIndex);
+        const rankedMeals = scoreMeals();
+        const currentIndex = rankedMeals.findIndex((meal) => meal.id === currentMeal.id);
+        const nextMeal = rankedMeals[(currentIndex + 1) % rankedMeals.length] || meals[0];
+        state.mealSwaps = {
+          ...state.mealSwaps,
+          [slotId]: nextMeal.id,
+        };
+        saveState();
+        showStatus(`Swapped to ${nextMeal.name}.`);
+      }
+
+      function slotLabel(choice) {
+        if (choice === "chef") return "Prepared";
+        if (choice === "skip") return "Skip";
+        return "Cook";
+      }
+
+      function slotClass(choice) {
+        if (choice === "chef") return "slot-chef";
+        if (choice === "skip") return "slot-skip";
+        return "slot-home";
+      }
+
+      function formatSlot(slot) {
+        return `${dayNames[slot.day]} ${slot.type}`;
+      }
+
+      function reviewMealText(day, type, plan) {
+        const choice = plan[day]?.[type];
+        if (choice === "skip") return "Open";
+        if (choice === "home") return type === "lunch" ? defaultRecipes.lunch : defaultRecipes.dinner;
+        const slot = { id: `${day}-${type}`, day, type };
+        const slotIndex = getChefSlots(plan).findIndex((chefSlot) => chefSlot.id === slot.id);
+        const meal = getMealForSlot(slot, Math.max(slotIndex, 0));
+        return `${meal.name} by Chef ${meal.chef}`;
+      }
+
+      function downloadPlan() {
+        const plan = getPlan();
+        const chefSlots = getChefSlots(plan);
+        const lines = [
+          "Batch by Platter - Weekly Meal Plan",
+          "====================================",
+          "",
+          `Cooking style: ${cookingProfiles.find((profile) => profile.id === state.cookingStyle)?.summary || "Hybrid"}`,
+          `Dietary preferences: ${state.answers.dietary.length ? state.answers.dietary.join(", ") : "Flexible"}`,
+          `Selected days: ${state.selectedDays.map((day) => dayNames[day]).join(", ")}`,
+          "",
+        ];
+
+        state.selectedDays.forEach((day) => {
+          lines.push(dayNames[day].toUpperCase());
+          ["lunch", "dinner"].forEach((type) => {
+            lines.push(`${type[0].toUpperCase() + type.slice(1)}: ${reviewMealText(day, type, plan)}`);
+          });
+          lines.push("");
+        });
+
+        lines.push(`Prepared meals: ${chefSlots.length}`);
+        lines.push("Partner code: BATCHPLTR20");
+
+        const file = new Blob([lines.join("\n")], { type: "text/plain" });
+        const url = URL.createObjectURL(file);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "batch-by-platter-meal-plan.txt";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+        showStatus("Plan exported.");
+      }
+
+      function screenShell(kicker, title, index, content) {
+        return `
+          <article class="screen screen-${index + 1}">
+            <div class="screen-header">
+              <div class="kicker">${kicker}</div>
+              <div class="screen-count">${index + 1}/${screenTitles.length}</div>
+            </div>
+            <h1>${title}</h1>
+            ${content}
+          </article>
+        `;
+      }
+
+      function maybeDisabled(isPreview) {
+        return isPreview ? "disabled" : "";
+      }
+
+      function renderScreen(index, isPreview = false) {
+        const disabled = maybeDisabled(isPreview);
+        const plan = getPlan();
+        const counts = getCounts(plan);
+        const chefSlots = getChefSlots(plan);
+        const cookingProfile = cookingProfiles.find((profile) => profile.id === state.cookingStyle) || cookingProfiles[1];
+
+        if (index === 0) {
+          return screenShell(
+            "Batch by Platter",
+            'Plan a week you will <span class="accent-word">actually eat.</span>',
+            index,
+            `
+              <span class="eyebrow-pill">Meal planning for real life</span>
+              <p class="lede">Pick the days. Set the cook-versus-prepared balance. Get recipes, prep notes, and backup meals where they help.</p>
+              <button type="button" class="primary-button" data-action="go" data-screen="1" ${disabled}>Build my week</button>
+              <div class="hero-plate" aria-hidden="true">
+                <img src="${heroMealPhoto}" alt="" />
+                <div class="hero-plate-note">Cook what you want. Outsource what you do not.</div>
+              </div>
+              <div class="discovery-strip" aria-label="Planning cues">
+                <div class="discovery-chip"><span>Routine</span><strong>Packable lunches</strong></div>
+                <div class="discovery-chip"><span>Goal</span><strong>High protein</strong></div>
+                <div class="discovery-chip"><span>Backup</span><strong>Prepared dinners</strong></div>
+              </div>
+            `,
+          );
+        }
+
+        if (index === 1) {
+          return screenShell(
+            "Weekly rhythm",
+            'Which <span class="accent-word">days</span> need a plan?',
+            index,
+            `
+              <p class="lede">Pick the stretch you want Batch to cover first. You can still toggle individual days.</p>
+              <div class="preset-grid">
+                <button type="button" class="preset-card ${state.selectedDays.length <= 5 ? "is-selected" : ""}" data-action="preset-days" data-count="5" ${disabled}>
+                  <span>Weekdays</span>
+                  <strong>5 days</strong>
+                  <small>Monday through Friday</small>
+                </button>
+                <button type="button" class="preset-card ${state.selectedDays.length === 7 ? "is-selected" : ""}" data-action="preset-days" data-count="7" ${disabled}>
+                  <span>Full week</span>
+                  <strong>7 days</strong>
+                  <small>Weekend included</small>
+                </button>
+              </div>
+              <div class="formula-card">
+                <div class="formula-head">
+                  <strong>Selected days</strong>
+                  <span>${state.selectedDays.length} active</span>
+                </div>
+                <div class="day-grid">
+                  ${dayOrder
+                    .map(
+                      (day) => `
+                        <button type="button" class="day-chip ${state.selectedDays.includes(day) ? "is-active" : ""}" data-action="toggle-day" data-day="${day}" aria-pressed="${state.selectedDays.includes(
+                        day,
+                      )}" ${disabled}>${day}</button>
+                      `,
+                    )
+                    .join("")}
+                </div>
+                <small>Keep at least one day on the board.</small>
+              </div>
+              <div class="choice-note">Selected: ${state.selectedDays.length === 7 ? "Full week" : `${state.selectedDays.length} planned days`}</div>
+              <button type="button" class="primary-button" data-action="go" data-screen="2" ${disabled}>Continue</button>
+            `,
+          );
+        }
+
+        if (index === 2) {
+          return screenShell(
+            "Cooking profile",
+            'How much do you want to <span class="accent-word">cook?</span>',
+            index,
+            `
+              <p class="lede">Pick the closest fit. You can edit every lunch and dinner later.</p>
+              <div class="profile-stack">
+                ${cookingProfiles
+                  .map((profile) => {
+                    const isSelected = state.cookingStyle === profile.id;
+                    return `
+                      <button type="button" class="profile-card ${isSelected ? "is-selected" : ""}" data-action="cooking-style" data-style="${profile.id}" aria-pressed="${isSelected}" ${disabled}>
+                        <span class="profile-mark">${profile.mark}</span>
+                        <span class="profile-meta">
+                          <span>${isSelected ? "Selected" : "Option"}</span>
+                          <strong>${profile.title}</strong>
+                          <small>${profile.detail}</small>
+                        </span>
+                      </button>
+                    `;
+                  })
+                  .join("")}
+              </div>
+              <div class="choice-note">Selected: ${cookingProfile.summary}</div>
+              <button type="button" class="primary-button" data-action="go" data-screen="3" ${disabled}>Continue</button>
+            `,
+          );
+        }
+
+        if (index === 3) {
+          const activeDietary = state.answers.dietary.length
+            ? dietarySummaryText()
+            : dietarySummaryText();
+
+          return screenShell(
+            "Preferences",
+            'Any food <span class="accent-word">guardrails?</span>',
+            index,
+            `
+              <p class="lede">Pick what matters. Batch will shape the plan around it.</p>
+              <div class="chip-grid">
+                ${dietaryChips
+                  .map((chip) => {
+                    const isActive = state.answers.dietary.includes(chip);
+                    return `<button type="button" class="chip ${isActive ? "is-active" : ""}" data-action="dietary" data-chip="${escapeHtml(chip)}" aria-pressed="${isActive}" ${disabled}>${chip}</button>`;
+                  })
+                  .join("")}
+              </div>
+              <div class="helper-note" data-dietary-helper>${activeDietary}</div>
+              <div class="choice-note" data-dietary-count>${dietaryCountText()}</div>
+              <button type="button" class="primary-button" data-action="go" data-screen="4" ${disabled}>Build my week</button>
+            `,
+          );
+        }
+
+        if (index === 4) {
+          return screenShell(
+            "Prep",
+            'Hang tight. We are <span class="accent-word">building</span> your week.',
+            index,
+            `
+              <p class="lede">Your inputs are in the pot. Batch is sorting recipes, prepared meals, and prep notes into one usable plan.</p>
+              <div class="prep-scene" aria-label="Batch is preparing your week">
+                <span class="prep-steam steam-one"></span>
+                <span class="prep-steam steam-two"></span>
+                <span class="prep-steam steam-three"></span>
+                <span class="prep-ingredient ingredient-one"></span>
+                <span class="prep-ingredient ingredient-two"></span>
+                <span class="prep-ingredient ingredient-three"></span>
+                <span class="prep-ingredient ingredient-four"></span>
+                <span class="prep-spark spark-one"></span>
+                <span class="prep-spark spark-two"></span>
+                <span class="prep-spark spark-three"></span>
+                <div class="prep-pot" aria-hidden="true">
+                  <span class="pot-rim"></span>
+                  <span class="pot-body"></span>
+                </div>
+                <div class="prep-fire" aria-hidden="true"><span></span><span></span><span></span></div>
+              </div>
+              <div class="build-list prep-list">
+                <div><span>Reading the days you selected</span><b></b></div>
+                <div><span>Placing prepared meals where they help</span><b></b></div>
+                <div><span>Drafting a week map you can edit</span><b></b></div>
+              </div>
+              <button type="button" class="secondary-button" data-action="go" data-screen="5" ${disabled}>Show the map</button>
+            `,
+          );
+        }
+
+        if (index === 5) {
+          return screenShell(
+            "Week map",
+            'Set the <span class="accent-word">role</span> for each meal.',
+            index,
+            `
+              <p class="lede">Pre-filled from your ${cookingProfile.title.toLowerCase()} profile. Tap any slot to switch between Cook, Prepared, and Skip.</p>
+              <div class="canvas-summary">
+                <div class="stat-box"><strong>${counts.home}</strong><span>Cook</span></div>
+                <div class="stat-box"><strong>${counts.chef}</strong><span>Prepared</span></div>
+                <div class="stat-box"><strong>${counts.skip}</strong><span>Open</span></div>
+              </div>
+              <div class="day-plan-list">
+                ${state.selectedDays
+                  .map(
+                    (day) => `
+                      <div class="day-plan-card">
+                        <div>
+                          <strong>${dayNames[day]}</strong><br />
+                          <small>${day} plan</small>
+                        </div>
+                        <div class="slot-grid">
+                          ${["lunch", "dinner"]
+                            .map((type) => {
+                              const choice = plan[day]?.[type] || defaultChoiceFor(type);
+                              return `
+                                <button type="button" class="slot-button ${slotClass(choice)}" data-action="cycle-slot" data-day="${day}" data-type="${type}" ${disabled}>
+                                  <span class="slot-label">${type}</span>
+                                  <span>${slotLabel(choice)}</span>
+                                </button>
+                              `;
+                            })
+                            .join("")}
+                        </div>
+                      </div>
+                    `,
+                  )
+                  .join("")}
+              </div>
+              <button type="button" class="primary-button" data-action="go" data-screen="6" ${disabled}>Find prepared picks</button>
+            `,
+          );
+        }
+
+        if (index === 6) {
+          const visibleChefSlots = isPreview ? chefSlots.slice(0, 2) : chefSlots;
+          const chefContent = chefSlots.length
+            ? `
+              <div class="meal-match-list">
+                ${visibleChefSlots
+                  .map((slot, slotIndex) => {
+                    const meal = getMealForSlot(slot, slotIndex);
+                    return `
+                      <div class="chef-card">
+                        <div class="chef-card-head">
+                          <span>${formatSlot(slot)}</span>
+                          <span>Prepared pick</span>
+                        </div>
+                        <div class="chef-card-main">
+                          <img class="chef-card-image" src="${meal.image}" alt="${escapeHtml(meal.name)}" />
+                          <div class="chef-card-body">
+                            <strong>${meal.name}</strong>
+                            <p>by Chef ${meal.chef}</p>
+                            <p>${meal.calories} kcal &middot; ${meal.protein}g protein &middot; ${meal.carbs}g carbs</p>
+                          </div>
+                        </div>
+                        <div class="chef-card-footer">
+                          <div class="tag-row">
+                            ${meal.diets
+                              .slice(0, 2)
+                              .map((diet) => `<span class="tag">${diet}</span>`)
+                              .join("")}
+                          </div>
+                          <button type="button" class="text-button" data-action="swap-meal" data-slot="${slot.id}" ${disabled}>Swap</button>
+                        </div>
+                      </div>
+                    `;
+                  })
+                  .join("")}
+              </div>
+            `
+            : `
+              <div class="empty-state">
+                <strong>No prepared meals yet.</strong>
+                <p>You chose a fully cooked-at-home week. To add backup, return to the map and switch any slot to Prepared.</p>
+                <button type="button" class="secondary-button" data-action="go" data-screen="5" ${disabled}>Adjust map</button>
+              </div>
+            `;
+
+          return screenShell(
+            "Prepared picks",
+            'Fresh meals for the slots you <span class="accent-word">marked.</span>',
+            index,
+            `
+              <p class="lede">Matched to your preferences and schedule. Swap anything that does not feel like your week.</p>
+              ${chefContent}
+              <button type="button" class="primary-button" data-action="go" data-screen="7" ${disabled}>Review plan</button>
+            `,
+          );
+        }
+
+        if (index === 7) {
+          const listPanel = `
+            <div class="review-list">
+              ${state.selectedDays
+                .map(
+                  (day) => `
+                    <div class="review-card">
+                      <div class="review-card-head">
+                        <strong>${dayNames[day]}</strong>
+                        <span>${day}</span>
+                      </div>
+                      <div class="review-row"><b>Lunch</b><small>${reviewMealText(day, "lunch", plan)}</small></div>
+                      <div class="review-row"><b>Dinner</b><small>${reviewMealText(day, "dinner", plan)}</small></div>
+                    </div>
+                  `,
+                )
+                .join("")}
+            </div>
+          `;
+          const timelinePanel = `
+            <div class="timeline-list">
+              <div><time>9:30 AM</time><span>Roast vegetables and cook the grain base for home lunches.</span></div>
+              <div><time>10:10 AM</time><span>Blend green sauce, wash herbs, and portion breakfast jars.</span></div>
+              <div><time>10:40 AM</time><span>Pack Monday and Tuesday lunches so the fridge has a clear first move.</span></div>
+              <div><time>11:05 AM</time><span>Confirm prepared meals for the tightest dinner nights.</span></div>
+            </div>
+          `;
+
+          return screenShell(
+            "Review",
+            'Review your <span class="accent-word">week.</span>',
+            index,
+            `
+              <p class="lede">List first. Timeline if Sunday needs structure.</p>
+              <div class="tab-bar" role="tablist" aria-label="Review views">
+                <button type="button" role="tab" data-action="tab" data-tab="list" aria-selected="${state.shoppingTab === "list"}" class="${
+              state.shoppingTab === "list" ? "is-active" : ""
+            }" ${disabled}>List</button>
+                <button type="button" role="tab" data-action="tab" data-tab="timeline" aria-selected="${state.shoppingTab === "timeline"}" class="${
+              state.shoppingTab === "timeline" ? "is-active" : ""
+            }" ${disabled}>Timeline</button>
+              </div>
+              ${state.shoppingTab === "timeline" ? timelinePanel : listPanel}
+              <div class="delivery-card">
+                <div class="delivery-row"><span>Prepared meals</span><strong>${chefSlots.length} selected</strong></div>
+                <div class="delivery-row"><span>Partner code</span><strong>BATCHPLTR20</strong></div>
+              </div>
+              <button type="button" class="primary-button" data-action="go" data-screen="8" ${disabled}>Save my week</button>
+            `,
+          );
+        }
+
+        return screenShell(
+          "Ready",
+          'Your week is <span class="accent-word">set.</span>',
+          index,
+          `
+            <div class="success-circle" aria-hidden="true">B</div>
+            <p class="lede">Save the plan, send yourself the details, or make another pass.</p>
+            <form class="lead-form" data-lead-form>
+              <label for="plan-email">Get the plan by email.</label>
+              <div class="lead-row">
+                <input id="plan-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" value="${escapeHtml(state.leadEmail)}" ${disabled} />
+                <button type="submit" ${disabled}>Save</button>
+              </div>
+              <small>${state.leadEmail ? `Saved for ${escapeHtml(state.leadEmail)}.` : "Your email stays with this plan request."}</small>
+            </form>
+            <div class="delivery-card">
+              <div class="delivery-row">
+                <div>
+                  <span>Prepared picks</span>
+                  <strong>Fresh meals for the week</strong>
+                </div>
+                <strong>${chefSlots.length}</strong>
+              </div>
+              <div class="mini-list">
+                ${
+                  chefSlots.length
+                    ? chefSlots
+                        .map((slot, slotIndex) => {
+                          const meal = getMealForSlot(slot, slotIndex);
+                          return `<div><span>${meal.name}</span><small>${slot.day} ${slot.type}</small></div>`;
+                        })
+                        .join("")
+                    : `<div><span>All slots are cooked at home or left open.</span><small>No prepared picks</small></div>`
+                }
+              </div>
+            </div>
+            <div class="promo-card">
+              <div class="promo-row">
+                <div>
+                  <span>Partner code</span>
+                  <strong>BATCHPLTR20</strong>
+                </div>
+                <button type="button" class="text-button" data-action="copy-promo" ${disabled}>Copy</button>
+              </div>
+              <p>Use this if you decide to order prepared meals from a partner marketplace.</p>
+            </div>
+            <div class="button-pair">
+              <button type="button" class="secondary-button" data-action="download-plan" ${disabled}>Export plan</button>
+              <button type="button" class="secondary-button" data-action="reset-plan" ${disabled}>Plan another week</button>
+            </div>
+            <button type="button" class="primary-button" data-action="open-menu" ${disabled}>Browse prepared meals</button>
+          `,
+        );
+      }
+
+      function renderFlowAside(index) {
+        const asideByScreen = [
+          {
+            label: "Platter planning",
+            title: "A calmer way to decide what is for dinner.",
+            copy: "Answer a few practical questions and Batch turns the week into recipes, prep notes, and prepared backup.",
+            proof: [
+              ["2 min", "To map the week"],
+              ["5 days", "Pre-filled by default"],
+              ["1 list", "For Sunday prep"],
+            ],
+          },
+          {
+            label: "Start with real life",
+            title: "Weekdays, weekends, or the odd day off.",
+            copy: "The plan begins with your calendar, so the meal map follows the week you actually have.",
+            proof: [
+              ["Mon-Fri", "Quick preset"],
+              ["7 days", "Full-week option"],
+              ["Edit", "Any day anytime"],
+            ],
+          },
+          {
+            label: "Cooking style",
+            title: "Cook more, outsource more, or split the difference.",
+            copy: "Batch uses this as a starting point, then lets every lunch and dinner be tuned by hand.",
+            proof: [
+              ["Cook", "Home recipes"],
+              ["Prepared", "Fresh backup"],
+              ["Skip", "Open slots"],
+            ],
+          },
+          {
+            label: "Personal filters",
+            title: "Preferences without the spreadsheet feeling.",
+            copy: "A few filters are enough to rank the plan around what sounds good and what fits.",
+            proof: [
+              ["Protein", "Goal-aware"],
+              ["Dietary", "Easy filters"],
+              ["Time", "Kept practical"],
+            ],
+          },
+          {
+            label: "Getting it ready",
+            title: "The quiet middle step should feel worth the wait.",
+            copy: "Batch turns the answers into an editable week map before it shows any recommendations.",
+            proof: [
+              ["Sort", "Days"],
+              ["Match", "Meals"],
+              ["Map", "Prep"],
+            ],
+          },
+          {
+            label: "Weekly map",
+            title: "A plan you can correct in one tap.",
+            copy: "Each slot has a role: cook at home, use a prepared pick, or leave it open.",
+            proof: [
+              ["Lunch", "Separate"],
+              ["Dinner", "Separate"],
+              ["Tap", "To switch"],
+            ],
+          },
+          {
+            label: "Prepared picks",
+            title: "Backup meals that still feel chosen.",
+            copy: "Matched dishes are slotted only where you asked for help, then kept easy to swap.",
+            proof: [
+              ["Fresh", "Ready meals"],
+              ["Swap", "Any pick"],
+              ["Scroll", "Full list"],
+            ],
+          },
+          {
+            label: "Final pass",
+            title: "List first, timeline when Sunday needs structure.",
+            copy: "The review step keeps the weekly plan scannable before it is saved.",
+            proof: [
+              ["List", "Meal view"],
+              ["Timeline", "Prep view"],
+              ["Save", "On device"],
+            ],
+          },
+          {
+            label: "Saved plan",
+            title: "The week is ready without another decision loop.",
+            copy: "Export it, revise it, or use the prepared picks when the week gets tight.",
+            proof: [
+              ["Export", "Text plan"],
+              ["Revise", "Anytime"],
+              ["Browse", "Prepared meals"],
+            ],
+          },
+        ];
+        const aside = asideByScreen[index] || asideByScreen[0];
+        return `
+          <aside class="flow-aside" aria-hidden="true">
+            <div class="aside-copy">
+              <span>${aside.label}</span>
+              <strong>${aside.title}</strong>
+              <p>${aside.copy}</p>
+            </div>
+            <div class="aside-collage">
+              ${meals
+                .map((meal) => `<img src="${meal.image}" alt="" />`)
+                .join("")}
+            </div>
+            <div class="aside-proof">
+              ${aside.proof
+                .map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`)
+                .join("")}
+            </div>
+          </aside>
+        `;
+      }
+
+      function renderTopBar() {
+        const progressPercent = Math.round(((state.currentScreen + 1) / screenTitles.length) * 100);
+        return `
+          <header class="top-bar">
+            <div>
+              <span class="brand">Batch</span>
+              <span class="progress">${state.currentScreen + 1} of ${screenTitles.length} &middot; ${screenTitles[state.currentScreen]}</span>
+            </div>
+            <div class="top-progress" aria-label="Progress: step ${state.currentScreen + 1} of ${screenTitles.length}">
+              <div class="progress-label"><span>Step ${state.currentScreen + 1} of ${screenTitles.length}</span><span>${screenTitles[state.currentScreen]}</span></div>
+              <div class="progress-track"><span style="width: ${progressPercent}%"></span></div>
+            </div>
+            <div class="top-controls">
+              <div class="mode-toggle" aria-label="View mode">
+                <button type="button" class="${mode === "landing" ? "is-active" : ""}" data-action="mode" data-mode="landing">Overview</button>
+                <button type="button" class="${mode === "flow" ? "is-active" : ""}" data-action="mode" data-mode="flow">Flow</button>
+                <button type="button" class="${mode === "preview" ? "is-active" : ""}" data-action="mode" data-mode="preview">Preview</button>
+              </div>
+              <button type="button" class="nav-button" data-action="prev" ${state.currentScreen === 0 ? "disabled" : ""}>Back</button>
+              <button type="button" class="nav-button" data-action="next" ${state.currentScreen === LAST_SCREEN ? "disabled" : ""}>Next</button>
+            </div>
+          </header>
+        `;
+      }
+
+      function renderFlow() {
+        return `
+          <section class="flow-view" aria-label="${screenTitles[state.currentScreen]}">
+            <div class="flow-primary">
+              <div class="screen-stage ${direction === "forward" ? "enter-forward" : "enter-backward"}">
+                ${renderScreen(state.currentScreen)}
+              </div>
+              <div class="flow-controls" aria-label="Step navigation">
+                <button type="button" class="flow-control" data-action="prev" ${state.currentScreen === 0 ? "disabled" : ""}>Back</button>
+                <button type="button" class="flow-control is-primary" data-action="next" ${state.currentScreen === LAST_SCREEN ? "disabled" : ""}>${state.currentScreen >= 7 ? "Finish" : "Next"}</button>
+              </div>
+            </div>
+            ${renderFlowAside(state.currentScreen)}
+          </section>
+        `;
+      }
+
+      function renderPreview() {
+        return `
+          <section class="preview-view" aria-label="Static poster preview">
+            ${screenTitles
+              .map(
+                (title, index) => `
+                  <div
+                    class="preview-frame ${index === state.currentScreen ? "is-active" : ""}"
+                    data-action="preview-screen"
+                    data-screen="${index}"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Open ${title}"
+                  >
+                    <span class="preview-label">${index + 1}. ${title}</span>
+                    <div class="preview-phone">${renderPreviewScreen(index)}</div>
+                  </div>
+                `,
+              )
+              .join("")}
+          </section>
+        `;
+      }
+
+      function renderPreviewScreen(index) {
+        return renderScreen(index, true)
+          .replaceAll("<button", "<span")
+          .replaceAll("</button>", "</span>")
+          .replace(/<input[^>]*type="range"[^>]*>/g, '<span class="range-track" aria-hidden="true"></span>')
+          .replace(/<input[^>]*type="email"[^>]*>/g, '<span class="lead-input-preview" aria-hidden="true"></span>');
+      }
+
+      function renderLanding() {
+        return `
+          <section class="marketing-page" id="top">
+            <header class="marketing-nav">
+              <span class="brand">Batch</span>
+              <nav class="marketing-links" aria-label="Batch sections">
+                <a href="#how">How it works</a>
+                <a href="#why">Why Batch</a>
+                <a href="#index">Food planning index</a>
+                <button type="button" class="nav-cta" data-action="start-flow" data-screen="0">Open Batch</button>
+              </nav>
+            </header>
+
+            <section class="marketing-hero" aria-labelledby="landing-title">
+              <div class="landing-copy">
+                <span class="landing-kicker">Platter planning</span>
+                <h1 id="landing-title">A calmer way to decide dinner.</h1>
+                <p>Batch turns a few practical answers into a weekly plan: what to cook, what to prep, and where a prepared meal can take pressure off.</p>
+                <div class="landing-actions">
+                  <button type="button" class="landing-button" data-action="start-flow" data-screen="0">Build this week's plan</button>
+                  <button type="button" class="landing-button is-secondary" data-action="open-preview">Preview the flow</button>
+                </div>
+                <div class="landing-stats" aria-label="Batch highlights">
+                  <div><strong>2 min</strong><span>To map the week</span></div>
+                  <div><strong>5 days</strong><span>Pre-filled by default</span></div>
+                  <div><strong>1 list</strong><span>For Sunday prep</span></div>
+                </div>
+              </div>
+              <div class="landing-device" aria-label="Batch app preview">
+                <div class="screen-stage">${renderScreen(0, true)}</div>
+                <span class="landing-caption">Interactive weekly food planner</span>
+              </div>
+            </section>
+
+            <section class="landing-section" id="how">
+              <span class="section-kicker">How it works</span>
+              <h2>Three decisions. One usable week.</h2>
+              <div class="landing-grid">
+                <article class="landing-card">
+                  <span>01</span>
+                  <h3>Choose the days.</h3>
+                  <p>Start with weekdays, the full week, or a custom rhythm that matches the calendar in front of you.</p>
+                </article>
+                <article class="landing-card">
+                  <span>02</span>
+                  <h3>Set the balance.</h3>
+                  <p>Tell Batch where you want to cook, where you want backup, and what food guardrails matter.</p>
+                </article>
+                <article class="landing-card">
+                  <span>03</span>
+                  <h3>Save the plan.</h3>
+                  <p>Review a list view or Sunday timeline, then keep the plan, export it, or send it to yourself.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="landing-section" id="why">
+              <div class="landing-feature">
+                <div class="landing-copy">
+                  <span class="section-kicker">Why Batch</span>
+                  <h2>Planning for people who do not want another food project.</h2>
+                  <p>The quiz stays deliberately plain-spoken. No food morality, no endless filters, no blank calendar. Just enough structure to make the week easier to eat through.</p>
+                  <div class="landing-actions">
+                    <button type="button" class="landing-button" data-action="start-flow" data-screen="1">Start with days</button>
+                    <button type="button" class="landing-button is-secondary" data-action="start-flow" data-screen="7">See the review step</button>
+                  </div>
+                </div>
+                <div class="feature-phone-row" aria-hidden="true">
+                  <div class="preview-phone">${renderPreviewScreen(3)}</div>
+                  <div class="preview-phone">${renderPreviewScreen(7)}</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="landing-section" id="index">
+              <span class="section-kicker">Food planning index</span>
+              <h2>Built to grow with Platter's guides, reviews, and recipes.</h2>
+              <div class="landing-index">
+                <article class="landing-card">
+                  <span>Guides</span>
+                  <h3>Weeknight systems.</h3>
+                  <p>Practical explainers for deciding what belongs in the fridge, pantry, and backup stack.</p>
+                </article>
+                <article class="landing-card">
+                  <span>Reviews</span>
+                  <h3>Prepared meals.</h3>
+                  <p>Neutral scoring for taste, menu depth, ordering flow, freshness, and value.</p>
+                </article>
+                <article class="landing-card">
+                  <span>Recipes</span>
+                  <h3>Home cooking.</h3>
+                  <p>Recipes that can slot into a real weekly plan instead of living in a saved tab forever.</p>
+                </article>
+                <article class="landing-card">
+                  <span>Newsletter</span>
+                  <h3>The weekly brief.</h3>
+                  <p>A concise food planning note that points readers to the best next move.</p>
+                </article>
+              </div>
+            </section>
+
+            <footer class="marketing-footer">
+              <span class="brand">Batch</span>
+              <span>By Platter. Built for the week ahead.</span>
+            </footer>
+          </section>
+        `;
+      }
+
+      function render() {
+        clearTimeout(prepTimer);
+        const app = document.querySelector("#app");
+        const toast = statusMessage ? `<div class="toast" role="status">${escapeHtml(statusMessage)}</div>` : "";
+        app.innerHTML = mode === "landing" ? toast + renderLanding() : renderTopBar() + toast + (mode === "flow" ? renderFlow() : renderPreview());
+
+        if (mode === "flow" && state.currentScreen === 4) {
+          prepTimer = setTimeout(() => setScreen(5), 4800);
+        }
+      }
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest('button, [data-action="preview-screen"]');
+        if (!button || button.disabled) return;
+
+        const action = button.dataset.action;
+
+        if (action === "start-flow") {
+          mode = "flow";
+          setScreen(Number(button.dataset.screen || 0));
+        }
+
+        if (action === "open-preview") {
+          mode = "preview";
+          render();
+        }
+
+        if (action === "go") {
+          setScreen(Number(button.dataset.screen));
+        }
+
+        if (action === "next") {
+          nextScreen();
+        }
+
+        if (action === "prev") {
+          previousScreen();
+        }
+
+        if (action === "mode") {
+          mode = button.dataset.mode;
+          render();
+        }
+
+        if (action === "preview-screen") {
+          mode = "flow";
+          setScreen(Number(button.dataset.screen));
+        }
+
+        if (action === "preset-days") {
+          const count = Number(button.dataset.count);
+          state.selectedDays = count === 7 ? [...dayOrder] : ["Mon", "Tue", "Wed", "Thu", "Fri"];
+          state.answers.q2Answer = count === 7 ? "7-day-week" : "5-day-week";
+          state.weeklyPlan = {};
+          state.mealSwaps = {};
+          saveState();
+          render();
+        }
+
+        if (action === "toggle-day") {
+          const day = button.dataset.day;
+          if (!dayOrder.includes(day)) return;
+          if (state.selectedDays.includes(day)) {
+            if (state.selectedDays.length === 1) {
+              showStatus("Keep at least one day planned.");
+              return;
+            }
+            state.selectedDays = state.selectedDays.filter((item) => item !== day);
+          } else {
+            state.selectedDays = normalizeDays([...state.selectedDays, day]);
+          }
+          state.answers.q2Answer = `${state.selectedDays.length}-day-custom`;
+          saveState();
+          render();
+        }
+
+        if (action === "cooking-style") {
+          state.cookingStyle = button.dataset.style;
+          state.weeklyPlan = {};
+          state.mealSwaps = {};
+          saveState();
+          render();
+        }
+
+        if (action === "dietary") {
+          const chip = button.dataset.chip;
+          state.answers.dietary = state.answers.dietary.includes(chip)
+            ? state.answers.dietary.filter((item) => item !== chip)
+            : [...state.answers.dietary, chip];
+          saveState();
+          syncDietaryDom();
+        }
+
+        if (action === "cycle-slot") {
+          cycleSlot(button.dataset.day, button.dataset.type);
+        }
+
+        if (action === "swap-meal") {
+          swapMeal(button.dataset.slot);
+        }
+
+        if (action === "tab") {
+          state.shoppingTab = button.dataset.tab === "timeline" ? "timeline" : "list";
+          saveState();
+          render();
+        }
+
+        if (action === "copy-promo") {
+          if (navigator.clipboard?.writeText) {
+            navigator.clipboard
+              .writeText("BATCHPLTR20")
+              .then(() => showStatus("Promo code copied."))
+              .catch(() => showStatus("Promo code: BATCHPLTR20"));
+          } else {
+            showStatus("Promo code: BATCHPLTR20");
+          }
+        }
+
+        if (action === "download-plan") {
+          downloadPlan();
+        }
+
+        if (action === "reset-plan") {
+          state = cloneDefaultState();
+          direction = "backward";
+          saveState();
+          showStatus("Plan reset.");
+        }
+
+        if (action === "open-menu") {
+          window.open(PREPARED_MEALS_URL, "_blank", "noopener,noreferrer");
+          showStatus("Opening Platter reviews.");
+        }
+      });
+
+      document.addEventListener("submit", (event) => {
+        const form = event.target.closest("[data-lead-form]");
+        if (!form) return;
+        event.preventDefault();
+        const email = String(new FormData(form).get("email") || "").trim();
+        const looksValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!looksValid) {
+          showStatus("Add a valid email to save the plan.");
+          return;
+        }
+        state.leadEmail = email;
+        saveState();
+        showStatus("Email saved with this plan.");
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        const frame = event.target.closest('[data-action="preview-screen"]');
+        if (!frame) return;
+        event.preventDefault();
+        mode = "flow";
+        setScreen(Number(frame.dataset.screen));
+      });
+
+      document.addEventListener("pointerdown", (event) => {
+        if (mode !== "flow") return;
+        if (!event.target.closest(".screen-stage")) return;
+        pointerStartX = event.clientX;
+      });
+
+      document.addEventListener("pointerup", (event) => {
+        if (mode !== "flow") return;
+        if (pointerStartX === null || !event.target.closest(".screen-stage")) return;
+        const deltaX = event.clientX - pointerStartX;
+        pointerStartX = null;
+        if (Math.abs(deltaX) < 56) return;
+        if (deltaX < 0 && state.currentScreen < LAST_SCREEN) nextScreen();
+        if (deltaX > 0 && state.currentScreen > 0) previousScreen();
+      });
+
+      render();
+    </script>
+  </body>
+</html>
