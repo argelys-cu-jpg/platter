@@ -266,7 +266,7 @@
       }
 
       .landing-device .screen-stage {
-        height: min(812px, calc(100vh - 132px));
+        height: min(720px, calc(100vh - 132px));
         box-shadow: none;
       }
 
@@ -336,7 +336,7 @@
       }
 
       .feature-phone-row .preview-phone {
-        aspect-ratio: 393 / 852;
+        aspect-ratio: 393 / 500;
       }
 
       .landing-index {
@@ -1237,9 +1237,9 @@
 
       .preview-view {
         display: grid;
-        grid-template-columns: repeat(4, minmax(236px, 1fr));
-        gap: 18px;
-        padding: 24px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 20px;
+        padding: clamp(18px, 3vw, 34px);
       }
 
       .preview-frame {
@@ -1269,33 +1269,55 @@
 
       .preview-phone {
         width: 100%;
-        aspect-ratio: 393 / 852;
+        aspect-ratio: 393 / 500;
         overflow: hidden;
-        border: 9px solid var(--rule);
-        border-radius: 32px;
+        border: 8px solid var(--rule);
+        border-radius: 30px;
         background: var(--paper);
         pointer-events: none;
       }
 
       .preview-phone .screen {
+        position: relative;
         min-height: 100%;
         height: 100%;
         border: 0;
-        border-radius: 20px;
+        border-radius: 19px;
         padding: 16px;
         gap: 10px;
+        overflow: hidden;
+      }
+
+      .preview-phone .screen::after {
+        content: "B";
+        position: absolute;
+        right: -16px;
+        bottom: -34px;
+        color: rgba(21, 21, 21, 0.035);
+        font-family: var(--display);
+        font-size: 210px;
+        font-weight: 900;
+        line-height: 0.78;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .preview-phone .screen > * {
+        position: relative;
+        z-index: 1;
       }
 
       .preview-phone h1 {
-        font-size: 24px;
+        font-size: 29px;
+        line-height: 0.93;
       }
 
       .preview-phone .hero-plate {
-        min-height: 184px;
+        min-height: 174px;
       }
 
       .preview-phone .hero-plate img {
-        height: 138px;
+        height: 124px;
       }
 
       .preview-phone .primary-button,
@@ -1303,7 +1325,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 38px;
+        min-height: 40px;
       }
 
       .preview-phone .lede {
@@ -2540,6 +2562,12 @@
         .prep-ingredient,
         .prep-spark {
           animation: none;
+        }
+      }
+
+      @media (max-width: 1320px) {
+        .preview-view {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
         }
       }
 
