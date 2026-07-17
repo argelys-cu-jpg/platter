@@ -714,6 +714,12 @@
         gap: 18px;
       }
 
+      .review-layout > *,
+      .review-card,
+      .ranking-table {
+        min-width: 0;
+      }
+
       .review-card {
         display: grid;
         gap: 16px;
@@ -1182,16 +1188,25 @@
         }
 
         .hero {
-          min-height: auto;
+          min-height: calc(100svh - 106px);
           display: block;
           align-items: flex-start;
-          padding-top: 42px;
-          padding-bottom: 0;
-          background: var(--canvas);
+          padding-top: clamp(56px, 14vw, 76px);
+          padding-bottom: clamp(235px, 66vw, 360px);
+          background:
+            linear-gradient(
+              180deg,
+              rgba(247, 247, 247, 0.99) 0%,
+              rgba(247, 247, 247, 0.98) 48%,
+              rgba(247, 247, 247, 0.86) 66%,
+              rgba(247, 247, 247, 0.38) 84%,
+              rgba(247, 247, 247, 0.1) 100%
+            ),
+            url("assets/platter-hero-finished-plate-1672x941.png") 58% bottom / cover no-repeat;
         }
 
         h1 {
-          font-size: clamp(36px, 10vw, 54px);
+          font-size: clamp(34px, 10vw, 52px);
           line-height: 0.95;
         }
 
@@ -1219,9 +1234,9 @@
           gap: 14px;
           margin-top: 30px;
           border-top: 1px solid var(--rule);
-          border-bottom: 1px solid var(--line);
+          border-bottom: 1px solid var(--rule);
           padding: 16px 0;
-          background: var(--canvas);
+          background: rgba(247, 247, 247, 0.88);
         }
 
         .hero-note img {
@@ -1238,13 +1253,7 @@
         }
 
         .hero-grid::after {
-          content: "";
-          display: block;
-          width: calc(100% + 28px);
-          height: clamp(260px, 78vw, 430px);
-          margin: 28px -14px 0;
-          border-top: 1px solid var(--rule);
-          background: url("assets/platter-hero-finished-plate-1672x941.png") 61% center / cover no-repeat;
+          content: none;
         }
 
         .button,
@@ -1266,6 +1275,20 @@
 
         .rank-head {
           display: none;
+        }
+
+        .rank-row {
+          grid-template-columns: 36px minmax(0, 1fr) 58px;
+          gap: 8px;
+          padding: 12px 10px;
+        }
+
+        .rank-number {
+          font-size: 28px;
+        }
+
+        .rank-brand strong {
+          font-size: 14px;
         }
       }
     </style>
