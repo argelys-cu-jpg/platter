@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Sans:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,650;0,6..72,750;1,6..72,500;1,6..72,650&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,650;0,6..72,750;1,6..72,500;1,6..72,650&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -47,10 +47,17 @@
         --tomato: #984f3f;
         --accent: #a9563e;
         --accent-soft: #d9a28e;
+        --berry: #a92c5b;
+        --berry-deep: #5d1834;
         --blue: #516a79;
         --shadow-soft: 0 10px 30px rgba(37, 32, 22, 0.08);
+        --radius: 8px;
+        --card-pad: clamp(18px, 2vw, 24px);
+        --card-pad-lg: clamp(22px, 3vw, 32px);
+        --grid-gap: 18px;
+        --hairline: 1px solid var(--line);
         --display: "Newsreader", Georgia, serif;
-        --poster: "Archivo Black", Impact, sans-serif;
+        --poster: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
         --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
@@ -163,10 +170,10 @@
       .nav a,
       .nav button {
         color: var(--ink);
-        font-size: 13px;
+        font-size: 15px;
         font-family: var(--poster);
         font-weight: 400;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
@@ -231,10 +238,10 @@
       .meta,
       .table-kicker {
         color: var(--muted);
-        font-size: 11px;
+        font-size: 13px;
         font-family: var(--poster);
         font-weight: 400;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.11em;
         text-transform: uppercase;
       }
 
@@ -401,7 +408,8 @@
         position: relative;
         display: grid;
         gap: 14px;
-        border: 1px solid var(--line);
+        border: var(--hairline);
+        border-radius: var(--radius);
         background: var(--mist);
         padding: 14px;
       }
@@ -416,8 +424,8 @@
         width: 100%;
         min-height: 190px;
         object-fit: cover;
-        border: 1px solid var(--line);
-        border-radius: 0;
+        border: var(--hairline);
+        border-radius: var(--radius);
         background: var(--sand-soft);
       }
 
@@ -431,19 +439,22 @@
         z-index: 1;
         width: min(92%, 420px);
         margin: -66px auto 0;
-        border: 1px solid var(--line);
-        border-radius: 0;
+        border: var(--hairline);
+        border-radius: var(--radius);
         background: var(--surface);
         color: var(--ink);
         box-shadow: var(--shadow-soft);
-        padding: 18px;
+        padding: var(--card-pad);
       }
 
       .cover-card h2 {
         margin-top: 8px;
-        font-size: 32px;
-        font-weight: 650;
-        line-height: 1;
+        font-family: var(--poster);
+        font-size: clamp(40px, 4.4vw, 58px);
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        line-height: 0.86;
+        text-transform: uppercase;
       }
 
       .cover-card p {
@@ -461,8 +472,8 @@
       }
 
       .cover-metrics div {
-        border: 1px solid var(--line);
-        border-radius: 0;
+        border: var(--hairline);
+        border-radius: var(--radius);
         background: var(--paper);
         padding: 9px;
         text-align: center;
@@ -472,7 +483,7 @@
         display: block;
         color: var(--accent);
         font-family: var(--poster);
-        font-size: 21px;
+        font-size: 26px;
         line-height: 1;
       }
 
@@ -543,52 +554,61 @@
       }
 
       .manifesto {
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
+        border-top: var(--hairline);
+        border-bottom: var(--hairline);
         background: var(--surface);
         color: var(--ink);
       }
 
       .manifesto-grid {
         display: grid;
-        grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
-        gap: clamp(24px, 5vw, 64px);
+        grid-template-columns: minmax(260px, 0.42fr) minmax(0, 0.58fr);
+        gap: var(--grid-gap);
         align-items: stretch;
-        padding-top: clamp(38px, 6vw, 68px);
-        padding-bottom: clamp(38px, 6vw, 68px);
+        padding-top: clamp(44px, 6vw, 72px);
+        padding-bottom: clamp(44px, 6vw, 72px);
       }
 
       .manifesto-panel {
         display: grid;
-        align-content: space-between;
-        min-height: 360px;
-        border: 1px solid var(--accent);
-        border-radius: 8px;
-        background: var(--accent-soft);
-        color: var(--ink);
-        padding: 24px;
+        align-content: start;
+        gap: 18px;
+        min-height: 280px;
+        border: 1px solid var(--berry-deep);
+        border-radius: var(--radius);
+        background: var(--berry);
+        color: var(--paper);
+        padding: var(--card-pad-lg);
       }
 
       .manifesto-panel strong {
         display: block;
-        max-width: 320px;
+        max-width: 360px;
         font-family: var(--poster);
-        font-size: clamp(38px, 5.5vw, 70px);
+        font-size: clamp(56px, 7vw, 96px);
         font-weight: 400;
-        line-height: 0.92;
+        letter-spacing: 0.01em;
+        line-height: 0.82;
+        text-transform: uppercase;
       }
 
       .manifesto-panel span {
-        color: var(--black);
-        font-size: 11px;
-        font-weight: 950;
-        letter-spacing: 0.13em;
+        order: -1;
+        color: rgba(255, 250, 244, 0.78);
+        font-family: var(--poster);
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
       }
 
       .manifesto-copy {
         display: grid;
-        gap: 24px;
+        gap: 18px;
+        border: var(--hairline);
+        border-radius: var(--radius);
+        background: var(--paper);
+        padding: var(--card-pad-lg);
       }
 
       .manifesto .section-kicker {
@@ -596,17 +616,18 @@
       }
 
       .manifesto-copy h2 {
-        max-width: 790px;
+        max-width: 760px;
+        margin-top: 8px;
         color: var(--ink);
-        font-size: clamp(42px, 5.6vw, 82px);
+        font-size: clamp(38px, 4.7vw, 66px);
         font-weight: 650;
-        line-height: 0.93;
+        line-height: 0.96;
       }
 
       .manifesto-copy p {
-        max-width: 760px;
+        max-width: 720px;
         color: var(--muted);
-        font-size: clamp(17px, 1.8vw, 22px);
+        font-size: clamp(16px, 1.5vw, 20px);
         line-height: 1.45;
       }
 
@@ -617,18 +638,20 @@
       }
 
       .pillar {
-        min-height: 142px;
+        min-height: 118px;
         display: grid;
         align-content: space-between;
-        border: 1px solid var(--line);
-        border-radius: 0;
+        border: var(--hairline);
+        border-radius: var(--radius);
         background: var(--paper);
-        padding: 14px;
+        padding: 16px;
       }
 
       .pillar b {
         color: var(--accent);
-        font-size: 11px;
+        font-family: var(--poster);
+        font-size: 14px;
+        font-weight: 400;
         letter-spacing: 0.11em;
         text-transform: uppercase;
       }
@@ -681,8 +704,8 @@
       .batch-card,
       .latest-list,
       .method-card {
-        border: 1px solid var(--line);
-        border-radius: 8px;
+        border: var(--hairline);
+        border-radius: var(--radius);
         background: var(--surface);
       }
 
@@ -707,7 +730,7 @@
         display: grid;
         align-content: start;
         gap: 12px;
-        padding: 22px;
+        padding: var(--card-pad);
       }
 
       .feature-title {
@@ -765,7 +788,7 @@
       .review-card {
         display: grid;
         gap: 16px;
-        padding: 22px;
+        padding: var(--card-pad);
       }
 
       .score-row {
@@ -786,7 +809,7 @@
         background: var(--olive);
         color: #fffaf0;
         font-family: var(--poster);
-        font-size: 29px;
+        font-size: 34px;
         font-weight: 400;
       }
 
@@ -825,8 +848,8 @@
 
       .ranking-table {
         overflow: hidden;
-        border: 1px solid var(--line);
-        border-radius: 8px;
+        border: var(--hairline);
+        border-radius: var(--radius);
         background: var(--surface);
       }
 
@@ -860,7 +883,7 @@
       .rank-number {
         color: var(--olive);
         font-family: var(--poster);
-        font-size: 28px;
+        font-size: 34px;
         font-weight: 400;
       }
 
@@ -920,17 +943,17 @@
       .batch-card {
         display: grid;
         gap: 16px;
-        padding: 24px;
+        padding: var(--card-pad);
       }
 
       .planner {
         display: grid;
         gap: 14px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
+        border: var(--hairline);
+        border-radius: var(--radius);
         background: var(--surface);
         box-shadow: var(--shadow-soft);
-        padding: 20px;
+        padding: var(--card-pad);
       }
 
       .planner-top {
@@ -1020,7 +1043,7 @@
         gap: 16px;
         align-items: baseline;
         border-bottom: 1px solid var(--line);
-        padding: 18px;
+        padding: var(--card-pad);
       }
 
       .latest-item:last-child {
@@ -1052,7 +1075,7 @@
         gap: 14px;
         background: var(--olive-ink);
         color: #fffaf0;
-        padding: 22px;
+        padding: var(--card-pad);
       }
 
       .method-card .section-kicker {
@@ -1302,7 +1325,7 @@
               </div>
               <article class="cover-card">
                 <div class="card-kicker">Editor's desk</div>
-                <h2>Everyone is busy. Good cooks know shortcuts.</h2>
+                <h2>Busy week. Better food.</h2>
                 <p>
                   We translate what chefs, dietitians, operators, and obsessive home cooks know into decisions
                   home cooks can use before dinner becomes another job.
@@ -1320,13 +1343,13 @@
         <section class="manifesto" id="manifesto">
           <div class="container manifesto-grid">
             <div class="manifesto-panel">
-              <strong>Kitchen Intelligence.</strong>
-              <span>Platter editorial system</span>
+              <strong>Dinner is daily. Make it make sense.</strong>
+              <span>Kitchen intelligence</span>
             </div>
             <div class="manifesto-copy">
               <div>
                 <div class="section-kicker">Why Platter exists</div>
-                <h2>The next food media company should make people feel less alone in the kitchen.</h2>
+                <h2>The next food media company should make everyday eating feel less chaotic.</h2>
               </div>
               <p>
                 Food culture is shifting fast: delivery is infrastructure, meal prep is survival, wellness is
