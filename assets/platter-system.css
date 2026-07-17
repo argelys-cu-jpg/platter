@@ -508,12 +508,64 @@ h3 {
     --container: min(100% - 28px, 1240px);
   }
 
+  .announce {
+    display: none;
+  }
+
+  .site-header {
+    position: relative;
+    top: auto;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: none;
+  }
+
+  .nav {
+    min-height: 64px;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    justify-items: stretch;
+    gap: 12px;
+    padding: 0;
+  }
+
+  .nav .nav-links:first-child {
+    display: none;
+  }
+
+  .nav .nav-links:last-child {
+    justify-content: flex-end;
+  }
+
   .nav-links a:not(.nav-cta) {
     display: none;
   }
 
+  .logo {
+    gap: 7px;
+    font-size: 15px;
+  }
+
+  .logo::after {
+    width: 30px;
+    height: 10px;
+  }
+
+  .nav-cta {
+    min-height: 34px;
+    padding: 0 12px;
+  }
+
+  .nav a {
+    font-size: 14px;
+  }
+
+  .page-hero {
+    padding: 44px 0 52px;
+  }
+
   .page-hero h1 {
-    font-size: clamp(42px, 12vw, 64px);
+    font-size: clamp(38px, 11vw, 58px);
+    line-height: 0.98;
   }
 
   .article-list a {

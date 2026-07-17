@@ -1179,35 +1179,79 @@
           width: min(100% - 28px, 1240px);
         }
 
-        .announce a {
-          padding: 0 14px;
+        .announce {
+          display: none;
+        }
+
+        .site-header {
+          position: relative;
+          top: auto;
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: none;
+        }
+
+        .nav {
+          min-height: 64px;
+          grid-template-columns: auto auto;
+          justify-content: space-between;
+          justify-items: stretch;
+          gap: 12px;
+          padding: 0;
+        }
+
+        .nav .nav-links:first-child {
+          display: none;
+        }
+
+        .nav .nav-links:last-child {
+          justify-content: flex-end;
         }
 
         .nav-links a:not(.nav-cta) {
           display: none;
         }
 
+        .logo {
+          font-size: 15px;
+          gap: 7px;
+        }
+
+        .logo::after {
+          width: 30px;
+          height: 10px;
+        }
+
+        .nav-cta {
+          min-height: 34px;
+          padding: 0 12px;
+        }
+
+        .nav a,
+        .nav button {
+          font-size: 14px;
+        }
+
         .hero {
-          min-height: calc(100svh - 106px);
+          min-height: calc(100svh - 64px);
           display: block;
           align-items: flex-start;
-          padding-top: clamp(56px, 14vw, 76px);
-          padding-bottom: clamp(235px, 66vw, 360px);
+          padding-top: clamp(42px, 11vw, 58px);
+          padding-bottom: clamp(250px, 70vw, 372px);
           background:
             linear-gradient(
               180deg,
               rgba(247, 247, 247, 0.99) 0%,
-              rgba(247, 247, 247, 0.98) 48%,
-              rgba(247, 247, 247, 0.86) 66%,
-              rgba(247, 247, 247, 0.38) 84%,
-              rgba(247, 247, 247, 0.1) 100%
+              rgba(247, 247, 247, 0.98) 50%,
+              rgba(247, 247, 247, 0.88) 69%,
+              rgba(247, 247, 247, 0.42) 86%,
+              rgba(247, 247, 247, 0.08) 100%
             ),
-            url("assets/platter-hero-finished-plate-1672x941.png") 58% bottom / cover no-repeat;
+            url("assets/platter-hero-finished-plate-1672x941.png") 58% bottom / auto 58% no-repeat;
         }
 
         h1 {
-          font-size: clamp(34px, 10vw, 52px);
-          line-height: 0.95;
+          font-size: clamp(34px, 9.4vw, 46px);
+          line-height: 0.98;
         }
 
         .hero-copy {
@@ -1233,10 +1277,9 @@
           grid-template-columns: 86px minmax(0, 1fr);
           gap: 14px;
           margin-top: 30px;
-          border-top: 1px solid var(--rule);
-          border-bottom: 1px solid var(--rule);
-          padding: 16px 0;
-          background: rgba(247, 247, 247, 0.88);
+          border: 1px solid var(--rule);
+          padding: 14px;
+          background: rgba(255, 255, 255, 0.94);
         }
 
         .hero-note img {
@@ -1637,7 +1680,7 @@
               <div class="method-list">
                 <div><strong>1. Plate</strong><p>Flavor, texture, freshness, reheating, sauce, and contrast.</p></div>
                 <div><strong>2. Fit</strong><p>Ordering, filters, portions, cleanup, and how the meal works in real routines.</p></div>
-                <div><strong>3. Clarity</strong><p>Pricing, relationships, and material context should be easy to find.</p></div>
+                <div><strong>3. Clarity</strong><p>Pricing, cancellation flow, limitations, and best-fit use cases should be easy to find.</p></div>
               </div>
             </aside>
           </div>
@@ -1649,8 +1692,7 @@
           <div>
             <a class="logo" href="index.html">platter</a>
             <p>
-              Platter publishes food intelligence for meal planning, delivery, cooking, and eating well. Some links may
-              earn commission, and material relationships should be disclosed where they matter.
+              Platter publishes food intelligence for meal planning, delivery, cooking, and eating well.
             </p>
             <p>&copy; 2026 Platter Editorial.</p>
           </div>

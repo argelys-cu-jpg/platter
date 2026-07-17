@@ -24,6 +24,4 @@ The Batch planner lives in the separate `fantastic-fiesta` project.
 
 ## Architecture Notes
 
-See `ARCHITECTURE.md` for the approved content skeleton and the three build decisions that affect reviews, disclosure, and CookUnity outbound tracking.
-
-The review vertical uses the transparent-affiliate posture from the architecture brief: CookUnity ownership is disclosed inline near CookUnity review/ranking placements, and CTAs are routed through `assets/platter-site.js` with shared tracking configuration.
+See `ARCHITECTURE.md` for the approved content skeleton and the build decisions that affect reviews, methodology, and outbound tracking.

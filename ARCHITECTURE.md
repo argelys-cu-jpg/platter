@@ -4,30 +4,26 @@ Platter is a food intelligence publication for home cooks who cook, order, rehea
 
 ## Locked Decisions
 
-### 1. Ownership Posture
+### 1. Editorial Posture
 
-Default build posture: transparent-affiliate, pending legal confirmation.
+Platter should read as an independent, reader-first publication. The editorial voice is useful, opinionated, service-driven, and culturally aware without feeling like brand copy.
 
-CookUnity owns Platter. Any page that ranks, scores, reviews, or sends traffic to CookUnity must include an inline ownership disclosure near the relevant score, ranking, or CTA. The full disclosure and methodology lives at `/editorial-standards/`.
+Review and ranking pages should explain how decisions are made in plain language: taste, delivery, reheating, menu range, price clarity, and the job a service does in a real week.
 
-Do not build the review vertical on the assumption that CookUnity review pages will qualify for Google review rich results. Use article, collection, and breadcrumb structured data until legal and SEO confirm a schema approach.
+### 2. Editorial Standards
 
-### 2. Editorial Standards And Disclosure
+`/editorial-standards/` ships in phase 1. It should cover:
 
-`/editorial-standards/` ships in phase 1. It must cover:
-
-- CookUnity ownership of Platter.
 - The testing and scoring methodology.
-- How commercial or ownership ties are disclosed and separated from scoring.
-- How affiliate or outbound commerce links are handled.
+- How commerce links are handled.
+- How recommendations remain useful and specific.
+- How corrections or updates should be routed.
 
-Disclosure that only lives on the standards page is not enough. Short disclosure lines should render inline on CookUnity review and ranking placements.
+The standards page should feel reader-facing, not like an internal policy memo.
 
-### 3. Tracked CookUnity Handoff
+### 3. Outbound Handoff
 
-CookUnity outbound CTAs must use one reusable component pattern and one shared tracking configuration. No untagged `cookunity.com` links should appear in the review or guide verticals.
-
-Current implementation uses `assets/platter-site.js` to attach placeholder tracking params. Replace the placeholder convention after confirmation with data and martech.
+Outbound service CTAs should use one reusable component pattern and one shared tracking configuration. Replace the placeholder convention after confirmation with data and martech.
 
 ## Phase 1 Routes
 
@@ -104,7 +100,6 @@ Required modules:
 - Top pick card
 - Ranking table/list
 - Methodology link
-- Inline ownership disclosure near CookUnity placements
 
 ### Service Review
 
@@ -119,8 +114,7 @@ Required modules:
 - Menu and ordering notes
 - Reheating/eating notes
 - Alternatives
-- Inline ownership disclosure
-- Tracked CookUnity CTA component
+- Service CTA component
 
 ### Ranking Guide
 
@@ -132,8 +126,7 @@ Required modules:
 - Methodology note
 - Ranked cards
 - Comparison table
-- Inline ownership disclosure near CookUnity
-- Tracked CookUnity CTA component
+- Service CTA component
 
 ### Story
 
@@ -163,7 +156,6 @@ Purpose: credibility infrastructure for reviews and rankings.
 
 Required modules:
 
-- Ownership disclosure
 - Methodology
 - Scoring categories
 - Commerce policy
