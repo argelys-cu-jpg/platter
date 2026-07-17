@@ -1,6 +1,6 @@
 # Platter Content Architecture
 
-Platter is a food intelligence publication for home cooks who cook, order, reheat, plan, and improvise. The site should feel like an editorial property first, with reviews and tools as repeatable service formats.
+Platter is a food intelligence publication for home cooks who cook, order, reheat, plan, and improvise. The site is an editorial property first, with reviews and tools as repeatable service formats.
 
 ## Locked Decisions
 
@@ -17,13 +17,13 @@ Review and ranking pages should explain how decisions are made in plain language
 - The testing and scoring methodology.
 - How commerce links are handled.
 - How recommendations remain useful and specific.
-- How corrections or updates should be routed.
+- How corrections or updates are routed.
 
-The standards page should feel reader-facing, not like an internal policy memo.
+The standards page is a reader-facing methodology page.
 
 ### 3. Outbound Handoff
 
-Outbound service CTAs should use one reusable component pattern and one shared tracking configuration. Replace the placeholder convention after confirmation with data and martech.
+Outbound service CTAs use one reusable component pattern and one shared tracking configuration.
 
 ## Phase 1 Routes
 

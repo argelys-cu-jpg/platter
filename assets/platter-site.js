@@ -5,7 +5,7 @@
       utm_source: "platter",
       utm_medium: "editorial",
       utm_campaign: "review_vertical",
-      utm_content: "placeholder_confirm_with_martech"
+      utm_content: "platter_review_cta"
     }
   };
 
@@ -23,4 +23,3 @@
     link.rel = "sponsored noopener";
   });
 })();
-
