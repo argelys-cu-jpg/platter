@@ -32,6 +32,8 @@
         --white: #ffffff;
         --sand: #dfc9a6;
         --sand-soft: #f1e2c9;
+        --mist: #ebe7dd;
+        --smoke: #d8d3c8;
         --sage: #d8dfc8;
         --sage-strong: #a9b691;
         --olive: #3a4728;
@@ -106,9 +108,9 @@
       }
 
       .announce {
-        border-bottom: 1px solid rgba(255, 250, 240, 0.16);
-        background: var(--black);
-        color: #fffaf0;
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
       }
 
       .announce a {
@@ -135,8 +137,8 @@
         position: sticky;
         top: 0;
         z-index: 20;
-        border-bottom: 1px solid rgba(255, 250, 240, 0.14);
-        background: rgba(5, 5, 5, 0.94);
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 253, 248, 0.94);
         backdrop-filter: blur(16px);
       }
 
@@ -160,7 +162,7 @@
 
       .nav a,
       .nav button {
-        color: #fffaf0;
+        color: var(--ink);
         font-size: 13px;
         font-family: var(--poster);
         font-weight: 400;
@@ -206,14 +208,14 @@
 
       .nav-cta:hover {
         background: var(--accent);
-        color: var(--black) !important;
+        color: #fffaf0 !important;
       }
 
       .hero {
         padding: clamp(44px, 6vw, 82px) 0 42px;
-        border-bottom: 1px solid var(--black);
-        background: var(--black);
-        color: #fffaf0;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink);
       }
 
       .hero-grid {
@@ -285,13 +287,13 @@
 
       .hero .eyebrow,
       .hero .card-kicker {
-        color: rgba(255, 250, 240, 0.68);
+        color: var(--muted);
       }
 
       .hero-copy {
         max-width: 620px;
         margin-top: 22px;
-        color: rgba(255, 250, 240, 0.78);
+        color: var(--muted);
         font-size: clamp(17px, 1.7vw, 21px);
         line-height: 1.5;
       }
@@ -319,13 +321,15 @@
       }
 
       .button-primary {
-        background: var(--black);
+        border-color: var(--accent);
+        background: var(--accent);
         color: #fffaf0;
       }
 
       .button-primary:hover {
-        background: var(--charcoal);
-        border-color: var(--charcoal);
+        background: var(--accent-soft);
+        border-color: var(--accent-soft);
+        color: var(--ink);
       }
 
       .button-secondary {
@@ -340,22 +344,23 @@
       .hero .button-primary {
         border-color: var(--accent);
         background: var(--accent);
-        color: var(--black);
+        color: #fffaf0;
       }
 
       .hero .button-primary:hover {
         border-color: var(--accent-soft);
         background: var(--accent-soft);
+        color: var(--ink);
       }
 
       .hero .button-secondary {
-        border-color: rgba(255, 250, 240, 0.42);
-        background: transparent;
-        color: #fffaf0;
+        border-color: var(--line);
+        background: var(--surface);
+        color: var(--ink);
       }
 
       .hero .button-secondary:hover {
-        background: rgba(255, 250, 240, 0.1);
+        background: var(--mist);
       }
 
       .hero-note {
@@ -365,14 +370,14 @@
         gap: 14px;
         max-width: 520px;
         margin-top: 30px;
-        border-top: 1px solid rgba(255, 250, 240, 0.22);
+        border-top: 1px solid var(--line);
         padding-top: 16px;
       }
 
       .hero-note img {
         width: 98px;
         aspect-ratio: 1;
-        border: 1px solid rgba(255, 250, 240, 0.24);
+        border: 1px solid var(--line);
         border-radius: 8px;
         object-fit: cover;
       }
@@ -387,7 +392,7 @@
       .hero-note span {
         display: block;
         margin-top: 5px;
-        color: rgba(255, 250, 240, 0.66);
+        color: var(--muted);
         font-size: 13px;
         line-height: 1.35;
       }
@@ -396,8 +401,8 @@
         position: relative;
         display: grid;
         gap: 14px;
-        border: 1px solid rgba(255, 250, 240, 0.18);
-        background: var(--accent);
+        border: 1px solid var(--line);
+        background: var(--mist);
         padding: 14px;
       }
 
@@ -411,7 +416,7 @@
         width: 100%;
         min-height: 190px;
         object-fit: cover;
-        border: 2px solid var(--black);
+        border: 1px solid var(--line);
         border-radius: 0;
         background: var(--sand-soft);
       }
@@ -426,11 +431,11 @@
         z-index: 1;
         width: min(92%, 420px);
         margin: -66px auto 0;
-        border: 1px solid rgba(255, 250, 240, 0.18);
+        border: 1px solid var(--line);
         border-radius: 0;
-        background: var(--black);
-        color: #fffaf0;
-        box-shadow: none;
+        background: var(--surface);
+        color: var(--ink);
+        box-shadow: var(--shadow-soft);
         padding: 18px;
       }
 
@@ -443,7 +448,7 @@
 
       .cover-card p {
         margin-top: 10px;
-        color: rgba(255, 250, 240, 0.68);
+        color: var(--muted);
         font-size: 14px;
         line-height: 1.45;
       }
@@ -456,9 +461,9 @@
       }
 
       .cover-metrics div {
-        border: 1px solid rgba(255, 250, 240, 0.2);
+        border: 1px solid var(--line);
         border-radius: 0;
-        background: var(--charcoal);
+        background: var(--paper);
         padding: 9px;
         text-align: center;
       }
@@ -474,7 +479,7 @@
       .cover-metrics span {
         display: block;
         margin-top: 4px;
-        color: rgba(255, 250, 240, 0.66);
+        color: var(--muted);
         font-size: 10px;
         font-weight: 850;
         letter-spacing: 0.06em;
@@ -482,9 +487,9 @@
       }
 
       .newsletter-band {
-        border-top: 1px solid var(--black);
-        border-bottom: 1px solid var(--black);
-        background: var(--accent);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--mist);
       }
 
       .newsletter-band .container {
@@ -512,7 +517,7 @@
       .signup-form input {
         min-height: 46px;
         width: 100%;
-        border: 1px solid var(--black);
+        border: 1px solid var(--line);
         border-radius: 999px;
         background: var(--white);
         color: var(--ink);
@@ -521,9 +526,9 @@
 
       .signup-form button {
         min-height: 46px;
-        border: 1px solid var(--black);
+        border: 1px solid var(--accent);
         border-radius: 999px;
-        background: var(--black);
+        background: var(--accent);
         color: #fffaf0;
         cursor: pointer;
         font-weight: 850;
@@ -538,10 +543,10 @@
       }
 
       .manifesto {
-        border-top: 1px solid var(--black);
-        border-bottom: 1px solid var(--black);
-        background: var(--black);
-        color: #fffaf0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
       }
 
       .manifesto-grid {
@@ -559,7 +564,7 @@
         min-height: 360px;
         border: 1px solid var(--accent);
         border-radius: 8px;
-        background: var(--accent);
+        background: var(--accent-soft);
         color: var(--ink);
         padding: 24px;
       }
@@ -587,12 +592,12 @@
       }
 
       .manifesto .section-kicker {
-        color: rgba(255, 250, 240, 0.52);
+        color: var(--muted);
       }
 
       .manifesto-copy h2 {
         max-width: 790px;
-        color: #fffaf0;
+        color: var(--ink);
         font-size: clamp(42px, 5.6vw, 82px);
         font-weight: 650;
         line-height: 0.93;
@@ -600,7 +605,7 @@
 
       .manifesto-copy p {
         max-width: 760px;
-        color: rgba(255, 250, 240, 0.8);
+        color: var(--muted);
         font-size: clamp(17px, 1.8vw, 22px);
         line-height: 1.45;
       }
@@ -615,20 +620,21 @@
         min-height: 142px;
         display: grid;
         align-content: space-between;
-        border: 1px solid rgba(255, 250, 240, 0.24);
+        border: 1px solid var(--line);
         border-radius: 0;
+        background: var(--paper);
         padding: 14px;
       }
 
       .pillar b {
-        color: var(--sage);
+        color: var(--accent);
         font-size: 11px;
         letter-spacing: 0.11em;
         text-transform: uppercase;
       }
 
       .pillar span {
-        color: #fffaf0;
+        color: var(--ink);
         font-family: var(--display);
         font-size: 24px;
         font-weight: 650;
@@ -1044,7 +1050,7 @@
       .method-card {
         display: grid;
         gap: 14px;
-        background: var(--black);
+        background: var(--olive-ink);
         color: #fffaf0;
         padding: 22px;
       }
@@ -1077,7 +1083,7 @@
       }
 
       .site-footer {
-        background: var(--ink);
+        background: var(--olive-ink);
         color: #fffaf0;
         padding: 48px 0;
       }
