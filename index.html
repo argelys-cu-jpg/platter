@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Platter - Meal Planning, Meal Prep, and Meal Delivery Reviews</title>
+    <title>Platter - Chefs to the People</title>
     <meta
       name="description"
-      content="Platter is an editorial food site for meal planning, meal prep, prepared meal delivery reviews, recipes, and practical ways to eat well all week."
+      content="Platter brings chef knowledge to everyday eating: delivery intel, meal planning, prep strategy, nutrition context, and practical food writing for real life."
     />
-    <meta name="platter-build" content="homepage-first-pass-2026-07-16" />
+    <meta name="platter-build" content="chefs-to-the-people-2026-07-16" />
     <link rel="icon" href="data:," />
-    <meta property="og:title" content="Platter - Meal planning for real life" />
+    <meta property="og:title" content="Platter - Chefs to the People" />
     <meta
       property="og:description"
-      content="Independent guides, reviews, recipes, and a weekly planning tool for people who want dinner to feel less chaotic."
+      content="Chef intel, meal delivery reviews, prep strategy, nutrition context, and a weekly planning tool for people who run the food life."
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -37,11 +37,14 @@
         --olive: #3a4728;
         --olive-ink: #263018;
         --olive-soft: #eef2e3;
+        --black: #050505;
+        --charcoal: #2d2d2d;
         --ink: #1e1d19;
         --muted: #746b5a;
         --line: #ded0b9;
         --tomato: #984f3f;
-        --marigold: #ee8f2f;
+        --marigold: #f4b000;
+        --gold-soft: #f8db9f;
         --blue: #516a79;
         --shadow-soft: 0 10px 30px rgba(37, 32, 22, 0.08);
         --serif: "Source Serif 4", Georgia, serif;
@@ -102,8 +105,8 @@
       }
 
       .announce {
-        border-bottom: 1px solid var(--line);
-        background: var(--olive);
+        border-bottom: 1px solid rgba(255, 250, 240, 0.16);
+        background: var(--black);
         color: #fffaf0;
       }
 
@@ -120,7 +123,7 @@
       }
 
       .announce span {
-        color: var(--sage);
+        color: var(--marigold);
         font-size: 11px;
         font-weight: 900;
         letter-spacing: 0.12em;
@@ -131,8 +134,8 @@
         position: sticky;
         top: 0;
         z-index: 20;
-        border-bottom: 1px solid var(--line);
-        background: rgba(255, 253, 248, 0.94);
+        border-bottom: 1px solid rgba(255, 250, 240, 0.14);
+        background: rgba(5, 5, 5, 0.94);
         backdrop-filter: blur(16px);
       }
 
@@ -156,7 +159,7 @@
 
       .nav a,
       .nav button {
-        color: var(--ink);
+        color: #fffaf0;
         font-size: 13px;
         font-weight: 850;
         letter-spacing: 0.06em;
@@ -164,7 +167,7 @@
       }
 
       .nav a:hover {
-        color: var(--olive);
+        color: var(--marigold);
       }
 
       .logo {
@@ -185,7 +188,7 @@
         height: 7px;
         margin-left: 3px;
         border-radius: 999px;
-        background: var(--olive);
+        background: var(--marigold);
         transform: translateY(-3px);
       }
 
@@ -193,26 +196,29 @@
         min-height: 34px;
         display: inline-flex;
         align-items: center;
-        border: 1px solid var(--olive);
+        border: 1px solid var(--marigold);
         border-radius: 999px;
-        color: var(--olive) !important;
+        color: var(--marigold) !important;
         padding: 0 14px;
       }
 
       .nav-cta:hover {
-        background: var(--olive);
-        color: #fffaf0 !important;
+        background: var(--marigold);
+        color: var(--black) !important;
       }
 
       .hero {
         padding: clamp(56px, 8vw, 104px) 0 42px;
+        border-bottom: 1px solid var(--black);
+        background: var(--black);
+        color: #fffaf0;
       }
 
       .hero-grid {
         display: grid;
         grid-template-columns: minmax(0, 1.06fr) minmax(360px, 0.94fr);
         gap: clamp(32px, 6vw, 72px);
-        align-items: end;
+        align-items: center;
       }
 
       .eyebrow,
@@ -238,7 +244,7 @@
         content: "";
         width: 32px;
         height: 1px;
-        background: var(--olive);
+        background: var(--marigold);
       }
 
       h1,
@@ -270,10 +276,19 @@
         font-weight: 500;
       }
 
+      .hero .italic {
+        color: var(--marigold);
+      }
+
+      .hero .eyebrow,
+      .hero .card-kicker {
+        color: rgba(255, 250, 240, 0.68);
+      }
+
       .hero-copy {
         max-width: 620px;
         margin-top: 26px;
-        color: var(--muted);
+        color: rgba(255, 250, 240, 0.78);
         font-size: clamp(17px, 1.7vw, 21px);
         line-height: 1.5;
       }
@@ -301,22 +316,43 @@
       }
 
       .button-primary {
-        background: var(--olive);
+        background: var(--black);
         color: #fffaf0;
       }
 
       .button-primary:hover {
-        background: var(--olive-ink);
-        border-color: var(--olive-ink);
+        background: var(--charcoal);
+        border-color: var(--charcoal);
       }
 
       .button-secondary {
         background: var(--surface);
-        color: var(--olive);
+        color: var(--black);
       }
 
       .button-secondary:hover {
         background: var(--olive-soft);
+      }
+
+      .hero .button-primary {
+        border-color: var(--marigold);
+        background: var(--marigold);
+        color: var(--black);
+      }
+
+      .hero .button-primary:hover {
+        border-color: var(--gold-soft);
+        background: var(--gold-soft);
+      }
+
+      .hero .button-secondary {
+        border-color: rgba(255, 250, 240, 0.42);
+        background: transparent;
+        color: #fffaf0;
+      }
+
+      .hero .button-secondary:hover {
+        background: rgba(255, 250, 240, 0.1);
       }
 
       .hero-note {
@@ -326,13 +362,14 @@
         gap: 14px;
         max-width: 520px;
         margin-top: 36px;
-        border-top: 1px solid var(--line);
+        border-top: 1px solid rgba(255, 250, 240, 0.22);
         padding-top: 16px;
       }
 
       .hero-note img {
         width: 98px;
         aspect-ratio: 1;
+        border: 1px solid rgba(255, 250, 240, 0.24);
         border-radius: 8px;
         object-fit: cover;
       }
@@ -347,7 +384,7 @@
       .hero-note span {
         display: block;
         margin-top: 5px;
-        color: var(--muted);
+        color: rgba(255, 250, 240, 0.66);
         font-size: 13px;
         line-height: 1.35;
       }
@@ -356,21 +393,23 @@
         position: relative;
         display: grid;
         gap: 14px;
+        border: 1px solid rgba(255, 250, 240, 0.18);
+        background: var(--marigold);
+        padding: 14px;
       }
 
       .cover-stack {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        transform: rotate(-1.5deg);
+        gap: 8px;
       }
 
       .cover-stack img {
         width: 100%;
         min-height: 190px;
         object-fit: cover;
-        border: 1px solid var(--line);
-        border-radius: 8px;
+        border: 2px solid var(--black);
+        border-radius: 0;
         background: var(--sand-soft);
       }
 
@@ -384,10 +423,11 @@
         z-index: 1;
         width: min(92%, 420px);
         margin: -66px auto 0;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(255, 253, 248, 0.94);
-        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(255, 250, 240, 0.18);
+        border-radius: 0;
+        background: var(--black);
+        color: #fffaf0;
+        box-shadow: none;
         padding: 18px;
       }
 
@@ -400,7 +440,7 @@
 
       .cover-card p {
         margin-top: 10px;
-        color: var(--muted);
+        color: rgba(255, 250, 240, 0.68);
         font-size: 14px;
         line-height: 1.45;
       }
@@ -413,16 +453,16 @@
       }
 
       .cover-metrics div {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--olive-soft);
+        border: 1px solid rgba(255, 250, 240, 0.2);
+        border-radius: 0;
+        background: var(--charcoal);
         padding: 9px;
         text-align: center;
       }
 
       .cover-metrics strong {
         display: block;
-        color: var(--olive);
+        color: var(--marigold);
         font-family: var(--serif);
         font-size: 21px;
         line-height: 1;
@@ -431,7 +471,7 @@
       .cover-metrics span {
         display: block;
         margin-top: 4px;
-        color: var(--muted);
+        color: rgba(255, 250, 240, 0.66);
         font-size: 10px;
         font-weight: 850;
         letter-spacing: 0.06em;
@@ -439,9 +479,9 @@
       }
 
       .newsletter-band {
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-        background: var(--surface);
+        border-top: 1px solid var(--black);
+        border-bottom: 1px solid var(--black);
+        background: var(--marigold);
       }
 
       .newsletter-band .container {
@@ -469,7 +509,7 @@
       .signup-form input {
         min-height: 46px;
         width: 100%;
-        border: 1px solid var(--line);
+        border: 1px solid var(--black);
         border-radius: 999px;
         background: var(--white);
         color: var(--ink);
@@ -478,9 +518,9 @@
 
       .signup-form button {
         min-height: 46px;
-        border: 1px solid var(--olive);
+        border: 1px solid var(--black);
         border-radius: 999px;
-        background: var(--olive);
+        background: var(--black);
         color: #fffaf0;
         cursor: pointer;
         font-weight: 850;
@@ -492,6 +532,104 @@
         min-height: 18px;
         color: var(--muted);
         font-size: 12px;
+      }
+
+      .manifesto {
+        border-top: 1px solid var(--black);
+        border-bottom: 1px solid var(--black);
+        background: var(--black);
+        color: #fffaf0;
+      }
+
+      .manifesto-grid {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+        gap: clamp(24px, 5vw, 64px);
+        align-items: stretch;
+        padding-top: clamp(38px, 6vw, 68px);
+        padding-bottom: clamp(38px, 6vw, 68px);
+      }
+
+      .manifesto-panel {
+        display: grid;
+        align-content: space-between;
+        min-height: 360px;
+        border: 1px solid var(--marigold);
+        border-radius: 8px;
+        background: var(--marigold);
+        color: var(--ink);
+        padding: 24px;
+      }
+
+      .manifesto-panel strong {
+        display: block;
+        max-width: 320px;
+        font-family: var(--serif);
+        font-size: clamp(46px, 6vw, 78px);
+        font-weight: 700;
+        line-height: 0.88;
+      }
+
+      .manifesto-panel span {
+        color: var(--black);
+        font-size: 11px;
+        font-weight: 950;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .manifesto-copy {
+        display: grid;
+        gap: 24px;
+      }
+
+      .manifesto .section-kicker {
+        color: rgba(255, 250, 240, 0.52);
+      }
+
+      .manifesto-copy h2 {
+        max-width: 790px;
+        color: #fffaf0;
+        font-size: clamp(42px, 5.6vw, 82px);
+        font-weight: 650;
+        line-height: 0.93;
+      }
+
+      .manifesto-copy p {
+        max-width: 760px;
+        color: rgba(255, 250, 240, 0.8);
+        font-size: clamp(17px, 1.8vw, 22px);
+        line-height: 1.45;
+      }
+
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .pillar {
+        min-height: 142px;
+        display: grid;
+        align-content: space-between;
+        border: 1px solid rgba(255, 250, 240, 0.24);
+        border-radius: 0;
+        padding: 14px;
+      }
+
+      .pillar b {
+        color: var(--sage);
+        font-size: 11px;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+
+      .pillar span {
+        color: #fffaf0;
+        font-family: var(--serif);
+        font-size: 24px;
+        font-weight: 650;
+        line-height: 1;
       }
 
       .section {
@@ -903,7 +1041,7 @@
       .method-card {
         display: grid;
         gap: 14px;
-        background: var(--olive);
+        background: var(--black);
         color: #fffaf0;
         padding: 22px;
       }
@@ -991,6 +1129,7 @@
         .review-layout,
         .batch-layout,
         .latest-layout,
+        .manifesto-grid,
         .newsletter-band .container {
           grid-template-columns: 1fr;
         }
@@ -1036,6 +1175,7 @@
         .planner-options,
         .cover-metrics,
         .articles-grid,
+        .pillars,
         .footer-grid {
           grid-template-columns: 1fr;
         }
@@ -1079,7 +1219,7 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Platter",
-        "description": "Editorial guides to meal planning, meal prep, prepared meal delivery, and practical cooking.",
+        "description": "Chef intel, meal planning, meal prep, prepared meal delivery reviews, nutrition context, and practical cooking for real life.",
         "url": "https://platter.vercel.app/",
         "potentialAction": {
           "@type": "SearchAction",
@@ -1092,13 +1232,13 @@
   <body>
     <div class="site-shell">
       <div class="announce">
-        <a href="#rankings"><span>New guide</span> Best prepared meal delivery services for busy weeks</a>
+        <a href="#manifesto"><span>New thesis</span> Chefs to the People: food intelligence for the way we live now</a>
       </div>
 
       <header class="site-header">
         <nav class="nav container" aria-label="Primary navigation">
           <div class="nav-links">
-            <a href="#stories">Stories</a>
+            <a href="#stories">Intel</a>
             <a href="#rankings">Reviews</a>
             <a href="#guides">Guides</a>
           </div>
@@ -1114,15 +1254,15 @@
         <section class="hero">
           <div class="container hero-grid">
             <div>
-              <div class="eyebrow">Independent food planning</div>
-              <h1>Meal planning for people tired of <span class="italic">deciding.</span></h1>
+              <div class="eyebrow">Chefs to the people</div>
+              <h1>Everything chefs know, served for <span class="italic">real life.</span></h1>
               <p class="hero-copy">
-                Platter is the editorial guide to eating well all week: meal delivery reviews, prep strategies,
-                recipes that hold up, and a planning tool for the days when dinner needs a plan before 6 PM.
+                Platter brings chef intel to everyday eating: what to cook, what to buy, what to outsource,
+                what is worth ordering, and how to feel more confident about the food you put in your body.
               </p>
               <div class="hero-actions">
-                <a class="button button-primary" href="https://fantastic-fiesta-indol.vercel.app/">Build this week's plan</a>
-                <a class="button button-secondary" href="#rankings">See our current picks</a>
+                <a class="button button-primary" href="#newsletter">Get the briefing</a>
+                <a class="button button-secondary" href="https://fantastic-fiesta-indol.vercel.app/">Build this week's plan</a>
               </div>
               <a class="hero-note" href="#guides">
                 <img
@@ -1130,8 +1270,8 @@
                   alt="Soba noodle salad with chicken"
                 />
                 <span>
-                  <strong>The Sunday List</strong>
-                  <span>What to prep, what to buy, what to outsource, and what to leave alone.</span>
+                  <strong>The People's Brief</strong>
+                  <span>Chef moves, delivery intel, nutrition context, and the weekly systems worth stealing.</span>
                 </span>
               </a>
             </div>
@@ -1153,24 +1293,51 @@
               </div>
               <article class="cover-card">
                 <div class="card-kicker">Editor's desk</div>
-                <h2>What actually makes a meal plan stick?</h2>
+                <h2>The people are busy. The chefs know shortcuts.</h2>
                 <p>
-                  A good week is part cooking, part prepared backup, part knowing when to stop pretending
-                  Thursday is going to be ambitious.
+                  We translate what chefs, dietitians, operators, and obsessive home cooks know into decisions
+                  regular people can use before dinner becomes another job.
                 </p>
                 <div class="cover-metrics">
                   <div><strong>9</strong><span>Services tracked</span></div>
                   <div><strong>42</strong><span>Meals tasted</span></div>
-                  <div><strong>1</strong><span>Weekly plan</span></div>
+                  <div><strong>4</strong><span>Chef rules</span></div>
                 </div>
               </article>
             </div>
           </div>
         </section>
 
+        <section class="manifesto" id="manifesto">
+          <div class="container manifesto-grid">
+            <div class="manifesto-panel">
+              <strong>Chefs to the People.</strong>
+              <span>Platter editorial thesis</span>
+            </div>
+            <div class="manifesto-copy">
+              <div>
+                <div class="section-kicker">Why Platter exists</div>
+                <h2>The next food media company should make people feel less alone in the kitchen.</h2>
+              </div>
+              <p>
+                Food culture is shifting fast: delivery is infrastructure, meal prep is survival, wellness is
+                personal, appetite is changing, and everyone is trying to make better decisions with less time.
+                Platter turns chef knowledge into everyday confidence - in the kitchen, on the app, at the grocery
+                store, or wherever the week is won.
+              </p>
+              <div class="pillars" aria-label="Platter editorial pillars">
+                <div class="pillar"><b>01</b><span>Chef intel</span></div>
+                <div class="pillar"><b>02</b><span>Delivery truth</span></div>
+                <div class="pillar"><b>03</b><span>Week systems</span></div>
+                <div class="pillar"><b>04</b><span>Body context</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section class="newsletter-band" id="newsletter">
           <div class="container">
-            <h2>Get the week in food before the week gets loud.</h2>
+            <h2>Get the chef briefing before the week gets loud.</h2>
             <form class="signup-form" id="newsletter-form">
               <label class="sr-only" for="email">Email address</label>
               <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
@@ -1184,12 +1351,12 @@
           <div class="container">
             <div class="section-head">
               <div>
-                <div class="section-kicker">Start here</div>
-                <h2>This week on <span class="italic">Platter.</span></h2>
+                <div class="section-kicker">The briefing</div>
+                <h2>Food intel for the people who run the week.</h2>
               </div>
               <p>
-                A homepage built like a magazine front door: useful now, a little opinionated, and designed to
-                make the newsletter feel worth opening.
+                What chefs know, what delivery platforms are changing, what actually helps at home, and what is
+                happening to the way America eats.
               </p>
             </div>
 
@@ -1200,10 +1367,10 @@
                   alt="A plated salmon meal"
                 />
                 <div class="lead-body">
-                  <div class="card-kicker">Meal delivery</div>
-                  <h3 class="feature-title">The prepared meals we would reorder on a regular Tuesday.</h3>
+                  <div class="card-kicker">Chef intel</div>
+                  <h3 class="feature-title">The chef move that makes prepared meals feel alive.</h3>
                   <p class="dek">
-                    Our current short list for fresh, ready-to-heat meals that taste like dinner, not damage control.
+                    Acid, crunch, heat, sauce: the small finishing touches that separate dinner from damage control.
                   </p>
                   <div class="story-footer"><span>By Platter Editors</span><span>11 min read</span></div>
                 </div>
@@ -1216,18 +1383,18 @@
                     alt="A bowl of soba noodle salad"
                   />
                   <div class="side-body">
-                    <div class="card-kicker">Meal prep</div>
-                    <h3 class="story-title">Lunches that survive the fridge.</h3>
-                    <p class="dek">Texture, sauce strategy, and the one container rule we keep coming back to.</p>
+                    <div class="card-kicker">Week systems</div>
+                    <h3 class="story-title">The Sunday reset for people who hate meal prep.</h3>
+                    <p class="dek">What to prep, what to buy, what to outsource, and what to leave completely alone.</p>
                   </div>
                 </article>
 
                 <article class="side-story">
                   <div class="side-body">
-                    <div class="card-kicker">Guides</div>
-                    <h3 class="story-title">A no-drama GLP-1 starter plan.</h3>
+                    <div class="card-kicker">Body context</div>
+                    <h3 class="story-title">GLP-1s changed appetite. Dinner has to catch up.</h3>
                     <p class="dek">
-                      Small portions, high protein, low friction - and enough flexibility for a real appetite.
+                      Smaller portions, protein targets, delivery filters, and the new etiquette of eating enough.
                     </p>
                     <div class="story-footer"><span>Dietitian reviewed</span><span>9 min read</span></div>
                   </div>
@@ -1241,12 +1408,12 @@
           <div class="container">
             <div class="section-head">
               <div>
-                <div class="section-kicker">Reviews</div>
-                <h2>The meal delivery shortlist.</h2>
+                <div class="section-kicker">The marketplace, decoded</div>
+                <h2>Delivery reviews for people who care what is on the plate.</h2>
               </div>
               <p>
-                Comparison content without the coupon-site aftertaste: tested for taste, texture, ordering
-                experience, plan flexibility, and whether the food still feels good by day three.
+                Comparison content without the coupon-site aftertaste: we look at taste, texture, ordering flow,
+                chef credibility, nutrition filters, and whether the food still feels good by day three.
               </p>
             </div>
 
@@ -1260,8 +1427,8 @@
                   <div class="score">4.7</div>
                 </div>
                 <p class="dek">
-                  Best overall for people who want prepared meals to feel closer to a restaurant handoff than a
-                  clinical subscription box.
+                  Best overall for people who want prepared meals to feel closer to a chef handoff than a clinical
+                  subscription box.
                 </p>
                 <ul class="pros">
                   <li><b>1</b><span>Strong chef variety and a menu that does not collapse into sameness.</span></li>
@@ -1312,12 +1479,12 @@
           <div class="container">
             <div class="section-head">
               <div>
-                <div class="section-kicker">Guides and recipes</div>
-                <h2>Useful food writing, with a point of view.</h2>
+                <div class="section-kicker">What chefs know</div>
+                <h2>Useful food writing with sharper instincts.</h2>
               </div>
               <p>
-                Bon Appetit energy, but aimed at the actual week: the fridge, the budget, the delivery slot,
-                the protein target, and the night you just want something good.
+                Bon Appetit energy for the actual week: the fridge, the budget, the delivery slot, the protein
+                target, and the night you just want something good.
               </p>
             </div>
 
@@ -1328,7 +1495,7 @@
                   alt="A bowl of bucatini pasta"
                 />
                 <div class="article-body">
-                  <div class="card-kicker">Recipe</div>
+                  <div class="card-kicker">Chef move</div>
                   <h3>One sauce, three dinners, zero sad leftovers.</h3>
                   <p class="dek">A Sunday base that turns into pasta, bowls, and a fast toast situation.</p>
                   <div class="story-footer"><span>Cook</span><span>12 min</span></div>
@@ -1341,7 +1508,7 @@
                   alt="Spiced chicken with vegetables"
                 />
                 <div class="article-body">
-                  <div class="card-kicker">By diet</div>
+                  <div class="card-kicker">Nutrition</div>
                   <h3>High-protein dinners that do not feel like homework.</h3>
                   <p class="dek">What to cook, what to buy, and what to delegate when the goal is consistency.</p>
                   <div class="story-footer"><span>Guide</span><span>8 min</span></div>
@@ -1354,7 +1521,7 @@
                   alt="Soba noodles with chicken and greens"
                 />
                 <div class="article-body">
-                  <div class="card-kicker">Delivery</div>
+                  <div class="card-kicker">Delivery strategy</div>
                   <h3>How to use prepared meals without giving up cooking.</h3>
                   <p class="dek">The hybrid-week method: cook when it counts, outsource where it saves the week.</p>
                   <div class="story-footer"><span>Strategy</span><span>6 min</span></div>
@@ -1368,7 +1535,7 @@
           <div class="container batch-layout">
             <article class="batch-card">
               <div class="section-kicker">Batch by Platter</div>
-              <h2>Turn the reading into a week you can actually follow.</h2>
+              <h2>Turn chef intel into a week your family can actually follow.</h2>
               <p class="dek">
                 Batch is the planning layer: answer a few questions, choose the days that matter, and get a weekly
                 map with recipes, prep notes, and prepared picks only where they help.
@@ -1399,7 +1566,7 @@
               <div class="section-head">
                 <div>
                   <div class="section-kicker">Latest</div>
-                  <h2>The notebook.</h2>
+                  <h2>Chef notes for civilians.</h2>
                 </div>
               </div>
               <div class="latest-list">
@@ -1410,7 +1577,7 @@
                 </a>
                 <a class="latest-item" href="#">
                   <time datetime="2026-07-15">Jul 15</time>
-                  <h3>What we learned after eating prepared salmon three ways.</h3>
+                  <h3>What we learned after treating delivery like mise en place.</h3>
                   <span aria-hidden="true">+</span>
                 </a>
                 <a class="latest-item" href="#">
@@ -1420,7 +1587,7 @@
                 </a>
                 <a class="latest-item" href="#">
                   <time datetime="2026-07-12">Jul 12</time>
-                  <h3>Ranking grocery shortcuts by how often they save dinner.</h3>
+                  <h3>Ranking grocery shortcuts by how often chefs would actually use them.</h3>
                   <span aria-hidden="true">+</span>
                 </a>
               </div>
@@ -1448,9 +1615,9 @@
           <div>
             <a class="logo" href="/">platter</a>
             <p>
-              Platter is an independent editorial site for meal planning, meal prep, food delivery, and the
-              systems that make eating well feel possible. We may earn a commission through links, but editorial
-              recommendations are written first.
+              Platter is an independent editorial site bringing chef knowledge to the people: meal planning, meal
+              prep, food delivery, wellness context, and the systems that make eating well feel possible. We may
+              earn a commission through links, but editorial recommendations are written first.
             </p>
             <p>&copy; 2026 Platter Editorial.</p>
           </div>
@@ -1469,22 +1636,22 @@
         {
           question: "What kind of week are you feeding?",
           options: ["Weeknight dinners", "Packable lunches", "High-protein days", "A full reset"],
-          result: "Good. Platter would start by separating cook nights from backup nights."
+          result: "Good. Platter would start by separating chef-worthy cook nights from backup nights."
         },
         {
           question: "How much cooking energy do you have?",
           options: ["Plenty", "Some", "Almost none", "It depends"],
-          result: "That is the useful answer. A plan should match energy, not an imaginary Sunday."
+          result: "That is the useful answer. Chef systems should match energy, not an imaginary Sunday."
         },
         {
           question: "Where does the week usually break?",
           options: ["Lunch", "Dinner", "Groceries", "Prep time"],
-          result: "That is where prepared meals, batch cooking, or grocery shortcuts should go first."
+          result: "That is where the right shortcut belongs: prepared meals, batch cooking, or smarter groceries."
         },
         {
           question: "What should the plan protect?",
           options: ["Protein", "Budget", "Variety", "Less cleanup"],
-          result: "Batch can turn that into a week map with recipes, prep notes, and prepared picks."
+          result: "Batch can turn that into a week map with chef moves, prep notes, and prepared picks."
         }
       ];
 
@@ -1504,7 +1671,7 @@
         if (plannerAnswers[plannerStep]) {
           resultEl.textContent = item.result;
         } else {
-          resultEl.textContent = "Choose the closest answer. Batch will translate it into a plan.";
+          resultEl.textContent = "Choose the closest answer. Batch will translate the chef intel into a plan.";
         }
 
         progressEls.forEach((el, index) => {
@@ -1527,7 +1694,7 @@
               }, 260);
             } else {
               renderPlanner();
-              resultEl.innerHTML = 'Nice. <a href="https://fantastic-fiesta-indol.vercel.app/">Open Batch</a> to build the full weekly plan.';
+              resultEl.innerHTML = 'Nice. <a href="https://fantastic-fiesta-indol.vercel.app/">Open Batch</a> to turn it into a full weekly plan.';
             }
           });
           optionsEl.appendChild(button);
@@ -1540,7 +1707,7 @@
         event.preventDefault();
         const email = new FormData(event.currentTarget).get("email");
         const status = document.querySelector("#signup-status");
-        status.textContent = email ? "You are on the list. First issue: what to cook, buy, and outsource." : "";
+        status.textContent = email ? "You are on the list. First briefing: what chefs know, what to buy, and what to outsource." : "";
         event.currentTarget.reset();
       });
     </script>
