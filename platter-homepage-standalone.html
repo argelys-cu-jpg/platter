@@ -880,7 +880,7 @@
 
       .rank-row {
         display: grid;
-        grid-template-columns: 52px minmax(160px, 1fr) 98px 108px minmax(150px, 0.8fr);
+        grid-template-columns: 52px minmax(160px, 1fr) 98px minmax(150px, 0.8fr);
         align-items: center;
         gap: 12px;
         min-height: 68px;
@@ -1318,7 +1318,8 @@
               <div class="eyebrow">Platter</div>
               <h1>Everything chefs know, served for <span class="italic">real life.</span></h1>
               <p class="hero-copy">
-                Reviews, guides, and weekly systems for cooking, ordering, and eating better at home.
+                Platter brings chef intel to everyday eating, so you know what to cook, what to order, and what's
+                worth your money.
               </p>
               <div class="hero-actions">
                 <a class="button button-primary" href="#newsletter">Get the briefing</a>
@@ -1398,7 +1399,7 @@
             <form class="signup-form" id="newsletter-form">
               <label class="sr-only" for="email">Email address</label>
               <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
-              <button type="submit">Sign up</button>
+              <button type="submit">Get the briefing</button>
               <div class="signup-status" id="signup-status" role="status"></div>
             </form>
           </div>
@@ -1495,34 +1496,30 @@
 
               <div class="ranking-table" role="table" aria-label="Meal delivery rankings">
                 <div class="rank-row rank-head" role="row">
-                  <span>Rank</span><span>Service</span><span>Score</span><span>From</span><span>Best for</span>
+                  <span>Rank</span><span>Service</span><span>Score</span><span>Best for</span>
                 </div>
                 <div class="rank-row" role="row">
                   <span class="rank-number">1</span>
                   <span class="rank-brand"><strong>CookUnity</strong><small>Fresh prepared meals</small></span>
                   <span>9.8/10</span>
-                  <span>$14</span>
                   <span class="tag">Chef variety</span>
                 </div>
                 <div class="rank-row" role="row">
                   <span class="rank-number">2</span>
                   <span class="rank-brand"><strong>Factor</strong><small>Macro-friendly prepared meals</small></span>
                   <span>8.3/10</span>
-                  <span>$12</span>
                   <span class="tag">High protein</span>
                 </div>
                 <div class="rank-row" role="row">
                   <span class="rank-number">3</span>
                   <span class="rank-brand"><strong>Hungryroot</strong><small>Groceries plus meal shortcuts</small></span>
                   <span>8.1/10</span>
-                  <span>$9</span>
                   <span class="tag">Flexible cooking</span>
                 </div>
                 <div class="rank-row" role="row">
                   <span class="rank-number">4</span>
                   <span class="rank-brand"><strong>HelloFresh</strong><small>Classic meal kits</small></span>
                   <span>8.0/10</span>
-                  <span>$8</span>
                   <span class="tag">Family cooking</span>
                 </div>
               </div>
@@ -1648,13 +1645,16 @@
             </div>
 
             <aside class="method-card">
-              <div class="section-kicker">From the test desk</div>
-              <h3>The weeknight rules.</h3>
-              <p class="dek">Four standards we use before a meal, shortcut, or service earns a recommendation.</p>
+              <div class="section-kicker">Review policy</div>
+              <h3>Scored after the meal, not the pitch.</h3>
+              <p class="dek">
+                Platter may earn commissions from links and may cover companies with commercial or ownership
+                relationships to Platter. Scores are based on editorial testing.
+              </p>
               <div class="method-list">
-                <div><strong>1. It has to reheat well</strong><p>No beautiful first bite if the second day falls apart.</p></div>
-                <div><strong>2. It has to solve a real night</strong><p>Fast, late, high-protein, family-style, or no-cook.</p></div>
-                <div><strong>3. It has to taste like a decision</strong><p>Seasoning, texture, sauce, and enough contrast.</p></div>
+                <div><strong>1. Taste and texture</strong><p>Flavor, freshness, reheating, sauce, and contrast.</p></div>
+                <div><strong>2. Weeknight utility</strong><p>What problem does the service actually solve?</p></div>
+                <div><strong>3. Relationship disclosure</strong><p>Material relationships belong next to the recommendation.</p></div>
               </div>
             </aside>
           </div>
@@ -1666,8 +1666,8 @@
           <div>
             <a class="logo" href="#top">platter</a>
             <p>
-              Independent food intelligence for meal planning, delivery, cooking, and eating well. Platter may earn a
-              commission through links; editorial recommendations are written first.
+              Food intelligence for meal planning, delivery, cooking, and eating well. Platter may earn commissions
+              from links and may cover companies with commercial or ownership relationships to Platter.
             </p>
             <p>&copy; 2026 Platter Editorial.</p>
           </div>
