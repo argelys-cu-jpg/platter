@@ -336,7 +336,7 @@
       }
 
       .feature-phone-row .preview-phone {
-        aspect-ratio: 393 / 500;
+        aspect-ratio: 393 / 852;
       }
 
       .landing-index {
@@ -1237,9 +1237,11 @@
 
       .preview-view {
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 20px;
-        padding: clamp(18px, 3vw, 34px);
+        grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+        align-items: start;
+        justify-content: center;
+        gap: clamp(24px, 2.4vw, 38px);
+        padding: clamp(22px, 3vw, 42px);
       }
 
       .preview-frame {
@@ -1269,12 +1271,41 @@
 
       .preview-phone {
         width: 100%;
-        aspect-ratio: 393 / 500;
+        aspect-ratio: 393 / 852;
+        position: relative;
+        box-sizing: border-box;
         overflow: hidden;
-        border: 8px solid var(--rule);
-        border-radius: 30px;
-        background: var(--paper);
+        padding: 10px 8px 18px;
+        border: 2px solid #080808;
+        border-radius: 46px;
+        background: #080808;
         pointer-events: none;
+      }
+
+      .preview-phone::before {
+        content: "";
+        position: absolute;
+        top: 14px;
+        left: 50%;
+        width: 76px;
+        height: 22px;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: #080808;
+        z-index: 3;
+      }
+
+      .preview-phone::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 7px;
+        width: 92px;
+        height: 4px;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: #080808;
+        z-index: 3;
       }
 
       .preview-phone .screen {
@@ -1282,24 +1313,10 @@
         min-height: 100%;
         height: 100%;
         border: 0;
-        border-radius: 19px;
-        padding: 16px;
+        border-radius: 35px;
+        padding: 40px 16px 20px;
         gap: 10px;
         overflow: hidden;
-      }
-
-      .preview-phone .screen::after {
-        content: "B";
-        position: absolute;
-        right: -16px;
-        bottom: -34px;
-        color: rgba(21, 21, 21, 0.035);
-        font-family: var(--display);
-        font-size: 210px;
-        font-weight: 900;
-        line-height: 0.78;
-        pointer-events: none;
-        z-index: 0;
       }
 
       .preview-phone .screen > * {
@@ -1308,8 +1325,8 @@
       }
 
       .preview-phone h1 {
-        font-size: 29px;
-        line-height: 0.93;
+        font-size: 25px;
+        line-height: 0.96;
       }
 
       .preview-phone .hero-plate {
@@ -2565,12 +2582,6 @@
         }
       }
 
-      @media (max-width: 1320px) {
-        .preview-view {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-      }
-
       @media (max-width: 920px) {
         .marketing-nav {
           position: relative;
@@ -2608,7 +2619,7 @@
         }
 
         .preview-view {
-          grid-template-columns: repeat(2, minmax(220px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(230px, 286px));
         }
       }
 
@@ -2756,8 +2767,8 @@
         }
 
         .preview-view {
-          grid-template-columns: minmax(0, 1fr);
-          padding: 12px;
+          grid-template-columns: minmax(0, 315px);
+          padding: 18px 14px 28px;
         }
 
         .lead-row {
