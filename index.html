@@ -1,0 +1,1548 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Platter - Meal Planning, Meal Prep, and Meal Delivery Reviews</title>
+    <meta
+      name="description"
+      content="Platter is an editorial food site for meal planning, meal prep, prepared meal delivery reviews, recipes, and practical ways to eat well all week."
+    />
+    <meta name="platter-build" content="homepage-first-pass-2026-07-16" />
+    <link rel="icon" href="data:," />
+    <meta property="og:title" content="Platter - Meal planning for real life" />
+    <meta
+      property="og:description"
+      content="Independent guides, reviews, recipes, and a weekly planning tool for people who want dinner to feel less chaotic."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f6f1e8;
+        --cream-deep: #ede3d5;
+        --paper: #fffaf4;
+        --surface: #fffdf8;
+        --white: #ffffff;
+        --sand: #dfc9a6;
+        --sand-soft: #f1e2c9;
+        --sage: #d8dfc8;
+        --sage-strong: #a9b691;
+        --olive: #3a4728;
+        --olive-ink: #263018;
+        --olive-soft: #eef2e3;
+        --ink: #1e1d19;
+        --muted: #746b5a;
+        --line: #ded0b9;
+        --tomato: #984f3f;
+        --marigold: #ee8f2f;
+        --blue: #516a79;
+        --shadow-soft: 0 10px 30px rgba(37, 32, 22, 0.08);
+        --serif: "Source Serif 4", Georgia, serif;
+        --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      .site-shell {
+        min-height: 100vh;
+        background:
+          linear-gradient(90deg, rgba(222, 208, 185, 0.34) 1px, transparent 1px) 0 0 / 128px 128px,
+          var(--cream);
+      }
+
+      .container {
+        width: min(100% - 48px, 1240px);
+        margin: 0 auto;
+      }
+
+      .announce {
+        border-bottom: 1px solid var(--line);
+        background: var(--olive);
+        color: #fffaf0;
+      }
+
+      .announce a {
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-align: center;
+      }
+
+      .announce span {
+        color: var(--sage);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 253, 248, 0.94);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav {
+        min-height: 74px;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      .nav-links:last-child {
+        justify-content: flex-end;
+      }
+
+      .nav a,
+      .nav button {
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 850;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .nav a:hover {
+        color: var(--olive);
+      }
+
+      .logo {
+        display: inline-flex;
+        align-items: baseline;
+        justify-content: center;
+        font-family: var(--serif);
+        font-size: 34px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+
+      .logo::after {
+        content: "";
+        width: 7px;
+        height: 7px;
+        margin-left: 3px;
+        border-radius: 999px;
+        background: var(--olive);
+        transform: translateY(-3px);
+      }
+
+      .nav-cta {
+        min-height: 34px;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--olive);
+        border-radius: 999px;
+        color: var(--olive) !important;
+        padding: 0 14px;
+      }
+
+      .nav-cta:hover {
+        background: var(--olive);
+        color: #fffaf0 !important;
+      }
+
+      .hero {
+        padding: clamp(56px, 8vw, 104px) 0 42px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.06fr) minmax(360px, 0.94fr);
+        gap: clamp(32px, 6vw, 72px);
+        align-items: end;
+      }
+
+      .eyebrow,
+      .section-kicker,
+      .card-kicker,
+      .meta,
+      .table-kicker {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 32px;
+        height: 1px;
+        background: var(--olive);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      .feature-title,
+      .story-title {
+        font-family: var(--serif);
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        font-size: clamp(56px, 8.3vw, 118px);
+        font-weight: 650;
+        line-height: 0.9;
+      }
+
+      .italic {
+        color: var(--olive);
+        font-style: italic;
+        font-weight: 500;
+      }
+
+      .hero-copy {
+        max-width: 620px;
+        margin-top: 26px;
+        color: var(--muted);
+        font-size: clamp(17px, 1.7vw, 21px);
+        line-height: 1.5;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 34px;
+      }
+
+      .button {
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 1px solid var(--olive);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 850;
+        padding: 0 20px;
+        transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+      }
+
+      .button-primary {
+        background: var(--olive);
+        color: #fffaf0;
+      }
+
+      .button-primary:hover {
+        background: var(--olive-ink);
+        border-color: var(--olive-ink);
+      }
+
+      .button-secondary {
+        background: var(--surface);
+        color: var(--olive);
+      }
+
+      .button-secondary:hover {
+        background: var(--olive-soft);
+      }
+
+      .hero-note {
+        display: grid;
+        grid-template-columns: 98px minmax(0, 1fr);
+        align-items: center;
+        gap: 14px;
+        max-width: 520px;
+        margin-top: 36px;
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+      }
+
+      .hero-note img {
+        width: 98px;
+        aspect-ratio: 1;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+      .hero-note strong {
+        display: block;
+        font-family: var(--serif);
+        font-size: 21px;
+        line-height: 1.08;
+      }
+
+      .hero-note span {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .hero-cover {
+        position: relative;
+        display: grid;
+        gap: 14px;
+      }
+
+      .cover-stack {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        transform: rotate(-1.5deg);
+      }
+
+      .cover-stack img {
+        width: 100%;
+        min-height: 190px;
+        object-fit: cover;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--sand-soft);
+      }
+
+      .cover-stack img:first-child {
+        grid-row: span 2;
+        height: 100%;
+      }
+
+      .cover-card {
+        position: relative;
+        z-index: 1;
+        width: min(92%, 420px);
+        margin: -66px auto 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.94);
+        box-shadow: var(--shadow-soft);
+        padding: 18px;
+      }
+
+      .cover-card h2 {
+        margin-top: 8px;
+        font-size: 32px;
+        font-weight: 650;
+        line-height: 1;
+      }
+
+      .cover-card p {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .cover-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .cover-metrics div {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--olive-soft);
+        padding: 9px;
+        text-align: center;
+      }
+
+      .cover-metrics strong {
+        display: block;
+        color: var(--olive);
+        font-family: var(--serif);
+        font-size: 21px;
+        line-height: 1;
+      }
+
+      .cover-metrics span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 850;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .newsletter-band {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+
+      .newsletter-band .container {
+        min-height: 86px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
+        align-items: center;
+        gap: 24px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      .newsletter-band h2 {
+        font-size: clamp(26px, 3vw, 42px);
+        font-weight: 650;
+        line-height: 0.98;
+      }
+
+      .signup-form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+      }
+
+      .signup-form input {
+        min-height: 46px;
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--ink);
+        padding: 0 16px;
+      }
+
+      .signup-form button {
+        min-height: 46px;
+        border: 1px solid var(--olive);
+        border-radius: 999px;
+        background: var(--olive);
+        color: #fffaf0;
+        cursor: pointer;
+        font-weight: 850;
+        padding: 0 18px;
+      }
+
+      .signup-status {
+        grid-column: 1 / -1;
+        min-height: 18px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .section {
+        padding: clamp(52px, 7vw, 86px) 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 24px;
+      }
+
+      .section-head h2 {
+        margin-top: 8px;
+        font-size: clamp(38px, 5vw, 72px);
+        font-weight: 650;
+        line-height: 0.95;
+      }
+
+      .section-head p {
+        max-width: 450px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .story-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+        gap: 18px;
+      }
+
+      .lead-story,
+      .side-story,
+      .article-card,
+      .review-card,
+      .batch-card,
+      .latest-list,
+      .method-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .lead-story {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1fr);
+        overflow: hidden;
+      }
+
+      .lead-story img,
+      .side-story img,
+      .article-card img {
+        width: 100%;
+        height: 100%;
+        min-height: 260px;
+        object-fit: cover;
+      }
+
+      .lead-body,
+      .side-body,
+      .article-body {
+        display: grid;
+        align-content: start;
+        gap: 12px;
+        padding: 22px;
+      }
+
+      .feature-title {
+        font-size: clamp(32px, 4vw, 58px);
+        font-weight: 650;
+        line-height: 0.98;
+      }
+
+      .story-title {
+        font-size: 30px;
+        font-weight: 650;
+        line-height: 1;
+      }
+
+      .dek {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .story-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 10px;
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .side-stack {
+        display: grid;
+        gap: 18px;
+      }
+
+      .side-story {
+        overflow: hidden;
+      }
+
+      .side-story img {
+        min-height: 190px;
+        max-height: 220px;
+      }
+
+      .review-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(360px, 1.2fr);
+        gap: 18px;
+      }
+
+      .review-card {
+        display: grid;
+        gap: 16px;
+        padding: 22px;
+      }
+
+      .score-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 14px;
+      }
+
+      .score {
+        width: 86px;
+        height: 86px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--olive);
+        color: #fffaf0;
+        font-family: var(--serif);
+        font-size: 29px;
+        font-weight: 700;
+      }
+
+      .review-card h3 {
+        font-size: 40px;
+        font-weight: 650;
+        line-height: 0.98;
+      }
+
+      .pros {
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .pros li {
+        display: grid;
+        grid-template-columns: 24px minmax(0, 1fr);
+        gap: 8px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.35;
+      }
+
+      .pros b {
+        display: grid;
+        place-items: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        background: var(--sage);
+        color: var(--olive);
+      }
+
+      .ranking-table {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .rank-row {
+        display: grid;
+        grid-template-columns: 52px minmax(160px, 1fr) 98px 108px minmax(150px, 0.8fr);
+        align-items: center;
+        gap: 12px;
+        min-height: 68px;
+        border-bottom: 1px solid var(--line);
+        padding: 12px 14px;
+      }
+
+      .rank-row:last-child {
+        border-bottom: 0;
+      }
+
+      .rank-head {
+        min-height: 44px;
+        background: var(--olive-soft);
+      }
+
+      .rank-head span {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .rank-number {
+        color: var(--olive);
+        font-family: var(--serif);
+        font-size: 28px;
+        font-weight: 700;
+      }
+
+      .rank-brand strong {
+        display: block;
+        font-size: 15px;
+      }
+
+      .rank-brand small,
+      .rank-row span {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .tag {
+        display: inline-flex;
+        width: max-content;
+        min-height: 26px;
+        align-items: center;
+        border-radius: 999px;
+        background: var(--sage);
+        color: var(--olive);
+        font-size: 11px !important;
+        font-weight: 900;
+        padding: 0 10px;
+      }
+
+      .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .article-card {
+        overflow: hidden;
+      }
+
+      .article-card img {
+        min-height: 220px;
+        max-height: 240px;
+      }
+
+      .article-body h3 {
+        font-size: 28px;
+        font-weight: 650;
+        line-height: 1.02;
+      }
+
+      .batch-layout {
+        display: grid;
+        grid-template-columns: minmax(340px, 0.9fr) minmax(0, 1.1fr);
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .batch-card {
+        display: grid;
+        gap: 16px;
+        padding: 24px;
+      }
+
+      .planner {
+        display: grid;
+        gap: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: var(--shadow-soft);
+        padding: 20px;
+      }
+
+      .planner-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .planner-count {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .planner-progress {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+      }
+
+      .planner-progress span {
+        height: 4px;
+        border-radius: 999px;
+        background: var(--cream-deep);
+      }
+
+      .planner-progress .is-active {
+        background: var(--marigold);
+      }
+
+      .planner h3 {
+        font-size: 32px;
+        font-weight: 650;
+        line-height: 1;
+      }
+
+      .planner-options {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .planner-option {
+        min-height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 850;
+        padding: 0 12px;
+      }
+
+      .planner-option:hover,
+      .planner-option.is-selected {
+        border-color: var(--olive);
+        background: var(--olive-soft);
+        color: var(--olive);
+      }
+
+      .planner-result {
+        min-height: 44px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+        padding-top: 12px;
+      }
+
+      .latest-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
+        gap: 18px;
+      }
+
+      .latest-list {
+        display: grid;
+      }
+
+      .latest-item {
+        display: grid;
+        grid-template-columns: 110px minmax(0, 1fr) auto;
+        gap: 16px;
+        align-items: baseline;
+        border-bottom: 1px solid var(--line);
+        padding: 18px;
+      }
+
+      .latest-item:last-child {
+        border-bottom: 0;
+      }
+
+      .latest-item time {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .latest-item h3 {
+        font-size: 25px;
+        font-weight: 650;
+        line-height: 1.05;
+      }
+
+      .latest-item span {
+        color: var(--olive);
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .method-card {
+        display: grid;
+        gap: 14px;
+        background: var(--olive);
+        color: #fffaf0;
+        padding: 22px;
+      }
+
+      .method-card .section-kicker {
+        color: var(--sage);
+      }
+
+      .method-card h3 {
+        font-size: 38px;
+        font-weight: 650;
+        line-height: 0.98;
+      }
+
+      .method-card p {
+        color: rgba(255, 250, 240, 0.78);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .method-list {
+        display: grid;
+        gap: 9px;
+        margin-top: 6px;
+      }
+
+      .method-list div {
+        border-top: 1px solid rgba(255, 250, 240, 0.24);
+        padding-top: 10px;
+      }
+
+      .site-footer {
+        background: var(--ink);
+        color: #fffaf0;
+        padding: 48px 0;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 32px;
+      }
+
+      .site-footer .logo {
+        justify-content: flex-start;
+        color: #fffaf0;
+      }
+
+      .site-footer p {
+        max-width: 620px;
+        margin-top: 14px;
+        color: rgba(255, 250, 240, 0.68);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .footer-links {
+        display: grid;
+        gap: 10px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 250, 240, 0.82);
+        font-size: 13px;
+        font-weight: 850;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 980px) {
+        .nav {
+          grid-template-columns: 1fr;
+          justify-items: center;
+          gap: 10px;
+          padding: 14px 0;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero-grid,
+        .story-grid,
+        .review-layout,
+        .batch-layout,
+        .latest-layout,
+        .newsletter-band .container {
+          grid-template-columns: 1fr;
+        }
+
+        .lead-story {
+          grid-template-columns: 1fr;
+        }
+
+        .articles-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .rank-row {
+          grid-template-columns: 42px minmax(160px, 1fr) 78px;
+        }
+
+        .rank-row span:nth-child(4),
+        .rank-row span:nth-child(5),
+        .rank-row .tag {
+          display: none;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .container {
+          width: min(100% - 28px, 1240px);
+        }
+
+        .announce a {
+          padding: 0 14px;
+        }
+
+        .nav-links a:not(.nav-cta) {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 42px;
+        }
+
+        .hero-actions,
+        .signup-form,
+        .planner-options,
+        .cover-metrics,
+        .articles-grid,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-actions {
+          display: grid;
+        }
+
+        .button,
+        .signup-form button {
+          width: 100%;
+        }
+
+        .cover-stack {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .cover-stack img {
+          min-height: 140px;
+        }
+
+        .section-head {
+          display: grid;
+        }
+
+        .latest-item {
+          grid-template-columns: 1fr auto;
+        }
+
+        .latest-item time {
+          grid-column: 1 / -1;
+        }
+
+        .rank-head {
+          display: none;
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Platter",
+        "description": "Editorial guides to meal planning, meal prep, prepared meal delivery, and practical cooking.",
+        "url": "https://platter.vercel.app/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://platter.vercel.app/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="announce">
+        <a href="#rankings"><span>New guide</span> Best prepared meal delivery services for busy weeks</a>
+      </div>
+
+      <header class="site-header">
+        <nav class="nav container" aria-label="Primary navigation">
+          <div class="nav-links">
+            <a href="#stories">Stories</a>
+            <a href="#rankings">Reviews</a>
+            <a href="#guides">Guides</a>
+          </div>
+          <a class="logo" href="/" aria-label="Platter homepage">platter</a>
+          <div class="nav-links">
+            <a href="#newsletter">Newsletter</a>
+            <a href="https://fantastic-fiesta-indol.vercel.app/" class="nav-cta">Open Batch</a>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="container hero-grid">
+            <div>
+              <div class="eyebrow">Independent food planning</div>
+              <h1>Meal planning for people tired of <span class="italic">deciding.</span></h1>
+              <p class="hero-copy">
+                Platter is the editorial guide to eating well all week: meal delivery reviews, prep strategies,
+                recipes that hold up, and a planning tool for the days when dinner needs a plan before 6 PM.
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="https://fantastic-fiesta-indol.vercel.app/">Build this week's plan</a>
+                <a class="button button-secondary" href="#rankings">See our current picks</a>
+              </div>
+              <a class="hero-note" href="#guides">
+                <img
+                  src="https://cu-media.imgix.net/meal-service/meals/2954/main_image/006_Esther-Choi_Chicken-soba-salad-with-sesame_lowres.jpg?height=480&width=480&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=960"
+                  alt="Soba noodle salad with chicken"
+                />
+                <span>
+                  <strong>The Sunday List</strong>
+                  <span>What to prep, what to buy, what to outsource, and what to leave alone.</span>
+                </span>
+              </a>
+            </div>
+
+            <div class="hero-cover" aria-label="Featured Platter stories">
+              <div class="cover-stack">
+                <img
+                  src="https://cu-media.imgix.net/meal-service/meals/6774/main_image/6774_2_Cat_Cora_Grilled_Citrus_Salmon_Turmeric_Toasted_Couscous_3716.jpg?height=900&width=720&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=1440"
+                  alt="Citrus salmon with couscous"
+                />
+                <img
+                  src="https://cu-media.imgix.net/meal-service/meals/7000/main_image/7000_art-smith_lentil-bolognese-with-bucatini-pasta_wb_lo-res.jpg?height=500&width=500&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=960"
+                  alt="Lentil bolognese bucatini"
+                />
+                <img
+                  src="https://cu-media.imgix.net/media/catalog/product/cache/x600//r/u/ruben-spiced-chicken.jpeg?height=500&width=500&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=960"
+                  alt="Spiced chicken with roasted broccoli"
+                />
+              </div>
+              <article class="cover-card">
+                <div class="card-kicker">Editor's desk</div>
+                <h2>What actually makes a meal plan stick?</h2>
+                <p>
+                  A good week is part cooking, part prepared backup, part knowing when to stop pretending
+                  Thursday is going to be ambitious.
+                </p>
+                <div class="cover-metrics">
+                  <div><strong>9</strong><span>Services tracked</span></div>
+                  <div><strong>42</strong><span>Meals tasted</span></div>
+                  <div><strong>1</strong><span>Weekly plan</span></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="newsletter-band" id="newsletter">
+          <div class="container">
+            <h2>Get the week in food before the week gets loud.</h2>
+            <form class="signup-form" id="newsletter-form">
+              <label class="sr-only" for="email">Email address</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+              <button type="submit">Sign up</button>
+              <div class="signup-status" id="signup-status" role="status"></div>
+            </form>
+          </div>
+        </section>
+
+        <section class="section" id="stories">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <div class="section-kicker">Start here</div>
+                <h2>This week on <span class="italic">Platter.</span></h2>
+              </div>
+              <p>
+                A homepage built like a magazine front door: useful now, a little opinionated, and designed to
+                make the newsletter feel worth opening.
+              </p>
+            </div>
+
+            <div class="story-grid">
+              <article class="lead-story">
+                <img
+                  src="https://cu-media.imgix.net/meal-service/meals/6774/main_image/6774_2_Cat_Cora_Grilled_Citrus_Salmon_Turmeric_Toasted_Couscous_3716.jpg?height=760&width=620&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=1240"
+                  alt="A plated salmon meal"
+                />
+                <div class="lead-body">
+                  <div class="card-kicker">Meal delivery</div>
+                  <h3 class="feature-title">The prepared meals we would reorder on a regular Tuesday.</h3>
+                  <p class="dek">
+                    Our current short list for fresh, ready-to-heat meals that taste like dinner, not damage control.
+                  </p>
+                  <div class="story-footer"><span>By Platter Editors</span><span>11 min read</span></div>
+                </div>
+              </article>
+
+              <div class="side-stack">
+                <article class="side-story">
+                  <img
+                    src="https://cu-media.imgix.net/meal-service/meals/2954/main_image/006_Esther-Choi_Chicken-soba-salad-with-sesame_lowres.jpg?height=420&width=700&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=1200"
+                    alt="A bowl of soba noodle salad"
+                  />
+                  <div class="side-body">
+                    <div class="card-kicker">Meal prep</div>
+                    <h3 class="story-title">Lunches that survive the fridge.</h3>
+                    <p class="dek">Texture, sauce strategy, and the one container rule we keep coming back to.</p>
+                  </div>
+                </article>
+
+                <article class="side-story">
+                  <div class="side-body">
+                    <div class="card-kicker">Guides</div>
+                    <h3 class="story-title">A no-drama GLP-1 starter plan.</h3>
+                    <p class="dek">
+                      Small portions, high protein, low friction - and enough flexibility for a real appetite.
+                    </p>
+                    <div class="story-footer"><span>Dietitian reviewed</span><span>9 min read</span></div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="rankings">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <div class="section-kicker">Reviews</div>
+                <h2>The meal delivery shortlist.</h2>
+              </div>
+              <p>
+                Comparison content without the coupon-site aftertaste: tested for taste, texture, ordering
+                experience, plan flexibility, and whether the food still feels good by day three.
+              </p>
+            </div>
+
+            <div class="review-layout">
+              <article class="review-card">
+                <div class="score-row">
+                  <div>
+                    <div class="table-kicker">Current top pick</div>
+                    <h3>CookUnity</h3>
+                  </div>
+                  <div class="score">4.7</div>
+                </div>
+                <p class="dek">
+                  Best overall for people who want prepared meals to feel closer to a restaurant handoff than a
+                  clinical subscription box.
+                </p>
+                <ul class="pros">
+                  <li><b>1</b><span>Strong chef variety and a menu that does not collapse into sameness.</span></li>
+                  <li><b>2</b><span>Useful filters for high-protein, vegetarian, calorie-conscious, and time-starved weeks.</span></li>
+                  <li><b>3</b><span>Fresh, refrigerated meals with enough range to cover lunch, dinner, and backup nights.</span></li>
+                </ul>
+                <a class="button button-primary" href="#guides">Read the full review</a>
+              </article>
+
+              <div class="ranking-table" role="table" aria-label="Meal delivery rankings">
+                <div class="rank-row rank-head" role="row">
+                  <span>Rank</span><span>Service</span><span>Score</span><span>From</span><span>Best for</span>
+                </div>
+                <div class="rank-row" role="row">
+                  <span class="rank-number">1</span>
+                  <span class="rank-brand"><strong>CookUnity</strong><small>Fresh prepared meals</small></span>
+                  <span>4.7</span>
+                  <span>$14</span>
+                  <span class="tag">Chef variety</span>
+                </div>
+                <div class="rank-row" role="row">
+                  <span class="rank-number">2</span>
+                  <span class="rank-brand"><strong>Factor</strong><small>Macro-friendly prepared meals</small></span>
+                  <span>4.3</span>
+                  <span>$12</span>
+                  <span class="tag">High protein</span>
+                </div>
+                <div class="rank-row" role="row">
+                  <span class="rank-number">3</span>
+                  <span class="rank-brand"><strong>Hungryroot</strong><small>Groceries plus meal shortcuts</small></span>
+                  <span>4.1</span>
+                  <span>$9</span>
+                  <span class="tag">Flexible cooking</span>
+                </div>
+                <div class="rank-row" role="row">
+                  <span class="rank-number">4</span>
+                  <span class="rank-brand"><strong>HelloFresh</strong><small>Classic meal kits</small></span>
+                  <span>4.0</span>
+                  <span>$8</span>
+                  <span class="tag">Family cooking</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="guides">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <div class="section-kicker">Guides and recipes</div>
+                <h2>Useful food writing, with a point of view.</h2>
+              </div>
+              <p>
+                Bon Appetit energy, but aimed at the actual week: the fridge, the budget, the delivery slot,
+                the protein target, and the night you just want something good.
+              </p>
+            </div>
+
+            <div class="articles-grid">
+              <article class="article-card">
+                <img
+                  src="https://cu-media.imgix.net/meal-service/meals/7000/main_image/7000_art-smith_lentil-bolognese-with-bucatini-pasta_wb_lo-res.jpg?height=440&width=640&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=960"
+                  alt="A bowl of bucatini pasta"
+                />
+                <div class="article-body">
+                  <div class="card-kicker">Recipe</div>
+                  <h3>One sauce, three dinners, zero sad leftovers.</h3>
+                  <p class="dek">A Sunday base that turns into pasta, bowls, and a fast toast situation.</p>
+                  <div class="story-footer"><span>Cook</span><span>12 min</span></div>
+                </div>
+              </article>
+
+              <article class="article-card">
+                <img
+                  src="https://cu-media.imgix.net/media/catalog/product/cache/x600//r/u/ruben-spiced-chicken.jpeg?height=440&width=640&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=960"
+                  alt="Spiced chicken with vegetables"
+                />
+                <div class="article-body">
+                  <div class="card-kicker">By diet</div>
+                  <h3>High-protein dinners that do not feel like homework.</h3>
+                  <p class="dek">What to cook, what to buy, and what to delegate when the goal is consistency.</p>
+                  <div class="story-footer"><span>Guide</span><span>8 min</span></div>
+                </div>
+              </article>
+
+              <article class="article-card">
+                <img
+                  src="https://cu-media.imgix.net/meal-service/meals/2954/main_image/006_Esther-Choi_Chicken-soba-salad-with-sesame_lowres.jpg?height=440&width=640&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=960"
+                  alt="Soba noodles with chicken and greens"
+                />
+                <div class="article-body">
+                  <div class="card-kicker">Delivery</div>
+                  <h3>How to use prepared meals without giving up cooking.</h3>
+                  <p class="dek">The hybrid-week method: cook when it counts, outsource where it saves the week.</p>
+                  <div class="story-footer"><span>Strategy</span><span>6 min</span></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="batch">
+          <div class="container batch-layout">
+            <article class="batch-card">
+              <div class="section-kicker">Batch by Platter</div>
+              <h2>Turn the reading into a week you can actually follow.</h2>
+              <p class="dek">
+                Batch is the planning layer: answer a few questions, choose the days that matter, and get a weekly
+                map with recipes, prep notes, and prepared picks only where they help.
+              </p>
+              <a class="button button-primary" href="https://fantastic-fiesta-indol.vercel.app/">Open the planner</a>
+            </article>
+
+            <div class="planner" aria-label="Mini weekly planning quiz">
+              <div class="planner-top">
+                <div class="section-kicker">Mini plan</div>
+                <div class="planner-count" id="planner-count">Step 1 of 4</div>
+              </div>
+              <div class="planner-progress" aria-hidden="true">
+                <span class="is-active"></span><span></span><span></span><span></span>
+              </div>
+              <h3 id="planner-question">What kind of week are you feeding?</h3>
+              <div class="planner-options" id="planner-options"></div>
+              <div class="planner-result" id="planner-result">
+                Start with the real constraint. The rest of the plan gets easier.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container latest-layout">
+            <div>
+              <div class="section-head">
+                <div>
+                  <div class="section-kicker">Latest</div>
+                  <h2>The notebook.</h2>
+                </div>
+              </div>
+              <div class="latest-list">
+                <a class="latest-item" href="#">
+                  <time datetime="2026-07-16">Jul 16</time>
+                  <h3>The hidden cost of "quick dinner" is the second decision.</h3>
+                  <span aria-hidden="true">+</span>
+                </a>
+                <a class="latest-item" href="#">
+                  <time datetime="2026-07-15">Jul 15</time>
+                  <h3>What we learned after eating prepared salmon three ways.</h3>
+                  <span aria-hidden="true">+</span>
+                </a>
+                <a class="latest-item" href="#">
+                  <time datetime="2026-07-14">Jul 14</time>
+                  <h3>The freezer is not a personality. It is a tool.</h3>
+                  <span aria-hidden="true">+</span>
+                </a>
+                <a class="latest-item" href="#">
+                  <time datetime="2026-07-12">Jul 12</time>
+                  <h3>Ranking grocery shortcuts by how often they save dinner.</h3>
+                  <span aria-hidden="true">+</span>
+                </a>
+              </div>
+            </div>
+
+            <aside class="method-card">
+              <div class="section-kicker">Editorial method</div>
+              <h3>Useful, tested, clearly labeled.</h3>
+              <p>
+                Platter can earn commissions from partner links. Rankings stay editorial: we separate testing,
+                scoring, and commercial terms so the recommendation does not turn into ad copy.
+              </p>
+              <div class="method-list">
+                <div><strong>1. Test the food</strong><p>Flavor, texture, freshness, menu depth, and reheating.</p></div>
+                <div><strong>2. Map the week</strong><p>What problem does the service actually solve?</p></div>
+                <div><strong>3. Disclose the relationship</strong><p>If a link can earn revenue, readers should know.</p></div>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div>
+            <a class="logo" href="/">platter</a>
+            <p>
+              Platter is an independent editorial site for meal planning, meal prep, food delivery, and the
+              systems that make eating well feel possible. We may earn a commission through links, but editorial
+              recommendations are written first.
+            </p>
+            <p>&copy; 2026 Platter Editorial.</p>
+          </div>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="#stories">Stories</a>
+            <a href="#rankings">Reviews</a>
+            <a href="#guides">Guides</a>
+            <a href="https://fantastic-fiesta-indol.vercel.app/">Batch app</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const plannerQuestions = [
+        {
+          question: "What kind of week are you feeding?",
+          options: ["Weeknight dinners", "Packable lunches", "High-protein days", "A full reset"],
+          result: "Good. Platter would start by separating cook nights from backup nights."
+        },
+        {
+          question: "How much cooking energy do you have?",
+          options: ["Plenty", "Some", "Almost none", "It depends"],
+          result: "That is the useful answer. A plan should match energy, not an imaginary Sunday."
+        },
+        {
+          question: "Where does the week usually break?",
+          options: ["Lunch", "Dinner", "Groceries", "Prep time"],
+          result: "That is where prepared meals, batch cooking, or grocery shortcuts should go first."
+        },
+        {
+          question: "What should the plan protect?",
+          options: ["Protein", "Budget", "Variety", "Less cleanup"],
+          result: "Batch can turn that into a week map with recipes, prep notes, and prepared picks."
+        }
+      ];
+
+      let plannerStep = 0;
+      const plannerAnswers = [];
+      const questionEl = document.querySelector("#planner-question");
+      const optionsEl = document.querySelector("#planner-options");
+      const countEl = document.querySelector("#planner-count");
+      const resultEl = document.querySelector("#planner-result");
+      const progressEls = Array.from(document.querySelectorAll(".planner-progress span"));
+
+      function renderPlanner() {
+        const item = plannerQuestions[plannerStep];
+        questionEl.textContent = item.question;
+        countEl.textContent = `Step ${plannerStep + 1} of ${plannerQuestions.length}`;
+        optionsEl.innerHTML = "";
+        if (plannerAnswers[plannerStep]) {
+          resultEl.textContent = item.result;
+        } else {
+          resultEl.textContent = "Choose the closest answer. Batch will translate it into a plan.";
+        }
+
+        progressEls.forEach((el, index) => {
+          el.classList.toggle("is-active", index <= plannerStep);
+        });
+
+        item.options.forEach((option) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "planner-option";
+          if (plannerAnswers[plannerStep] === option) button.classList.add("is-selected");
+          button.textContent = option;
+          button.addEventListener("click", () => {
+            plannerAnswers[plannerStep] = option;
+            if (plannerStep < plannerQuestions.length - 1) {
+              renderPlanner();
+              window.setTimeout(() => {
+                plannerStep += 1;
+                renderPlanner();
+              }, 260);
+            } else {
+              renderPlanner();
+              resultEl.innerHTML = 'Nice. <a href="https://fantastic-fiesta-indol.vercel.app/">Open Batch</a> to build the full weekly plan.';
+            }
+          });
+          optionsEl.appendChild(button);
+        });
+      }
+
+      renderPlanner();
+
+      document.querySelector("#newsletter-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const email = new FormData(event.currentTarget).get("email");
+        const status = document.querySelector("#signup-status");
+        status.textContent = email ? "You are on the list. First issue: what to cook, buy, and outsource." : "";
+        event.currentTarget.reset();
+      });
+    </script>
+  </body>
+</html>
