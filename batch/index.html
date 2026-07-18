@@ -376,24 +376,45 @@
       }
 
       .brand {
+        position: relative;
         display: inline-flex;
         align-items: center;
-        gap: 9px;
-        font-family: var(--display);
-        font-size: 18px;
+        justify-content: center;
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 20px;
         font-weight: 900;
+        letter-spacing: 0.01em;
         line-height: 1;
-        letter-spacing: 0;
+        padding: 0 42px 8px 0;
+        text-decoration: none;
         text-transform: uppercase;
       }
 
+      .brand::before,
       .brand::after {
         content: "";
-        width: 38px;
-        height: 14px;
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .brand::before {
+        left: 46%;
+        right: 27px;
+        bottom: 0;
+        height: 2px;
+        background: var(--accent);
+      }
+
+      .brand::after {
+        right: 0;
+        bottom: 0;
+        width: 31px;
+        height: 16px;
         border-right: 2px solid var(--accent);
         border-bottom: 2px solid var(--accent);
-        transform: skewX(-28deg);
+        transform: skewX(-27deg);
+        transform-origin: right bottom;
       }
 
       .progress {
@@ -2634,6 +2655,21 @@
           padding: 20px;
         }
 
+        .brand {
+          font-size: 17px;
+          padding-right: 34px;
+          padding-bottom: 7px;
+        }
+
+        .brand::before {
+          right: 22px;
+        }
+
+        .brand::after {
+          width: 25px;
+          height: 12px;
+        }
+
         .marketing-links a {
           display: none;
         }
@@ -3695,7 +3731,7 @@
         return `
           <header class="top-bar">
             <div>
-              <span class="brand">Batch</span>
+              <a class="brand" href="/" aria-label="Platter homepage">platter</a>
               <span class="progress">${state.currentScreen + 1} of ${screenTitles.length} &middot; ${screenTitles[state.currentScreen]}</span>
             </div>
             <div class="top-progress" aria-label="Progress: step ${state.currentScreen + 1} of ${screenTitles.length}">
@@ -3768,7 +3804,7 @@
         return `
           <section class="marketing-page" id="top">
             <header class="marketing-nav">
-              <span class="brand">Batch</span>
+              <a class="brand" href="/" aria-label="Platter homepage">platter</a>
               <nav class="marketing-links" aria-label="Batch sections">
                 <a href="#how">How it works</a>
                 <a href="#why">Why Batch</a>
@@ -3866,8 +3902,8 @@
             </section>
 
             <footer class="marketing-footer">
-              <span class="brand">Batch</span>
-              <span>By Platter. Built for the week ahead.</span>
+              <a class="brand" href="/" aria-label="Platter homepage">platter</a>
+              <span>Batch is Platter's weekly food planning tool.</span>
             </footer>
           </section>
         `;
