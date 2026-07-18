@@ -2819,6 +2819,61 @@
         text-transform: uppercase;
       }
 
+      .prepared-summary-card {
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .prepared-summary-card .delivery-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 12px;
+      }
+
+      .prepared-summary-card .delivery-row > div {
+        min-width: 0;
+        display: grid;
+        gap: 2px;
+      }
+
+      .prepared-summary-card .delivery-row > strong {
+        min-width: 24px;
+        text-align: right;
+      }
+
+      .prepared-summary-card .mini-list {
+        gap: 0;
+        max-height: none;
+        overflow: visible;
+      }
+
+      .prepared-summary-card .mini-list div {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 54px;
+        align-items: start;
+        gap: 10px;
+      }
+
+      .prepared-summary-card .mini-list span {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .prepared-summary-card .mini-list small {
+        display: grid;
+        justify-items: end;
+        line-height: 1.1;
+        text-align: right;
+        white-space: normal;
+      }
+
+      .prepared-summary-card .mini-list small b,
+      .prepared-summary-card .mini-list small em {
+        font: inherit;
+        font-style: normal;
+      }
+
       .toast {
         position: fixed;
         top: 80px;
@@ -4149,7 +4204,7 @@
               </div>
               <small>${state.leadEmail ? `Saved for ${escapeHtml(state.leadEmail)}.` : "Your email stays with this plan request."}</small>
             </form>
-            <div class="delivery-card">
+            <div class="delivery-card prepared-summary-card">
               <div class="delivery-row">
                 <div>
                   <span>Prepared picks</span>
@@ -4163,7 +4218,7 @@
                     ? chefSlots
                         .map((slot, slotIndex) => {
                           const meal = getMealForSlot(slot, slotIndex);
-                          return `<div><span>${meal.name}</span><small>${slot.day} ${slot.type}</small></div>`;
+                          return `<div><span>${meal.name}</span><small><b>${slot.day}</b><em>${slot.type}</em></small></div>`;
                         })
                         .join("")
                     : `<div><span>All slots are cooked at home or left open.</span><small>No prepared picks</small></div>`
@@ -4453,20 +4508,20 @@
                   <div><strong>9 steps</strong><span>Working app flow</span></div>
                   <div><strong>1 list</strong><span>For Sunday prep</span></div>
                 </div>
-                <div class="hero-context">Currently in private prototype review. The goal is simple: make the cook-versus-order decision visible before the week starts.</div>
+                <div class="hero-context">Currently in private beta. The goal is simple: make the cook-versus-order decision visible before the week starts.</div>
               </div>
               <div class="landing-device" aria-label="Batch app preview">
                 <div class="preview-phone landing-phone">${renderPreviewScreen(0)}</div>
-                <span class="landing-caption">Live iPhone beta preview</span>
+                <span class="landing-caption">Mobile flow preview</span>
               </div>
             </section>
 
             <section class="proof-strip" aria-label="Batch product proof">
               <div class="proof-strip-inner">
-                <div class="proof-item"><strong>No reload selections</strong><span>Chips, days, and meal slots respond instantly</span></div>
+                <div class="proof-item"><strong>Instant choices</strong><span>Chips, days, and meal slots respond in place</span></div>
                 <div class="proof-item"><strong>Cook / prepared / open</strong><span>Every lunch and dinner has a clear role</span></div>
                 <div class="proof-item"><strong>List first</strong><span>Timeline appears only when Sunday needs structure</span></div>
-                <div class="proof-item"><strong>Email save</strong><span>Lead capture lives at the plan moment</span></div>
+                <div class="proof-item"><strong>Save when ready</strong><span>Email arrives after the plan feels right</span></div>
               </div>
             </section>
 
@@ -4478,19 +4533,19 @@
                   <span>01</span>
                   <h3>Define the load.</h3>
                   <p>Start with weekdays, the full week, or a custom rhythm that matches the calendar in front of you.</p>
-                  <small class="screen-ref">Screens 2–3</small>
+                  <small class="screen-ref">Step 1</small>
                 </article>
                 <article class="landing-card">
                   <span>02</span>
                   <h3>Set the balance.</h3>
                   <p>Tell Batch where you want to cook, where you want backup, and what food guardrails matter.</p>
-                  <small class="screen-ref">Screens 4–7</small>
+                  <small class="screen-ref">Step 2</small>
                 </article>
                 <article class="landing-card">
                   <span>03</span>
                   <h3>Review before saving.</h3>
                   <p>Review a list view or Sunday timeline, then keep the plan, export it, or send it to yourself.</p>
-                  <small class="screen-ref">Screens 8–9</small>
+                  <small class="screen-ref">Step 3</small>
                 </article>
               </div>
             </section>
@@ -4515,16 +4570,16 @@
                   <div class="preview-phone">${renderPreviewScreen(7)}</div>
                   <div class="preview-notes">
                     <div class="preview-note">
-                      <strong>Interactive chip tapping.</strong>
-                      <span>Preferences toggle in place, so the planner feels instant and lightweight.</span>
+                      <strong>Preferences stay easy.</strong>
+                      <span>Tap guardrails without losing the pace of the flow.</span>
                     </div>
                     <div class="preview-note">
                       <strong>Meal cards stay whole.</strong>
                       <span>The prepared-picks screen scrolls inside the phone so every meal card can be read and swapped.</span>
                     </div>
                     <div class="preview-note">
-                      <strong>Review is the conversion moment.</strong>
-                      <span>Email capture appears after the plan exists, which makes the ask feel earned.</span>
+                      <strong>Save after review.</strong>
+                      <span>The email ask appears once there is a real plan to keep.</span>
                     </div>
                   </div>
                 </div>
@@ -4533,7 +4588,7 @@
 
             <section class="landing-section" id="index">
               <span class="section-kicker">Food planning index</span>
-              <h2>Built from Platter's food intelligence.</h2>
+              <h2>Built from Platter's editorial point of view.</h2>
               <div class="landing-index">
                 <article class="landing-card is-compact">
                   <span>Guides</span>

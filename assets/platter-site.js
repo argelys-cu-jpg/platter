@@ -1,7 +1,7 @@
 (function () {
   const config = {
-    cookUnityBaseUrl: "https://www.cookunity.com/",
-    cookUnityTrackingParams: {
+    partnerBaseUrl: "https://www.cookunity.com/",
+    partnerTrackingParams: {
       utm_source: "platter",
       utm_medium: "editorial",
       utm_campaign: "review_vertical",
@@ -9,17 +9,17 @@
     }
   };
 
-  function trackedCookUnityUrl(context) {
-    const url = new URL(config.cookUnityBaseUrl);
-    Object.entries(config.cookUnityTrackingParams).forEach(([key, value]) => {
+  function trackedPartnerUrl(context) {
+    const url = new URL(config.partnerBaseUrl);
+    Object.entries(config.partnerTrackingParams).forEach(([key, value]) => {
       url.searchParams.set(key, value);
     });
     if (context) url.searchParams.set("platter_cta", context);
     return url.toString();
   }
 
-  document.querySelectorAll("[data-cookunity-cta]").forEach((link) => {
-    link.href = trackedCookUnityUrl(link.dataset.ctaContext || "cookunity_cta");
+  document.querySelectorAll("[data-partner-cta]").forEach((link) => {
+    link.href = trackedPartnerUrl(link.dataset.ctaContext || "review_cta");
     link.rel = "sponsored noopener";
   });
 })();
