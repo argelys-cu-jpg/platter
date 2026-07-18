@@ -10,7 +10,8 @@
     />
     <meta name="platter-build" content="kitchen-intelligence-type-2026-07-16" />
     <link rel="icon" href="data:," />
-    <link rel="preload" as="image" href="assets/platter-cover-illustration-shortlist.jpeg" />
+    <link rel="preload" as="image" href="assets/platter-cover-horizontal.png" media="(min-width: 681px)" />
+    <link rel="preload" as="image" href="assets/platter-cover-vertical.png" media="(max-width: 680px)" />
     <meta property="og:title" content="Platter - Food Intelligence for Real Life" />
     <meta
       property="og:description"
@@ -262,25 +263,105 @@
 
       .hero {
         width: 100%;
-        min-height: clamp(620px, calc(100svh - 96px), 820px);
-        display: flex;
-        align-items: flex-end;
-        padding: clamp(74px, 8vw, 110px) 0 clamp(44px, 6vw, 76px);
+        padding: clamp(32px, 5vw, 72px) 0;
         border-bottom: 1px solid var(--rule);
-        background:
-          linear-gradient(90deg, rgba(17, 17, 17, 0.78) 0%, rgba(17, 17, 17, 0.58) 37%, rgba(17, 17, 17, 0.18) 67%, rgba(17, 17, 17, 0.04) 100%),
-          url("assets/platter-cover-illustration-shortlist.jpeg") 60% center / cover no-repeat;
-        color: var(--white);
+        background: var(--surface);
+        color: var(--ink);
       }
 
       .hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 720px);
-        align-items: end;
+        grid-template-columns: minmax(0, 1.36fr) minmax(280px, 0.52fr);
+        align-items: stretch;
+        gap: 18px;
       }
 
       .hero-grid::after {
         content: none;
+      }
+
+      .hero-cover {
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.78fr);
+        min-height: clamp(460px, 45vw, 650px);
+        border: 1px solid var(--rule);
+        background: var(--surface);
+        overflow: hidden;
+      }
+
+      .hero-media {
+        display: block;
+        min-width: 0;
+        min-height: 100%;
+        background: var(--black);
+      }
+
+      .hero-media img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 58% center;
+      }
+
+      .hero-story {
+        display: grid;
+        align-content: center;
+        min-width: 0;
+        padding: clamp(24px, 3vw, 42px);
+      }
+
+      .hero-more {
+        display: grid;
+        align-content: start;
+        gap: 10px;
+        border-top: 3px solid var(--rule);
+        padding-top: 14px;
+      }
+
+      .hero-more-label {
+        color: var(--accent);
+        font-family: var(--poster);
+        font-size: 13px;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .hero-link-card {
+        display: grid;
+        align-content: space-between;
+        gap: 10px;
+        min-height: 116px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        padding: 16px;
+        transition: background 160ms ease, border-color 160ms ease;
+      }
+
+      .hero-link-card:hover {
+        border-color: var(--rule);
+        background: var(--mist);
+      }
+
+      .hero-link-card small {
+        color: var(--muted);
+        font-family: var(--poster);
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero-link-card strong {
+        display: block;
+        font-size: clamp(20px, 1.8vw, 28px);
+        font-weight: 900;
+        line-height: 0.98;
+      }
+
+      .hero-link-card span {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
       }
 
       .eyebrow,
@@ -346,25 +427,25 @@
       }
 
       .hero .italic {
-        color: #f06d5f;
-      }
-
-      .hero h1,
-      .hero-copy,
-      .hero .eyebrow {
-        text-shadow: 0 2px 18px rgba(0, 0, 0, 0.32);
+        color: var(--accent);
       }
 
       .hero .eyebrow,
       .hero .card-kicker {
-        color: rgba(255, 255, 255, 0.88);
+        color: var(--muted);
+      }
+
+      .hero h1 {
+        max-width: 11ch;
+        color: var(--ink);
+        font-size: clamp(44px, 4.6vw, 72px);
       }
 
       .hero-copy {
-        max-width: 620px;
+        max-width: 42ch;
         margin-top: 22px;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: clamp(17px, 1.7vw, 21px);
+        color: var(--muted);
+        font-size: clamp(17px, 1.45vw, 20px);
         line-height: 1.5;
       }
 
@@ -424,13 +505,14 @@
       }
 
       .hero .button-secondary {
-        border-color: rgba(255, 255, 255, 0.72);
-        background: rgba(255, 255, 255, 0.9);
+        border-color: var(--line);
+        background: var(--surface);
         color: var(--ink);
       }
 
       .hero .button-secondary:hover {
-        background: var(--white);
+        border-color: var(--rule);
+        background: var(--mist);
       }
 
       .hero-note {
@@ -1023,6 +1105,118 @@
         line-height: 1.02;
       }
 
+      .recipe-desk {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .recipe-panel,
+      .recipe-search-panel,
+      .recipe-mini-card {
+        border: var(--hairline);
+        background: var(--surface);
+      }
+
+      .recipe-panel {
+        display: grid;
+        gap: 18px;
+        padding: var(--card-pad-lg);
+      }
+
+      .recipe-panel h3 {
+        max-width: 12ch;
+        font-size: clamp(42px, 5vw, 76px);
+        font-weight: 900;
+        line-height: 0.92;
+      }
+
+      .recipe-search-panel {
+        display: grid;
+        gap: 16px;
+        align-content: start;
+        padding: var(--card-pad);
+      }
+
+      .recipe-search {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+      }
+
+      .recipe-search input {
+        min-height: 50px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
+        padding: 0 14px;
+      }
+
+      .recipe-search button {
+        min-height: 50px;
+        border: 1px solid var(--rule);
+        background: var(--rule);
+        color: var(--white);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 900;
+        padding: 0 18px;
+      }
+
+      .recipe-topic-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .recipe-topic-row a {
+        border: 1px solid var(--line);
+        background: var(--mist);
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 850;
+        padding: 8px 10px;
+      }
+
+      .recipe-mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .recipe-mini-card {
+        display: grid;
+        grid-template-columns: 86px minmax(0, 1fr);
+        gap: 12px;
+        align-items: center;
+        min-height: 104px;
+        padding: 10px;
+      }
+
+      .recipe-mini-card img {
+        width: 86px;
+        height: 86px;
+        object-fit: cover;
+        border: 1px solid var(--line);
+      }
+
+      .recipe-mini-card h4 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.02;
+      }
+
+      .recipe-mini-card span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
       .batch-layout {
         display: grid;
         grid-template-columns: minmax(340px, 0.9fr) minmax(0, 1.1fr);
@@ -1244,7 +1438,21 @@
         }
 
         .hero-grid {
-          display: block;
+          grid-template-columns: 1fr;
+        }
+
+        .hero-more {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          border-top: 0;
+          padding-top: 0;
+        }
+
+        .hero-more-label {
+          grid-column: 1 / -1;
+        }
+
+        .hero-link-card {
+          min-height: 142px;
         }
 
         h1 {
@@ -1276,6 +1484,7 @@
         .story-grid,
         .review-layout,
         .batch-layout,
+        .recipe-desk,
         .latest-layout,
         .manifesto-grid,
         .index-section .section-head,
@@ -1284,7 +1493,26 @@
         }
 
         .hero-grid {
-          display: block;
+          grid-template-columns: 1fr;
+        }
+
+        .hero-cover {
+          grid-template-columns: 1fr;
+          min-height: 0;
+        }
+
+        .hero-media {
+          min-height: 0;
+        }
+
+        .hero-media img {
+          aspect-ratio: 16 / 10;
+          height: auto;
+          object-position: center;
+        }
+
+        .hero-more {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         h1 {
@@ -1330,11 +1558,9 @@
         }
 
         .hero {
-          min-height: min(620px, calc(100svh - 74px));
-          padding: clamp(54px, 8vw, 76px) 0;
-          background:
-            linear-gradient(90deg, rgba(17, 17, 17, 0.78) 0%, rgba(17, 17, 17, 0.56) 45%, rgba(17, 17, 17, 0.16) 78%, rgba(17, 17, 17, 0.04) 100%),
-            url("assets/platter-cover-illustration-shortlist.jpeg") 58% center / cover no-repeat;
+          min-height: 0;
+          padding: clamp(32px, 6vw, 52px) 0;
+          background: var(--surface);
         }
 
         .manifesto-grid {
@@ -1429,24 +1655,61 @@
         }
 
         .hero {
-          min-height: clamp(520px, calc(100svh - 74px), 660px);
-          display: flex;
-          align-items: flex-end;
-          padding-top: clamp(28px, 8vw, 42px);
-          padding-bottom: clamp(30px, 8vw, 44px);
-          background:
-            linear-gradient(
-              180deg,
-              rgba(17, 17, 17, 0.68) 0%,
-              rgba(17, 17, 17, 0.58) 34%,
-              rgba(17, 17, 17, 0.32) 68%,
-              rgba(17, 17, 17, 0.18) 100%
-            ),
-            url("assets/platter-cover-illustration-shortlist.jpeg") 58% center / cover no-repeat;
+          min-height: 0;
+          display: block;
+          padding: 20px 0 24px;
+          background: var(--surface);
+          color: var(--ink);
+        }
+
+        .hero-grid {
+          display: grid;
+          gap: 18px;
+        }
+
+        .hero-cover {
+          grid-template-columns: 1fr;
+          min-height: 0;
+          margin-inline: calc(var(--container-pad) * -1);
+          border-left: 0;
+          border-right: 0;
+        }
+
+        .hero-media {
+          min-height: 0;
+        }
+
+        .hero-media img {
+          aspect-ratio: 3 / 4;
+          height: auto;
+          object-position: center;
+        }
+
+        .hero-story {
+          padding: 20px var(--container-pad) 22px;
+        }
+
+        .hero-more {
+          grid-template-columns: 1fr;
+          gap: 0;
+          border-top: 1px solid var(--rule);
+          padding-top: 0;
+        }
+
+        .hero-link-card {
+          min-height: 0;
+          border-top: 0;
+          border-left: 0;
+          border-right: 0;
+          padding: 14px 0;
+        }
+
+        .hero-link-card strong {
+          font-size: 24px;
         }
 
         h1 {
-          max-width: 340px;
+          max-width: none;
           font-size: clamp(32px, 9.4vw, 42px);
           line-height: 0.96;
         }
@@ -1461,8 +1724,9 @@
         }
 
         .hero-copy {
-          max-width: 32ch;
+          max-width: none;
           margin-top: 14px;
+          color: var(--muted);
           font-size: 15px;
           line-height: 1.38;
         }
@@ -1471,6 +1735,8 @@
         .signup-form,
         .planner-options,
         .articles-grid,
+        .recipe-search,
+        .recipe-mini-grid,
         .pillars,
         .footer-grid {
           grid-template-columns: 1fr;
@@ -1515,9 +1781,19 @@
         }
 
         .button,
+        .recipe-search button,
         .signup-form button {
           min-height: 52px;
           width: 100%;
+        }
+
+        .recipe-panel h3 {
+          max-width: 12ch;
+          font-size: clamp(38px, 11vw, 48px);
+        }
+
+        .recipe-mini-card {
+          min-height: 94px;
         }
 
         .signup-form input {
@@ -1759,6 +2035,7 @@
             <a href="reviews/index.html">Reviews</a>
             <a href="guides/index.html">Guides</a>
             <a href="stories/index.html">Stories</a>
+            <a href="recipes/index.html">Recipes</a>
           </div>
           <a class="logo" href="index.html" aria-label="Platter homepage">platter</a>
           <div class="nav-links">
@@ -1771,22 +2048,54 @@
       <main>
         <section class="hero">
           <div class="container hero-grid">
-            <div>
-              <div class="eyebrow">Cover story</div>
-              <h1>
-                <span class="h1-line">The delivery</span>
-                <span class="h1-line">dinner <span class="italic">shortlist.</span></span>
-              </h1>
-              <p class="hero-copy">
-                What to order when the week gets loud, what to skip, and the chef moves that make delivered dinner
-                feel freshly plated.
-              </p>
-              <div class="hero-actions">
-                <a class="button button-primary" href="guides/best-meal-delivery-services/index.html">Read the cover story</a>
-                <a class="button button-secondary" href="/batch/">Build this week's plan</a>
+            <article class="hero-cover">
+              <picture class="hero-media">
+                <source media="(max-width: 680px)" srcset="assets/platter-cover-vertical.png" />
+                <img
+                  src="assets/platter-cover-horizontal.png"
+                  alt="Illustrated salmon dinner with a phone, herbs, lemon, and meal-planning notes on a tiled table."
+                />
+              </picture>
+              <div class="hero-story">
+                <div class="eyebrow">Cover story</div>
+                <h1>
+                  <span class="h1-line">The delivery</span>
+                  <span class="h1-line">dinner <span class="italic">shortlist.</span></span>
+                </h1>
+                <p class="hero-copy">
+                  What to order when the week gets loud, what to skip, and the chef moves that make delivered dinner
+                  feel freshly plated.
+                </p>
+                <div class="hero-actions">
+                  <a class="button button-primary" href="guides/best-meal-delivery-services/index.html">Read the cover story</a>
+                  <a class="button button-secondary" href="/batch/">Build this week's plan</a>
+                </div>
               </div>
-            </div>
+            </article>
 
+            <aside class="hero-more" aria-label="More from Platter">
+              <div class="hero-more-label">Also on Platter</div>
+              <a class="hero-link-card" href="reviews/index.html">
+                <small>The Index</small>
+                <strong>The 2026 prepared meal ranking.</strong>
+                <span>Services scored for taste, range, delivery, filters, and real-week fit.</span>
+              </a>
+              <a class="hero-link-card" href="stories/index.html">
+                <small>Body context</small>
+                <strong>GLP-1s changed appetite. Dinner has to catch up.</strong>
+                <span>Protein, smaller portions, and what enough means now.</span>
+              </a>
+              <a class="hero-link-card" href="recipes/index.html">
+                <small>Recipes</small>
+                <strong>Weeknight recipes that understand the clock.</strong>
+                <span>Cook from scratch, finish a prepared meal, or meet the week halfway.</span>
+              </a>
+              <a class="hero-link-card" href="/batch/">
+                <small>Tool</small>
+                <strong>Build this week's plan with Batch.</strong>
+                <span>A mobile planner for the week people actually eat.</span>
+              </a>
+            </aside>
           </div>
         </section>
 
@@ -1904,6 +2213,66 @@
                     <div class="story-footer"><span>Dietitian reviewed</span><span>9 min read</span></div>
                   </div>
                 </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="recipes">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <div class="section-kicker">Recipes</div>
+                <h2>What to cook when the week is already moving.</h2>
+              </div>
+              <p>
+                Platter recipes are built for real kitchens: quick dinners, flexible swaps, smart leftovers, and
+                finishing moves that make prepared food taste freshly considered.
+              </p>
+            </div>
+
+            <div class="recipe-desk">
+              <article class="recipe-panel">
+                <div class="card-kicker">Recipe of the week</div>
+                <h3>Weekday salmon with lemon couscous.</h3>
+                <p class="dek">
+                  A flexible fish dinner that works as a full recipe, a cooked-and-prepped hybrid, or a template for
+                  upgrading a ready-to-heat entree.
+                </p>
+                <div class="story-footer"><span>35 minutes</span><span>High protein</span></div>
+                <a class="button button-primary" href="recipes/weekday-salmon-couscous/index.html">Cook this recipe</a>
+              </article>
+
+              <div class="recipe-search-panel">
+                <form class="recipe-search" action="recipes/index.html" aria-label="Search Platter recipes">
+                  <label class="sr-only" for="home-recipe-search">Search recipes</label>
+                  <input id="home-recipe-search" type="search" placeholder="Search recipes, ingredients, or shortcuts" />
+                  <button type="submit">Search</button>
+                </form>
+                <div class="recipe-topic-row" aria-label="Recipe topics">
+                  <a href="recipes/index.html#weeknight">Weeknight</a>
+                  <a href="recipes/index.html#prepared">Prepared-meal upgrades</a>
+                  <a href="recipes/index.html#high-protein">High protein</a>
+                  <a href="recipes/index.html#pantry">Pantry rescue</a>
+                </div>
+                <div class="recipe-mini-grid">
+                  <a class="recipe-mini-card" href="recipes/weekday-salmon-couscous/index.html">
+                    <img src="assets/platter-cover-horizontal.png" alt="Illustrated salmon dinner on a tiled table" />
+                    <div><h4>Salmon with lemon couscous</h4><span>35 min</span></div>
+                  </a>
+                  <a class="recipe-mini-card" href="recipes/index.html#prepared">
+                    <img src="assets/platter-cover-delivery-dinner-shortlist.png" alt="Illustrated delivery dinner table" />
+                    <div><h4>The five-minute dinner upgrade</h4><span>Prepared meals</span></div>
+                  </a>
+                  <a class="recipe-mini-card" href="recipes/index.html#weeknight">
+                    <img src="assets/platter-hero-finished-plate-1672x941.png" alt="Finished salmon plate" />
+                    <div><h4>Rotisserie chicken rice plates</h4><span>20 min</span></div>
+                  </a>
+                  <a class="recipe-mini-card" href="recipes/index.html">
+                    <img src="assets/platter-cover-vertical.png" alt="Illustrated salmon dinner spread" />
+                    <div><h4>Browse the recipe desk</h4><span>All recipes</span></div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -2091,6 +2460,7 @@
             <a href="reviews/index.html">Reviews</a>
             <a href="guides/index.html">Guides</a>
             <a href="stories/index.html">Stories</a>
+            <a href="recipes/index.html">Recipes</a>
             <a href="newsletter/index.html">Newsletter</a>
             <a href="about/index.html">About</a>
             <a href="editorial-standards/index.html">Editorial standards</a>
