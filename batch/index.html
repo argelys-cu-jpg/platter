@@ -4091,11 +4091,11 @@
             index,
             `
               <span class="eyebrow-pill">Meal planning for real life</span>
-              <p class="lede">Pick the days. Set the cook-versus-prepared balance. Get recipes, prep notes, and backup meals where they help.</p>
+              <p class="lede">Answer a few quick questions. Get a realistic week: what to cook, what to prep, and what to leave open.</p>
               <button type="button" class="primary-button" data-action="go" data-screen="1" ${disabled}>Build my week</button>
               <div class="hero-plate" aria-hidden="true">
                 <img src="${heroMealPhoto}" alt="" />
-                <div class="hero-plate-note">Cook what you want. Outsource the rest.</div>
+                <div class="hero-plate-note">Cook what you want. Let Batch cover the rest.</div>
               </div>
               <div class="discovery-strip" aria-label="Planning cues">
                 <div class="discovery-chip"><span>Routine</span><strong>Packable lunches</strong></div>
@@ -4211,7 +4211,7 @@
             'Hang tight. We are <span class="accent-word">building</span> your week.',
             index,
             `
-              <p class="lede">Your inputs are in the pot. Batch is sorting recipes, prepared meals, and prep notes into one usable plan.</p>
+              <p class="lede">Your answers are in. Batch is matching recipes, prepared picks, and prep notes into one usable plan.</p>
               <div class="prep-scene" aria-label="Batch is preparing your week">
                 <span class="prep-steam steam-one"></span>
                 <span class="prep-steam steam-two"></span>
@@ -4230,9 +4230,9 @@
                 <div class="prep-fire" aria-hidden="true"><span></span><span></span><span></span></div>
               </div>
               <div class="build-list prep-list">
-                <div><span>Reading the days you selected</span><b></b></div>
-                <div><span>Placing prepared meals where they help</span><b></b></div>
-                <div><span>Drafting a week map you can edit</span><b></b></div>
+                <div><span>Reading your days</span><b></b></div>
+                <div><span>Balancing cook and prepared</span><b></b></div>
+                <div><span>Writing your shopping list</span><b></b></div>
               </div>
               <button type="button" class="secondary-button" data-action="go" data-screen="5" ${disabled}>Show the map</button>
             `,
@@ -4398,14 +4398,14 @@
           index,
           `
             <div class="success-circle" aria-hidden="true">B</div>
-            <p class="lede">Save the plan, send yourself the details, or make another pass.</p>
+            <p class="lede">Save the plan and we will email the details. You can still make another pass.</p>
             <form class="lead-form" data-lead-form>
               <label for="plan-email">Get the plan by email.</label>
               <div class="lead-row">
                 <input id="plan-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" value="${escapeHtml(state.leadEmail)}" ${disabled} />
                 <button type="submit" ${disabled}>Save</button>
               </div>
-              <small>${state.leadEmail ? `Saved for ${escapeHtml(state.leadEmail)}.` : "Your email stays with this plan request."}</small>
+              <small>${state.leadEmail ? `Saved for ${escapeHtml(state.leadEmail)}.` : "Batch is in early beta. No spam, no charge."}</small>
             </form>
             <div class="delivery-card prepared-summary-card">
               <div class="delivery-row">
@@ -4633,7 +4633,7 @@
               <a class="brand" href="/" aria-label="Platter homepage">platter</a>
               <nav class="marketing-links" aria-label="Batch beta navigation">
                 <button type="button" class="nav-cta" data-action="mode" data-mode="landing">Back to Batch</button>
-                <button type="button" class="nav-cta" data-action="start-flow" data-screen="0">Open prototype</button>
+                <button type="button" class="nav-cta" data-action="start-flow" data-screen="0">Open builder</button>
               </nav>
             </header>
 
@@ -4643,7 +4643,7 @@
                 <h1>What Batch is becoming.</h1>
                 <p>Batch is still in development. These screens show the direction: a mobile planner that turns everyday food decisions into a usable week.</p>
                 <div class="landing-actions">
-                  <button type="button" class="landing-button" data-action="start-flow" data-screen="0">Try the prototype</button>
+                  <button type="button" class="landing-button" data-action="start-flow" data-screen="0">Try the builder</button>
                   <button type="button" class="landing-button is-secondary" data-action="mode" data-mode="landing">Return to overview</button>
                 </div>
               </div>
@@ -4698,20 +4698,20 @@
               <div class="landing-copy">
                 <div class="hero-meta">
                   <span class="beta-status">Private beta</span>
-                  <span class="version-note">Mobile-first planning prototype</span>
+                  <span class="version-note">Mobile-first weekly planner</span>
                 </div>
-                <h1 id="landing-title">Your week, batched with precision.</h1>
-                <p>Batch maps the week you actually have: what to cook, where prepared meals help, and the Sunday prep that keeps dinner from becoming a daily debate.</p>
+                <h1 id="landing-title">Stop deciding dinner every night.</h1>
+                <p>Answer a few quick questions. Batch maps your week: what to cook, where prepared meals help, and the prep that keeps dinner from becoming a daily debate.</p>
                 <div class="landing-actions">
-                  <button type="button" class="landing-button" data-action="start-flow" data-screen="0">Build your week <span class="arrow">→</span></button>
-                  <a class="landing-button is-secondary" href="#waitlist">Join beta waitlist</a>
+                  <button type="button" class="landing-button" data-action="start-flow" data-screen="0">Build a sample week <span class="arrow">→</span></button>
+                  <a class="landing-button is-secondary" href="#waitlist">Join the beta</a>
                 </div>
                 <div class="landing-stats" aria-label="Batch highlights">
                   <div><strong>2 min</strong><span>To map the week</span></div>
-                  <div><strong>9 steps</strong><span>Working app flow</span></div>
+                  <div><strong>5 days</strong><span>Pre-filled by default</span></div>
                   <div><strong>1 list</strong><span>For Sunday prep</span></div>
                 </div>
-                <div class="hero-context">Currently in private beta. The goal is simple: make the cook-versus-order decision visible before the week starts.</div>
+                <div class="hero-context">Currently in private beta. Free while we test. No account required to build a sample week.</div>
               </div>
               <div class="landing-device" aria-label="Batch app preview">
                 <span class="simulator-label">Live simulator panel</span>
@@ -4722,34 +4722,34 @@
 
             <section class="proof-strip" aria-label="Batch product proof">
               <div class="proof-strip-inner">
-                <div class="proof-item"><strong>Instant choices</strong><span>Chips, days, and meal slots respond in place</span></div>
-                <div class="proof-item"><strong>Cook / prepared / open</strong><span>Every lunch and dinner has a clear role</span></div>
-                <div class="proof-item"><strong>List first</strong><span>Timeline appears only when Sunday needs structure</span></div>
-                <div class="proof-item"><strong>Save when ready</strong><span>Email arrives after the plan feels right</span></div>
+                <div class="proof-item"><strong>Answer</strong><span>Days, cooking balance, and guardrails</span></div>
+                <div class="proof-item"><strong>Map</strong><span>Every lunch and dinner gets a role</span></div>
+                <div class="proof-item"><strong>Review</strong><span>List first, timeline when useful</span></div>
+                <div class="proof-item"><strong>Save</strong><span>Email arrives after the plan feels right</span></div>
               </div>
             </section>
 
             <section class="landing-section" id="how">
               <span class="section-kicker">How it works</span>
-              <h2>A planning system for the week in front of you.</h2>
+              <h2>Three answers. A week that holds up.</h2>
               <div class="landing-grid">
                 <article class="landing-card">
                   <span>01</span>
-                  <h3>Define the load.</h3>
-                  <p>Start with weekdays, the full week, or a custom rhythm that matches the calendar in front of you.</p>
-                  <small class="screen-ref">Step 1</small>
+                  <h3>Answer.</h3>
+                  <p>Days, cooking balance, preferences. Plain questions, obvious choices, about two minutes.</p>
+                  <small class="screen-ref">Screens 2-4</small>
                 </article>
                 <article class="landing-card">
                   <span>02</span>
-                  <h3>Set the balance.</h3>
-                  <p>Tell Batch where you want to cook, where you want backup, and what food guardrails matter.</p>
-                  <small class="screen-ref">Step 2</small>
+                  <h3>Map.</h3>
+                  <p>Batch fills every lunch and dinner as cook, prepared, or open. Tap any slot to change its role.</p>
+                  <small class="screen-ref">Screens 5-7</small>
                 </article>
                 <article class="landing-card">
                   <span>03</span>
-                  <h3>Review before saving.</h3>
-                  <p>Review a list view or Sunday timeline, then keep the plan, export it, or send it to yourself.</p>
-                  <small class="screen-ref">Step 3</small>
+                  <h3>Save.</h3>
+                  <p>Get the plan and one shopping list. A timeline lays out Sunday prep when the week needs structure.</p>
+                  <small class="screen-ref">Screens 8-9</small>
                 </article>
               </div>
             </section>
@@ -4758,7 +4758,7 @@
               <div class="landing-feature">
                 <div class="landing-copy">
                   <span class="section-kicker">List first, Sunday when useful</span>
-                  <h2>Review the week before it asks anything else from you.</h2>
+                  <h2>Review your plan before saving it.</h2>
                   <p>Most planners push people into rigid daily schedules. Batch keeps the weekly map scannable first, then opens a Sunday prep timeline when structure would actually help.</p>
                   <ul class="feature-checks">
                     <li>Switch between the full meal list and prep timeline without leaving the review step.</li>
@@ -4820,15 +4820,15 @@
             <section class="waitlist-section" id="waitlist">
               <div class="waitlist-inner">
                 <span class="section-kicker">Private beta</span>
-                <h2>Join the Batch beta waitlist.</h2>
-                <p>We are opening Batch carefully while the planner is still being shaped. Join the list and we will send access when the next private beta group opens.</p>
+                <h2>Batch is in early beta.</h2>
+                <p>Build your week now, then save it and we will email the plan and list. Join the beta to help shape what comes next.</p>
                 <form class="lead-form landing-lead-form" data-lead-form>
                   <label for="landing-email">Get beta access updates.</label>
                   <div class="lead-row">
                     <input id="landing-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" value="${escapeHtml(state.leadEmail)}" />
                     <button type="submit">${state.leadEmail ? "Update email" : "Join waitlist"}</button>
                   </div>
-                  <small>${state.leadEmail ? `Saved for ${escapeHtml(state.leadEmail)}.` : "No spam. Just beta access, product updates, and the occasional smarter dinner idea."}</small>
+                  <small>${state.leadEmail ? `Saved for ${escapeHtml(state.leadEmail)}.` : "No spam. No charge while Batch is in beta."}</small>
                 </form>
               </div>
             </section>
