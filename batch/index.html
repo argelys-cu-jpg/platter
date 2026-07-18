@@ -61,6 +61,15 @@
         font: inherit;
       }
 
+      :where(a, button, input) {
+        touch-action: manipulation;
+      }
+
+      :where(a, button, input):focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
       img {
         max-width: 100%;
       }
@@ -547,6 +556,7 @@
 
       .brand {
         position: relative;
+        min-height: 44px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -2865,7 +2875,7 @@
         }
 
         .nav-cta {
-          min-height: 40px;
+          min-height: 44px;
           padding: 0 14px;
         }
 

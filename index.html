@@ -93,6 +93,15 @@
         font: inherit;
       }
 
+      :where(a, button, input) {
+        touch-action: manipulation;
+      }
+
+      :where(a, button, input):focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
       img {
         display: block;
         max-width: 100%;
@@ -168,6 +177,9 @@
 
       .nav a,
       .nav button {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
         color: var(--ink);
         font-size: 15px;
         font-family: var(--poster);
@@ -234,13 +246,13 @@
       }
 
       .nav-cta {
-        min-height: 34px;
+        min-height: 42px;
         display: inline-flex;
         align-items: center;
         border: 1px solid var(--rule);
         border-radius: 0;
         color: var(--ink) !important;
-        padding: 0 14px;
+        padding: 0 16px;
       }
 
       .nav-cta:hover {
@@ -1269,6 +1281,27 @@
         }
       }
 
+      @media (min-width: 681px) and (max-width: 980px) {
+        .nav {
+          min-height: 74px;
+          grid-template-columns: 1fr auto 1fr;
+          justify-items: stretch;
+          gap: 18px;
+          padding-block: 0;
+          padding-inline: var(--container-pad);
+        }
+
+        .nav-links {
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          gap: 16px;
+        }
+
+        .nav-links:last-child {
+          justify-content: flex-end;
+        }
+      }
+
       @media (max-width: 680px) {
         :root {
           --container-pad: 20px;
@@ -1279,19 +1312,20 @@
         }
 
         .site-header {
-          position: relative;
-          top: auto;
+          position: sticky;
+          top: 0;
           background: rgba(255, 255, 255, 0.98);
-          backdrop-filter: none;
+          backdrop-filter: blur(14px);
         }
 
         .nav {
-          min-height: 64px;
+          min-height: 68px;
           grid-template-columns: auto auto;
           justify-content: space-between;
           justify-items: stretch;
+          align-items: center;
           gap: 12px;
-          padding: 0;
+          padding: max(8px, env(safe-area-inset-top)) var(--container-pad) 8px;
         }
 
         .nav .nav-links:first-child {
@@ -1326,8 +1360,8 @@
         }
 
         .nav-cta {
-          min-height: 34px;
-          padding: 0 12px;
+          min-height: 44px;
+          padding: 0 14px;
         }
 
         .nav a,
@@ -1336,30 +1370,30 @@
         }
 
         .hero {
-          min-height: calc(100svh - 64px);
+          min-height: calc(100svh - 68px);
           display: block;
           align-items: flex-start;
-          padding-top: clamp(42px, 11vw, 58px);
-          padding-bottom: clamp(250px, 70vw, 372px);
+          padding-top: clamp(30px, 8vw, 44px);
+          padding-bottom: clamp(304px, 80vw, 430px);
           background:
             linear-gradient(
               180deg,
               rgba(247, 247, 247, 0.99) 0%,
-              rgba(247, 247, 247, 0.98) 50%,
-              rgba(247, 247, 247, 0.88) 69%,
-              rgba(247, 247, 247, 0.42) 86%,
-              rgba(247, 247, 247, 0.08) 100%
+              rgba(247, 247, 247, 0.98) 47%,
+              rgba(247, 247, 247, 0.82) 65%,
+              rgba(247, 247, 247, 0.32) 84%,
+              rgba(247, 247, 247, 0.04) 100%
             ),
-            url("assets/platter-hero-finished-plate-1672x941.png") 58% bottom / auto 58% no-repeat;
+            url("assets/platter-hero-finished-plate-1672x941.png") 60% bottom / auto 62% no-repeat;
         }
 
         h1 {
-          font-size: clamp(34px, 9.4vw, 46px);
+          font-size: clamp(34px, 10.2vw, 44px);
           line-height: 0.98;
         }
 
         .hero-copy {
-          margin-top: 18px;
+          margin-top: 16px;
           font-size: 16px;
           line-height: 1.45;
         }
@@ -1375,12 +1409,15 @@
 
         .hero-actions {
           display: grid;
+          gap: 10px;
+          margin-top: 22px;
         }
 
         .hero-note {
           grid-template-columns: 86px minmax(0, 1fr);
           gap: 14px;
-          margin-top: 30px;
+          min-height: 114px;
+          margin-top: 24px;
           border: 1px solid var(--rule);
           padding: 14px;
           background: rgba(255, 255, 255, 0.94);
@@ -1405,7 +1442,64 @@
 
         .button,
         .signup-form button {
+          min-height: 52px;
           width: 100%;
+        }
+
+        .signup-form input {
+          min-height: 52px;
+        }
+
+        .newsletter-band .container {
+          gap: 16px;
+          padding-top: 24px;
+          padding-bottom: 24px;
+        }
+
+        .section {
+          padding: 44px 0;
+        }
+
+        .section-head {
+          gap: 14px;
+          margin-bottom: 18px;
+        }
+
+        .section-head h2,
+        .index-section .section-head h2 {
+          font-size: clamp(34px, 10.4vw, 46px);
+          line-height: 0.98;
+        }
+
+        .story-grid,
+        .side-stack,
+        .articles-grid,
+        .batch-layout,
+        .latest-layout,
+        .review-layout {
+          gap: 12px;
+        }
+
+        .lead-story img,
+        .side-story img,
+        .article-card img {
+          min-height: 0;
+          max-height: none;
+          aspect-ratio: 4 / 3;
+          object-fit: cover;
+        }
+
+        .lead-body,
+        .side-body,
+        .article-body,
+        .batch-card,
+        .planner,
+        .method-card {
+          padding: 20px;
+        }
+
+        .review-card {
+          padding: 20px;
         }
 
         .section-head {
@@ -1427,6 +1521,7 @@
         .rank-row {
           grid-template-columns: 38px minmax(0, 1fr) 64px;
           gap: 8px;
+          min-height: auto;
           padding: 12px 10px;
         }
 
