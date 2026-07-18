@@ -806,20 +806,25 @@
       }
 
       .score {
-        min-width: 104px;
-        display: grid;
-        align-content: center;
-        justify-items: center;
+        min-width: 112px;
+        min-height: 0;
+        display: inline-grid;
+        grid-template-columns: auto auto;
+        align-items: baseline;
+        justify-items: start;
         gap: 2px;
-        background: var(--rule);
-        color: var(--white);
-        font-family: var(--poster);
-        padding: 14px 16px 12px;
+        border: 1px solid var(--rule);
+        border-radius: 0 !important;
+        background: var(--surface);
+        color: var(--ink);
+        padding: 12px 14px;
       }
 
       .score strong {
-        font-size: 46px;
-        font-weight: 400;
+        font-family: var(--sans);
+        font-size: 34px;
+        font-weight: 900;
+        letter-spacing: -0.03em;
         line-height: 0.86;
       }
 
@@ -831,6 +836,16 @@
         letter-spacing: 0.08em;
         line-height: 1;
         text-transform: uppercase;
+      }
+
+      .score span {
+        color: var(--accent);
+      }
+
+      .score small {
+        grid-column: 1 / -1;
+        margin-top: 5px;
+        color: var(--muted);
       }
 
       .score small {
@@ -1300,6 +1315,37 @@
         .nav-links:last-child {
           justify-content: flex-end;
         }
+
+        .hero {
+          min-height: min(720px, calc(100svh - 74px));
+          padding: clamp(54px, 8vw, 76px) 0;
+          background:
+            linear-gradient(90deg, rgba(247, 247, 247, 0.98) 0%, rgba(247, 247, 247, 0.91) 43%, rgba(247, 247, 247, 0.42) 76%, rgba(247, 247, 247, 0.1) 100%),
+            url("assets/platter-hero-finished-plate-1672x941.png") 66% center / cover no-repeat;
+        }
+
+        .manifesto-grid {
+          grid-template-columns: minmax(220px, 0.42fr) minmax(0, 0.58fr);
+          align-items: stretch;
+          padding-top: 44px;
+          padding-bottom: 44px;
+        }
+
+        .manifesto-panel {
+          min-height: 0;
+        }
+
+        .manifesto-panel strong {
+          font-size: clamp(54px, 9vw, 76px);
+        }
+
+        .manifesto-copy h2 {
+          font-size: clamp(38px, 5.6vw, 50px);
+        }
+
+        .pillar {
+          min-height: 84px;
+        }
       }
 
       @media (max-width: 680px) {
@@ -1370,32 +1416,36 @@
         }
 
         .hero {
-          min-height: calc(100svh - 68px);
+          min-height: auto;
           display: block;
           align-items: flex-start;
-          padding-top: clamp(30px, 8vw, 44px);
-          padding-bottom: clamp(304px, 80vw, 430px);
+          padding-top: clamp(22px, 6vw, 32px);
+          padding-bottom: clamp(24px, 7vw, 36px);
           background:
             linear-gradient(
               180deg,
               rgba(247, 247, 247, 0.99) 0%,
-              rgba(247, 247, 247, 0.98) 47%,
-              rgba(247, 247, 247, 0.82) 65%,
-              rgba(247, 247, 247, 0.32) 84%,
-              rgba(247, 247, 247, 0.04) 100%
+              rgba(247, 247, 247, 0.91) 42%,
+              rgba(247, 247, 247, 0.67) 100%
             ),
-            url("assets/platter-hero-finished-plate-1672x941.png") 60% bottom / auto 62% no-repeat;
+            url("assets/platter-hero-finished-plate-1672x941.png") 62% 100% / auto 82% no-repeat;
         }
 
         h1 {
-          font-size: clamp(34px, 10.2vw, 44px);
-          line-height: 0.98;
+          max-width: 340px;
+          font-size: clamp(32px, 9.4vw, 42px);
+          line-height: 0.96;
+        }
+
+        .hero .eyebrow {
+          display: none;
         }
 
         .hero-copy {
-          margin-top: 16px;
-          font-size: 16px;
-          line-height: 1.45;
+          max-width: 32ch;
+          margin-top: 14px;
+          font-size: 15px;
+          line-height: 1.38;
         }
 
         .hero-actions,
@@ -1410,30 +1460,40 @@
         .hero-actions {
           display: grid;
           gap: 10px;
-          margin-top: 22px;
+          margin-top: 18px;
         }
 
         .hero-note {
-          grid-template-columns: 86px minmax(0, 1fr);
-          gap: 14px;
-          min-height: 114px;
-          margin-top: 24px;
+          grid-template-columns: minmax(0, 1fr) auto;
+          gap: 12px;
+          align-items: center;
+          min-height: 0;
+          margin-top: 16px;
           border: 1px solid var(--rule);
-          padding: 14px;
-          background: rgba(255, 255, 255, 0.94);
+          padding: 11px 12px;
+          background: rgba(255, 255, 255, 0.78);
+          backdrop-filter: blur(8px);
+        }
+
+        .hero-note::after {
+          content: "Read";
+          color: var(--accent);
+          font-family: var(--poster);
+          font-size: 12px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
         }
 
         .hero-note img {
-          width: 86px;
-          border-radius: 6px;
+          display: none;
         }
 
         .hero-note strong {
-          font-size: 17px;
+          font-size: 15px;
         }
 
-        .hero-note span {
-          font-size: 13px;
+        .hero-note > span > span {
+          display: none;
         }
 
         .hero-grid::after {
@@ -1454,6 +1514,71 @@
           gap: 16px;
           padding-top: 24px;
           padding-bottom: 24px;
+        }
+
+        .manifesto-grid {
+          gap: 14px;
+          padding-top: 24px;
+          padding-bottom: 26px;
+        }
+
+        .manifesto-panel {
+          min-height: 0;
+          gap: 8px;
+          border: 0;
+          background: transparent;
+          padding: 0;
+        }
+
+        .manifesto-panel::after {
+          display: none;
+        }
+
+        .manifesto-panel strong {
+          max-width: 310px;
+          font-size: clamp(34px, 10.2vw, 44px);
+          line-height: 0.88;
+        }
+
+        .manifesto-panel span {
+          color: rgba(255, 255, 255, 0.72);
+        }
+
+        .manifesto-copy {
+          gap: 10px;
+          border: 0;
+          background: transparent;
+          padding: 0;
+        }
+
+        .manifesto-copy > div:not(.pillars),
+        .manifesto-copy > p {
+          display: none;
+        }
+
+        .pillars {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 8px;
+        }
+
+        .pillar {
+          min-height: 54px;
+          display: grid;
+          align-content: center;
+          gap: 5px;
+          border-color: rgba(255, 255, 255, 0.24);
+          background: transparent;
+          padding: 9px 10px;
+        }
+
+        .pillar b {
+          color: rgba(255, 255, 255, 0.58);
+        }
+
+        .pillar span {
+          color: var(--white);
+          font-size: 15px;
+          line-height: 1;
         }
 
         .section {
@@ -1552,17 +1677,36 @@
         }
 
         .score-row {
-          grid-template-columns: minmax(0, 1fr) 86px;
-          gap: 12px;
+          grid-template-columns: minmax(0, 1fr);
+          gap: 10px;
         }
 
         .score {
-          min-width: 86px;
-          padding: 12px 10px 10px;
+          width: fit-content;
+          min-width: 0;
+          min-height: 34px;
+          grid-template-columns: auto auto;
+          align-items: baseline;
+          justify-items: start;
+          column-gap: 4px;
+          background: var(--surface);
+          color: var(--rule);
+          padding: 8px 10px 7px;
         }
 
         .score strong {
-          font-size: 38px;
+          font-family: var(--sans);
+          font-size: 24px;
+          font-weight: 900;
+          letter-spacing: -0.02em;
+        }
+
+        .score span {
+          color: var(--muted);
+        }
+
+        .score small {
+          display: none;
         }
 
         .review-card h3 {

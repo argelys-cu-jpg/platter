@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Batch by Platter - A Calmer Weekly Food Planner</title>
-    <meta name="description" content="Batch by Platter turns a few practical answers into a weekly food plan with recipes, prep notes, and prepared meal backup where it helps." />
+    <title>Batch by Platter - Weekly Menu Builder</title>
+    <meta name="description" content="Batch by Platter turns a few practical answers into a weekly menu plan with recipes, prep notes, and prepared meal backup where it helps." />
     <meta name="batch-build" content="platter-system-2026-07-17" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -87,8 +87,10 @@
       .marketing-page {
         min-height: 100vh;
         background:
-          radial-gradient(circle at 78% 18%, rgba(168, 77, 55, 0.08), transparent 28%),
-          linear-gradient(180deg, #fff 0%, var(--canvas) 62%, #fff 100%);
+          linear-gradient(90deg, rgba(21, 21, 21, 0.035) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(21, 21, 21, 0.025) 1px, transparent 1px),
+          var(--paper);
+        background-size: 112px 112px;
       }
 
       .marketing-nav {
@@ -100,9 +102,30 @@
         padding: 18px clamp(24px, 5vw, 72px);
         border-bottom: 1px solid var(--rule);
         background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(16px);
         position: sticky;
         top: 0;
         z-index: 12;
+      }
+
+      .marketing-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .product-badge {
+        min-height: 24px;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(168, 77, 55, 0.42);
+        border-radius: 999px;
+        color: var(--accent);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.09em;
+        padding: 0 9px;
+        text-transform: uppercase;
       }
 
       .marketing-links {
@@ -131,7 +154,7 @@
         min-height: 34px;
         border: 1px solid var(--line);
         background: var(--paper);
-        color: var(--muted);
+        color: var(--accent);
         font-size: 12px;
         font-weight: 900;
         letter-spacing: 0.08em;
@@ -145,6 +168,21 @@
         height: 8px;
         border-radius: 999px;
         background: var(--accent);
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 14px;
+      }
+
+      .version-note {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
 
       .nav-cta,
@@ -179,6 +217,15 @@
         border-color: var(--rule);
       }
 
+      .landing-button .arrow {
+        margin-left: 9px;
+        transition: transform 160ms ease;
+      }
+
+      .landing-button:hover .arrow {
+        transform: translateX(3px);
+      }
+
       .marketing-hero,
       .landing-section {
         width: min(100% - 48px, 1500px);
@@ -187,11 +234,11 @@
 
       .marketing-hero {
         display: grid;
-        grid-template-columns: minmax(0, 0.86fr) minmax(360px, 0.68fr);
+        grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.64fr);
         gap: clamp(40px, 7vw, 118px);
         align-items: center;
         min-height: calc(100vh - 76px);
-        padding: clamp(44px, 7vw, 96px) 0;
+        padding: clamp(48px, 7vw, 104px) 0 clamp(58px, 8vw, 116px);
       }
 
       .landing-copy {
@@ -231,8 +278,8 @@
 
       .landing-copy h1 {
         max-width: 980px;
-        font-size: clamp(70px, 7vw, 120px);
-        line-height: 0.88;
+        font-size: clamp(56px, 6.2vw, 104px);
+        line-height: 0.92;
       }
 
       .landing-section h2 {
@@ -247,6 +294,10 @@
         color: var(--muted);
         font-size: clamp(18px, 2vw, 23px);
         line-height: 1.38;
+      }
+
+      .landing-copy > p {
+        max-width: 670px;
       }
 
       .landing-actions {
@@ -292,11 +343,23 @@
         text-transform: uppercase;
       }
 
+      .hero-context {
+        max-width: 650px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+        line-height: 1.45;
+      }
+
       .landing-device {
         width: min(100%, 392px);
         justify-self: center;
         display: grid;
         gap: 14px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.92);
       }
 
       .landing-device .preview-phone {
@@ -332,9 +395,53 @@
         text-transform: uppercase;
       }
 
+      .proof-strip {
+        width: 100%;
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+        background: var(--paper);
+      }
+
+      .proof-strip-inner {
+        width: min(100% - 48px, 1500px);
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        margin: 0 auto;
+        background: var(--line);
+      }
+
+      .proof-item {
+        min-height: 112px;
+        display: grid;
+        align-content: center;
+        gap: 7px;
+        background: var(--paper);
+        padding: 22px;
+      }
+
+      .proof-item strong {
+        color: var(--ink);
+        font-size: 20px;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .proof-item span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
       .landing-section {
         padding: clamp(54px, 8vw, 112px) 0;
         border-top: 1px solid var(--rule);
+      }
+
+      .landing-section:first-of-type {
+        border-top: 0;
       }
 
       .landing-grid,
@@ -353,6 +460,10 @@
         border: 1px solid var(--line);
         background: var(--paper);
         padding: clamp(22px, 3vw, 34px);
+      }
+
+      .landing-card.is-compact {
+        min-height: 198px;
       }
 
       .landing-card span {
@@ -375,6 +486,24 @@
         line-height: 1.45;
       }
 
+      .landing-card .screen-ref {
+        align-self: end;
+        display: inline-flex;
+        width: fit-content;
+        min-height: 28px;
+        align-items: center;
+        border: 1px solid var(--accent-soft);
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-family: var(--sans);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: 0.05em;
+        padding: 0 10px;
+        text-transform: uppercase;
+      }
+
       .landing-feature {
         display: grid;
         grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
@@ -389,7 +518,7 @@
       }
 
       .feature-phone-row .preview-phone {
-        aspect-ratio: 393 / 585;
+        aspect-ratio: 393 / 852;
       }
 
       .landing-index {
@@ -418,6 +547,138 @@
 
       .beta-panel p {
         font-size: 17px;
+      }
+
+      .feature-checks {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .feature-checks li {
+        display: grid;
+        grid-template-columns: 18px minmax(0, 1fr);
+        gap: 10px;
+        color: var(--muted);
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+
+      .feature-checks li::before {
+        content: "✓";
+        color: var(--accent);
+        font-weight: 900;
+      }
+
+      .preview-mosaic {
+        display: grid;
+        grid-template-columns: 0.95fr 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .preview-mosaic .preview-phone {
+        aspect-ratio: 393 / 852;
+      }
+
+      .preview-notes {
+        display: grid;
+        gap: 14px;
+      }
+
+      .preview-note {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        padding: 18px;
+      }
+
+      .preview-note strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--ink);
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.05;
+      }
+
+      .preview-note span {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 750;
+        line-height: 1.35;
+      }
+
+      .waitlist-section {
+        width: 100%;
+        border-top: 1px solid var(--rule);
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .waitlist-inner {
+        width: min(100% - 48px, 980px);
+        display: grid;
+        gap: 24px;
+        margin: 0 auto;
+        padding: clamp(58px, 8vw, 108px) 0;
+        text-align: center;
+      }
+
+      .waitlist-section .section-kicker {
+        justify-self: center;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .waitlist-inner h2 {
+        margin: 0;
+        color: var(--paper);
+        font-family: var(--display);
+        font-size: clamp(42px, 5.4vw, 76px);
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 0.92;
+      }
+
+      .waitlist-inner p {
+        max-width: 650px;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: clamp(17px, 2vw, 21px);
+        line-height: 1.42;
+      }
+
+      .landing-lead-form {
+        max-width: 660px;
+        display: grid;
+        gap: 12px;
+        margin: 4px auto 0;
+        text-align: left;
+      }
+
+      .landing-lead-form label {
+        color: var(--paper);
+      }
+
+      .landing-lead-form small {
+        color: rgba(255, 255, 255, 0.58);
+      }
+
+      .landing-lead-form .lead-row input {
+        min-height: 56px;
+        border-color: rgba(255, 255, 255, 0.28);
+        background: #111;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .landing-lead-form .lead-row button {
+        min-height: 56px;
+        border-color: var(--accent);
+        background: var(--accent);
+        padding: 0 22px;
       }
 
       .beta-panel-row {
@@ -508,7 +769,7 @@
       }
 
       .screen-shot .preview-phone {
-        aspect-ratio: 393 / 760;
+        aspect-ratio: 393 / 852;
         box-shadow: 0 22px 50px rgba(21, 21, 21, 0.08);
       }
 
@@ -703,12 +964,15 @@
       }
 
       .flow-primary {
+        --phone-width: min(100%, clamp(300px, calc(46.1vh - 88px), 393px));
         width: min(100%, 430px);
         display: grid;
+        justify-items: center;
         gap: 14px;
       }
 
       .flow-controls {
+        width: var(--phone-width);
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
         gap: 10px;
@@ -765,13 +1029,42 @@
       }
 
       .screen-stage {
-        width: min(100%, 430px);
-        height: min(760px, calc(100vh - 220px));
+        width: var(--phone-width);
+        height: auto;
+        aspect-ratio: 393 / 852;
+        position: relative;
         overflow: hidden;
         touch-action: pan-y;
-        border: 9px solid var(--rule);
-        border-radius: 34px;
-        background: var(--rule);
+        padding: 10px 8px 18px;
+        border: 7px solid #080808;
+        border-radius: 46px;
+        background: #080808;
+      }
+
+      .screen-stage::before {
+        content: "";
+        position: absolute;
+        top: 14px;
+        left: 50%;
+        z-index: 4;
+        width: 76px;
+        height: 22px;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: #080808;
+      }
+
+      .screen-stage::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 7px;
+        z-index: 4;
+        width: 92px;
+        height: 4px;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: #080808;
       }
 
       .enter-forward {
@@ -797,13 +1090,39 @@
         scrollbar-width: none;
       }
 
+      .screen-stage .screen {
+        border-radius: 35px;
+        padding: 44px 20px 24px;
+      }
+
+      .screen-1 {
+        gap: 14px;
+      }
+
+      .screen-1 .lede {
+        font-size: 15px;
+        line-height: 1.38;
+      }
+
+      .screen-1 .hero-plate {
+        min-height: 230px;
+      }
+
+      .screen-1 .hero-plate img {
+        height: 176px;
+      }
+
+      .screen-1 .discovery-strip {
+        margin-top: auto;
+      }
+
       .screen::-webkit-scrollbar {
         display: none;
       }
 
       .flow-aside {
         width: min(100%, 560px);
-        height: min(760px, calc(100vh - 220px));
+        height: min(852px, calc(100vh - 190px));
         position: relative;
         display: grid;
         align-content: center;
@@ -1472,7 +1791,7 @@
 
       .preview-phone {
         width: 100%;
-        aspect-ratio: 393 / 585;
+        aspect-ratio: 393 / 852;
         position: relative;
         box-sizing: border-box;
         overflow: hidden;
@@ -2806,9 +3125,18 @@
           grid-template-columns: 1fr;
         }
 
+        .proof-strip-inner {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
         .landing-device {
-          width: min(100%, 360px);
+          width: min(100%, 342px);
           display: grid;
+        }
+
+        .preview-mosaic {
+          grid-template-columns: minmax(0, 342px);
+          justify-content: center;
         }
 
         .flow-view {
@@ -2851,8 +3179,17 @@
 
         .marketing-nav {
           min-height: auto;
-          align-items: flex-start;
+          align-items: center;
           padding: 20px;
+        }
+
+        .marketing-brand {
+          display: grid;
+          gap: 6px;
+        }
+
+        .product-badge {
+          width: fit-content;
         }
 
         .brand {
@@ -2877,6 +3214,7 @@
         .nav-cta {
           min-height: 44px;
           padding: 0 14px;
+          font-size: 13px;
         }
 
         .marketing-hero,
@@ -2892,7 +3230,8 @@
         }
 
         .landing-copy h1 {
-          font-size: clamp(52px, 17vw, 78px);
+          font-size: clamp(42px, 13.4vw, 62px);
+          line-height: 0.96;
         }
 
         .landing-copy p,
@@ -2912,6 +3251,25 @@
 
         .landing-stats div:last-child {
           border-bottom: 0;
+        }
+
+        .proof-strip-inner,
+        .waitlist-inner {
+          width: 100%;
+        }
+
+        .proof-strip-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .proof-item {
+          min-height: 88px;
+          padding: 18px 20px;
+        }
+
+        .waitlist-inner {
+          padding-left: 20px;
+          padding-right: 20px;
         }
 
         .landing-actions,
@@ -2984,6 +3342,12 @@
           border: 0;
           border-radius: 0;
           background: transparent;
+          padding: 0;
+        }
+
+        .screen-stage::before,
+        .screen-stage::after {
+          display: none;
         }
 
         .screen {
@@ -2994,6 +3358,11 @@
           border-left: 0;
           border-right: 0;
           border-bottom: 0;
+          border-radius: 0;
+          padding: 26px;
+        }
+
+        .screen-stage .screen {
           border-radius: 0;
           padding: 26px;
         }
@@ -3419,7 +3788,7 @@
         });
 
         lines.push(`Prepared meals: ${chefSlots.length}`);
-        lines.push("Partner code: BATCHPLTR20");
+        lines.push("Plan code: BATCH-WEEK");
 
         const file = new Blob([lines.join("\n")], { type: "text/plain" });
         const url = URL.createObjectURL(file);
@@ -3758,7 +4127,7 @@
               ${state.shoppingTab === "timeline" ? timelinePanel : listPanel}
               <div class="delivery-card">
                 <div class="delivery-row"><span>Prepared meals</span><strong>${chefSlots.length} selected</strong></div>
-                <div class="delivery-row"><span>Partner code</span><strong>BATCHPLTR20</strong></div>
+                <div class="delivery-row"><span>Plan code</span><strong>BATCH-WEEK</strong></div>
               </div>
               <button type="button" class="primary-button" data-action="go" data-screen="8" ${disabled}>Save my week</button>
             `,
@@ -3804,12 +4173,12 @@
             <div class="promo-card">
               <div class="promo-row">
                 <div>
-                  <span>Partner code</span>
-                  <strong>BATCHPLTR20</strong>
+                  <span>Plan code</span>
+                  <strong>BATCH-WEEK</strong>
                 </div>
                 <button type="button" class="text-button" data-action="copy-promo" ${disabled}>Copy</button>
               </div>
-              <p>Use this if you decide to order prepared meals from a partner marketplace.</p>
+              <p>Use this to reference the saved week when you revisit or share the plan.</p>
             </div>
             <div class="button-pair">
               <button type="button" class="secondary-button" data-action="download-plan" ${disabled}>Export plan</button>
@@ -4055,75 +4424,108 @@
         return `
           <section class="marketing-page" id="top">
             <header class="marketing-nav">
-              <a class="brand" href="/" aria-label="Platter homepage">platter</a>
+              <div class="marketing-brand">
+                <a class="brand" href="/" aria-label="Platter homepage">platter</a>
+                <span class="product-badge">Batch beta</span>
+              </div>
               <nav class="marketing-links" aria-label="Batch sections">
                 <a href="#how">How it works</a>
-                <a href="#status">Beta status</a>
-                <button type="button" class="nav-cta" data-action="open-preview">Beta preview</button>
+                <a href="#review">Review</a>
+                <a href="#waitlist">Waitlist</a>
+                <button type="button" class="nav-cta" data-action="start-flow" data-screen="0">Launch builder</button>
               </nav>
             </header>
 
             <section class="marketing-hero" aria-labelledby="landing-title">
               <div class="landing-copy">
-                <span class="beta-status">Beta in development</span>
-                <h1 id="landing-title">Dinner planning, calmer.</h1>
-                <p>Batch is Platter's mobile planning app in development. It will turn a few practical answers into a weekly plan: what to cook, what to prep, and where a prepared meal can take pressure off.</p>
+                <div class="hero-meta">
+                  <span class="beta-status">Private beta</span>
+                  <span class="version-note">Mobile-first planning prototype</span>
+                </div>
+                <h1 id="landing-title">Your weekly menu, batched with chef-level clarity.</h1>
+                <p>Batch maps the week you actually have: what to cook, where prepared meals help, and the Sunday prep that keeps dinner from becoming a daily debate.</p>
                 <div class="landing-actions">
-                  <button type="button" class="landing-button" data-action="open-preview">Preview the beta</button>
-                  <a class="landing-button is-secondary" href="/">Back to Platter</a>
+                  <button type="button" class="landing-button" data-action="start-flow" data-screen="0">Build your week <span class="arrow">→</span></button>
+                  <a class="landing-button is-secondary" href="#waitlist">Join beta waitlist</a>
                 </div>
                 <div class="landing-stats" aria-label="Batch highlights">
-                  <div><strong>Beta</strong><span>Currently in build</span></div>
-                  <div><strong>9 steps</strong><span>Prototype flow</span></div>
-                  <div><strong>Soon</strong><span>Waitlist opening</span></div>
+                  <div><strong>2 min</strong><span>To map the week</span></div>
+                  <div><strong>9 steps</strong><span>Working app flow</span></div>
+                  <div><strong>1 list</strong><span>For Sunday prep</span></div>
                 </div>
+                <div class="hero-context">Currently in private prototype review. The goal is simple: make the cook-versus-order decision visible before the week starts.</div>
               </div>
               <div class="landing-device" aria-label="Batch app preview">
                 <div class="preview-phone landing-phone">${renderPreviewScreen(0)}</div>
-                <span class="landing-caption">Mobile beta preview</span>
+                <span class="landing-caption">Live iPhone beta preview</span>
+              </div>
+            </section>
+
+            <section class="proof-strip" aria-label="Batch product proof">
+              <div class="proof-strip-inner">
+                <div class="proof-item"><strong>No reload selections</strong><span>Chips, days, and meal slots respond instantly</span></div>
+                <div class="proof-item"><strong>Cook / prepared / open</strong><span>Every lunch and dinner has a clear role</span></div>
+                <div class="proof-item"><strong>List first</strong><span>Timeline appears only when Sunday needs structure</span></div>
+                <div class="proof-item"><strong>Email save</strong><span>Lead capture lives at the plan moment</span></div>
               </div>
             </section>
 
             <section class="landing-section" id="how">
               <span class="section-kicker">How it works</span>
-              <h2>Decisions that make dinner happen.</h2>
+              <h2>A planning system for the week in front of you.</h2>
               <div class="landing-grid">
                 <article class="landing-card">
                   <span>01</span>
-                  <h3>Map the week.</h3>
+                  <h3>Define the load.</h3>
                   <p>Start with weekdays, the full week, or a custom rhythm that matches the calendar in front of you.</p>
+                  <small class="screen-ref">Screens 2–3</small>
                 </article>
                 <article class="landing-card">
                   <span>02</span>
                   <h3>Set the balance.</h3>
                   <p>Tell Batch where you want to cook, where you want backup, and what food guardrails matter.</p>
+                  <small class="screen-ref">Screens 4–7</small>
                 </article>
                 <article class="landing-card">
                   <span>03</span>
                   <h3>Review before saving.</h3>
                   <p>Review a list view or Sunday timeline, then keep the plan, export it, or send it to yourself.</p>
+                  <small class="screen-ref">Screens 8–9</small>
                 </article>
               </div>
             </section>
 
-            <section class="landing-section" id="status">
+            <section class="landing-section" id="review">
               <div class="landing-feature">
                 <div class="landing-copy">
-                  <span class="section-kicker">Beta status</span>
-                  <h2>We are shaping the first private beta.</h2>
-                  <p>The app is being tuned around the parts of meal planning that usually break: blank calendars, overbuilt filters, grocery math, and the backup meal no one wants to admit they need.</p>
+                  <span class="section-kicker">List first, Sunday when useful</span>
+                  <h2>Review the week before it asks anything else from you.</h2>
+                  <p>Most planners push people into rigid daily schedules. Batch keeps the weekly map scannable first, then opens a Sunday prep timeline when structure would actually help.</p>
+                  <ul class="feature-checks">
+                    <li>Switch between the full meal list and prep timeline without leaving the review step.</li>
+                    <li>Keep recipes short and task-based, with prepared backup clearly marked.</li>
+                    <li>Save the plan by email when the week looks right, not before.</li>
+                  </ul>
                   <div class="landing-actions">
-                    <button type="button" class="landing-button" data-action="open-preview">See beta screens</button>
-                    <button type="button" class="landing-button is-secondary" data-action="start-flow" data-screen="0">Open prototype</button>
+                    <button type="button" class="landing-button" data-action="start-flow" data-screen="7">Open review step <span class="arrow">→</span></button>
+                    <button type="button" class="landing-button is-secondary" data-action="open-preview">See beta screens</button>
                   </div>
                 </div>
-                <div class="beta-panel">
-                  <strong>Waitlist opening soon.</strong>
-                  <p>Batch is not open for public signup yet. The next version will invite readers into a tighter mobile beta.</p>
-                  <div class="beta-panel-row" aria-label="Beta milestones">
-                    <span><b>Now</b> Prototype polish</span>
-                    <span><b>Next</b> Waitlist</span>
-                    <span><b>Then</b> Private beta</span>
+                <div class="preview-mosaic" aria-label="Batch review previews">
+                  <div class="preview-phone">${renderPreviewScreen(7)}</div>
+                  <div class="preview-notes">
+                    <div class="preview-note">
+                      <strong>Interactive chip tapping.</strong>
+                      <span>Preferences toggle in place, so the planner feels instant and lightweight.</span>
+                    </div>
+                    <div class="preview-note">
+                      <strong>Meal cards stay whole.</strong>
+                      <span>The prepared-picks screen scrolls inside the phone so every meal card can be read and swapped.</span>
+                    </div>
+                    <div class="preview-note">
+                      <strong>Review is the conversion moment.</strong>
+                      <span>Email capture appears after the plan exists, which makes the ask feel earned.</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -4131,24 +4533,24 @@
 
             <section class="landing-section" id="index">
               <span class="section-kicker">Food planning index</span>
-              <h2>Built into Platter's food index.</h2>
+              <h2>Built from Platter's food intelligence.</h2>
               <div class="landing-index">
-                <article class="landing-card">
+                <article class="landing-card is-compact">
                   <span>Guides</span>
                   <h3>Weeknight systems.</h3>
                   <p>Practical explainers for deciding what belongs in the fridge, pantry, and backup stack.</p>
                 </article>
-                <article class="landing-card">
+                <article class="landing-card is-compact">
                   <span>Reviews</span>
                   <h3>Prepared meals.</h3>
                   <p>Neutral scoring for taste, menu depth, ordering flow, freshness, and value.</p>
                 </article>
-                <article class="landing-card">
+                <article class="landing-card is-compact">
                   <span>Recipes</span>
                   <h3>Home cooking.</h3>
                   <p>Recipes that can slot into a real weekly plan instead of living in a saved tab forever.</p>
                 </article>
-                <article class="landing-card">
+                <article class="landing-card is-compact">
                   <span>Newsletter</span>
                   <h3>The weekly brief.</h3>
                   <p>A concise food planning note that points readers to the best next move.</p>
@@ -4156,9 +4558,25 @@
               </div>
             </section>
 
+            <section class="waitlist-section" id="waitlist">
+              <div class="waitlist-inner">
+                <span class="section-kicker">Private beta</span>
+                <h2>Join the Batch beta waitlist.</h2>
+                <p>We are opening Batch carefully while the planner is still being shaped. Join the list and we will send access when the next private beta group opens.</p>
+                <form class="lead-form landing-lead-form" data-lead-form>
+                  <label for="landing-email">Get beta access updates.</label>
+                  <div class="lead-row">
+                    <input id="landing-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" value="${escapeHtml(state.leadEmail)}" />
+                    <button type="submit">${state.leadEmail ? "Update email" : "Join waitlist"}</button>
+                  </div>
+                  <small>${state.leadEmail ? `Saved for ${escapeHtml(state.leadEmail)}.` : "No spam. Just beta access, product updates, and the occasional smarter dinner idea."}</small>
+                </form>
+              </div>
+            </section>
+
             <footer class="marketing-footer">
               <a class="brand" href="/" aria-label="Platter homepage">platter</a>
-              <span>Batch is Platter's weekly food planning tool.</span>
+              <span>Batch is Platter's weekly menu builder.</span>
             </footer>
           </section>
         `;
@@ -4279,11 +4697,11 @@
         if (action === "copy-promo") {
           if (navigator.clipboard?.writeText) {
             navigator.clipboard
-              .writeText("BATCHPLTR20")
-              .then(() => showStatus("Promo code copied."))
-              .catch(() => showStatus("Promo code: BATCHPLTR20"));
+              .writeText("BATCH-WEEK")
+              .then(() => showStatus("Plan code copied."))
+              .catch(() => showStatus("Plan code: BATCH-WEEK"));
           } else {
-            showStatus("Promo code: BATCHPLTR20");
+            showStatus("Plan code: BATCH-WEEK");
           }
         }
 
