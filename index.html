@@ -744,6 +744,10 @@
         border-bottom: 1px solid var(--rule);
       }
 
+      #stories {
+        background: var(--mist);
+      }
+
       .section-head {
         display: flex;
         align-items: end;
@@ -768,7 +772,8 @@
 
       .story-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+        grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+        align-items: start;
         gap: 18px;
       }
 
@@ -786,8 +791,7 @@
 
       .lead-story {
         display: grid;
-        grid-column: 1 / -1;
-        grid-template-columns: minmax(300px, 0.82fr) minmax(420px, 1.18fr);
+        grid-template-columns: 1fr;
         overflow: hidden;
       }
 
@@ -800,6 +804,13 @@
         object-fit: cover;
       }
 
+      .lead-story img {
+        aspect-ratio: 16 / 9;
+        height: auto;
+        min-height: 0;
+        object-position: center;
+      }
+
       .lead-body,
       .side-body,
       .article-body {
@@ -810,14 +821,14 @@
       }
 
       .feature-title {
-        max-width: 15ch;
-        font-size: clamp(34px, 3.15vw, 50px);
+        max-width: 20ch;
+        font-size: clamp(32px, 3vw, 46px);
         font-weight: 900;
         line-height: 0.98;
       }
 
       .story-title {
-        font-size: 30px;
+        font-size: clamp(24px, 2.1vw, 30px);
         font-weight: 900;
         line-height: 1;
       }
@@ -844,18 +855,24 @@
 
       .side-stack {
         display: grid;
-        grid-column: 1 / -1;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 18px;
       }
 
       .side-story {
+        display: grid;
+        grid-template-columns: 170px minmax(0, 1fr);
+        min-height: 190px;
         overflow: hidden;
       }
 
       .side-story img {
+        height: 100%;
         min-height: 190px;
-        max-height: 220px;
+        object-position: center;
+      }
+
+      .side-story-text {
+        grid-template-columns: 1fr;
       }
 
       .index-section .section-head {
@@ -1907,8 +1924,26 @@
           grid-template-columns: 1fr;
         }
 
+        .lead-story,
+        .side-story {
+          grid-template-columns: 112px minmax(0, 1fr);
+          min-height: 128px;
+        }
+
+        .side-story-text {
+          grid-template-columns: 1fr;
+          min-height: 0;
+        }
+
         .lead-story img,
-        .side-story img,
+        .side-story img {
+          min-height: 0;
+          max-height: none;
+          height: 100%;
+          aspect-ratio: auto;
+          object-fit: cover;
+        }
+
         .article-card img {
           min-height: 0;
           max-height: none;
@@ -1923,6 +1958,28 @@
         .planner,
         .method-card {
           padding: 20px;
+        }
+
+        .story-grid .lead-body,
+        .story-grid .side-body {
+          gap: 7px;
+          padding: 14px;
+        }
+
+        .story-grid .feature-title,
+        .story-grid .story-title {
+          max-width: none;
+          font-size: 20px;
+          line-height: 1.02;
+        }
+
+        .story-grid .dek {
+          font-size: 13px;
+          line-height: 1.35;
+        }
+
+        .story-grid .story-footer {
+          display: none;
         }
 
         .review-card {
@@ -2185,8 +2242,8 @@
             <div class="story-grid">
               <article class="lead-story">
                 <img
-                  src="https://cu-media.imgix.net/meal-service/meals/6774/main_image/6774_2_Cat_Cora_Grilled_Citrus_Salmon_Turmeric_Toasted_Couscous_3716.jpg?height=760&width=620&fit=crop&format=webp&cs=tinysrgb&lossless=true?w=1240"
-                  alt="A plated salmon meal"
+                  src="assets/platter-cover-delivery-shortlist-horizontal.png"
+                  alt="Illustrated dinner table with a phone, salmon, and weeknight prep notes"
                 />
                 <div class="lead-body">
                   <div class="card-kicker">Kitchen notes</div>
@@ -2211,7 +2268,7 @@
                   </div>
                 </article>
 
-                <article class="side-story">
+                <article class="side-story side-story-text">
                   <div class="side-body">
                     <div class="card-kicker">Body context</div>
                     <h3 class="story-title">GLP-1s changed appetite. Dinner has to catch up.</h3>
