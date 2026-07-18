@@ -10,8 +10,8 @@
     />
     <meta name="platter-build" content="kitchen-intelligence-type-2026-07-16" />
     <link rel="icon" href="data:," />
-    <link rel="preload" as="image" href="assets/platter-cover-horizontal.png" media="(min-width: 681px)" />
-    <link rel="preload" as="image" href="assets/platter-cover-vertical.png" media="(max-width: 680px)" />
+    <link rel="preload" as="image" href="assets/platter-cover-delivery-shortlist-horizontal.png" media="(min-width: 681px)" />
+    <link rel="preload" as="image" href="assets/platter-cover-delivery-shortlist-vertical.png" media="(max-width: 680px)" />
     <meta property="og:title" content="Platter - Food Intelligence for Real Life" />
     <meta
       property="og:description"
@@ -282,7 +282,7 @@
 
       .hero-cover {
         display: grid;
-        grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.78fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
         min-height: clamp(460px, 45vw, 650px);
         border: 1px solid var(--rule);
         background: var(--surface);
@@ -417,7 +417,7 @@
 
       .h1-line {
         display: block;
-        white-space: nowrap;
+        white-space: normal;
       }
 
       .italic {
@@ -436,9 +436,9 @@
       }
 
       .hero h1 {
-        max-width: 11ch;
+        max-width: 12ch;
         color: var(--ink);
-        font-size: clamp(44px, 4.6vw, 72px);
+        font-size: clamp(42px, 3.65vw, 62px);
       }
 
       .hero-copy {
@@ -454,6 +454,14 @@
         flex-wrap: wrap;
         gap: 10px;
         margin-top: 28px;
+      }
+
+      .hero-actions .button {
+        flex: 1 1 180px;
+        min-width: 0;
+        padding-inline: 14px;
+        text-align: center;
+        white-space: normal;
       }
 
       .button {
@@ -2050,9 +2058,9 @@
           <div class="container hero-grid">
             <article class="hero-cover">
               <picture class="hero-media">
-                <source media="(max-width: 680px)" srcset="assets/platter-cover-vertical.png" />
+                <source media="(max-width: 680px)" srcset="assets/platter-cover-delivery-shortlist-vertical.png" />
                 <img
-                  src="assets/platter-cover-horizontal.png"
+                  src="assets/platter-cover-delivery-shortlist-horizontal.png"
                   alt="Illustrated salmon dinner with a phone, herbs, lemon, and meal-planning notes on a tiled table."
                 />
               </picture>
@@ -2257,7 +2265,7 @@
                 </div>
                 <div class="recipe-mini-grid">
                   <a class="recipe-mini-card" href="recipes/weekday-salmon-couscous/index.html">
-                    <img src="assets/platter-cover-horizontal.png" alt="Illustrated salmon dinner on a tiled table" />
+                    <img src="assets/platter-cover-delivery-shortlist-horizontal.png" alt="Illustrated salmon dinner on a tiled table" />
                     <div><h4>Salmon with lemon couscous</h4><span>35 min</span></div>
                   </a>
                   <a class="recipe-mini-card" href="recipes/index.html#prepared">
@@ -2269,7 +2277,7 @@
                     <div><h4>Rotisserie chicken rice plates</h4><span>20 min</span></div>
                   </a>
                   <a class="recipe-mini-card" href="recipes/index.html">
-                    <img src="assets/platter-cover-vertical.png" alt="Illustrated salmon dinner spread" />
+                    <img src="assets/platter-cover-delivery-shortlist-vertical.png" alt="Illustrated salmon dinner spread" />
                     <div><h4>Browse the recipe desk</h4><span>All recipes</span></div>
                   </a>
                 </div>
