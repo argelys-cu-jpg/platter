@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Platter Design Directions</title>
+    <style>
+      :root {
+        --paper: #f7f3ec;
+        --stone: #e6ded2;
+        --oat: #ddd2c3;
+        --espresso: #2b2723;
+        --tomato: #c95d43;
+        --olive: #6f7755;
+        --sage: #a8b08c;
+        --eggplant: #5b4b57;
+        --butter-bean: #dccb84;
+        --persimmon: #d98046;
+        --fig: #7c4b57;
+        --sea: #7ca8b8;
+        --lemon-peel: #e3c55a;
+        --dusty-apricot: #d9987b;
+        --chalky-yellow: #dcc57a;
+        --body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --mono: "Arial Narrow", "Helvetica Neue Condensed", Impact, sans-serif;
+        --container: 1320px;
+        --pad: clamp(20px, 5vw, 72px);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--paper);
+        color: var(--espresso);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--espresso);
+        font-family: var(--body);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body::selection {
+        background: var(--chalky-yellow);
+        color: var(--espresso);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      p,
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+      }
+
+      p {
+        color: rgba(43, 39, 35, 0.76);
+        font-size: clamp(16px, 1.35vw, 20px);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.48;
+      }
+
+      .page-shell {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .preview-top {
+        min-height: 82px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 24px;
+        padding: 18px var(--pad);
+        background: var(--paper);
+      }
+
+      .logo {
+        position: relative;
+        display: inline-flex;
+        width: max-content;
+        padding: 0 58px 12px 0;
+        color: var(--espresso);
+        font-size: clamp(24px, 2vw, 32px);
+        font-weight: 900;
+        letter-spacing: 0.03em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .logo::before,
+      .logo::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .logo::before {
+        left: 46%;
+        right: 28px;
+        bottom: 0;
+        height: 3px;
+        background: var(--tomato);
+      }
+
+      .logo::after {
+        right: 0;
+        bottom: 0;
+        width: 34px;
+        height: 18px;
+        border-right: 3px solid var(--tomato);
+        border-bottom: 3px solid var(--tomato);
+        transform: skewX(-26deg);
+        transform-origin: right bottom;
+      }
+
+      .preview-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      .preview-links a {
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+        background: var(--espresso);
+        color: var(--paper);
+        font-family: var(--mono);
+        font-size: 14px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .intro {
+        background: var(--stone);
+        padding: clamp(42px, 8vw, 104px) var(--pad);
+      }
+
+      .intro-inner {
+        max-width: var(--container);
+        margin-inline: auto;
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.28fr);
+        gap: clamp(28px, 6vw, 92px);
+        align-items: end;
+      }
+
+      .eyebrow {
+        display: block;
+        margin-bottom: 18px;
+        color: var(--tomato);
+        font-family: var(--mono);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.17em;
+        line-height: 1.1;
+        text-transform: uppercase;
+      }
+
+      .intro h1,
+      .display-title {
+        max-width: 13.6ch;
+        color: var(--espresso);
+        font-size: clamp(48px, 8vw, 124px);
+        font-weight: 900;
+        letter-spacing: -0.035em;
+        line-height: 0.88;
+        text-wrap: balance;
+      }
+
+      .intro-aside {
+        max-width: 33ch;
+        padding-top: 18px;
+        border-top: 2px solid var(--espresso);
+      }
+
+      .direction {
+        width: 100%;
+      }
+
+      .direction-inner {
+        max-width: var(--container);
+        margin-inline: auto;
+        padding-inline: var(--pad);
+      }
+
+      .direction-a {
+        background: var(--paper);
+        padding: clamp(56px, 9vw, 128px) 0;
+      }
+
+      .a-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.62fr) minmax(280px, 0.38fr);
+        gap: clamp(28px, 6vw, 84px);
+        align-items: start;
+      }
+
+      .a-image {
+        min-height: clamp(440px, 58vw, 760px);
+        background: var(--stone);
+      }
+
+      .a-copy {
+        display: grid;
+        gap: clamp(24px, 4vw, 56px);
+        padding-top: clamp(8px, 6vw, 80px);
+      }
+
+      .a-copy .display-title {
+        max-width: 10.6ch;
+      }
+
+      .a-metadata {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 2px solid var(--espresso);
+      }
+
+      .a-metadata span {
+        min-height: 74px;
+        display: grid;
+        align-content: center;
+        padding: 12px 14px 12px 0;
+        color: rgba(43, 39, 35, 0.78);
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .a-focus {
+        display: grid;
+        grid-template-columns: 96px minmax(0, 1fr);
+        gap: 18px;
+        align-items: center;
+        background: var(--stone);
+        padding: 18px;
+      }
+
+      .a-focus-media {
+        aspect-ratio: 1;
+        background: var(--oat);
+      }
+
+      .a-focus h3,
+      .b-slab h3,
+      .c-story h3 {
+        font-size: clamp(24px, 2.8vw, 42px);
+        font-weight: 900;
+        letter-spacing: -0.025em;
+        line-height: 0.98;
+        text-wrap: balance;
+      }
+
+      .direction-b {
+        background: var(--sage);
+      }
+
+      .b-layout {
+        min-height: clamp(760px, 100svh, 980px);
+        display: grid;
+        grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.31fr) minmax(0, 0.27fr);
+      }
+
+      .b-slab {
+        min-height: inherit;
+        display: grid;
+        align-content: end;
+        gap: 24px;
+        padding: clamp(28px, 5vw, 72px);
+      }
+
+      .b-slab-main {
+        background: var(--sage);
+      }
+
+      .b-slab-main .display-title {
+        max-width: 8.8ch;
+      }
+
+      .b-slab-photo {
+        background: var(--chalky-yellow);
+        padding: 0;
+      }
+
+      .b-slab-photo img {
+        object-position: 58% center;
+      }
+
+      .b-slab-stack {
+        background: var(--tomato);
+        color: var(--paper);
+      }
+
+      .b-slab-stack p,
+      .b-slab-stack .eyebrow {
+        color: var(--paper);
+      }
+
+      .b-stack-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .b-stack-list a {
+        min-height: 92px;
+        display: grid;
+        align-content: center;
+        padding: 16px 0;
+        border-top: 2px solid currentColor;
+        font-size: clamp(24px, 3vw, 42px);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 0.98;
+      }
+
+      .direction-c {
+        background: var(--oat);
+        padding: clamp(56px, 8vw, 118px) 0;
+      }
+
+      .c-mast {
+        display: grid;
+        grid-template-columns: minmax(0, 0.76fr) minmax(220px, 0.24fr);
+        gap: clamp(28px, 6vw, 84px);
+        align-items: end;
+        margin-bottom: clamp(34px, 6vw, 78px);
+      }
+
+      .c-mast .display-title {
+        max-width: 14ch;
+      }
+
+      .c-deck {
+        padding: 26px;
+        background: var(--eggplant);
+      }
+
+      .c-deck p {
+        color: var(--paper);
+      }
+
+      .c-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+        gap: clamp(18px, 3vw, 34px);
+        align-items: stretch;
+      }
+
+      .c-feature {
+        display: grid;
+        grid-template-rows: minmax(420px, 58vh) auto;
+        background: var(--paper);
+      }
+
+      .c-feature-body {
+        display: grid;
+        gap: 18px;
+        padding: clamp(24px, 4vw, 48px);
+      }
+
+      .c-rail {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 18px;
+      }
+
+      .c-story {
+        display: grid;
+        grid-template-columns: minmax(92px, 0.36fr) minmax(0, 0.64fr);
+        background: var(--paper);
+      }
+
+      .c-story-media {
+        min-height: 180px;
+        background: var(--stone);
+      }
+
+      .c-story-copy {
+        display: grid;
+        align-content: center;
+        gap: 14px;
+        padding: clamp(18px, 3vw, 30px);
+      }
+
+      .small-label {
+        color: var(--tomato);
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .mobile-proof {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        background: var(--espresso);
+        color: var(--paper);
+      }
+
+      .mobile-proof div {
+        min-height: 150px;
+        display: grid;
+        align-content: center;
+        gap: 10px;
+        padding: 24px var(--pad);
+      }
+
+      .mobile-proof strong {
+        max-width: 12ch;
+        font-size: clamp(28px, 5vw, 64px);
+        font-weight: 900;
+        letter-spacing: -0.035em;
+        line-height: 0.9;
+        text-wrap: balance;
+      }
+
+      .mobile-proof span {
+        color: var(--stone);
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      @media (max-width: 920px) {
+        .preview-top,
+        .intro-inner,
+        .a-layout,
+        .c-mast,
+        .c-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .preview-links {
+          justify-content: flex-start;
+        }
+
+        .b-layout {
+          min-height: auto;
+          grid-template-columns: 1fr;
+        }
+
+        .b-slab {
+          min-height: 62svh;
+        }
+
+        .b-slab-photo {
+          min-height: 68svh;
+        }
+
+        .c-feature {
+          grid-template-rows: minmax(320px, 48svh) auto;
+        }
+      }
+
+      @media (max-width: 620px) {
+        :root {
+          --pad: 20px;
+        }
+
+        .preview-top {
+          min-height: 104px;
+          align-items: end;
+        }
+
+        .preview-links a {
+          min-height: 36px;
+          padding: 0 12px;
+          font-size: 12px;
+        }
+
+        .intro h1,
+        .display-title {
+          max-width: 11.4ch;
+          font-size: clamp(42px, 12.4vw, 58px);
+          line-height: 0.92;
+        }
+
+        .intro {
+          padding-block: 42px 58px;
+        }
+
+        .intro-aside {
+          max-width: 30ch;
+        }
+
+        .direction-a,
+        .direction-c {
+          padding-block: 42px;
+        }
+
+        .a-image {
+          min-height: 58svh;
+        }
+
+        .a-copy {
+          padding-top: 0;
+        }
+
+        .a-metadata {
+          grid-template-columns: 1fr;
+        }
+
+        .a-metadata span {
+          min-height: 54px;
+        }
+
+        .a-focus {
+          grid-template-columns: 76px minmax(0, 1fr);
+          padding: 14px;
+        }
+
+        .a-focus h3,
+        .b-slab h3,
+        .c-story h3 {
+          font-size: clamp(22px, 7vw, 30px);
+          max-width: 11.8ch;
+        }
+
+        .b-slab {
+          min-height: 56svh;
+          padding: 28px 20px;
+        }
+
+        .b-slab-main .display-title {
+          max-width: 8ch;
+        }
+
+        .b-stack-list a {
+          min-height: 72px;
+          font-size: clamp(24px, 8vw, 34px);
+        }
+
+        .c-deck {
+          padding: 20px;
+        }
+
+        .c-feature {
+          grid-template-rows: minmax(280px, 54svh) auto;
+        }
+
+        .c-feature-body {
+          padding: 20px;
+        }
+
+        .c-rail {
+          gap: 12px;
+        }
+
+        .c-story {
+          grid-template-columns: 108px minmax(0, 1fr);
+        }
+
+        .c-story-media {
+          min-height: 132px;
+        }
+
+        .c-story-copy {
+          padding: 16px;
+        }
+
+        .mobile-proof {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="preview-top" aria-label="Platter design directions">
+        <a class="logo" href="../index.html">Platter</a>
+        <nav class="preview-links" aria-label="Direction jump links">
+          <a href="#minimalist-cookbook">A</a>
+          <a href="#graphic-optimism">B</a>
+          <a href="#editorial-authority">C</a>
+        </nav>
+      </header>
+
+      <section class="intro">
+        <div class="intro-inner">
+          <div>
+            <span class="eyebrow">Preview branch · layout only</span>
+            <h1>Three ways Platter can stop looking like software.</h1>
+          </div>
+          <div class="intro-aside">
+            <p>These are structural explorations only: palette, scale, image treatment, and editorial cadence. No app logic, no full-site refactor, no production homepage rewrite.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="direction direction-a" id="minimalist-cookbook">
+        <div class="direction-inner a-layout">
+          <figure class="a-image" aria-label="Large editorial cover image slab">
+            <img src="../assets/platter-cover-delivery-shortlist-vertical.png" alt="" />
+          </figure>
+          <div class="a-copy">
+            <div>
+              <span class="eyebrow">Direction A · Minimalist Cookbook</span>
+              <h2 class="display-title">Dinner, decided.</h2>
+            </div>
+            <p>Paper, Stone, and restraint. The page behaves like a beautifully printed cookbook spread: one strong image, quiet book-weight body copy, and a single Tomato interaction moment.</p>
+            <div class="a-metadata" aria-label="Layout notes">
+              <span>Massive whitespace</span>
+              <span>Razor linework</span>
+              <span>One accent at a time</span>
+            </div>
+            <article class="a-focus">
+              <div class="a-focus-media">
+                <img src="../assets/platter-hero-finished-plate-1672x941.png" alt="" />
+              </div>
+              <div>
+                <span class="small-label">Mobile rule</span>
+                <h3>No cramped four-line headlines.</h3>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="direction direction-b" id="graphic-optimism">
+        <div class="b-layout">
+          <div class="b-slab b-slab-main">
+            <div>
+              <span class="eyebrow">Direction B · Graphic Optimism</span>
+              <h2 class="display-title">Cook in color.</h2>
+            </div>
+            <p>HAY and Dusen energy without chaos: section breaks become giant slabs of Sage, Chalky Yellow, and Terracotta. The color planes do the organizing instead of dashboard borders.</p>
+          </div>
+          <figure class="b-slab b-slab-photo" aria-label="Hard image block">
+            <img src="../assets/platter-cover-delivery-shortlist-horizontal.png" alt="" />
+          </figure>
+          <aside class="b-slab b-slab-stack" aria-label="Editorial modules">
+            <span class="eyebrow">Weekly cadence</span>
+            <div class="b-stack-list">
+              <a href="../reviews/">The Index</a>
+              <a href="../guides/">Chef Moves</a>
+              <a href="../recipes/">Recipes</a>
+              <a href="../batch/">Batch</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="direction direction-c" id="editorial-authority">
+        <div class="direction-inner">
+          <div class="c-mast">
+            <div>
+              <span class="eyebrow">Direction C · Editorial Authority</span>
+              <h2 class="display-title">The week, edited.</h2>
+            </div>
+            <div class="c-deck">
+              <p>NYT Cooking discipline with Platter intelligence: recipes, rankings, stories, and Batch all live in a rigorous editorial system.</p>
+            </div>
+          </div>
+          <div class="c-grid">
+            <article class="c-feature">
+              <figure>
+                <img src="../assets/platter-cover-illustration-shortlist.jpeg" alt="" />
+              </figure>
+              <div class="c-feature-body">
+                <span class="small-label">Cover story</span>
+                <h3 class="display-title">The delivery dinner shortlist.</h3>
+                <p>What to order when the week gets loud, what to skip, and the chef moves that make delivered dinner feel freshly plated.</p>
+              </div>
+            </article>
+            <div class="c-rail">
+              <article class="c-story">
+                <div class="c-story-media">
+                  <img src="../assets/platter-hero-finished-plate-1672x941.png" alt="" />
+                </div>
+                <div class="c-story-copy">
+                  <span class="small-label">Recipe</span>
+                  <h3>Weeknight salmon with actual lift.</h3>
+                </div>
+              </article>
+              <article class="c-story">
+                <div class="c-story-media">
+                  <img src="../assets/platter-cover-delivery-dinner-shortlist.png" alt="" />
+                </div>
+                <div class="c-story-copy">
+                  <span class="small-label">Review</span>
+                  <h3>The services worth fridge space.</h3>
+                </div>
+              </article>
+              <article class="c-story">
+                <div class="c-story-media">
+                  <img src="../assets/platter-cover-delivery-shortlist-horizontal.png" alt="" />
+                </div>
+                <div class="c-story-copy">
+                  <span class="small-label">Tool</span>
+                  <h3>Build the week in Batch.</h3>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mobile-proof" aria-label="Mobile headline proof points">
+        <div>
+          <strong>Two-line hero targets.</strong>
+          <span>Shorter title containers and responsive type prevent crowded mobile wrapping.</span>
+        </div>
+        <div>
+          <strong>Images earn the scroll.</strong>
+          <span>Food visuals become covers, recipes, or editorial anchors, not decorative circles.</span>
+        </div>
+        <div>
+          <strong>Color replaces chrome.</strong>
+          <span>Stone, Oat, Sage, and Eggplant separate sections without soft SaaS borders.</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
