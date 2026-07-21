@@ -3,7 +3,8 @@
   --stone: #e6ded2;
   --oat: #ddd2c3;
   --espresso: #2b2723;
-  --tomato: #c95d43;
+  --editorial-red: #d6281f;
+  --tomato: var(--editorial-red);
   --olive: #6f7755;
   --sage: #a8b08c;
   --eggplant: #5b4b57;
@@ -19,7 +20,7 @@
   --muted: #6d6258;
   --line: var(--oat);
   --rule: var(--espresso);
-  --accent: var(--tomato);
+  --accent: var(--editorial-red);
   --accent-soft: var(--stone);
   --sage-strong: var(--sage);
   --charcoal: var(--espresso);
@@ -166,7 +167,7 @@ h3 {
   font-weight: 900;
   letter-spacing: 0.01em;
   line-height: 1;
-  padding: 0 54px 15px 0;
+  padding: 0 94px 14px 0;
   text-transform: uppercase;
 }
 
@@ -175,7 +176,7 @@ h3 {
   font-size: 20px;
   font-weight: 900;
   letter-spacing: 0.01em;
-  padding: 0 54px 15px 0;
+  padding: 0 94px 14px 0;
 }
 
 .nav .logo:hover {
@@ -187,21 +188,24 @@ h3 {
   content: "";
   position: absolute;
   bottom: 3px;
-  height: 2px;
-  background: var(--accent);
+  height: 0;
+  border-top: 2px solid var(--editorial-red);
+  background: transparent;
   pointer-events: none;
 }
 
 .logo::before {
-  left: 42%;
-  right: 32px;
+  left: 98px;
+  right: auto;
+  width: 64px;
 }
 
 .logo::after {
-  right: 0;
-  width: 34px;
-  transform: rotate(-63deg);
-  transform-origin: right center;
+  left: 160px;
+  right: auto;
+  width: 26px;
+  transform: rotate(-66deg);
+  transform-origin: left center;
 }
 
 .nav-cta {
@@ -377,9 +381,9 @@ h3 {
   display: inline-grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
-  align-items: baseline;
+  align-items: end;
   justify-items: start;
-  column-gap: 4px;
+  column-gap: 6px;
   row-gap: 2px;
   border: 1px solid var(--rule);
   border-radius: 0;
@@ -396,7 +400,7 @@ h3 {
   grid-column: 1;
   grid-row: 1;
   font: inherit;
-  line-height: 1;
+  line-height: 0.9;
 }
 
 .score span {
@@ -408,6 +412,7 @@ h3 {
   font-weight: 900;
   letter-spacing: 0;
   line-height: 1;
+  margin-bottom: 0.08em;
   text-transform: uppercase;
 }
 
@@ -427,12 +432,13 @@ h3 {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: clamp(32px, 6vw, 64px);
+  column-gap: clamp(72px, 11vw, 150px);
+  row-gap: 32px;
   margin-top: 32px;
 }
 
 .review-score-row .button {
-  min-width: 220px;
+  min-width: 240px;
   margin-top: 0;
 }
 
@@ -1017,23 +1023,26 @@ h3 {
 
   .logo {
     font-size: 17px;
-    padding: 0 42px 13px 0;
+    padding: 0 70px 14px 0;
   }
 
   .nav .logo {
     font-size: 17px;
-    padding: 0 42px 13px 0;
+    padding: 0 70px 14px 0;
   }
 
   .logo::before {
-    left: 40%;
-    right: 25px;
-    bottom: 2px;
+    left: 72px;
+    right: auto;
+    bottom: 3px;
+    width: 48px;
   }
 
   .logo::after {
-    bottom: 2px;
-    width: 28px;
+    left: 118px;
+    right: auto;
+    bottom: 3px;
+    width: 24px;
   }
 
   .nav-cta {
@@ -1100,7 +1109,7 @@ h3 {
 
   .review-score-row {
     align-items: flex-start;
-    gap: 24px;
+    gap: 36px;
     margin-top: 28px;
   }
 

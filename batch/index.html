@@ -14,27 +14,27 @@
     />
     <style>
       :root {
-        --canvas: #f7f7f7;
-        --paper: #ffffff;
-        --surface: #ffffff;
+        --canvas: #f7f3ec;
+        --paper: #fffaf3;
+        --surface: #fffaf3;
         --white: #ffffff;
-        --cream: #f7f7f7;
+        --cream: #f7f3ec;
         --cream-deep: #ececea;
-        --sand: #a84d37;
+        --sand: #d6c8b6;
         --sand-soft: #f3f1ee;
-        --sage: #e0e5d8;
-        --sage-strong: #aeb9a1;
+        --sage: #a8b08c;
+        --sage-strong: #8f9974;
         --olive: #151515;
         --olive-soft: #f1f1ef;
-        --ink: #151515;
-        --muted: #62625d;
-        --line: #d3d3d3;
-        --rule: #151515;
-        --accent: #a84d37;
-        --accent-soft: #e7e2df;
-        --charcoal: #252525;
-        --tomato: #a84d37;
-        --marigold: #a84d37;
+        --ink: #2b2723;
+        --muted: #6d6258;
+        --line: #d8cec0;
+        --rule: #2b2723;
+        --accent: #d6281f;
+        --accent-soft: #f0ded8;
+        --charcoal: #2b2723;
+        --tomato: #d6281f;
+        --marigold: #dcc57a;
         --display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         --poster: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
         --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -361,8 +361,8 @@
       }
 
       .landing-device .preview-phone .screen {
-        overflow: hidden;
-        padding-top: 86px;
+        overflow: auto;
+        padding-top: 112px;
       }
 
       .landing-device .preview-phone .primary-button {
@@ -972,7 +972,7 @@
         padding: 12px;
       }
 
-      @media (max-width: 1320px) and (min-width: 621px) {
+      @media (max-width: 1760px) and (min-width: 621px) {
         .simulator-quickjump {
           position: static;
           width: min(360px, calc(100% - 40px));
@@ -1903,7 +1903,7 @@
         border: 6px solid #080808;
         border-radius: 46px;
         background: #080808;
-        pointer-events: none;
+        pointer-events: auto;
       }
 
       .preview-phone::before {
@@ -1938,9 +1938,10 @@
         height: 100%;
         border: 0;
         border-radius: 35px;
-        padding: 72px 16px 18px;
+        padding: 104px 16px 22px;
         gap: 9px;
-        overflow: hidden;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
       }
 
       .preview-phone .screen > * {
@@ -1950,16 +1951,16 @@
 
       .device-status {
         position: absolute;
-        top: 24px;
-        left: 30px;
-        right: 30px;
-        z-index: 5;
+        top: 30px;
+        left: 34px;
+        right: 34px;
+        z-index: 20;
         display: flex;
         align-items: center;
         justify-content: space-between;
         color: var(--ink);
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-        font-size: 10px;
+        font-size: 9px;
         font-weight: 800;
         letter-spacing: 0.02em;
         pointer-events: none;
@@ -4713,7 +4714,7 @@
               </div>
               <div class="landing-device" aria-label="Batch app preview">
                 <span class="simulator-label">Live simulator panel</span>
-                <div class="preview-phone landing-phone">${renderPreviewScreen(state.currentScreen)}</div>
+                <div class="preview-phone landing-phone">${renderScreen(state.currentScreen)}</div>
                 <span class="landing-caption">Mobile flow preview</span>
               </div>
             </section>

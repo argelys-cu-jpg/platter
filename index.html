@@ -3,32 +3,32 @@
   <head>
     <style>
       :root {
-        --canvas: #f7f7f7;
-        --cream: #f7f7f7;
-        --cream-deep: #e7e7e7;
-        --paper: #ffffff;
-        --surface: #ffffff;
+        --canvas: #f7f3ec;
+        --cream: #f7f3ec;
+        --cream-deep: #e6ded2;
+        --paper: #fffaf3;
+        --surface: #fffaf3;
         --white: #ffffff;
-        --sand: #d6d6d6;
-        --sand-soft: #eeeeee;
-        --mist: #f1f1f1;
-        --smoke: #d6d6d6;
-        --sage: #e0e5d8;
-        --sage-strong: #aeb9a1;
-        --olive: #111111;
-        --olive-ink: #0f0f0f;
-        --olive-soft: #eeeeee;
+        --sand: #ddd2c3;
+        --sand-soft: #e6ded2;
+        --mist: #f7f3ec;
+        --smoke: #ddd2c3;
+        --sage: #a8b08c;
+        --sage-strong: #8f9974;
+        --olive: #6f7755;
+        --olive-ink: #3f482e;
+        --olive-soft: #e0e5d8;
         --black: #050505;
-        --charcoal: #252525;
-        --ink: #151515;
-        --muted: #62625d;
-        --line: #d3d3d3;
-        --rule: #151515;
-        --tomato: #984f3f;
-        --accent: #a84d37;
-        --accent-soft: #e7e2df;
-        --berry: #111111;
-        --berry-deep: #111111;
+        --charcoal: #2b2723;
+        --ink: #2b2723;
+        --muted: #6d6258;
+        --line: #d8cec0;
+        --rule: #2b2723;
+        --tomato: #d6281f;
+        --accent: #d6281f;
+        --accent-soft: #f0ded8;
+        --berry: #5b4b57;
+        --berry-deep: #3b2f39;
         --blue: #516a79;
         --shadow-soft: none;
         --radius: 0;
@@ -185,7 +185,7 @@
         font-size: 20px;
         font-weight: 900;
         letter-spacing: 0.01em;
-        padding: 0 54px 15px 0;
+        padding: 0 94px 14px 0;
       }
 
       .nav .logo:hover {
@@ -197,21 +197,24 @@
         content: "";
         position: absolute;
         bottom: 3px;
-        height: 2px;
-        background: var(--accent);
+        height: 0;
+        border-top: 2px solid var(--editorial-red);
+        background: transparent;
         pointer-events: none;
       }
 
       .logo::before {
-        left: 42%;
-        right: 32px;
+        left: 98px;
+        right: auto;
+        width: 64px;
       }
 
       .logo::after {
-        right: 0;
-        width: 34px;
-        transform: rotate(-63deg);
-        transform-origin: right center;
+        left: 160px;
+        right: auto;
+        width: 26px;
+        transform: rotate(-66deg);
+        transform-origin: left center;
       }
 
       .nav-cta {
@@ -1063,47 +1066,68 @@
       }
 
       .rank-score {
-        display: inline-flex;
+        display: grid;
+        grid-template-columns: auto auto;
         align-items: baseline;
-        justify-content: flex-end;
-        gap: 2px;
+        justify-content: end;
+        column-gap: 3px;
+        min-width: 96px;
         color: var(--ink) !important;
         font-size: 22px !important;
         font-weight: 900;
-        font-variant-numeric: tabular-nums;
+        font-variant-numeric: tabular-nums lining-nums;
         line-height: 1;
         text-align: right;
         white-space: nowrap;
       }
 
       .rank-score small {
+        align-self: baseline;
         color: var(--muted);
         font-size: 0.48em;
         font-weight: 900;
         letter-spacing: 0;
         line-height: 1;
+        transform: translateY(-0.02em);
         text-transform: uppercase;
       }
 
       .articles-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
+        gap: clamp(18px, 2vw, 28px);
       }
 
       .article-card {
+        display: grid;
+        grid-template-rows: minmax(220px, 0.9fr) auto;
         overflow: hidden;
+        background: var(--paper);
       }
 
       .article-card img {
         min-height: 220px;
-        max-height: 240px;
+        max-height: 260px;
+      }
+
+      .article-body {
+        min-height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: clamp(20px, 2.4vw, 32px);
+        background: var(--paper);
       }
 
       .article-body h3 {
-        font-size: 28px;
+        max-width: 11ch;
+        font-size: clamp(26px, 2.6vw, 34px);
         font-weight: 900;
-        line-height: 1.02;
+        line-height: 0.98;
+      }
+
+      .article-body .dek {
+        max-width: 32ch;
       }
 
       .recipe-desk {
@@ -1626,21 +1650,26 @@
 
         .logo {
           font-size: 17px;
-          padding-right: 34px;
-          padding-bottom: 7px;
+          padding: 0 70px 14px 0;
         }
 
         .nav .logo {
           font-size: 17px;
+          padding: 0 70px 14px 0;
         }
 
         .logo::before {
-          right: 22px;
+          left: 72px;
+          right: auto;
+          bottom: 3px;
+          width: 48px;
         }
 
         .logo::after {
-          width: 25px;
-          height: 12px;
+          left: 118px;
+          right: auto;
+          bottom: 3px;
+          width: 24px;
         }
 
         .nav-cta {
@@ -1917,11 +1946,27 @@
           object-fit: cover;
         }
 
+        .article-card {
+          grid-template-columns: minmax(112px, 38%) minmax(0, 1fr);
+          grid-template-rows: auto;
+          min-height: 168px;
+        }
+
         .article-card img {
-          min-height: 0;
+          min-height: 100%;
           max-height: none;
-          aspect-ratio: 4 / 3;
+          height: 100%;
+          aspect-ratio: auto;
           object-fit: cover;
+        }
+
+        .article-body {
+          min-height: 0;
+        }
+
+        .article-body h3 {
+          max-width: 12ch;
+          font-size: clamp(22px, 7vw, 28px);
         }
 
         .lead-body,
@@ -2072,32 +2117,32 @@
     />
     <style>
       :root {
-        --canvas: #f7f7f7;
-        --cream: #f7f7f7;
-        --cream-deep: #e7e7e7;
-        --paper: #ffffff;
-        --surface: #ffffff;
+        --canvas: #f7f3ec;
+        --cream: #f7f3ec;
+        --cream-deep: #e6ded2;
+        --paper: #fffaf3;
+        --surface: #fffaf3;
         --white: #ffffff;
-        --sand: #d6d6d6;
-        --sand-soft: #eeeeee;
-        --mist: #f1f1f1;
-        --smoke: #d6d6d6;
-        --sage: #e0e5d8;
-        --sage-strong: #aeb9a1;
-        --olive: #111111;
-        --olive-ink: #0f0f0f;
-        --olive-soft: #eeeeee;
+        --sand: #ddd2c3;
+        --sand-soft: #e6ded2;
+        --mist: #f7f3ec;
+        --smoke: #ddd2c3;
+        --sage: #a8b08c;
+        --sage-strong: #8f9974;
+        --olive: #6f7755;
+        --olive-ink: #3f482e;
+        --olive-soft: #e0e5d8;
         --black: #050505;
-        --charcoal: #252525;
-        --ink: #151515;
-        --muted: #62625d;
-        --line: #d3d3d3;
-        --rule: #151515;
-        --tomato: #984f3f;
-        --accent: #a84d37;
-        --accent-soft: #e7e2df;
-        --berry: #111111;
-        --berry-deep: #111111;
+        --charcoal: #2b2723;
+        --ink: #2b2723;
+        --muted: #6d6258;
+        --line: #d8cec0;
+        --rule: #2b2723;
+        --tomato: #d6281f;
+        --accent: #d6281f;
+        --accent-soft: #f0ded8;
+        --berry: #5b4b57;
+        --berry-deep: #3b2f39;
         --blue: #516a79;
         --shadow-soft: none;
         --radius: 0;
@@ -2254,7 +2299,7 @@
         font-size: 20px;
         font-weight: 900;
         letter-spacing: 0.01em;
-        padding: 0 54px 15px 0;
+        padding: 0 94px 14px 0;
       }
 
       .nav .logo:hover {
@@ -2266,21 +2311,24 @@
         content: "";
         position: absolute;
         bottom: 3px;
-        height: 2px;
-        background: var(--accent);
+        height: 0;
+        border-top: 2px solid var(--editorial-red);
+        background: transparent;
         pointer-events: none;
       }
 
       .logo::before {
-        left: 42%;
-        right: 32px;
+        left: 98px;
+        right: auto;
+        width: 64px;
       }
 
       .logo::after {
-        right: 0;
-        width: 34px;
-        transform: rotate(-63deg);
-        transform-origin: right center;
+        left: 160px;
+        right: auto;
+        width: 26px;
+        transform: rotate(-66deg);
+        transform-origin: left center;
       }
 
       .nav-cta {
@@ -3132,47 +3180,68 @@
       }
 
       .rank-score {
-        display: inline-flex;
+        display: grid;
+        grid-template-columns: auto auto;
         align-items: baseline;
-        justify-content: flex-end;
-        gap: 2px;
+        justify-content: end;
+        column-gap: 3px;
+        min-width: 96px;
         color: var(--ink) !important;
         font-size: 22px !important;
         font-weight: 900;
-        font-variant-numeric: tabular-nums;
+        font-variant-numeric: tabular-nums lining-nums;
         line-height: 1;
         text-align: right;
         white-space: nowrap;
       }
 
       .rank-score small {
+        align-self: baseline;
         color: var(--muted);
         font-size: 0.48em;
         font-weight: 900;
         letter-spacing: 0;
         line-height: 1;
+        transform: translateY(-0.02em);
         text-transform: uppercase;
       }
 
       .articles-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
+        gap: clamp(18px, 2vw, 28px);
       }
 
       .article-card {
+        display: grid;
+        grid-template-rows: minmax(220px, 0.9fr) auto;
         overflow: hidden;
+        background: var(--paper);
       }
 
       .article-card img {
         min-height: 220px;
-        max-height: 240px;
+        max-height: 260px;
+      }
+
+      .article-body {
+        min-height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: clamp(20px, 2.4vw, 32px);
+        background: var(--paper);
       }
 
       .article-body h3 {
-        font-size: 28px;
+        max-width: 11ch;
+        font-size: clamp(26px, 2.6vw, 34px);
         font-weight: 900;
-        line-height: 1.02;
+        line-height: 0.98;
+      }
+
+      .article-body .dek {
+        max-width: 32ch;
       }
 
       .recipe-desk {
@@ -3695,21 +3764,26 @@
 
         .logo {
           font-size: 17px;
-          padding-right: 34px;
-          padding-bottom: 7px;
+          padding: 0 70px 14px 0;
         }
 
         .nav .logo {
           font-size: 17px;
+          padding: 0 70px 14px 0;
         }
 
         .logo::before {
-          right: 22px;
+          left: 72px;
+          right: auto;
+          bottom: 3px;
+          width: 48px;
         }
 
         .logo::after {
-          width: 25px;
-          height: 12px;
+          left: 118px;
+          right: auto;
+          bottom: 3px;
+          width: 24px;
         }
 
         .nav-cta {
@@ -3986,11 +4060,27 @@
           object-fit: cover;
         }
 
+        .article-card {
+          grid-template-columns: minmax(112px, 38%) minmax(0, 1fr);
+          grid-template-rows: auto;
+          min-height: 168px;
+        }
+
         .article-card img {
-          min-height: 0;
+          min-height: 100%;
           max-height: none;
-          aspect-ratio: 4 / 3;
+          height: 100%;
+          aspect-ratio: auto;
           object-fit: cover;
+        }
+
+        .article-body {
+          min-height: 0;
+        }
+
+        .article-body h3 {
+          max-width: 12ch;
+          font-size: clamp(22px, 7vw, 28px);
         }
 
         .lead-body,
@@ -4185,7 +4275,7 @@
               <a class="hero-link-card" href="reviews/index.html">
                 <small>The Index</small>
                 <strong>The 2026 prepared meal ranking.</strong>
-                <span>Services scored for taste, range, delivery, filters, and real-week fit.</span>
+                <span>A running index of services worth using when dinner has to land.</span>
               </a>
               <a class="hero-link-card" href="stories/index.html">
                 <small>Body context</small>
@@ -4333,8 +4423,7 @@
                 <h2>What to cook when the week is already moving.</h2>
               </div>
               <p>
-                Platter recipes are built for real kitchens: quick dinners, flexible swaps, smart leftovers, and
-                finishing moves that make prepared food taste freshly considered.
+                Recipes for weeks already in motion: fast dinners, flexible swaps, and finishing moves that make everything taste intentional.
               </p>
             </div>
 
@@ -4393,8 +4482,7 @@
                 <h2>What is actually worth the fridge space?</h2>
               </div>
               <p>
-                Our monthly ranking of the services and shortcuts that earn repeat fridge space, scored for taste,
-                range, delivery, value, and weeknight usefulness.
+                Our monthly ranking of prepared meals, meal kits, and grocery shortcuts that earn real fridge space.
               </p>
             </div>
 
@@ -4408,8 +4496,7 @@
                   <div class="score" aria-label="Platter score: 9.8 out of 10"><strong>9.8</strong><span>/10</span><small>score</small></div>
                 </div>
                 <p class="dek">
-                  Best overall for people who want prepared meals to feel closer to a chef handoff than a clinical
-                  subscription box.
+                  Best overall for prepared meals that still feel fresh, flexible, and considered by day three.
                 </p>
                 <div class="index-metrics" aria-label="CookUnity quick read">
                   <div class="index-metric"><small>Best for</small><strong>Chef-led prepared meals</strong></div>
@@ -4458,8 +4545,11 @@
             <div class="section-head">
               <div>
                 <div class="section-kicker">Guides</div>
-                <h2>Guides for choosing better, faster, smarter.</h2>
+                <h2>Field guides for the actual week.</h2>
               </div>
+              <p>
+                Reported, practical guidance for ordering smarter, cooking less frantically, and making the fridge work harder.
+              </p>
             </div>
 
             <div class="articles-grid">
