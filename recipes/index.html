@@ -19,7 +19,124 @@
         "publisher": { "@type": "Organization", "name": "Platter" }
       }
     </script>
-  </head>
+  
+<style id="platter-ink-accent-polish">
+:root,
+body {
+  --tomato: #2B2723 !important;
+  --accent: #2B2723 !important;
+  --platter-red: #2B2723 !important;
+  --platter-accent: #2B2723 !important;
+  --color-accent: #2B2723 !important;
+}
+body {
+  overflow-x: hidden;
+}
+[class*="text-red"],
+[class*="text-tomato"],
+[class*="text-accent"],
+[class*="accent-text"],
+[class*="tomato"] {
+  color: #2B2723 !important;
+}
+[class*="bg-red"],
+[class*="bg-tomato"],
+[class*="bg-accent"] {
+  background-color: #2B2723 !important;
+}
+[class*="border-red"],
+[class*="border-tomato"],
+[class*="border-accent"] {
+  border-color: #2B2723 !important;
+}
+</style>
+<style id="recipes-layout-launch-polish">
+body,
+main {
+  overflow-x: hidden;
+}
+main h1 {
+  line-height: .9 !important;
+  letter-spacing: 0 !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+main img {
+  max-width: 100%;
+}
+@media (min-width: 900px) {
+  main section:first-of-type {
+    overflow: hidden !important;
+  }
+  main section:first-of-type > * {
+    min-width: 0 !important;
+  }
+  main section:first-of-type h1 {
+    font-size: clamp(52px, 4.8vw, 86px) !important;
+    max-width: 9.5ch !important;
+  }
+}
+@media (max-width: 899px) {
+  main section:first-of-type h1,
+  main h1 {
+    font-size: clamp(38px, 13vw, 58px) !important;
+    max-width: 9.5ch !important;
+  }
+}
+</style>
+<style data-final-polish="platter-recipes-launch-polish">
+
+main,
+body {
+  overflow-x: clip;
+}
+
+main section:first-of-type,
+main .recipe-hero,
+main [class*="recipe"][class*="hero"],
+main [class*="Recipe"][class*="Hero"] {
+  overflow: clip;
+}
+
+main section:first-of-type h1,
+main .recipe-hero h1,
+main [class*="recipe"][class*="hero"] h1,
+main [class*="Recipe"][class*="Hero"] h1 {
+  max-width: 10ch !important;
+  text-wrap: balance;
+  overflow-wrap: normal;
+}
+
+@media (min-width: 900px) {
+  main section:first-of-type h1,
+  main .recipe-hero h1,
+  main [class*="recipe"][class*="hero"] h1,
+  main [class*="Recipe"][class*="Hero"] h1 {
+    font-size: clamp(3.75rem, 6vw, 6.5rem) !important;
+    line-height: .9 !important;
+  }
+}
+
+@media (max-width: 899px) {
+  main section:first-of-type,
+  main .recipe-hero,
+  main [class*="recipe"][class*="hero"],
+  main [class*="Recipe"][class*="Hero"] {
+    display: block !important;
+  }
+
+  main section:first-of-type h1,
+  main .recipe-hero h1,
+  main [class*="recipe"][class*="hero"] h1,
+  main [class*="Recipe"][class*="Hero"] h1 {
+    max-width: 8.5ch !important;
+    font-size: clamp(3rem, 14vw, 4.75rem) !important;
+    line-height: .9 !important;
+  }
+}
+
+</style>
+</head>
   <body>
     <div class="announce"><a href="weekday-salmon-couscous/index.html">New: Salmon with lemon couscous</a></div>
     <header class="site-header">

@@ -10,7 +10,75 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/platter-system.css" />
-  </head>
+  
+<style id="platter-ink-accent-polish">
+:root,
+body {
+  --tomato: #2B2723 !important;
+  --accent: #2B2723 !important;
+  --platter-red: #2B2723 !important;
+  --platter-accent: #2B2723 !important;
+  --color-accent: #2B2723 !important;
+}
+body {
+  overflow-x: hidden;
+}
+[class*="text-red"],
+[class*="text-tomato"],
+[class*="text-accent"],
+[class*="accent-text"],
+[class*="tomato"] {
+  color: #2B2723 !important;
+}
+[class*="bg-red"],
+[class*="bg-tomato"],
+[class*="bg-accent"] {
+  background-color: #2B2723 !important;
+}
+[class*="border-red"],
+[class*="border-tomato"],
+[class*="border-accent"] {
+  border-color: #2B2723 !important;
+}
+</style>
+<style data-final-polish="platter-reviews-launch-polish">
+
+[class*="score"],
+[class*="rating"] {
+  align-items: baseline !important;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+[class*="score"] small,
+[class*="rating"] small {
+  display: inline-block;
+  margin-left: .16em;
+  font-size: .42em !important;
+  line-height: 1;
+  vertical-align: baseline;
+}
+
+[class*="score"] + a,
+[class*="rating"] + a,
+[class*="score"] + button,
+[class*="rating"] + button {
+  margin-left: clamp(32px, 6vw, 96px) !important;
+}
+
+@media (max-width: 760px) {
+  [class*="score"] + a,
+  [class*="rating"] + a,
+  [class*="score"] + button,
+  [class*="rating"] + button {
+    display: block;
+    width: 100%;
+    margin: 28px 0 0 !important;
+  }
+}
+
+</style>
+</head>
   <body>
     <div class="announce"><a href="../editorial-standards/index.html">Read our review standards</a></div>
     <header class="site-header">

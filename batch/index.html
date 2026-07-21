@@ -3678,7 +3678,499 @@
         }
       }
     </style>
-  </head>
+<style id="batch-polish-final-pass">
+  :root {
+    --batch-accent: #2B2723;
+    --batch-red: #2B2723;
+    --tomato: #2B2723;
+    --accent: #2B2723;
+    --platter-accent: #2B2723;
+  }
+
+  body.batch-polished .iphone-status,
+  body.batch-polished .phone-status,
+  body.batch-polished .simulator-status,
+  body.batch-polished .status-bar,
+  body.batch-polished .status-time,
+  body.batch-polished .status-network,
+  body.batch-polished .status-battery,
+  body.batch-polished [data-status-bar],
+  body.batch-polished [data-batch-status-hidden] {
+    display: none !important;
+  }
+
+  body.batch-polished .phone-screen,
+  body.batch-polished .iphone-screen,
+  body.batch-polished .simulator-screen,
+  body.batch-polished .batch-phone-screen,
+  body.batch-polished .mobile-screen,
+  body.batch-polished [data-phone-screen],
+  body.batch-polished [data-simulator-screen] {
+    padding-top: clamp(52px, 7vw, 72px) !important;
+    overflow: hidden !important;
+  }
+
+  body.batch-polished .phone-screen h1,
+  body.batch-polished .iphone-screen h1,
+  body.batch-polished .simulator-screen h1,
+  body.batch-polished .batch-phone-screen h1,
+  body.batch-polished [data-phone-screen] h1,
+  body.batch-polished [data-simulator-screen] h1 {
+    max-width: 11.5ch !important;
+    line-height: 0.94 !important;
+    letter-spacing: 0 !important;
+  }
+
+  body.batch-polished .accent,
+  body.batch-polished .tomato,
+  body.batch-polished .text-red,
+  body.batch-polished .is-red,
+  body.batch-polished [class*="accent"],
+  body.batch-polished [class*="tomato"] {
+    color: #2B2723 !important;
+  }
+
+  body.batch-polished .progress-fill,
+  body.batch-polished .beta-dot,
+  body.batch-polished .live-dot,
+  body.batch-polished [class*="progress"] [class*="fill"] {
+    background: #2B2723 !important;
+  }
+
+  body.batch-polished .beta-pill,
+  body.batch-polished .tag,
+  body.batch-polished .pill {
+    border-color: #2B2723 !important;
+    color: #2B2723 !important;
+  }
+
+  body.batch-polished .platter-logo-mark,
+  body.batch-polished .batch-logo-mark,
+  body.batch-polished .brand-mark,
+  body.batch-polished .logo-mark,
+  body.batch-polished [class*="logo"] svg,
+  body.batch-polished [class*="mark"] svg {
+    color: #2B2723 !important;
+    stroke: #2B2723 !important;
+  }
+
+  body.batch-polished .platter-logo-mark::before,
+  body.batch-polished .platter-logo-mark::after,
+  body.batch-polished .batch-logo-mark::before,
+  body.batch-polished .batch-logo-mark::after,
+  body.batch-polished .brand-mark::before,
+  body.batch-polished .brand-mark::after,
+  body.batch-polished .logo-mark::before,
+  body.batch-polished .logo-mark::after {
+    background: #2B2723 !important;
+    border-color: #2B2723 !important;
+  }
+
+  body.batch-polished .simulator-quickjump,
+  body.batch-polished .quickjump,
+  body.batch-polished .quick-jump,
+  body.batch-polished [data-simulator-jump] {
+    z-index: 50 !important;
+  }
+
+  @media (min-width: 900px) {
+    body.batch-polished .simulator-quickjump,
+    body.batch-polished .quickjump,
+    body.batch-polished .quick-jump,
+    body.batch-polished [data-simulator-jump] {
+      position: fixed !important;
+      right: clamp(18px, 2vw, 32px) !important;
+      bottom: clamp(18px, 2vw, 32px) !important;
+      max-width: 260px !important;
+    }
+  }
+
+  @media (max-width: 899px) {
+    body.batch-polished .simulator-quickjump,
+    body.batch-polished .quickjump,
+    body.batch-polished .quick-jump,
+    body.batch-polished [data-simulator-jump] {
+      position: static !important;
+      width: min(100%, 360px) !important;
+      margin: 24px auto 0 !important;
+    }
+  }
+</style>
+<style id="batch-final-wrap-pass">
+  body.batch-finalized {
+    --batch-red: #2B2723;
+    --tomato: #2B2723;
+    --accent: #2B2723;
+    --platter-accent: #2B2723;
+    --brand-red: #2B2723;
+  }
+
+  body.batch-finalized .iphone-screen,
+  body.batch-finalized .phone-screen,
+  body.batch-finalized .simulator-screen,
+  body.batch-finalized .batch-phone-screen,
+  body.batch-finalized [data-phone-screen],
+  body.batch-finalized [data-simulator-screen] {
+    position: relative;
+    overflow: hidden;
+    padding-top: clamp(72px, 8vw, 92px) !important;
+  }
+
+  body.batch-finalized .iphone-status,
+  body.batch-finalized .phone-status,
+  body.batch-finalized .simulator-status,
+  body.batch-finalized .status-bar,
+  body.batch-finalized .status-time,
+  body.batch-finalized .status-network,
+  body.batch-finalized .status-battery,
+  body.batch-finalized [data-status-bar],
+  body.batch-finalized [data-batch-status-hidden],
+  body.batch-finalized [class*="statusBar"],
+  body.batch-finalized [class*="StatusBar"],
+  body.batch-finalized [class*="system-status"],
+  body.batch-finalized [class*="battery"],
+  body.batch-finalized [class*="network"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  body.batch-finalized .iphone-screen h1,
+  body.batch-finalized .phone-screen h1,
+  body.batch-finalized .simulator-screen h1,
+  body.batch-finalized [data-phone-screen] h1,
+  body.batch-finalized [data-simulator-screen] h1 {
+    color: #2B2723 !important;
+    line-height: 0.94 !important;
+    max-width: 8.5ch !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  body.batch-finalized .iphone-screen h1 span,
+  body.batch-finalized .phone-screen h1 span,
+  body.batch-finalized .simulator-screen h1 span,
+  body.batch-finalized [data-phone-screen] h1 span,
+  body.batch-finalized [data-simulator-screen] h1 span,
+  body.batch-finalized .accent,
+  body.batch-finalized .text-accent,
+  body.batch-finalized .text-red,
+  body.batch-finalized [class*="tomato"],
+  body.batch-finalized [class*="accent"] {
+    color: #2B2723 !important;
+  }
+
+  body.batch-finalized .batch-beta,
+  body.batch-finalized .beta-pill,
+  body.batch-finalized .chip,
+  body.batch-finalized [class*="pill"] {
+    border-color: #2B2723 !important;
+    color: #2B2723 !important;
+  }
+
+  body.batch-finalized .progress-bar,
+  body.batch-finalized .progress-fill,
+  body.batch-finalized [class*="progress"] [class*="fill"],
+  body.batch-finalized [class*="active"] {
+    background-color: #2B2723 !important;
+  }
+
+  body.batch-finalized .simulator-quickjump,
+  body.batch-finalized .quickjump,
+  body.batch-finalized [class*="quickjump"],
+  body.batch-finalized [data-simulator-quickjump] {
+    position: fixed !important;
+    right: 24px !important;
+    bottom: 24px !important;
+    z-index: 30 !important;
+    max-width: 240px !important;
+  }
+
+  @media (max-width: 760px) {
+    body.batch-finalized .simulator-quickjump,
+    body.batch-finalized .quickjump,
+    body.batch-finalized [class*="quickjump"],
+    body.batch-finalized [data-simulator-quickjump] {
+      position: static !important;
+      max-width: none !important;
+      margin: 24px 20px !important;
+    }
+  }
+</style>
+<style id="batch-final-wrap-pass">
+  body.batch-finalized {
+    --batch-red: #2b2723;
+    --tomato: #2b2723;
+    --accent: #2b2723;
+    --platter-accent: #2b2723;
+    --brand-red: #2b2723;
+  }
+
+  body.batch-finalized .iphone-screen,
+  body.batch-finalized .phone-screen,
+  body.batch-finalized .simulator-screen,
+  body.batch-finalized .batch-phone-screen,
+  body.batch-finalized [data-phone-screen],
+  body.batch-finalized [data-simulator-screen] {
+    position: relative;
+    overflow: hidden;
+    padding-top: clamp(76px, 8vw, 96px) !important;
+  }
+
+  body.batch-finalized .iphone-status,
+  body.batch-finalized .phone-status,
+  body.batch-finalized .simulator-status,
+  body.batch-finalized .status-bar,
+  body.batch-finalized .status-time,
+  body.batch-finalized .status-network,
+  body.batch-finalized .status-battery,
+  body.batch-finalized [data-status-bar],
+  body.batch-finalized [data-batch-status-hidden],
+  body.batch-finalized [class*="statusBar"],
+  body.batch-finalized [class*="StatusBar"],
+  body.batch-finalized [class*="system-status"],
+  body.batch-finalized [class*="battery"],
+  body.batch-finalized [class*="network"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  body.batch-finalized .iphone-screen h1,
+  body.batch-finalized .phone-screen h1,
+  body.batch-finalized .simulator-screen h1,
+  body.batch-finalized .batch-phone-screen h1,
+  body.batch-finalized [data-phone-screen] h1,
+  body.batch-finalized [data-simulator-screen] h1 {
+    color: #2b2723 !important;
+    line-height: 0.94 !important;
+    max-width: 8.5ch !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  body.batch-finalized .iphone-screen h1 span,
+  body.batch-finalized .phone-screen h1 span,
+  body.batch-finalized .simulator-screen h1 span,
+  body.batch-finalized .batch-phone-screen h1 span,
+  body.batch-finalized [data-phone-screen] h1 span,
+  body.batch-finalized [data-simulator-screen] h1 span,
+  body.batch-finalized .accent,
+  body.batch-finalized .text-accent,
+  body.batch-finalized .text-red,
+  body.batch-finalized [class*="tomato"],
+  body.batch-finalized [class*="accent"] {
+    color: #2b2723 !important;
+  }
+
+  body.batch-finalized .batch-beta,
+  body.batch-finalized .beta-pill,
+  body.batch-finalized .chip,
+  body.batch-finalized [class*="pill"] {
+    border-color: #2b2723 !important;
+    color: #2b2723 !important;
+  }
+
+  body.batch-finalized .progress-bar,
+  body.batch-finalized .progress-fill,
+  body.batch-finalized [class*="progress"] [class*="fill"],
+  body.batch-finalized [class*="active"] {
+    background-color: #2b2723 !important;
+  }
+
+  body.batch-finalized .simulator-quickjump,
+  body.batch-finalized .quickjump,
+  body.batch-finalized [data-simulator-quickjump] {
+    position: fixed;
+    right: clamp(18px, 3vw, 42px);
+    bottom: clamp(18px, 3vw, 42px);
+    z-index: 20;
+    max-width: min(260px, calc(100vw - 36px));
+  }
+
+  @media (max-width: 760px) {
+    body.batch-finalized .simulator-quickjump,
+    body.batch-finalized .quickjump,
+    body.batch-finalized [data-simulator-quickjump] {
+      position: static;
+      margin: 24px auto 0;
+      width: min(100%, 360px);
+    }
+  }
+</style>
+
+<style id="platter-ink-accent-polish">
+:root,
+body {
+  --tomato: #2B2723 !important;
+  --accent: #2B2723 !important;
+  --platter-red: #2B2723 !important;
+  --platter-accent: #2B2723 !important;
+  --color-accent: #2B2723 !important;
+}
+body {
+  overflow-x: hidden;
+}
+[class*="text-red"],
+[class*="text-tomato"],
+[class*="text-accent"],
+[class*="accent-text"],
+[class*="tomato"] {
+  color: #2B2723 !important;
+}
+[class*="bg-red"],
+[class*="bg-tomato"],
+[class*="bg-accent"] {
+  background-color: #2B2723 !important;
+}
+[class*="border-red"],
+[class*="border-tomato"],
+[class*="border-accent"] {
+  border-color: #2B2723 !important;
+}
+</style>
+<style id="batch-simulator-launch-polish">
+:root {
+  --batch-accent: #2B2723 !important;
+}
+[class*="simulator"],
+[class*="Simulator"],
+[class*="iphone"],
+[class*="iPhone"],
+[class*="phone"],
+[class*="device"],
+[class*="mockup"] {
+  position: relative;
+}
+[class*="simulator"] [class*="screen"],
+[class*="Simulator"] [class*="screen"],
+[class*="iphone"] [class*="screen"],
+[class*="iPhone"] [class*="screen"],
+[class*="phone"] [class*="screen"],
+[class*="device"] [class*="screen"],
+[class*="mockup"] [class*="screen"],
+[class*="simulator"] [class*="content"],
+[class*="Simulator"] [class*="content"],
+[class*="iphone"] [class*="content"],
+[class*="iPhone"] [class*="content"],
+[class*="phone"] [class*="content"],
+[class*="device"] [class*="content"],
+[class*="mockup"] [class*="content"] {
+  padding-top: 96px !important;
+  overflow: hidden !important;
+}
+[class*="simulator"] h1,
+[class*="Simulator"] h1,
+[class*="iphone"] h1,
+[class*="iPhone"] h1,
+[class*="phone"] h1,
+[class*="device"] h1,
+[class*="mockup"] h1 {
+  margin-top: 0 !important;
+  max-width: 11ch !important;
+  line-height: .92 !important;
+  letter-spacing: 0 !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+@media (min-width: 1000px) {
+  [class*="quickjump"],
+  [class*="quick-jump"],
+  [class*="quickJump"],
+  [class*="simulatorQuick"],
+  [class*="SimulatorQuick"] {
+    position: fixed !important;
+    right: 24px !important;
+    bottom: 24px !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    max-width: 260px !important;
+    z-index: 20 !important;
+  }
+}
+@media (max-width: 999px) {
+  [class*="quickjump"],
+  [class*="quick-jump"],
+  [class*="quickJump"],
+  [class*="simulatorQuick"],
+  [class*="SimulatorQuick"] {
+    position: static !important;
+    width: min(340px, calc(100% - 40px)) !important;
+    margin: 24px auto 0 !important;
+    transform: none !important;
+  }
+}
+</style>
+<style data-final-polish="platter-batch-launch-polish">
+
+body {
+  --accent: #2B2723 !important;
+  --tomato: #2B2723 !important;
+  --red: #2B2723 !important;
+}
+
+body h1 span,
+body h2 span,
+body em,
+body .accent,
+body [class*="accent"],
+body [class*="tomato"],
+body [class*="red"] {
+  color: #2B2723 !important;
+  border-color: #2B2723 !important;
+}
+
+body [class*="progress"] > *,
+body [class*="Progress"] > * {
+  background: #2B2723 !important;
+}
+
+body [class*="phone"],
+body [class*="Phone"],
+body [class*="iphone"],
+body [class*="Iphone"],
+body [class*="simulator"],
+body [class*="Simulator"],
+body [class*="device"],
+body [class*="Device"] {
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+body [class*="phone"] [class*="status"],
+body [class*="Phone"] [class*="status"],
+body [class*="iphone"] [class*="status"],
+body [class*="Iphone"] [class*="status"],
+body [class*="device"] [class*="status"],
+body [class*="Device"] [class*="status"],
+body [class*="statusBar"],
+body [class*="StatusBar"],
+body [class*="time"],
+body [class*="Time"],
+body [class*="battery"],
+body [class*="Battery"],
+body [class*="network"],
+body [class*="Network"] {
+  display: none !important;
+}
+
+body [class*="screen"],
+body [class*="Screen"] {
+  padding-top: clamp(54px, 8vw, 76px) !important;
+}
+
+@media (max-width: 900px) {
+  body [class*="quickjump"],
+  body [class*="Quickjump"],
+  body [class*="quickJump"],
+  body [class*="simulator-controls"],
+  body [class*="SimulatorControls"] {
+    position: static !important;
+    transform: none !important;
+    width: min(100%, 360px) !important;
+    margin: 28px auto 0 !important;
+  }
+}
+
+</style>
+</head>
   <body>
     <main id="app" class="batch-page"></main>
 
@@ -5069,5 +5561,229 @@
 
       render();
     </script>
-  </body>
+<script id="batch-polish-final-pass-js">
+  (function () {
+    function ready(fn) {
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", fn);
+      } else {
+        fn();
+      }
+    }
+
+    function hideFakeStatusChrome() {
+      var scopeSelector = ".iphone, .phone, .simulator, .live-simulator, .mobile-flow-preview, [data-simulator], [data-phone-screen]";
+      var scopes = document.querySelectorAll(scopeSelector);
+      scopes.forEach(function (scope) {
+        scope.querySelectorAll("span, div, p, b, strong, small").forEach(function (node) {
+          var text = (node.textContent || "").trim();
+          var compact = text.replace(/\s+/g, "");
+          var isStatus = /^(08:01|8:01|5G|LTE|\d\/9)$/.test(compact);
+          var isTiny = node.offsetHeight < 34 && node.offsetWidth < 140;
+          if (isStatus && isTiny) node.setAttribute("data-batch-status-hidden", "true");
+        });
+      });
+    }
+
+    function bindSimulatorJump() {
+      document.addEventListener("click", function (event) {
+        var trigger = event.target.closest("[data-step], [data-screen], .simulator-quickjump button, .quickjump button, .quick-jump button, [data-simulator-jump] button");
+        if (!trigger) return;
+
+        var raw = trigger.dataset.step || trigger.dataset.screen || trigger.textContent || "";
+        var match = raw.match(/\d+/);
+        if (!match) return;
+        var step = Number(match[0]);
+
+        document.querySelectorAll(".simulator-quickjump button, .quickjump button, .quick-jump button, [data-simulator-jump] button").forEach(function (button) {
+          button.classList.toggle("is-active", button === trigger || (button.textContent || "").match(new RegExp("\\b" + step + "\\b")));
+        });
+
+        var panels = document.querySelectorAll("[data-step-panel], [data-screen-panel], .simulator-step, .batch-screen, .phone-screen-step, .app-step");
+        if (panels.length) {
+          panels.forEach(function (panel, index) {
+            var panelStep = Number(panel.dataset.stepPanel || panel.dataset.screenPanel || panel.dataset.step || panel.dataset.screen || index + 1);
+            var active = panelStep === step;
+            panel.hidden = !active;
+            panel.classList.toggle("is-active", active);
+          });
+        }
+
+        document.dispatchEvent(new CustomEvent("batch:goToStep", { detail: { step: step } }));
+        window.__batchSimulatorStep = step;
+        hideFakeStatusChrome();
+      });
+    }
+
+    ready(function () {
+      document.body.classList.add("batch-polished");
+      hideFakeStatusChrome();
+      bindSimulatorJump();
+      window.setTimeout(hideFakeStatusChrome, 250);
+      window.setTimeout(hideFakeStatusChrome, 1000);
+    });
+  })();
+</script>
+<script id="batch-final-wrap-pass-js">
+(() => {
+  document.body.classList.add("batch-finalized");
+
+  const statusPattern = /^(08:01|8:01|5G|LTE|1\/9|2\/9|3\/9|4\/9|5\/9|6\/9|7\/9|8\/9|9\/9)$/i;
+  const scopeSelector = ".iphone-screen, .phone-screen, .simulator-screen, .batch-phone-screen, [data-phone-screen], [data-simulator-screen]";
+
+  const hideStatusText = () => {
+    document.querySelectorAll(scopeSelector).forEach((scope) => {
+      scope.querySelectorAll("*").forEach((node) => {
+        const text = (node.textContent || "").replace(/\s+/g, " ").trim();
+        if (!text || text.length > 8) return;
+        if (statusPattern.test(text) || /^[▮▯▱▰\s-]+$/.test(text)) {
+          node.setAttribute("data-batch-status-hidden", "true");
+          node.style.display = "none";
+        }
+      });
+    });
+  };
+
+  const bindQuickjump = () => {
+    const buttons = [...document.querySelectorAll(".simulator-quickjump button, .quickjump button, [data-simulator-quickjump] button")];
+    buttons.forEach((button, index) => {
+      if (button.dataset.batchBound) return;
+      button.dataset.batchBound = "true";
+      button.addEventListener("click", () => {
+        const match = (button.textContent || "").match(/\d+/);
+        const step = match ? Number(match[0]) : index + 1;
+        document.querySelectorAll("[data-step], [data-screen], .simulator-step, .phone-step").forEach((panel) => {
+          const marker = Number(panel.getAttribute("data-step") || panel.getAttribute("data-screen") || 0);
+          if (marker) panel.hidden = marker !== step;
+        });
+        document.dispatchEvent(new CustomEvent("batch:goToStep", { detail: { step } }));
+        window.localStorage?.setItem("batch_flow_current_step", String(step));
+        hideStatusText();
+      });
+    });
+  };
+
+  hideStatusText();
+  bindQuickjump();
+  new MutationObserver(hideStatusText).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+<script id="batch-final-wrap-pass-js">
+(() => {
+  document.body.classList.add("batch-finalized");
+
+  const statusPattern = /^(08:01|8:01|5G|LTE|1\/9|2\/9|3\/9|4\/9|5\/9|6\/9|7\/9|8\/9|9\/9)$/i;
+  const scopeSelector = ".iphone-screen, .phone-screen, .simulator-screen, .batch-phone-screen, [data-phone-screen], [data-simulator-screen]";
+
+  function hideStatusText() {
+    document.querySelectorAll(scopeSelector).forEach((scope) => {
+      scope.querySelectorAll("*").forEach((node) => {
+        if (node.children.length) return;
+        const text = (node.textContent || "").trim();
+        if (!text || text.length > 8) return;
+        if (statusPattern.test(text) || /^[▮▯▰▱▭▬]+$/.test(text)) {
+          node.setAttribute("data-batch-status-hidden", "true");
+          node.style.display = "none";
+        }
+      });
+    });
+  }
+
+  function bindQuickjump() {
+    const buttons = document.querySelectorAll(".simulator-quickjump button, .quickjump button, [data-simulator-quickjump] button");
+    buttons.forEach((button) => {
+      if (button.dataset.batchBound) return;
+      button.dataset.batchBound = "true";
+      button.addEventListener("click", () => {
+        const match = (button.textContent || "").match(/\d+/);
+        if (!match) return;
+        const step = Number(match[0]);
+        document.querySelectorAll("[data-step], [data-screen], [data-batch-step]").forEach((panel) => {
+          const value = Number(panel.getAttribute("data-step") || panel.getAttribute("data-screen") || panel.getAttribute("data-batch-step"));
+          if (!value) return;
+          panel.toggleAttribute("hidden", value !== step);
+          panel.classList.toggle("is-active", value === step);
+        });
+        window.dispatchEvent(new CustomEvent("batch:goToStep", { detail: { step } }));
+        try {
+          localStorage.setItem("batch_flow", JSON.stringify({ currentScreen: step }));
+        } catch (error) {}
+        hideStatusText();
+      });
+    });
+  }
+
+  hideStatusText();
+  bindQuickjump();
+  new MutationObserver(() => {
+    hideStatusText();
+    bindQuickjump();
+  }).observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
+
+<script id="batch-simulator-status-polish">
+(() => {
+  const statusText = /^(0?8:01|5G|LTE|[1-9]\/9)$/;
+  const rootSelector = '[class*="simulator"],[class*="Simulator"],[class*="iphone"],[class*="iPhone"],[class*="phone"],[class*="device"],[class*="mockup"]';
+  function polish() {
+    document.querySelectorAll(rootSelector).forEach((root) => {
+      const rootBox = root.getBoundingClientRect();
+      root.querySelectorAll("*").forEach((el) => {
+        if (el.children.length) return;
+        const text = (el.textContent || "").trim();
+        if (!statusText.test(text)) return;
+        const box = el.getBoundingClientRect();
+        if (box.top - rootBox.top < 230) {
+          el.style.display = "none";
+          el.setAttribute("aria-hidden", "true");
+        }
+      });
+    });
+  }
+  document.addEventListener("DOMContentLoaded", polish);
+  window.addEventListener("load", polish);
+  document.addEventListener("click", () => setTimeout(polish, 80));
+  setInterval(polish, 900);
+})();
+</script>
+<script data-final-polish="platter-batch-status-cleaner">
+
+(function () {
+  var token = /(?:08:01|5G|LTE|\b[1-9]\s*\/\s*9\b)/g;
+  var exact = /^(?:08:01|5G|LTE|[1-9]\s*\/\s*9)$/;
+  function cleanText(root) {
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      var oldValue = node.nodeValue || "";
+      var nextValue = oldValue.replace(token, "").replace(/\s{2,}/g, " ");
+      if (nextValue !== oldValue) node.nodeValue = nextValue;
+    });
+  }
+  function hideExact(root) {
+    root.querySelectorAll("*").forEach(function (el) {
+      var text = (el.textContent || "").trim();
+      if (exact.test(text)) {
+        el.style.display = "none";
+        el.setAttribute("aria-hidden", "true");
+      }
+    });
+  }
+  function run() {
+    document.querySelectorAll('[class*="phone"],[class*="Phone"],[class*="iphone"],[class*="Iphone"],[class*="device"],[class*="Device"],[class*="simulator"],[class*="Simulator"]').forEach(function (scope) {
+      cleanText(scope);
+      hideExact(scope);
+    });
+  }
+  if (document.body) run();
+  document.addEventListener("DOMContentLoaded", run);
+  window.addEventListener("load", run);
+  [50, 200, 500, 1000, 1800].forEach(function (delay) { setTimeout(run, delay); });
+  new MutationObserver(run).observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+})();
+
+</script>
+</body>
 </html>
