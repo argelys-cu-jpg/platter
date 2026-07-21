@@ -362,7 +362,7 @@
 
       .landing-device .preview-phone .screen {
         overflow: auto;
-        padding-top: 112px;
+        padding-top: 86px;
       }
 
       .landing-device .preview-phone .primary-button {
@@ -1187,7 +1187,7 @@
 
       .screen-stage .screen {
         border-radius: 35px;
-        padding: 56px 20px 24px;
+        padding: 42px 20px 24px;
       }
 
       .screen-1 {
@@ -1938,7 +1938,7 @@
         height: 100%;
         border: 0;
         border-radius: 35px;
-        padding: 104px 16px 22px;
+        padding: 86px 16px 22px;
         gap: 9px;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
@@ -1951,17 +1951,20 @@
 
       .device-status {
         position: absolute;
-        top: 30px;
-        left: 34px;
-        right: 34px;
+        top: 42px;
+        left: 22px;
+        right: 22px;
         z-index: 20;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        min-height: 12px;
+        margin: 0;
         color: var(--ink);
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
         font-size: 9px;
         font-weight: 800;
+        line-height: 1;
         letter-spacing: 0.02em;
         pointer-events: none;
       }
@@ -2012,6 +2015,20 @@
         font-size: 11px;
         letter-spacing: 0.08em;
         line-height: 1;
+      }
+
+      .preview-phone .screen-header {
+        align-items: flex-start;
+        margin-top: 0;
+      }
+
+      .preview-phone .kicker {
+        max-width: 18ch;
+      }
+
+      .preview-phone .screen-count {
+        flex: 0 0 auto;
+        text-align: right;
       }
 
       .preview-phone .hero-plate {
@@ -3064,7 +3081,7 @@
       }
 
       .preview-phone .screen {
-        overflow: hidden;
+        overflow: auto;
       }
 
       .preview-phone .eyebrow-pill {
