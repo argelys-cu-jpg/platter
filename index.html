@@ -170,15 +170,13 @@
 
       .logo {
         position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        display: inline-block;
         font-family: var(--sans);
         font-size: 20px;
         font-weight: 900;
         line-height: 1;
         letter-spacing: 0.01em;
-        padding: 0 42px 8px 0;
+        padding: 0 54px 15px 0;
         text-transform: uppercase;
       }
 
@@ -187,6 +185,7 @@
         font-size: 20px;
         font-weight: 900;
         letter-spacing: 0.01em;
+        padding: 0 54px 15px 0;
       }
 
       .nav .logo:hover {
@@ -197,28 +196,22 @@
       .logo::after {
         content: "";
         position: absolute;
+        bottom: 3px;
+        height: 2px;
+        background: var(--accent);
         pointer-events: none;
       }
 
       .logo::before {
-        left: 46%;
-        right: 27px;
-        bottom: 0;
-        height: 2px;
-        background: var(--accent);
+        left: 42%;
+        right: 32px;
       }
 
       .logo::after {
         right: 0;
-        bottom: 0;
-        width: 31px;
-        height: 16px;
-        border-right: 2px solid var(--accent);
-        border-bottom: 2px solid var(--accent);
-        border-radius: 0;
-        background: transparent;
-        transform: skewX(-27deg);
-        transform-origin: right bottom;
+        width: 34px;
+        transform: rotate(-63deg);
+        transform-origin: right center;
       }
 
       .nav-cta {
@@ -1070,17 +1063,25 @@
       }
 
       .rank-score {
+        display: inline-flex;
+        align-items: baseline;
+        justify-content: flex-end;
+        gap: 2px;
         color: var(--ink) !important;
         font-size: 22px !important;
         font-weight: 900;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
         text-align: right;
+        white-space: nowrap;
       }
 
       .rank-score small {
         color: var(--muted);
-        font-size: 10px;
+        font-size: 0.48em;
         font-weight: 900;
-        letter-spacing: 0.08em;
+        letter-spacing: 0;
+        line-height: 1;
         text-transform: uppercase;
       }
 
@@ -1236,7 +1237,6 @@
         border: var(--hairline);
         border-radius: var(--radius);
         background: var(--surface);
-        box-shadow: var(--shadow-soft);
         padding: var(--card-pad);
       }
 
@@ -2239,15 +2239,13 @@
 
       .logo {
         position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        display: inline-block;
         font-family: var(--sans);
         font-size: 20px;
         font-weight: 900;
         line-height: 1;
         letter-spacing: 0.01em;
-        padding: 0 42px 8px 0;
+        padding: 0 54px 15px 0;
         text-transform: uppercase;
       }
 
@@ -2256,6 +2254,7 @@
         font-size: 20px;
         font-weight: 900;
         letter-spacing: 0.01em;
+        padding: 0 54px 15px 0;
       }
 
       .nav .logo:hover {
@@ -2266,28 +2265,22 @@
       .logo::after {
         content: "";
         position: absolute;
+        bottom: 3px;
+        height: 2px;
+        background: var(--accent);
         pointer-events: none;
       }
 
       .logo::before {
-        left: 46%;
-        right: 27px;
-        bottom: 0;
-        height: 2px;
-        background: var(--accent);
+        left: 42%;
+        right: 32px;
       }
 
       .logo::after {
         right: 0;
-        bottom: 0;
-        width: 31px;
-        height: 16px;
-        border-right: 2px solid var(--accent);
-        border-bottom: 2px solid var(--accent);
-        border-radius: 0;
-        background: transparent;
-        transform: skewX(-27deg);
-        transform-origin: right bottom;
+        width: 34px;
+        transform: rotate(-63deg);
+        transform-origin: right center;
       }
 
       .nav-cta {
@@ -3139,17 +3132,25 @@
       }
 
       .rank-score {
+        display: inline-flex;
+        align-items: baseline;
+        justify-content: flex-end;
+        gap: 2px;
         color: var(--ink) !important;
         font-size: 22px !important;
         font-weight: 900;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
         text-align: right;
+        white-space: nowrap;
       }
 
       .rank-score small {
         color: var(--muted);
-        font-size: 10px;
+        font-size: 0.48em;
         font-weight: 900;
-        letter-spacing: 0.08em;
+        letter-spacing: 0;
+        line-height: 1;
         text-transform: uppercase;
       }
 
@@ -3305,7 +3306,6 @@
         border: var(--hairline);
         border-radius: var(--radius);
         background: var(--surface);
-        box-shadow: var(--shadow-soft);
         padding: var(--card-pad);
       }
 
@@ -4393,8 +4393,8 @@
                 <h2>What is actually worth the fridge space?</h2>
               </div>
               <p>
-                A living shortlist of prepared meals, meal kits, grocery shortcuts, and dinner backups we would use on
-                a real week.
+                Our monthly ranking of the services and shortcuts that earn repeat fridge space, scored for taste,
+                range, delivery, value, and weeknight usefulness.
               </p>
             </div>
 
@@ -4458,7 +4458,7 @@
             <div class="section-head">
               <div>
                 <div class="section-kicker">Guides</div>
-                <h2>Sharper ideas for the actual week.</h2>
+                <h2>Guides for choosing better, faster, smarter.</h2>
               </div>
             </div>
 
@@ -4469,10 +4469,10 @@
                   alt="A bowl of bucatini pasta"
                 />
                 <div class="article-body">
-                  <div class="card-kicker">Chef move</div>
-                  <h3>One sauce, three dinners, zero sad leftovers.</h3>
-                  <p class="dek">A Sunday base that turns into pasta, bowls, and a fast toast situation.</p>
-                  <div class="story-footer"><span>Cook</span><span>12 min</span></div>
+                  <div class="card-kicker">Guide 01 / Chef Move</div>
+                  <h3>The sauce that turns one prep session into three dinners.</h3>
+                  <p class="dek">A Sunday base for pasta, bowls, and the toast you make when the week runs late.</p>
+                  <div class="story-footer"><span>Guide</span><span>12 min</span></div>
                 </div>
               </article>
 
@@ -4482,9 +4482,9 @@
                   alt="Spiced chicken with vegetables"
                 />
                 <div class="article-body">
-                  <div class="card-kicker">Nutrition</div>
-                  <h3>High-protein dinners that do not feel like homework.</h3>
-                  <p class="dek">What to cook, what to buy, and what to delegate when the goal is consistency.</p>
+                  <div class="card-kicker">Guide 02 / Eating Well</div>
+                  <h3>The high-protein dinner guide for people tired of macro math.</h3>
+                  <p class="dek">What to cook, what to buy, and what to delegate when the goal is steady energy.</p>
                   <div class="story-footer"><span>Guide</span><span>8 min</span></div>
                 </div>
               </article>
@@ -4657,56 +4657,5 @@
         event.currentTarget.reset();
       });
     </script>
-  <!-- FORCE DIRECTION B OVERRIDES -->
-<style>
-  /* Force onto all views (Desktop & Mobile) */
-  html, body, #guides, section[id="guides"] {
-    background-color: var(--sage) !important;
-    background: var(--sage) !important;
-  }
-
-  #batch, section[id="batch"] {
-    background-color: var(--oat) !important;
-    background: var(--oat) !important;
-  }
-
-  #recipes, section[id="recipes"] {
-    background-color: var(--stone) !important;
-    background: var(--stone) !important;
-  }
-
-  /* Strip ALL card backgrounds globally on desktop too */
-  .batch-card,
-  .recipe-panel,
-  .article-card,
-  .story-grid > *,
-  .articles-grid > *,
-  article,
-  div[class*="card"],
-  div[class*="panel"] {
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-
-  /* Desktop Fixes for the Guides Module */
-  @media (min-width: 981px) {
-    #guides .articles-grid {
-      gap: 48px !important;
-      padding: 24px 0 !important;
-    }
-
-    #guides .article-card {
-      padding: 24px !important;
-      background: rgba(255, 255, 255, 0.45) !important;
-      backdrop-filter: blur(4px);
-    }
-
-    #guides .article-card img {
-      border-radius: 4px !important;
-    }
-  }
-</style>
 </body>
 </html>

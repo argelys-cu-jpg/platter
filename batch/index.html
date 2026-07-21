@@ -76,21 +76,13 @@
 
       .batch-page {
         min-height: 100vh;
-        background:
-          linear-gradient(90deg, rgba(21, 21, 21, 0.045) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(21, 21, 21, 0.035) 1px, transparent 1px),
-          var(--canvas);
-        background-size: 120px 120px;
+        background: var(--canvas);
         overflow-x: hidden;
       }
 
       .marketing-page {
         min-height: 100vh;
-        background:
-          linear-gradient(90deg, rgba(21, 21, 21, 0.035) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(21, 21, 21, 0.025) 1px, transparent 1px),
-          var(--paper);
-        background-size: 112px 112px;
+        background: var(--paper);
       }
 
       .marketing-nav {
@@ -101,8 +93,7 @@
         gap: 24px;
         padding: 18px clamp(24px, 5vw, 72px);
         border-bottom: 1px solid var(--rule);
-        background: rgba(255, 255, 255, 0.94);
-        backdrop-filter: blur(16px);
+        background: var(--paper);
         position: sticky;
         top: 0;
         z-index: 12;
@@ -359,11 +350,7 @@
         gap: 12px;
         padding: 16px;
         border: 1px solid var(--line);
-        background:
-          linear-gradient(90deg, rgba(21, 21, 21, 0.035) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(21, 21, 21, 0.025) 1px, transparent 1px),
-          rgba(255, 255, 255, 0.94);
-        background-size: 46px 46px;
+        background: var(--paper);
       }
 
       .landing-device .preview-phone {
@@ -371,18 +358,17 @@
         justify-self: center;
         aspect-ratio: 393 / 852;
         border-width: 9px;
-        box-shadow: 0 26px 80px rgba(21, 21, 21, 0.12);
       }
 
       .landing-device .preview-phone .screen {
         overflow: hidden;
+        padding-top: 86px;
       }
 
       .landing-device .preview-phone .primary-button {
         background: var(--ink);
         color: #fff;
         border-color: var(--ink);
-        box-shadow: none;
       }
 
       .landing-device .preview-phone .hero-plate {
@@ -746,11 +732,7 @@
 
       .screens-page {
         min-height: 100vh;
-        background:
-          linear-gradient(90deg, rgba(21, 21, 21, 0.04) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(21, 21, 21, 0.03) 1px, transparent 1px),
-          #fff;
-        background-size: 112px 112px;
+        background: var(--paper);
       }
 
       .screens-hero,
@@ -803,7 +785,6 @@
 
       .screen-shot .preview-phone {
         aspect-ratio: 393 / 852;
-        box-shadow: 0 22px 50px rgba(21, 21, 21, 0.08);
       }
 
       .screen-shot strong {
@@ -841,8 +822,7 @@
         gap: 16px;
         padding: 12px clamp(18px, 4vw, 56px);
         border-bottom: 1px solid var(--rule);
-        background: rgba(255, 255, 255, 0.94);
-        backdrop-filter: blur(16px);
+        background: var(--paper);
         position: sticky;
         top: 0;
         z-index: 10;
@@ -884,11 +864,10 @@
         right: 0;
         bottom: 0;
         width: 31px;
-        height: 16px;
-        border-right: 2px solid var(--accent);
-        border-bottom: 2px solid var(--accent);
-        transform: skewX(-27deg);
-        transform-origin: right bottom;
+        height: 2px;
+        background: var(--accent);
+        transform: rotate(-62deg);
+        transform-origin: right center;
       }
 
       .progress {
@@ -989,8 +968,16 @@
         display: grid;
         gap: 9px;
         border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.96);
+        background: var(--paper);
         padding: 12px;
+      }
+
+      @media (max-width: 1320px) and (min-width: 621px) {
+        .simulator-quickjump {
+          position: static;
+          width: min(360px, calc(100% - 40px));
+          margin: 28px auto 0;
+        }
       }
 
       .simulator-quickjump strong {
@@ -1146,7 +1133,6 @@
         border: 9px solid #080808;
         border-radius: 46px;
         background: #080808;
-        box-shadow: 0 26px 82px rgba(21, 21, 21, 0.14);
       }
 
       .screen-stage::before {
@@ -1416,13 +1402,12 @@
         align-items: center;
         min-height: 42px;
         border: 1px solid rgba(21, 21, 21, 0.16);
-        background: rgba(255, 255, 255, 0.88);
+        background: #fff;
         color: var(--ink);
         font-size: 14px;
         font-weight: 900;
         line-height: 1.1;
         padding: 9px 11px;
-        backdrop-filter: blur(12px);
       }
 
       .primary-button,
@@ -1443,7 +1428,6 @@
         margin-top: 0;
         background: var(--olive);
         color: #fff;
-        box-shadow: none;
       }
 
       .primary-button:hover {
@@ -1954,7 +1938,7 @@
         height: 100%;
         border: 0;
         border-radius: 35px;
-        padding: 54px 16px 18px;
+        padding: 72px 16px 18px;
         gap: 9px;
         overflow: hidden;
       }
@@ -1966,9 +1950,9 @@
 
       .device-status {
         position: absolute;
-        top: 18px;
-        left: 24px;
-        right: 24px;
+        top: 24px;
+        left: 30px;
+        right: 30px;
         z-index: 5;
         display: flex;
         align-items: center;
@@ -2125,11 +2109,21 @@
       }
 
       .range-track {
+        position: relative;
         display: block;
         width: 100%;
         height: 6px;
         border-radius: 999px;
-        background: linear-gradient(90deg, #c4c9bb 0 62%, #dfd7c7 62% 100%);
+        background: #dfd7c7;
+        overflow: hidden;
+      }
+
+      .range-track::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 62%;
+        background: #c4c9bb;
       }
 
       .eyebrow-pill {
@@ -2160,7 +2154,6 @@
         border-radius: 0;
         background: var(--white);
         padding: 14px;
-        box-shadow: none;
       }
 
       .formula-head,
@@ -2355,7 +2348,8 @@
       .profile-card.is-selected {
         background: var(--olive-soft);
         border-color: var(--olive);
-        box-shadow: inset 0 0 0 2px var(--olive);
+        outline: 2px solid var(--olive);
+        outline-offset: -2px;
       }
 
       .preset-card.is-selected > span,
@@ -2531,7 +2525,6 @@
         border: 1px solid var(--line);
         border-radius: 0;
         background: var(--white);
-        box-shadow: none;
       }
 
       .chef-card-head {
@@ -2591,9 +2584,7 @@
         overflow: hidden;
         border: 1px solid var(--line);
         border-radius: 0;
-        background:
-          radial-gradient(circle at 50% 70%, rgba(168, 77, 55, 0.16), transparent 44%),
-          linear-gradient(180deg, var(--sand-soft), var(--paper));
+        background: var(--sand-soft);
       }
 
       .prep-pot {
@@ -3440,7 +3431,8 @@
 
         .brand::after {
           width: 25px;
-          height: 12px;
+          height: 2px;
+          bottom: 0;
         }
 
         .marketing-links a {
@@ -3578,7 +3570,6 @@
           border: 0;
           border-radius: 0;
           background: transparent;
-          box-shadow: none;
           padding: 0;
         }
 
@@ -4722,7 +4713,7 @@
               </div>
               <div class="landing-device" aria-label="Batch app preview">
                 <span class="simulator-label">Live simulator panel</span>
-                <div class="preview-phone landing-phone">${renderPreviewScreen(0)}</div>
+                <div class="preview-phone landing-phone">${renderPreviewScreen(state.currentScreen)}</div>
                 <span class="landing-caption">Mobile flow preview</span>
               </div>
             </section>
