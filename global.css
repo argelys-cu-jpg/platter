@@ -2141,6 +2141,333 @@ select:focus-visible {
   border-color: var(--tomato) !important;
 }
 
+.marketing-nav,
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px var(--container-pad);
+  box-sizing: border-box;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.marketing-nav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.marketing-brand,
+.marketing-links,
+.mode-toggle {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.marketing-links a {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.product-badge,
+.beta-status,
+.version-note,
+.screen-ref,
+.simulator-label,
+.landing-caption {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 24px;
+  padding: 4px 8px;
+  box-sizing: border-box;
+  background: var(--accent-soft);
+  border: 1px solid var(--line);
+  color: var(--tomato) !important;
+  font-family: var(--poster) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.06em;
+  line-height: 1 !important;
+  text-transform: uppercase;
+}
+
+.marketing-hero,
+.landing-feature,
+.flow-view {
+  display: grid;
+  gap: var(--grid-gap);
+  align-items: stretch;
+}
+
+.landing-section,
+.waitlist-section,
+.proof-strip,
+.screens-gallery {
+  width: min(100% - var(--container-pad) * 2, var(--container-max));
+  margin-inline: auto;
+}
+
+.landing-section,
+.waitlist-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.landing-feature,
+.waitlist-inner,
+.aside-copy,
+.aside-proof,
+.flow-aside,
+.preview-notes {
+  min-width: 0;
+  padding: var(--card-pad);
+  box-sizing: border-box;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.flow-primary,
+.flow-aside,
+.aside-copy,
+.aside-proof,
+.preview-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flow-primary {
+  min-width: 0;
+}
+
+.aside-collage,
+.screens-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.aside-collage img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.top-progress {
+  flex: 1 1 240px;
+  max-width: 440px;
+}
+
+.mode-toggle button {
+  background: var(--white) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+}
+
+.mode-toggle button.is-active {
+  background: var(--tomato) !important;
+  color: var(--white) !important;
+  border-color: var(--tomato) !important;
+}
+
+.iphone-notch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 116px;
+  height: 24px;
+  transform: translateX(-50%);
+  background: var(--black);
+}
+
+.iphone-cam,
+.iphone-sensor {
+  width: 7px;
+  height: 7px;
+  background: var(--blue);
+  border: 1px solid #222222;
+}
+
+.iphone-speaker {
+  width: 34px;
+  height: 4px;
+  background: var(--muted);
+}
+
+.iphone-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 8px 10px;
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.iphone-radios {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.iphone-battery {
+  width: 20px;
+  height: 9px;
+  padding: 1px;
+  border: 1px solid var(--ink);
+}
+
+.iphone-battery > span {
+  display: block;
+  width: 75%;
+  height: 100%;
+  background: var(--ink);
+}
+
+.iphone-home {
+  width: 96px;
+  height: 4px;
+  margin: 10px auto 4px;
+  background: var(--ink);
+}
+
+.hero-plate {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  padding: 8px;
+  background: var(--cream-deep);
+  border: 1px solid var(--line);
+}
+
+.hero-plate img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.hero-plate-note,
+.hero-context {
+  padding: 10px 12px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--muted) !important;
+  font-size: 12px;
+}
+
+.prep-scene {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  overflow: hidden;
+  background: var(--sand-soft);
+  border: 1px solid var(--line);
+}
+
+.prep-pot {
+  position: relative;
+  z-index: 2;
+  width: 130px;
+  height: 92px;
+}
+
+.pot-rim,
+.pot-body {
+  position: absolute;
+  left: 50%;
+  width: 120px;
+  transform: translateX(-50%);
+  border: 6px solid var(--ink);
+  background: var(--sage);
+}
+
+.pot-rim {
+  top: 0;
+  height: 24px;
+}
+
+.pot-body {
+  top: 20px;
+  height: 72px;
+  background: var(--olive);
+}
+
+.prep-steam,
+.prep-ingredient,
+.prep-spark,
+.prep-fire {
+  position: absolute;
+}
+
+.prep-steam {
+  top: 28px;
+  width: 2px;
+  height: 44px;
+  background: var(--muted);
+}
+
+.steam-one { left: 42%; }
+.steam-two { left: 50%; }
+.steam-three { left: 58%; }
+
+.prep-ingredient,
+.prep-spark {
+  width: 10px;
+  height: 10px;
+  background: var(--tomato);
+}
+
+.ingredient-one { left: 18%; top: 26%; }
+.ingredient-two { right: 18%; top: 34%; }
+.ingredient-three { left: 24%; bottom: 24%; }
+.ingredient-four { right: 24%; bottom: 20%; }
+.spark-one { left: 32%; top: 18%; background: var(--sage-strong); }
+.spark-two { right: 30%; top: 18%; background: var(--berry); }
+.spark-three { right: 16%; bottom: 34%; background: var(--blue); }
+
+.success-circle {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-inline: auto;
+  background: var(--sage);
+  border: 1px solid var(--sage-strong);
+  color: var(--olive-ink);
+  font-family: var(--poster);
+  font-size: 38px;
+  line-height: 1;
+}
+
+.toast,
+.signup-status {
+  width: fit-content;
+  max-width: 100%;
+  padding: 10px 14px;
+  box-sizing: border-box;
+  background: var(--olive-ink);
+  color: var(--white) !important;
+  border: 1px solid var(--olive);
+  font-size: 12px;
+}
+
 @media (min-width: 900px) {
   .recipe-hero-grid {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -2160,6 +2487,12 @@ select:focus-visible {
 
   .article-layout:has(> .article-aside) {
     grid-template-columns: minmax(0, 8fr) minmax(280px, 4fr);
+  }
+
+  .marketing-hero,
+  .landing-feature,
+  .flow-view {
+    grid-template-columns: minmax(0, 7fr) minmax(320px, 5fr);
   }
 }
 
@@ -2184,6 +2517,38 @@ select:focus-visible {
 
   .recipe-actions > * {
     width: 100%;
+  }
+
+  .marketing-nav,
+  .top-bar {
+    align-items: stretch;
+    padding-inline: 20px;
+  }
+
+  .marketing-links,
+  .top-controls {
+    width: 100%;
+  }
+
+  .marketing-hero,
+  .landing-feature,
+  .flow-view {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .landing-feature,
+  .waitlist-inner,
+  .aside-copy,
+  .aside-proof,
+  .flow-aside,
+  .preview-notes {
+    padding: var(--card-pad-mobile);
+  }
+
+  .aside-collage,
+  .screens-gallery {
+    grid-template-columns: 1fr;
   }
 }
 
