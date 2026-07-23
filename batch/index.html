@@ -450,7 +450,7 @@
             `
               <span class="eyebrow-pill">Meal planning for real life</span>
               <p class="lede">Answer a few quick questions. Get a realistic week: what to cook, what to prep, and what to leave open.</p>
-              <button type="button" class="primary-button" data-action="go" data-screen="1" ${disabled}>Build my week</button>
+              <button type="button" class="button-primary primary-button" data-action="go" data-screen="1" ${disabled}>Build my week</button>
               <div class="hero-plate" aria-hidden="true">
                 <img src="${heroMealPhoto}" alt="" />
                 <div class="hero-plate-note">Cook what you want. Batch covers the rest.</div>
@@ -472,10 +472,10 @@
             `
               <p class="lede">Pick the stretch you want Batch to cover first. You can still toggle individual days.</p>
               <div class="preset-grid">
-                <button type="button" class="preset-card ${state.selectedDays.length <= 5 ? "is-selected" : ""}" data-action="preset-days" data-count="5" ${disabled}>
+                <button type="button" class="button-secondary preset-card ${state.selectedDays.length <= 5 ? "is-selected" : ""}" data-action="preset-days" data-count="5" ${disabled}>
                   <span>Weekdays</span><span class="inline-separator" aria-hidden="true"> · </span><strong>5 days</strong><span class="inline-separator" aria-hidden="true"> · </span><small>Monday through Friday</small>
                 </button>
-                <button type="button" class="preset-card ${state.selectedDays.length === 7 ? "is-selected" : ""}" data-action="preset-days" data-count="7" ${disabled}>
+                <button type="button" class="button-secondary preset-card ${state.selectedDays.length === 7 ? "is-selected" : ""}" data-action="preset-days" data-count="7" ${disabled}>
                   <span>Full week</span><span class="inline-separator" aria-hidden="true"> · </span><strong>7 days</strong><span class="inline-separator" aria-hidden="true"> · </span><small>Weekend included</small>
                 </button>
               </div>
@@ -487,7 +487,7 @@
                   ${dayOrder
                     .map(
                       (day) => `
-                        <button type="button" class="day-chip ${state.selectedDays.includes(day) ? "is-active" : ""}" data-action="toggle-day" data-day="${day}" aria-pressed="${state.selectedDays.includes(
+                        <button type="button" class="button-secondary day-chip ${state.selectedDays.includes(day) ? "is-active" : ""}" data-action="toggle-day" data-day="${day}" aria-pressed="${state.selectedDays.includes(
                         day,
                       )}" ${disabled}>${day}</button>
                       `,
@@ -497,7 +497,7 @@
                 <small>Keep at least one day on the board.</small>
               </div>
               <div class="choice-note">Selected: ${state.selectedDays.length === 7 ? "Full week" : `${state.selectedDays.length} planned days`}</div>
-              <button type="button" class="primary-button" data-action="go" data-screen="2" ${disabled}>Continue</button>
+              <button type="button" class="button-primary primary-button" data-action="go" data-screen="2" ${disabled}>Continue</button>
             `,
           );
         }
@@ -514,7 +514,7 @@
                   .map((profile) => {
                     const isSelected = state.cookingStyle === profile.id;
                     return `
-                      <button type="button" class="profile-card ${isSelected ? "is-selected" : ""}" data-action="cooking-style" data-style="${profile.id}" aria-pressed="${isSelected}" ${disabled}>
+                      <button type="button" class="button-secondary profile-card ${isSelected ? "is-selected" : ""}" data-action="cooking-style" data-style="${profile.id}" aria-pressed="${isSelected}" ${disabled}>
                         <span class="profile-mark">${profile.mark}</span>
                         <span class="profile-meta">
                           <span>${isSelected ? "Selected" : "Option"}</span><span class="inline-separator" aria-hidden="true"> · </span><strong>${profile.title}</strong><span class="inline-separator" aria-hidden="true"> · </span><small>${profile.detail}</small>
@@ -525,7 +525,7 @@
                   .join("")}
               </div>
               <div class="choice-note">Selected: ${cookingProfile.summary}</div>
-              <button type="button" class="primary-button" data-action="go" data-screen="3" ${disabled}>Continue</button>
+              <button type="button" class="button-primary primary-button" data-action="go" data-screen="3" ${disabled}>Continue</button>
             `,
           );
         }
@@ -545,13 +545,13 @@
                 ${dietaryChips
                   .map((chip) => {
                     const isActive = state.answers.dietary.includes(chip);
-                    return `<button type="button" class="chip ${isActive ? "is-active" : ""}" data-action="dietary" data-chip="${escapeHtml(chip)}" aria-pressed="${isActive}" ${disabled}>${chip}</button>`;
+                    return `<button type="button" class="button-secondary chip ${isActive ? "is-active" : ""}" data-action="dietary" data-chip="${escapeHtml(chip)}" aria-pressed="${isActive}" ${disabled}>${chip}</button>`;
                   })
                   .join("")}
               </div>
               <div class="helper-note" data-dietary-helper>${activeDietary}</div>
               <div class="choice-note" data-dietary-count>${dietaryCountText()}</div>
-              <button type="button" class="primary-button" data-action="go" data-screen="4" ${disabled}>Build my week</button>
+              <button type="button" class="button-primary primary-button" data-action="go" data-screen="4" ${disabled}>Build my week</button>
             `,
           );
         }
@@ -585,7 +585,7 @@
                 <div><span>Balancing cook and prepared</span><b></b></div>
                 <div><span>Writing your shopping list</span><b></b></div>
               </div>
-              <button type="button" class="secondary-button" data-action="go" data-screen="5" ${disabled}>Show the map</button>
+              <button type="button" class="button-secondary secondary-button" data-action="go" data-screen="5" ${disabled}>Show the map</button>
             `,
           );
         }
@@ -616,7 +616,7 @@
                             .map((type) => {
                               const choice = plan[day]?.[type] || defaultChoiceFor(type);
                               return `
-                                <button type="button" class="slot-button ${slotClass(choice)}" data-action="cycle-slot" data-day="${day}" data-type="${type}" ${disabled}>
+                                <button type="button" class="button-secondary slot-button ${slotClass(choice)}" data-action="cycle-slot" data-day="${day}" data-type="${type}" ${disabled}>
                                   <span class="slot-label">${type}</span><span class="inline-separator" aria-hidden="true"> · </span><span>${slotLabel(choice)}</span>
                                 </button>
                               `;
@@ -628,7 +628,7 @@
                   )
                   .join("")}
               </div>
-              <button type="button" class="primary-button" data-action="go" data-screen="6" ${disabled}>Find prepared picks</button>
+              <button type="button" class="button-primary primary-button" data-action="go" data-screen="6" ${disabled}>Find prepared picks</button>
             `,
           );
         }
@@ -661,7 +661,7 @@
                               .map((diet) => `<span class="tag">${diet}</span>`)
                               .join("")}
                           </div>
-                          <button type="button" class="text-button" data-action="swap-meal" data-slot="${slot.id}" ${disabled}>Swap</button>
+                          <button type="button" class="cta text-button" data-action="swap-meal" data-slot="${slot.id}" ${disabled}>Swap</button>
                         </div>
                       </div>
                     `;
@@ -673,7 +673,7 @@
               <div class="empty-state">
                 <strong>No prepared meals yet.</strong>
                 <p>You chose a fully cooked-at-home week. To add backup, return to the map and switch any slot to Prepared.</p>
-                <button type="button" class="secondary-button" data-action="go" data-screen="5" ${disabled}>Adjust map</button>
+                <button type="button" class="button-secondary secondary-button" data-action="go" data-screen="5" ${disabled}>Adjust map</button>
               </div>
             `;
 
@@ -684,7 +684,7 @@
             `
               <p class="lede">Matched to your preferences and schedule. Swap anything that does not feel like your week.</p>
               ${chefContent}
-              <button type="button" class="primary-button" data-action="go" data-screen="7" ${disabled}>Review plan</button>
+              <button type="button" class="button-primary primary-button" data-action="go" data-screen="7" ${disabled}>Review plan</button>
             `,
           );
         }
@@ -723,10 +723,10 @@
             `
               <p class="lede">List first. Timeline if Sunday needs structure.</p>
               <div class="tab-bar" role="tablist" aria-label="Review views">
-                <button type="button" role="tab" data-action="tab" data-tab="list" aria-selected="${state.shoppingTab === "list"}" class="${
+                <button type="button" role="tab" data-action="tab" data-tab="list" aria-selected="${state.shoppingTab === "list"}" class="button-secondary ${
               state.shoppingTab === "list" ? "is-active" : ""
             }" ${disabled}>List</button>
-                <button type="button" role="tab" data-action="tab" data-tab="timeline" aria-selected="${state.shoppingTab === "timeline"}" class="${
+                <button type="button" role="tab" data-action="tab" data-tab="timeline" aria-selected="${state.shoppingTab === "timeline"}" class="button-secondary ${
               state.shoppingTab === "timeline" ? "is-active" : ""
             }" ${disabled}>Timeline</button>
               </div>
@@ -735,7 +735,7 @@
                 <div class="delivery-row"><span>Prepared meals</span><span class="inline-separator" aria-hidden="true"> · </span><strong>${chefSlots.length} selected</strong></div>
                 <div class="delivery-row"><span>Plan code</span><span class="inline-separator" aria-hidden="true"> · </span><strong>BATCH-WEEK</strong></div>
               </div>
-              <button type="button" class="primary-button" data-action="go" data-screen="8" ${disabled}>Save my week</button>
+              <button type="button" class="button-primary primary-button" data-action="go" data-screen="8" ${disabled}>Save my week</button>
             `,
           );
         }
@@ -751,7 +751,7 @@
               <label for="plan-email">Get the plan by email.</label>
               <div class="lead-row">
                 <input id="plan-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" value="${escapeHtml(state.leadEmail)}" ${disabled} />
-                <button type="submit" ${disabled}>Save</button>
+                <button type="submit" class="button-primary" ${disabled}>Save</button>
               </div>
               <small>${state.leadEmail ? `Saved for ${escapeHtml(state.leadEmail)}.` : "Batch is in early beta. No spam, no charge."}</small>
             </form>
@@ -780,15 +780,15 @@
                 <div>
                   <span>Plan code</span><span class="inline-separator" aria-hidden="true"> · </span><strong>BATCH-WEEK</strong>
                 </div>
-                <button type="button" class="text-button" data-action="copy-promo" ${disabled}>Copy</button>
+                <button type="button" class="cta text-button" data-action="copy-promo" ${disabled}>Copy</button>
               </div>
               <p>Use this to reference the saved week when you revisit or share the plan.</p>
             </div>
             <div class="button-pair">
-              <button type="button" class="secondary-button" data-action="download-plan" ${disabled}>Export plan</button>
-              <button type="button" class="secondary-button" data-action="reset-plan" ${disabled}>Plan another week</button>
+              <button type="button" class="button-secondary secondary-button" data-action="download-plan" ${disabled}>Export plan</button>
+              <button type="button" class="button-secondary secondary-button" data-action="reset-plan" ${disabled}>Plan another week</button>
             </div>
-            <button type="button" class="primary-button" data-action="open-menu" ${disabled}>Browse prepared meals</button>
+            <button type="button" class="button-primary primary-button" data-action="open-menu" ${disabled}>Browse prepared meals</button>
           `,
         );
       }
@@ -910,7 +910,7 @@
       function renderTopBar() {
         const progressPercent = Math.round(((state.currentScreen + 1) / screenTitles.length) * 100);
         return `
-          <header class="top-bar">
+          <header class="site-header top-bar">
             <div>
               <a class="brand" href="/" aria-label="Platter homepage">platter</a>
               <span class="progress">${state.currentScreen + 1} of ${screenTitles.length} &middot; ${screenTitles[state.currentScreen]}</span>
@@ -921,12 +921,12 @@
             </div>
             <div class="top-controls">
               <div class="mode-toggle" aria-label="View mode">
-                <button type="button" class="${mode === "landing" ? "is-active" : ""}" data-action="mode" data-mode="landing">Overview</button>
-                <button type="button" class="${mode === "flow" ? "is-active" : ""}" data-action="mode" data-mode="flow">Flow</button>
-                <button type="button" class="${mode === "preview" ? "is-active" : ""}" data-action="mode" data-mode="preview">Preview</button>
+                <button type="button" class="button-secondary ${mode === "landing" ? "is-active" : ""}" data-action="mode" data-mode="landing">Overview</button>
+                <button type="button" class="button-secondary ${mode === "flow" ? "is-active" : ""}" data-action="mode" data-mode="flow">Flow</button>
+                <button type="button" class="button-secondary ${mode === "preview" ? "is-active" : ""}" data-action="mode" data-mode="preview">Preview</button>
               </div>
-              <button type="button" class="nav-button" data-action="prev" ${state.currentScreen === 0 ? "disabled" : ""}>Back</button>
-              <button type="button" class="nav-button" data-action="next" ${state.currentScreen === LAST_SCREEN ? "disabled" : ""}>Next</button>
+              <button type="button" class="button-secondary nav-button" data-action="prev" ${state.currentScreen === 0 ? "disabled" : ""}>Back</button>
+              <button type="button" class="button-secondary nav-button" data-action="next" ${state.currentScreen === LAST_SCREEN ? "disabled" : ""}>Next</button>
             </div>
           </header>
         `;
@@ -940,8 +940,8 @@
                 ${renderScreen(state.currentScreen)}
               </div>
               <div class="flow-controls" aria-label="Step navigation">
-                <button type="button" class="flow-control" data-action="prev" ${state.currentScreen === 0 ? "disabled" : ""}>Back</button>
-                <button type="button" class="flow-control is-primary" data-action="next" ${state.currentScreen === LAST_SCREEN ? "disabled" : ""}>${state.currentScreen >= 7 ? "Finish" : "Next"}</button>
+                <button type="button" class="button-secondary flow-control" data-action="prev" ${state.currentScreen === 0 ? "disabled" : ""}>Back</button>
+                <button type="button" class="button-primary flow-control is-primary" data-action="next" ${state.currentScreen === LAST_SCREEN ? "disabled" : ""}>${state.currentScreen >= 7 ? "Finish" : "Next"}</button>
               </div>
             </div>
             ${renderFlowAside(state.currentScreen)}
@@ -974,11 +974,11 @@
         ];
         return `
           <section class="screens-page" aria-label="Batch beta screens">
-            <header class="marketing-nav">
+            <header class="site-header marketing-nav">
               <a class="brand" href="/" aria-label="Platter homepage">platter</a>
               <nav class="marketing-links" aria-label="Batch beta navigation">
-                <button type="button" class="nav-cta" data-action="mode" data-mode="landing">Back to Batch</button>
-                <button type="button" class="nav-cta" data-action="start-flow" data-screen="0">Open builder</button>
+                <button type="button" class="button-primary nav-cta" data-action="mode" data-mode="landing">Back to Batch</button>
+                <button type="button" class="button-primary nav-cta" data-action="start-flow" data-screen="0">Open builder</button>
               </nav>
             </header>
 
@@ -988,8 +988,8 @@
                 <h1>What Batch is becoming.</h1>
                 <p>Batch is still in development. These screens show the direction: a mobile planner that turns everyday food decisions into a usable week.</p>
                 <div class="landing-actions">
-                  <button type="button" class="landing-button" data-action="start-flow" data-screen="0">Try the builder</button>
-                  <button type="button" class="landing-button is-secondary" data-action="mode" data-mode="landing">Return to overview</button>
+                  <button type="button" class="button-primary landing-button" data-action="start-flow" data-screen="0">Try the builder</button>
+                  <button type="button" class="button-secondary landing-button is-secondary" data-action="mode" data-mode="landing">Return to overview</button>
                 </div>
               </div>
               <aside class="screens-note">
@@ -1025,7 +1025,7 @@
       function renderLanding() {
         return `
           <section class="marketing-page" id="top">
-            <header class="marketing-nav">
+            <header class="site-header marketing-nav">
               <div class="marketing-brand">
                 <a class="brand" href="/" aria-label="Platter homepage">platter</a>
                 <span class="product-badge">Batch beta</span>
@@ -1034,7 +1034,7 @@
                 <a href="#how">How it works</a>
                 <a href="#review">Review</a>
                 <a href="#waitlist">Waitlist</a>
-                <button type="button" class="nav-cta" data-action="start-flow" data-screen="0">Launch builder</button>
+                <button type="button" class="button-primary nav-cta" data-action="start-flow" data-screen="0">Launch builder</button>
               </nav>
             </header>
 
@@ -1046,8 +1046,8 @@
                 <h1 id="landing-title">Stop deciding dinner every night.</h1>
                 <p>Answer a few quick questions. Batch maps your week: what to cook, where prepared meals help, and the prep that keeps dinner from becoming a daily debate.</p>
                 <div class="landing-actions">
-                  <button type="button" class="landing-button" data-action="start-flow" data-screen="0">Build a sample week <span class="arrow">→</span></button>
-                  <a class="landing-button is-secondary" href="#waitlist">Join the beta</a>
+                  <button type="button" class="button-primary landing-button" data-action="start-flow" data-screen="0">Build a sample week <span class="arrow">→</span></button>
+                  <a class="button-secondary landing-button is-secondary" href="#waitlist">Join the beta</a>
                 </div>
                 <div class="landing-stats" aria-label="Batch highlights">
                   <div><strong>2 min</strong><span class="inline-separator" aria-hidden="true"> · </span><span>To map the week</span></div>
@@ -1109,8 +1109,8 @@
                     <li>Save the plan by email when the week looks right, not before.</li>
                   </ul>
                   <div class="landing-actions">
-                    <button type="button" class="landing-button" data-action="start-flow" data-screen="7">Open review step <span class="arrow">→</span></button>
-                    <button type="button" class="landing-button is-secondary" data-action="open-preview">See beta screens</button>
+                    <button type="button" class="button-primary landing-button" data-action="start-flow" data-screen="7">Open review step <span class="arrow">→</span></button>
+                    <button type="button" class="button-secondary landing-button is-secondary" data-action="open-preview">See beta screens</button>
                   </div>
                 </div>
                 <div class="preview-mosaic" aria-label="Batch review previews">
@@ -1166,14 +1166,14 @@
                   <label for="landing-email">Get beta access updates.</label>
                   <div class="lead-row">
                     <input id="landing-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" value="${escapeHtml(state.leadEmail)}" />
-                    <button type="submit">${state.leadEmail ? "Update email" : "Join waitlist"}</button>
+                    <button type="submit" class="button-primary">${state.leadEmail ? "Update email" : "Join waitlist"}</button>
                   </div>
                   <small>${state.leadEmail ? `Saved for ${escapeHtml(state.leadEmail)}.` : "No spam. No charge while Batch is in beta."}</small>
                 </form>
               </div>
             </section>
 
-            <footer class="marketing-footer">
+            <footer class="site-footer marketing-footer">
               <a class="brand" href="/" aria-label="Platter homepage">platter</a>
               <span>Batch is Platter's weekly menu builder.</span>
             </footer>
@@ -1187,7 +1187,7 @@
             (title, index) => `
               <button
                 type="button"
-                class="step ${state.currentScreen === index ? "active" : ""}"
+                class="button-secondary step ${state.currentScreen === index ? "active" : ""}"
                 data-action="quickjump"
                 data-screen="${index}"
                 aria-label="Open screen ${index + 1}: ${escapeHtml(title)}"
@@ -1200,7 +1200,7 @@
           <nav class="simulator-quickjump" aria-label="Batch simulator quickjump">
             <strong>Simulator <span>Step ${state.currentScreen + 1}</span></strong>
             <div class="quickjump-grid simulator-steps step-indicator">${buttons}</div>
-            <button type="button" class="quickjump-reset" data-action="reset-plan">Reset state</button>
+            <button type="button" class="button-secondary quickjump-reset" data-action="reset-plan">Reset state</button>
           </nav>
         `;
       }

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&family=Google+Sans+Text:ital,wght@0,400..700;1,400..700&display=swap');
 
 /* =====================================================
    Platter Global Design System — Baltic Birch Edition
@@ -9,17 +9,28 @@
    1. Theme Tokens
    ----------------------------------------------------- */
 :root {
+  /* --- Material Design 3 + Baltic Birch foundation --- */
+  --font-display: "Google Sans Flex", Arial, sans-serif;
+  --font-body: "Google Sans Text", Helvetica, sans-serif;
+  --background-neutral: #f9f8f6;
+  --text-primary: #111111;
+  --border-structural: #2d2d2d;
+  --surface: #ffffff;
+  --color-accent-coral: #e0533c;
+  --color-accent-yellow: #f9d342;
+  --color-accent-seafoam: #ebf7f2;
+  --color-accent-seafoam-text: #4ea38c;
+
   /* --- The Organic Print Canvas --- */
-  --canvas: #f7f3ec;
-  --cream: #f7f3ec;
-  --cream-deep: #e6ded2;
-  --paper: #fffaf3;
-  --surface: #fffaf3;
+  --canvas: var(--background-neutral);
+  --cream: var(--background-neutral);
+  --cream-deep: var(--color-accent-seafoam);
+  --paper: var(--surface);
   --white: #ffffff;
-  --sand: #ddd2c3;
-  --sand-soft: #e6ded2;
-  --mist: #f7f3ec;
-  --smoke: #ddd2c3;
+  --sand: #d7d4cf;
+  --sand-soft: var(--color-accent-seafoam);
+  --mist: var(--background-neutral);
+  --smoke: #d7d4cf;
 
   /* --- Botanical “Graphic Optimism” Accents --- */
   --sage: #a8b08c;
@@ -27,41 +38,550 @@
   --olive: #6f7755;
   --olive-ink: #3f482e;
   --olive-soft: #e0e5d8;
-  --tomato: #d6281f;
-  --accent: #d6281f;
-  --accent-soft: #f0ded8;
+  --tomato: var(--color-accent-coral);
+  --accent: var(--color-accent-coral);
+  --accent-soft: #fbe9e5;
   --berry: #5b4b57;
   --berry-deep: #3b2f39;
   --blue: #516a79;
 
   /* --- The High-Contrast Ink --- */
-  --black: #050505;
-  --charcoal: #2b2723;
-  --ink: #2b2723;
-  --muted: #6d6258;
+  --black: var(--text-primary);
+  --charcoal: var(--text-primary);
+  --ink: var(--text-primary);
+  --muted: #5f5f5f;
 
   /* --- Sharp Print Geometry --- */
   --shadow-soft: none;
-  --radius: 0;
-  --line: #d8cec0;
-  --rule: #2b2723;
+  --radius: 16px;
+  --line: var(--border-structural);
+  --rule: var(--border-structural);
   --hairline: 1px solid var(--line);
 
   /* --- Spacing scale --- */
-  --card-pad: 32px;
-  --card-pad-mobile: 20px;
-  --grid-gap: 18px;
+  --card-pad: 24px;
+  --card-pad-mobile: 16px;
+  --grid-gap: 24px;
   --section-gap: 80px;
   --section-gap-mobile: 48px;
   --divider-gap: 32px;
   --divider-gap-mobile: 24px;
   --container-max: 1240px;
-  --container-pad: clamp(20px, 5vw, 64px);
+  --container-pad: 32px;
 
   /* --- Typography Stacks --- */
-  --display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --poster: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
-  --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --display: var(--font-display);
+  --poster: var(--font-display);
+  --sans: var(--font-body);
+}
+
+/* =====================================================
+   Material Design 3 + Baltic Birch reconciliation layer
+   ===================================================== */
+
+.font-display-large,
+h1,
+.display-large {
+  font-family: var(--font-display) !important;
+  font-variation-settings: "wght" 850, "wdth" 110, "opsz" 72, "GRAD" 100;
+  letter-spacing: -0.03em !important;
+  line-height: 1.05 !important;
+}
+
+.font-headline-medium,
+h2,
+.headline,
+.card-title {
+  font-family: var(--font-display) !important;
+  font-variation-settings: "wght" 750, "wdth" 100, "opsz" 32, "GRAD" 50;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
+}
+
+.font-title-medium,
+h3,
+.title,
+nav,
+.kicker {
+  font-family: var(--font-display) !important;
+  font-variation-settings: "wght" 600, "wdth" 100, "opsz" 18, "GRAD" 0;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+}
+
+.font-body-medium,
+p,
+li,
+.description,
+.body {
+  font-family: var(--font-body) !important;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  line-height: 1.5 !important;
+}
+
+.font-label-small,
+.badge,
+.tag,
+.score,
+.label {
+  font-family: var(--font-body) !important;
+  font-weight: 500;
+  font-size: 11px !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.2 !important;
+}
+
+h1 {
+  font-size: clamp(40px, 6vw, 72px) !important;
+}
+
+h2 {
+  font-size: clamp(30px, 4vw, 48px) !important;
+}
+
+h3,
+.card-title {
+  font-size: clamp(18px, 2vw, 24px) !important;
+}
+
+html,
+body,
+body,
+main,
+section,
+.page-wrapper,
+.page-section,
+.content-section {
+  background-color: var(--background-neutral) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
+}
+
+a:hover,
+.accent {
+  color: var(--color-accent-coral) !important;
+}
+
+.container,
+.page-container,
+.content-container,
+.container-centered {
+  width: calc(100% - 32px);
+  max-width: none;
+  margin-inline: auto;
+}
+
+.outlined-card,
+.platter-card,
+.card,
+.article-card,
+.recipe-card,
+.review-card,
+.rankings-card,
+.index-card,
+.recipe-mini-card,
+.hero-link-card,
+.latest-item,
+.landing-card,
+.beta-panel,
+.preview-note,
+.screens-note,
+.simulator-quickjump,
+.geo-tldr-card,
+.method-card,
+.batch-card,
+.planner,
+.helper-note,
+.empty-state,
+.delivery-card,
+.promo-card,
+.lead-form,
+.prepared-summary-card,
+.day-plan-card,
+.screen-shot,
+.chef-card,
+.formula-card,
+.manifesto-panel,
+.canvas-summary,
+.recipe-feature,
+.ingredients,
+.preparation,
+.comments-panel,
+.recipe-hero-media,
+.landing-feature,
+.waitlist-inner,
+.aside-copy,
+.aside-proof,
+.flow-aside,
+.preview-notes {
+  background: var(--surface) !important;
+  border: 1.5px solid var(--border-structural) !important;
+  border-radius: 16px !important;
+  padding: 24px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 16px !important;
+  height: auto !important;
+  min-width: 0;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+.platter-card-content,
+.card-content,
+.article-card-content,
+.recipe-card-content {
+  gap: 8px !important;
+}
+
+.platter-card strong,
+.platter-card span,
+.platter-card a,
+.platter-card-content strong,
+.platter-card-content span,
+.platter-card-content a,
+.card strong,
+.card span,
+.card a,
+.recipe-card strong,
+.recipe-card span,
+.recipe-card a,
+.article-card strong,
+.article-card span,
+.article-card a,
+.review-card strong,
+.review-card span,
+.review-card a,
+.index-card strong,
+.index-card span,
+.index-card a {
+  margin-right: 0 !important;
+}
+
+.inline-separator {
+  padding-inline: 8px !important;
+}
+
+.image-frame,
+.platter-card img,
+.card img,
+.article-card img,
+.recipe-card img,
+.review-card img,
+.index-card img,
+.recipe-mini-card img,
+.hero-link-card img,
+.latest-item img,
+.recipe-feature img,
+.image-placeholder {
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.image-placeholder--square,
+.recipe-thumb .image-placeholder {
+  aspect-ratio: 1 / 1 !important;
+}
+
+.hero-media,
+.hero-media img {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.cta,
+.button-primary,
+.button-secondary,
+.platter-btn-header,
+a.button,
+button,
+.landing-button,
+.primary-button,
+.secondary-button,
+.text-button,
+.nav-cta,
+.nav-button,
+.flow-control,
+.quickjump-reset {
+  min-height: 48px !important;
+  height: auto !important;
+  padding: 12px 24px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  border: 2px solid var(--border-structural) !important;
+  border-radius: 12px !important;
+  font-family: var(--font-display) !important;
+  font-variation-settings: "wght" 600, "wdth" 100, "opsz" 18, "GRAD" 0;
+  font-size: 14px !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  overflow: visible !important;
+}
+
+.button-primary,
+.platter-btn-header,
+.primary-button,
+.nav-cta {
+  background: var(--text-primary) !important;
+  color: var(--surface) !important;
+}
+
+.cta,
+.button-secondary,
+.button.secondary,
+.secondary-button,
+.text-button,
+.nav-button,
+.flow-control,
+.quickjump-reset {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+.cta:hover,
+.button-primary:hover,
+.button-secondary:hover,
+.platter-btn-header:hover,
+a.button:hover,
+button:hover,
+.landing-button:hover,
+.primary-button:hover,
+.secondary-button:hover,
+.text-button:hover,
+.nav-cta:hover,
+.nav-button:hover,
+.flow-control:hover,
+.quickjump-reset:hover {
+  background: var(--color-accent-coral) !important;
+  border-color: var(--color-accent-coral) !important;
+  color: var(--surface) !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border-structural);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.comparison-matrix {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.comparison-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border-structural);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  height: auto;
+}
+
+.comparison-card .brand {
+  font-family: var(--font-display) !important;
+  font-variation-settings: "wght" 600, "wdth" 100, "opsz" 18, "GRAD" 0;
+  font-size: 18px !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+}
+
+.comparison-card .rating-badge {
+  display: inline-flex !important;
+  align-items: center;
+  align-self: flex-start;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--color-accent-yellow);
+  color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 500;
+  font-size: 11px !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.2 !important;
+}
+
+.comparison-card .feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comparison-card .feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-body) !important;
+  font-weight: 400;
+  font-size: 14px !important;
+  letter-spacing: 0.01em;
+  line-height: 1.5 !important;
+}
+
+.comparison-card .feature-list li::before {
+  content: "✓";
+  flex: 0 0 auto;
+  color: var(--color-accent-seafoam-text);
+  font-weight: 700;
+}
+
+.comparison-card .cta {
+  margin-top: auto;
+}
+
+.comparison-card .cta:hover {
+  background: var(--text-primary) !important;
+  border-color: var(--text-primary) !important;
+  color: var(--surface) !important;
+}
+
+.grid-2,
+.grid-3,
+.story-grid,
+.recipe-desk,
+.review-layout,
+.editorial-grid,
+.recipes-grid,
+.rankings-grid,
+.articles-grid,
+.recipe-grid,
+.guides-grid,
+.stories-grid,
+.recipe-results-grid,
+.recipe-mini-grid {
+  gap: 16px;
+}
+
+@media (min-width: 600px) {
+  .container,
+  .page-container,
+  .content-container,
+  .container-centered {
+    width: calc(100% - 64px);
+  }
+
+  .grid-2,
+  .grid-3,
+  .story-grid,
+  .recipe-desk,
+  .review-layout,
+  .editorial-grid,
+  .recipes-grid,
+  .rankings-grid,
+  .articles-grid,
+  .recipe-grid,
+  .guides-grid,
+  .stories-grid,
+  .recipe-results-grid,
+  .recipe-mini-grid {
+    gap: 24px;
+  }
+}
+
+@media (min-width: 900px) {
+  .container,
+  .page-container,
+  .content-container,
+  .container-centered {
+    width: calc(100% - 48px);
+    max-width: 1120px;
+  }
+
+  .comparison-matrix {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .page-container,
+  .content-container,
+  .container-centered {
+    width: calc(100% - 64px);
+    max-width: 1240px;
+  }
+
+  .grid-2,
+  .grid-3,
+  .story-grid,
+  .recipe-desk,
+  .review-layout,
+  .editorial-grid,
+  .recipes-grid,
+  .rankings-grid,
+  .articles-grid,
+  .recipe-grid,
+  .guides-grid,
+  .stories-grid,
+  .recipe-results-grid,
+  .recipe-mini-grid {
+    gap: 32px;
+  }
+
+  .comparison-matrix {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (max-width: 599px) {
+  .outlined-card,
+  .platter-card,
+  .card,
+  .article-card,
+  .recipe-card,
+  .review-card,
+  .rankings-card,
+  .index-card,
+  .recipe-mini-card,
+  .hero-link-card,
+  .latest-item,
+  .landing-card,
+  .comparison-card,
+  .recipe-feature,
+  .ingredients,
+  .preparation,
+  .comments-panel,
+  .recipe-hero-media {
+    padding: 16px !important;
+  }
+
+  h1 {
+    font-size: 40px !important;
+  }
+
+  h2 {
+    font-size: 30px !important;
+  }
 }
 
 /* -----------------------------------------------------
@@ -2847,5 +3367,323 @@ hr,
   .footer-links {
     flex-direction: column;
     gap: 12px;
+  }
+}
+
+/* Final M3 cascade lock: keep legacy compatibility selectors from winning. */
+body,
+main,
+section,
+.page-wrapper,
+.page-section,
+.content-section {
+  background-color: var(--background-neutral) !important;
+  color: var(--text-primary) !important;
+}
+
+h1,
+.display-large,
+.font-display-large {
+  font-family: var(--font-display) !important;
+  font-variation-settings: "wght" 850, "wdth" 110, "opsz" 72, "GRAD" 100;
+  letter-spacing: -0.03em !important;
+  line-height: 1.05 !important;
+}
+
+h2,
+.headline,
+.card-title,
+.font-headline-medium {
+  font-family: var(--font-display) !important;
+  font-variation-settings: "wght" 750, "wdth" 100, "opsz" 32, "GRAD" 50;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
+}
+
+h3,
+.title,
+nav,
+.kicker,
+.font-title-medium {
+  font-family: var(--font-display) !important;
+  font-variation-settings: "wght" 600, "wdth" 100, "opsz" 18, "GRAD" 0;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+}
+
+p,
+li,
+.description,
+.body,
+.font-body-medium {
+  font-family: var(--font-body) !important;
+  font-weight: 400;
+  font-size: 14px !important;
+  letter-spacing: 0.01em;
+  line-height: 1.5 !important;
+}
+
+.outlined-card,
+.platter-card,
+.card,
+.article-card,
+.recipe-card,
+.review-card,
+.rankings-card,
+.index-card,
+.recipe-mini-card,
+.hero-link-card,
+.latest-item,
+.landing-card,
+.beta-panel,
+.preview-note,
+.screens-note,
+.simulator-quickjump,
+.geo-tldr-card,
+.method-card,
+.batch-card,
+.planner,
+.helper-note,
+.empty-state,
+.delivery-card,
+.promo-card,
+.lead-form,
+.prepared-summary-card,
+.day-plan-card,
+.screen-shot,
+.chef-card,
+.formula-card,
+.manifesto-panel,
+.canvas-summary,
+.recipe-feature,
+.ingredients,
+.preparation,
+.comments-panel,
+.recipe-hero-media,
+.landing-feature,
+.waitlist-inner,
+.aside-copy,
+.aside-proof,
+.flow-aside,
+.preview-notes,
+.comparison-card {
+  background: var(--surface) !important;
+  border: 1.5px solid var(--border-structural) !important;
+  border-radius: 16px !important;
+  padding: 24px !important;
+  gap: 16px !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+.platter-card-content,
+.card-content,
+.article-card-content,
+.recipe-card-content {
+  gap: 8px !important;
+}
+
+.platter-card img,
+.card img,
+.article-card img,
+.recipe-card img,
+.review-card img,
+.index-card img,
+.recipe-mini-card img,
+.hero-link-card img,
+.latest-item img,
+.recipe-feature img,
+.image-placeholder,
+.hero-media,
+.hero-media img {
+  aspect-ratio: 16 / 9 !important;
+  border-radius: 12px !important;
+}
+
+.image-placeholder,
+.hero-media {
+  overflow: hidden !important;
+}
+
+.image-placeholder--square,
+.recipe-thumb .image-placeholder {
+  aspect-ratio: 1 / 1 !important;
+}
+
+.cta,
+.button-primary,
+.button-secondary,
+.platter-btn-header,
+a.button,
+button,
+.landing-button,
+.primary-button,
+.secondary-button,
+.text-button,
+.nav-cta,
+.nav-button,
+.flow-control,
+.quickjump-reset {
+  min-height: 48px !important;
+  height: auto !important;
+  padding: 12px 24px !important;
+  border: 2px solid var(--border-structural) !important;
+  border-radius: 12px !important;
+  font-family: var(--font-display) !important;
+  font-size: 14px !important;
+  line-height: 1.25 !important;
+  overflow: visible !important;
+}
+
+.comparison-card .rating-badge {
+  border-radius: 8px !important;
+  background: var(--color-accent-yellow) !important;
+  color: var(--text-primary) !important;
+}
+
+.comparison-card .feature-list {
+  gap: 8px !important;
+}
+
+.comparison-card .cta {
+  margin-top: auto;
+  background: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+.comparison-card .cta:hover {
+  background: var(--text-primary) !important;
+  border-color: var(--text-primary) !important;
+  color: var(--surface) !important;
+}
+
+.grid-2,
+.grid-3,
+.story-grid,
+.recipe-desk,
+.review-layout,
+.editorial-grid,
+.recipes-grid,
+.rankings-grid,
+.articles-grid,
+.recipe-grid,
+.guides-grid,
+.stories-grid,
+.recipe-results-grid,
+.recipe-mini-grid {
+  gap: 16px !important;
+}
+
+.container,
+.page-container,
+.content-container,
+.container-centered {
+  width: calc(100% - 32px) !important;
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: 0 !important;
+}
+
+@media (min-width: 600px) {
+  .container,
+  .page-container,
+  .content-container,
+  .container-centered {
+    width: calc(100% - 64px) !important;
+  }
+
+  .grid-2,
+  .grid-3,
+  .story-grid,
+  .recipe-desk,
+  .review-layout,
+  .editorial-grid,
+  .recipes-grid,
+  .rankings-grid,
+  .articles-grid,
+  .recipe-grid,
+  .guides-grid,
+  .stories-grid,
+  .recipe-results-grid,
+  .recipe-mini-grid {
+    gap: 24px !important;
+  }
+}
+
+@media (min-width: 900px) {
+  .container,
+  .page-container,
+  .content-container,
+  .container-centered {
+    width: calc(100% - 48px) !important;
+    max-width: 1120px;
+  }
+
+  .comparison-matrix {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .page-container,
+  .content-container,
+  .container-centered {
+    width: calc(100% - 64px) !important;
+    max-width: 1240px;
+  }
+
+  .grid-2,
+  .grid-3,
+  .story-grid,
+  .recipe-desk,
+  .review-layout,
+  .editorial-grid,
+  .recipes-grid,
+  .rankings-grid,
+  .articles-grid,
+  .recipe-grid,
+  .guides-grid,
+  .stories-grid,
+  .recipe-results-grid,
+  .recipe-mini-grid {
+    gap: 32px !important;
+  }
+
+  .comparison-matrix {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+  }
+}
+
+@media (max-width: 599px) {
+  .outlined-card,
+  .platter-card,
+  .card,
+  .article-card,
+  .recipe-card,
+  .review-card,
+  .rankings-card,
+  .index-card,
+  .recipe-mini-card,
+  .hero-link-card,
+  .latest-item,
+  .landing-card,
+  .comparison-card,
+  .recipe-feature,
+  .ingredients,
+  .preparation,
+  .comments-panel,
+  .recipe-hero-media {
+    padding: 16px !important;
+  }
+
+  h1 {
+    font-size: 40px !important;
+  }
+
+  h2 {
+    font-size: 30px !important;
   }
 }
