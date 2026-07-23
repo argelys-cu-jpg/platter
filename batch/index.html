@@ -1212,9 +1212,9 @@
         const quickjump = renderQuickJump();
         app.innerHTML =
           mode === "landing"
-            ? toast + renderLanding() + quickjump
+            ? toast + renderLanding()
             : mode === "preview"
-              ? toast + renderPreview() + quickjump
+              ? toast + renderPreview()
               : renderTopBar() + toast + renderFlow() + quickjump;
 
         if (mode === "flow" && state.currentScreen === 4) {

@@ -2134,25 +2134,52 @@ select:focus-visible {
   color: var(--muted) !important;
 }
 
-.iphone-frame,
 .screen-stage,
 .preview-phone {
   position: relative;
-  max-width: 340px;
   width: 100%;
+  max-width: 325px;
   margin: 0 auto;
-  background: var(--black) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+.iphone-frame {
+  position: relative;
+  width: 100%;
+  max-width: 325px;
+  aspect-ratio: 9 / 19.5;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #111111 !important;
   border: 4px solid #222222;
   border-radius: 42px;
   overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
 }
 
 .iphone-screen {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   background: var(--canvas);
-  padding: 16px;
+  border-radius: 34px;
+  overflow: hidden;
+  padding: 0;
 }
 
 .iphone-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
   max-width: 100%;
   padding: 14px;
   font-size: 13px;
@@ -2804,17 +2831,20 @@ select:focus-visible {
 
 .iphone-notch {
   position: absolute;
-  top: 8px;
+  top: 14px;
   left: 50%;
-  z-index: 4;
+  z-index: 50;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 6px;
-  width: 116px;
+  width: 112px;
   height: 24px;
+  padding: 0 14px;
+  box-sizing: border-box;
   transform: translateX(-50%);
-  background: var(--black);
+  background: #000000;
+  border-radius: 999px;
 }
 
 .iphone-cam,
@@ -2823,20 +2853,24 @@ select:focus-visible {
   height: 7px;
   background: var(--blue);
   border: 1px solid #222222;
+  border-radius: 50%;
 }
 
 .iphone-speaker {
   width: 34px;
   height: 4px;
-  background: var(--muted);
+  background: #171717;
+  border-radius: 999px;
 }
 
 .iphone-status {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 8px 8px 10px;
+  padding: 14px 14px 6px;
+  background: var(--canvas);
   color: var(--ink);
   font-size: 10px;
   font-weight: 700;
@@ -2863,10 +2897,12 @@ select:focus-visible {
 }
 
 .iphone-home {
+  flex-shrink: 0;
   width: 96px;
   height: 4px;
-  margin: 10px auto 4px;
+  margin: 6px auto;
   background: var(--ink);
+  border-radius: 999px;
 }
 
 .hero-plate {
@@ -3685,5 +3721,554 @@ button,
 
   h2 {
     font-size: 30px !important;
+  }
+}
+
+.batch-page {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+.marketing-page,
+.screens-page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.marketing-nav,
+.top-bar {
+  width: 100%;
+  padding-inline: max(32px, calc((100vw - 1240px) / 2)) !important;
+}
+
+.marketing-nav {
+  min-height: 72px;
+}
+
+.marketing-nav .brand,
+.top-bar .brand {
+  width: auto;
+}
+
+.marketing-hero,
+.screens-hero {
+  width: min(calc(100% - 64px), 1240px);
+  margin: 0 auto !important;
+  padding: 64px 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.marketing-hero {
+  grid-template-columns: minmax(0, 7fr) minmax(360px, 5fr) !important;
+  align-items: start;
+}
+
+.screens-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(280px, 4fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.landing-copy,
+.landing-device {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.landing-copy > p,
+.screens-note > p,
+.waitlist-inner > p {
+  max-width: 62ch;
+  margin: 0;
+}
+
+.landing-device {
+  align-items: center;
+}
+
+.landing-device .simulator-label,
+.landing-device .landing-caption {
+  align-self: flex-start;
+}
+
+.proof-strip,
+.landing-section,
+.waitlist-section,
+.screens-gallery {
+  width: min(calc(100% - 64px), 1240px);
+  margin-inline: auto;
+}
+
+.proof-strip {
+  margin-block: 0 80px;
+}
+
+.proof-strip-inner {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 16px;
+}
+
+.proof-item {
+  min-width: 0;
+  padding: 20px !important;
+}
+
+.landing-section,
+.waitlist-section {
+  margin-block: 0 80px;
+}
+
+.landing-section > h2,
+.waitlist-inner > h2 {
+  max-width: 18ch;
+}
+
+.landing-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  align-items: stretch;
+}
+
+.landing-index {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: stretch;
+}
+
+.landing-card {
+  justify-content: flex-start !important;
+}
+
+.landing-card .screen-ref {
+  margin-top: auto;
+}
+
+.landing-feature {
+  grid-template-columns: minmax(300px, 4fr) minmax(0, 8fr) !important;
+  align-items: center;
+}
+
+.landing-feature > .landing-copy {
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.preview-mosaic {
+  grid-template-columns: minmax(240px, 5fr) minmax(220px, 4fr) !important;
+  align-items: center;
+}
+
+.preview-notes {
+  align-self: stretch;
+  justify-content: center;
+}
+
+.waitlist-inner {
+  max-width: 840px;
+  margin-inline: auto;
+}
+
+.marketing-footer {
+  width: 100%;
+  margin-top: auto;
+  padding-inline: max(32px, calc((100vw - 1240px) / 2)) !important;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(280px, 440px) minmax(380px, 1fr);
+  min-height: 80px;
+}
+
+.top-bar > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.top-bar .progress {
+  color: var(--muted) !important;
+  font-size: 11px !important;
+  white-space: nowrap;
+}
+
+.top-controls {
+  justify-content: flex-end;
+}
+
+.mode-toggle {
+  flex-wrap: nowrap;
+}
+
+.mode-toggle button,
+.top-bar .nav-button {
+  min-height: 40px !important;
+  padding: 8px 14px !important;
+  font-size: 11px !important;
+}
+
+.flow-view {
+  width: min(calc(100% - 64px), 1240px);
+  margin: 48px auto 32px !important;
+  grid-template-columns: minmax(360px, 5fr) minmax(0, 7fr) !important;
+  gap: 48px !important;
+  align-items: start !important;
+}
+
+.flow-primary {
+  align-items: center;
+  gap: 20px;
+}
+
+.flow-controls {
+  width: min(100%, 325px);
+  justify-content: space-between;
+}
+
+.flow-controls .flow-control {
+  min-width: 104px;
+}
+
+.flow-aside {
+  align-self: start;
+  height: auto !important;
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 24px !important;
+}
+
+.flow-aside .aside-copy,
+.flow-aside .aside-proof {
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.flow-aside .aside-copy p {
+  max-width: 56ch;
+  margin: 0;
+}
+
+.aside-collage {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.aside-collage img {
+  border-radius: 12px;
+}
+
+.aside-proof {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px !important;
+}
+
+.aside-proof > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  background: var(--color-accent-seafoam);
+  border-radius: 12px;
+}
+
+.simulator-quickjump {
+  width: min(calc(100% - 64px), 1240px);
+  margin: 0 auto 48px;
+  display: grid !important;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px !important;
+}
+
+.simulator-quickjump .step-indicator {
+  margin: 0 !important;
+}
+
+.simulator-quickjump .step {
+  min-width: 40px;
+  min-height: 40px !important;
+}
+
+.simulator-quickjump .quickjump-reset {
+  min-height: 40px !important;
+  padding: 8px 16px !important;
+}
+
+.screens-gallery {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 24px;
+  margin-bottom: 80px;
+  align-items: start;
+}
+
+.screen-shot {
+  align-items: stretch;
+  gap: 16px !important;
+}
+
+.screen-shot .preview-phone {
+  width: 100%;
+}
+
+.screen-shot > strong {
+  margin-top: 8px;
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .marketing-hero,
+  .screens-hero,
+  .landing-feature,
+  .flow-view {
+    grid-template-columns: 1fr !important;
+  }
+
+  .marketing-hero,
+  .screens-hero,
+  .proof-strip,
+  .landing-section,
+  .waitlist-section,
+  .screens-gallery,
+  .flow-view,
+  .simulator-quickjump {
+    width: calc(100% - 64px);
+  }
+
+  .landing-grid,
+  .landing-index,
+  .screens-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .proof-strip-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .top-bar {
+    position: static;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .top-progress {
+    order: 3;
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: none;
+  }
+
+  .flow-aside {
+    width: min(100%, 680px);
+    margin-inline: auto;
+  }
+
+  .simulator-quickjump {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 599px) {
+  .marketing-nav,
+  .top-bar {
+    padding: 16px !important;
+  }
+
+  .marketing-nav {
+    position: static;
+    align-items: flex-start;
+  }
+
+  .marketing-brand,
+  .marketing-links {
+    width: 100%;
+  }
+
+  .marketing-links {
+    justify-content: space-between;
+  }
+
+  .marketing-links .nav-cta {
+    width: 100%;
+  }
+
+  .marketing-hero,
+  .screens-hero,
+  .proof-strip,
+  .landing-section,
+  .waitlist-section,
+  .screens-gallery,
+  .flow-view,
+  .simulator-quickjump {
+    width: calc(100% - 32px);
+  }
+
+  .marketing-hero,
+  .screens-hero {
+    padding-block: 32px !important;
+  }
+
+  .marketing-hero,
+  .screens-hero,
+  .landing-feature,
+  .preview-mosaic,
+  .flow-view {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .landing-copy,
+  .landing-device,
+  .landing-feature,
+  .waitlist-inner,
+  .screens-note,
+  .screen-shot,
+  .flow-aside,
+  .simulator-quickjump {
+    padding: 16px !important;
+  }
+
+  .proof-strip,
+  .landing-section,
+  .waitlist-section,
+  .screens-gallery {
+    margin-bottom: 48px;
+  }
+
+  .proof-strip-inner,
+  .landing-grid,
+  .landing-index,
+  .screens-gallery,
+  .aside-proof {
+    grid-template-columns: 1fr !important;
+  }
+
+  .landing-actions > *,
+  .flow-controls > * {
+    flex: 1 1 auto;
+  }
+
+  .marketing-footer {
+    padding-inline: 16px !important;
+    grid-template-columns: 1fr;
+  }
+
+  .top-bar {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .top-bar > div:first-child,
+  .top-controls,
+  .mode-toggle {
+    width: 100%;
+  }
+
+  .top-controls {
+    justify-content: flex-start;
+  }
+
+  .mode-toggle {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .mode-toggle button {
+    width: 100%;
+    padding-inline: 8px !important;
+  }
+
+  .top-progress {
+    order: 3;
+    width: 100%;
+    max-width: none;
+  }
+
+  .flow-view {
+    margin-top: 24px !important;
+    gap: 32px !important;
+  }
+
+  .flow-aside {
+    order: 2;
+  }
+
+  .aside-collage {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .simulator-quickjump {
+    margin-bottom: 24px;
+    grid-template-columns: 1fr;
+    gap: 16px !important;
+  }
+
+  .simulator-quickjump .quickjump-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .simulator-quickjump .step {
+    width: 100%;
+  }
+
+  html,
+  body,
+  .batch-page,
+  .marketing-page,
+  .screens-page {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .marketing-hero,
+  .screens-hero,
+  .landing-copy,
+  .landing-device,
+  .landing-feature,
+  .preview-mosaic,
+  .preview-notes,
+  .proof-strip-inner,
+  .landing-grid,
+  .landing-index,
+  .waitlist-inner,
+  .screens-gallery,
+  .screen-shot,
+  .flow-view,
+  .flow-primary,
+  .flow-aside {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .landing-actions,
+  .lead-row,
+  .flow-controls {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .landing-actions > *,
+  .lead-row > *,
+  .flow-controls > * {
+    width: 100% !important;
+    min-width: 0;
   }
 }
