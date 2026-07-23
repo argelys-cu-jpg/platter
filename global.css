@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&family=Google+Sans+Text:ital,wght@0,400..700;1,400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
 
 /* =====================================================
    Platter Global Design System — Baltic Birch Edition
@@ -22,15 +22,16 @@
   --color-accent-seafoam-text: #4ea38c;
 
   /* --- The Organic Print Canvas --- */
-  --canvas: var(--background-neutral);
-  --cream: var(--background-neutral);
-  --cream-deep: var(--color-accent-seafoam);
-  --paper: var(--surface);
+  --canvas: #f7f3ec;
+  --cream: #f7f3ec;
+  --cream-deep: #e6ded2;
+  --paper: #fffaf3;
+  --surface: #fffaf3;
   --white: #ffffff;
-  --sand: #d7d4cf;
-  --sand-soft: var(--color-accent-seafoam);
-  --mist: var(--background-neutral);
-  --smoke: #d7d4cf;
+  --sand: #ddd2c3;
+  --sand-soft: #e6ded2;
+  --mist: #f7f3ec;
+  --smoke: #ddd2c3;
 
   /* --- Botanical “Graphic Optimism” Accents --- */
   --sage: #a8b08c;
@@ -38,41 +39,41 @@
   --olive: #6f7755;
   --olive-ink: #3f482e;
   --olive-soft: #e0e5d8;
-  --tomato: var(--color-accent-coral);
-  --accent: var(--color-accent-coral);
-  --accent-soft: #fbe9e5;
+  --tomato: #d6281f;
+  --accent: #d6281f;
+  --accent-soft: #f0ded8;
   --berry: #5b4b57;
   --berry-deep: #3b2f39;
   --blue: #516a79;
 
   /* --- The High-Contrast Ink --- */
-  --black: var(--text-primary);
-  --charcoal: var(--text-primary);
-  --ink: var(--text-primary);
-  --muted: #5f5f5f;
+  --black: #050505;
+  --charcoal: #2b2723;
+  --ink: #2b2723;
+  --muted: #6d6258;
 
   /* --- Sharp Print Geometry --- */
   --shadow-soft: none;
   --radius: 16px;
-  --line: var(--border-structural);
-  --rule: var(--border-structural);
+  --line: #d8cec0;
+  --rule: #2b2723;
   --hairline: 1px solid var(--line);
 
   /* --- Spacing scale --- */
-  --card-pad: 24px;
-  --card-pad-mobile: 16px;
-  --grid-gap: 24px;
+  --card-pad: 32px;
+  --card-pad-mobile: 20px;
+  --grid-gap: 18px;
   --section-gap: 80px;
   --section-gap-mobile: 48px;
   --divider-gap: 32px;
   --divider-gap-mobile: 24px;
   --container-max: 1240px;
-  --container-pad: 32px;
+  --container-pad: clamp(20px, 5vw, 64px);
 
   /* --- Typography Stacks --- */
-  --display: var(--font-display);
-  --poster: var(--font-display);
-  --sans: var(--font-body);
+  --display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --poster: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
+  --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 /* =====================================================
@@ -581,6 +582,364 @@ select {
 
   h2 {
     font-size: 30px !important;
+  }
+}
+
+/* =====================================================
+   Authoritative Baltic Birch restoration cascade
+   ===================================================== */
+html,
+body,
+body,
+main,
+section,
+.page-wrapper,
+.page-section,
+.content-section {
+  background-color: var(--canvas) !important;
+  color: var(--ink) !important;
+  font-family: var(--sans) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-large,
+.headline,
+.card-title,
+.title,
+.font-display-large,
+.font-headline-medium,
+.font-title-medium {
+  font-family: var(--display) !important;
+  color: var(--ink) !important;
+}
+
+p,
+li,
+.description,
+.body,
+.font-body-medium {
+  font-family: var(--sans) !important;
+  color: var(--charcoal) !important;
+}
+
+.logo,
+.site-logo,
+.footer-logo,
+.brand {
+  font-family: var(--poster) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+}
+
+.container,
+.page-container,
+.content-container,
+.container-centered {
+  width: min(100% - var(--container-pad) * 2, var(--container-max)) !important;
+  max-width: var(--container-max) !important;
+  margin-inline: auto;
+  padding-inline: 0 !important;
+}
+
+.outlined-card,
+.platter-card,
+.card,
+.article-card,
+.recipe-card,
+.review-card,
+.rankings-card,
+.index-card,
+.recipe-mini-card,
+.hero-link-card,
+.latest-item,
+.landing-card,
+.comparison-card,
+.geo-tldr-card,
+.method-card,
+.batch-card,
+.planner,
+.helper-note,
+.empty-state,
+.delivery-card,
+.promo-card,
+.prepared-summary-card,
+.day-plan-card,
+.screen-shot,
+.chef-card,
+.formula-card,
+.manifesto-panel,
+.canvas-summary,
+.recipe-feature,
+.ingredients,
+.preparation,
+.comments-panel,
+.recipe-hero-media,
+.hero-cover {
+  background: var(--paper) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  padding: var(--card-pad) !important;
+  box-sizing: border-box !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  height: auto !important;
+  min-width: 0;
+  overflow: visible !important;
+}
+
+.platter-card-content,
+.card-content,
+.article-card-content,
+.recipe-card-content,
+.iphone-content,
+.iphone-content .preset-grid,
+.iphone-content .profile-stack,
+.iphone-content .meal-plan,
+.iphone-content .day-plan-list,
+.iphone-content .meal-match-list,
+.iphone-content .review-list,
+.iphone-content .timeline-list,
+.iphone-content .formula-card,
+.iphone-content .helper-note,
+.iphone-content .empty-state {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  min-width: 0;
+}
+
+.platter-card img,
+.card img,
+.article-card img,
+.recipe-card img,
+.review-card img,
+.index-card img,
+.recipe-mini-card img,
+.hero-link-card img,
+.latest-item img,
+.recipe-feature img,
+.image-placeholder,
+.hero-media,
+.hero-media img {
+  border-radius: 12px !important;
+}
+
+.image-placeholder,
+.hero-media {
+  overflow: hidden !important;
+}
+
+.site-header {
+  background: var(--paper) !important;
+  border-bottom: 1px solid var(--line) !important;
+  margin-bottom: 0 !important;
+}
+
+.platter-btn-dark,
+.button-primary,
+.platter-btn-header,
+button,
+a.button,
+.primary-button,
+.nav-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 44px !important;
+  height: auto !important;
+  padding: 12px 24px !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: var(--radius) !important;
+  background-color: var(--black) !important;
+  color: var(--cream) !important;
+  font-family: var(--sans) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.05em !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+}
+
+.button-secondary,
+.button.secondary,
+.secondary-button,
+.cta,
+.text-button,
+.nav-button,
+.flow-control,
+.quickjump-reset {
+  background: var(--paper) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+}
+
+.platter-btn-dark:hover,
+.button-primary:hover,
+.platter-btn-header:hover,
+button:hover,
+a.button:hover,
+.primary-button:hover,
+.nav-cta:hover {
+  background-color: var(--tomato) !important;
+  color: var(--white) !important;
+}
+
+.step-indicator,
+.simulator-steps {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin: 16px 0 24px !important;
+}
+
+.step-indicator button,
+.step,
+.simulator-steps button {
+  min-height: auto !important;
+  height: auto !important;
+  padding: 8px 12px !important;
+  background-color: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 4px !important;
+  color: var(--ink) !important;
+  font-family: var(--sans) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+
+.step-indicator button.active,
+.step.active,
+.simulator-steps button.active,
+.step-indicator button.is-active,
+.step.is-active,
+.simulator-steps button.is-active {
+  background-color: var(--tomato) !important;
+  border-color: var(--tomato) !important;
+  color: var(--white) !important;
+}
+
+.iphone-content .option-button,
+.iphone-content .preset-card,
+.iphone-content .profile-card,
+.iphone-content .meal-card,
+.iphone-content .day-chip,
+.iphone-content .chip,
+.iphone-content .slot-button,
+.iphone-content .discovery-chip {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 44px !important;
+  padding: 10px 14px !important;
+  box-sizing: border-box !important;
+  background: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  color: var(--ink) !important;
+  overflow: visible !important;
+}
+
+@media (min-width: 900px) {
+  .story-grid,
+  .editorial-grid {
+    grid-template-columns: minmax(0, 8fr) minmax(0, 4fr) !important;
+    align-items: stretch !important;
+  }
+
+  .side-stack,
+  .editorial-grid__secondary {
+    display: grid !important;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: var(--grid-gap);
+  }
+
+  .recipe-desk,
+  .recipes-grid,
+  .review-layout,
+  .rankings-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr) !important;
+    align-items: stretch !important;
+  }
+
+  .recipe-mini-grid,
+  .recipe-results-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .story-grid > *,
+  .side-stack > *,
+  .recipe-desk > *,
+  .review-layout > * {
+    height: 100% !important;
+  }
+}
+
+@media (max-width: 599px) {
+  .outlined-card,
+  .platter-card,
+  .card,
+  .article-card,
+  .recipe-card,
+  .review-card,
+  .rankings-card,
+  .index-card,
+  .recipe-mini-card,
+  .hero-link-card,
+  .latest-item,
+  .landing-card,
+  .comparison-card,
+  .recipe-feature,
+  .ingredients,
+  .preparation,
+  .comments-panel,
+  .recipe-hero-media,
+  .hero-cover {
+    padding: var(--card-pad-mobile) !important;
+  }
+
+  .search-form,
+  .newsletter-form,
+  .inline-form,
+  .recipe-search,
+  .signup-form,
+  .lead-form,
+  .waitlist-form,
+  .lead-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .search-form input,
+  .search-form button,
+  .newsletter-form input,
+  .newsletter-form button,
+  .inline-form input,
+  .inline-form button,
+  .recipe-search input,
+  .recipe-search button,
+  .signup-form input,
+  .signup-form button,
+  .lead-form input,
+  .lead-form button,
+  .waitlist-form input,
+  .waitlist-form button,
+  .lead-row input,
+  .lead-row button {
+    width: 100% !important;
   }
 }
 
