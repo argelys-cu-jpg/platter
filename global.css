@@ -4631,3 +4631,101 @@ button,
     min-width: 0;
   }
 }
+
+/* Final spacing and border recovery lock */
+.platter-card,
+.card,
+.recipe-card,
+.article-card,
+.review-card,
+.rankings-card,
+.index-card,
+.recipe-mini-card,
+.hero-link-card,
+.latest-item,
+.comparison-card,
+.ranking-table,
+.table-wrapper,
+.list-wrapper {
+  border: 1px solid var(--border-structural) !important;
+  box-sizing: border-box !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+.cta,
+.button-primary,
+.button-secondary,
+.platter-btn-header,
+a.button,
+button,
+.primary-button,
+.secondary-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 44px !important;
+  height: auto !important;
+  padding: 12px 24px !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  line-height: 1 !important;
+}
+
+.platter-card strong,
+.platter-card span,
+.platter-card-content strong,
+.platter-card-content span {
+  display: inline-block !important;
+  margin-right: 8px !important;
+}
+
+.platter-card .inline-separator,
+.platter-card-content .inline-separator,
+.ranking-number,
+.ranking-service,
+.ranking-score,
+.score,
+.story-footer > :last-child,
+.recipe-meta > :last-child,
+.card-metadata-row > :last-child {
+  margin-right: 0 !important;
+}
+
+.ranking-service {
+  display: flex !important;
+}
+
+.ranking-score {
+  display: inline-flex !important;
+}
+
+.page-section,
+.content-section,
+main > section,
+.section {
+  margin-bottom: 80px !important;
+}
+
+.section-divider,
+.editorial-rule,
+hr,
+.rule {
+  margin-block: 32px !important;
+}
+
+@media (max-width: 599px) {
+  .page-section,
+  .content-section,
+  main > section,
+  .section {
+    margin-bottom: 48px !important;
+  }
+
+  .section-divider,
+  .editorial-rule,
+  hr,
+  .rule {
+    margin-block: 24px !important;
+  }
+}
