@@ -3966,3 +3966,12 @@ a:hover {
     padding: var(--card-pad-mobile) !important;
   }
 }
+
+/* Keep adjacent inline card labels from visually merging. */
+.platter-card strong,
+.platter-card span,
+.platter-card-content strong,
+.platter-card-content span {
+  display: inline-block !important;
+  margin-right: 8px !important;
+}
