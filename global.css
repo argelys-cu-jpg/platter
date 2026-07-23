@@ -408,7 +408,7 @@ a.button,
   align-items: center !important;
   justify-content: center !important;
   width: auto;
-  min-height: 44px;
+  min-height: 44px !important;
   height: auto !important;
   padding: 12px 24px !important;
   box-sizing: border-box !important;
@@ -638,6 +638,42 @@ a.button:focus-visible,
   gap: 8px !important;
   flex-grow: 1;
   min-width: 0;
+}
+
+/* Editorial wireframes replace non-cover imagery until final art is approved. */
+.image-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: auto !important;
+  padding: 20px;
+  background-color: var(--sand-soft);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  color: var(--muted);
+  font-family: var(--poster) !important;
+  font-size: clamp(14px, 1.5vw, 20px) !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.image-placeholder--square {
+  aspect-ratio: 1 / 1;
+}
+
+.platter-card > .image-placeholder,
+.article-card > .image-placeholder,
+.recipe-card .image-placeholder,
+.recipe-mini-card .image-placeholder {
+  margin-bottom: 0;
 }
 
 .platter-card p,
@@ -1015,7 +1051,8 @@ a.button:focus-visible,
 
   .story-grid,
   .editorial-grid {
-    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+    align-items: stretch;
   }
 
   .side-stack,
@@ -1028,11 +1065,13 @@ a.button:focus-visible,
   .recipe-desk,
   .recipes-grid {
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: stretch;
   }
 
   .review-layout,
   .rankings-grid {
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: stretch;
   }
 
   .articles-grid,
