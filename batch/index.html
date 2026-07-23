@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
 <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Batch by Platter - Weekly Menu Builder</title>
@@ -918,7 +917,7 @@
             </div>
             <div class="top-progress" aria-label="Progress: step ${state.currentScreen + 1} of ${screenTitles.length}">
               <div class="progress-label"><span>Step ${state.currentScreen + 1} of ${screenTitles.length}</span><span class="inline-separator" aria-hidden="true"> · </span><span>${screenTitles[state.currentScreen]}</span></div>
-              <div class="progress-track"><span style="width: ${progressPercent}%"></span></div>
+              <div class="progress-track"><span class="progress-${progressPercent}"></span></div>
             </div>
             <div class="top-controls">
               <div class="mode-toggle" aria-label="View mode">
