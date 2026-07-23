@@ -414,11 +414,13 @@ av a,
   border-radius: var(--radius) !important;
   box-shadow: var(--shadow-soft) !important;
   padding: var(--card-pad) !important;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   display: flex;
   flex-direction: column;
   justify-content: flex-start !important;
-  height: 100%;
+  height: auto !important;
+  min-height: min-content !important;
+  overflow: visible !important;
 }
 
 .platter-card img,
@@ -470,19 +472,17 @@ av a,
   flex-grow: 1;
 }
 
-/* Flatten single inner wrappers so their children use the card-content gap */
 .platter-card-content > .lead-body,
 .platter-card-content > .side-body,
 .platter-card-content > .article-body,
 .platter-card-content > .card-body,
 .platter-card-content > .chef-card-body,
-.platter-card-content > .review-card-head,
-.platter-card-content > .method-card,
-.platter-card-content > .formula-head,
 .platter-card-content > .landing-card-body,
-.platter-card-content > .index-card-body,
-.platter-card-content > div:only-child {
-  display: contents;
+.platter-card-content > .index-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px !important;
+  width: 100%;
 }
 
 .score-row,
@@ -1721,7 +1721,8 @@ th {
   display: flex;
   flex-direction: column;
   justify-content: flex-start !important;
-  height: 100%;
+  height: auto !important;
+  min-height: min-content !important;
   min-width: 0;
   overflow: visible !important;
 }
@@ -3564,7 +3565,8 @@ section,
   display: flex;
   flex-direction: column;
   justify-content: flex-start !important;
-  height: 100%;
+  height: auto !important;
+  min-height: min-content !important;
   min-width: 0;
   overflow: visible !important;
 }
