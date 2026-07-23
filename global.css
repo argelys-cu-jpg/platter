@@ -2210,7 +2210,9 @@ select:focus-visible {
 .landing-section,
 .waitlist-section,
 .proof-strip,
-.screens-gallery {
+.screens-gallery,
+.marketing-hero,
+.screens-hero {
   width: min(100% - var(--container-pad) * 2, var(--container-max));
   margin-inline: auto;
 }
