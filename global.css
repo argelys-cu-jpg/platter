@@ -1,0 +1,3968 @@
+/* =====================================================
+   Platter Global Design System — Baltic Birch Edition
+   Flat, sharp-edged, print-magazine token system.
+   ===================================================== */
+
+/* -----------------------------------------------------
+   1. Theme Tokens
+   ----------------------------------------------------- */
+:root {
+  /* --- The Organic Print Canvas --- */
+  --canvas: #f7f3ec;
+  --cream: #f7f3ec;
+  --cream-deep: #e6ded2;
+  --paper: #fffaf3;
+  --surface: #fffaf3;
+  --white: #ffffff;
+  --sand: #ddd2c3;
+  --sand-soft: #e6ded2;
+  --mist: #f7f3ec;
+  --smoke: #ddd2c3;
+
+  /* --- Botanical "Graphic Optimism" Accents --- */
+  --sage: #a8b08c;
+  --sage-strong: #8f9974;
+  --olive: #6f7755;
+  --olive-ink: #3f482e;
+  --olive-soft: #e0e5d8;
+  --tomato: #d6281f;
+  --accent: #d6281f;
+  --accent-soft: #f0ded8;
+  --berry: #5b4b57;
+  --berry-deep: #3b2f39;
+  --blue: #516a79;
+
+  /* --- The High-Contrast Ink --- */
+  --black: #050505;
+  --charcoal: #2b2723;
+  --ink: #2b2723;
+  --muted: #6d6258;
+
+  /* --- Sharp Print Geometry --- */
+  --shadow-soft: none;
+  --radius: 0;
+  --line: #d8cec0;
+  --rule: #2b2723;
+  --hairline: 1px solid var(--line);
+
+  /* --- Spacing scale --- */
+  --card-pad: 32px;
+  --card-pad-mobile: 20px;
+  --grid-gap: 18px;
+  --section-gap: 80px;
+  --section-gap-mobile: 48px;
+  --divider-gap: 32px;
+  --divider-gap-mobile: 24px;
+  --container-max: 1240px;
+  --container-pad: clamp(20px, 5vw, 64px);
+
+  /* --- Typography Stacks --- */
+  --display: "Instrument Sans", -apple-system, sans-serif;
+  --poster: "Bebas Neue", "Arial Narrow", sans-serif;
+  --sans: "Instrument Sans", -apple-system, sans-serif;
+}
+
+/* -----------------------------------------------------
+   2. Global Reset & Base Tags
+   ----------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  background-color: var(--canvas) !important;
+  color: var(--ink) !important;
+  font-family: var(--sans) !important;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+main, .page-wrapper, .app-container, #root, .content, .container {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--display) !important;
+  color: var(--ink) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
+  margin: 0;
+}
+
+p, li, span, td, th, label, figcaption, time, small {
+  font-family: var(--sans) !important;
+  line-height: 1.55 !important;
+  color: var(--charcoal) !important;
+}
+
+strong, b {
+  color: var(--ink) !important;
+  font-weight: 700 !important;
+}
+
+small {
+  font-size: 0.85em;
+  color: var(--muted) !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0 0 0 1.2em;
+}
+
+/* -----------------------------------------------------
+   3. Links
+   ----------------------------------------------------- */
+a {
+  color: var(--ink) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid var(--line) !important;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease !important;
+}
+
+a:hover {
+  color: var(--tomato) !important;
+  border-bottom-color: var(--tomato) !important;
+}
+
+a:hover img,
+a:hover svg,
+a:hover strong {
+  opacity: 0.92;
+}
+
+/* Remove decorative underlines from component links */
+a.logo,
+a.platter-btn-header,
+a.button,
+a.button-primary,
+a.button-secondary,
+a.landing-button,
+a.filter-chip,
+a.pill,
+a.recipe-mini-card,
+a.hero-link-card,
+a.recipe-thumb,
+a.recipe-card,
+av a,
+.site-footer a,
+.platter-announcement-bar a,
+.platter-card a,
+.card a,
+.article-card a,
+.recipe-card a,
+.index-card a,
+.review-card a,
+.recipe-mini-card a,
+.latest-item,
+.newsletter-band a,
+.tag,
+.chip,
+.eyebrow-pill,
+.primary-button,
+.secondary-button,
+.nav-button,
+.nav-cta,
+.platter-btn-dark,
+.button-pair a {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+/* -----------------------------------------------------
+   4. Layout Shell
+   ----------------------------------------------------- */
+.container {
+  width: min(100% - var(--container-pad) * 2, var(--container-max));
+  margin-inline: auto;
+}
+
+.container-centered {
+  width: min(100% - var(--container-pad) * 2, var(--container-max));
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section {
+  padding: clamp(48px, 7vw, 96px) 0;
+}
+
+.section-header-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+.section-header-group h2,
+.section-head h2,
+.page-hero h1,
+.page-hero .lead,
+.section-header-group p,
+.page-hero p {
+  max-width: 65ch;
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+/* -----------------------------------------------------
+   5. Header, Announcement, Navigation
+   ----------------------------------------------------- */
+.site-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.platter-announcement-bar {
+  background-color: var(--tomato) !important;
+  text-align: center !important;
+  padding: 8px 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.platter-announcement-bar a {
+  color: var(--cream) !important;
+  font-family: var(--poster) !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  display: inline-block;
+}
+
+.site-header {
+  background: var(--paper) !important;
+  border-bottom: var(--hairline) !important;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.nav-links {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+}
+
+.nav-links a {
+  font-family: var(--sans) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  color: var(--ink) !important;
+  border-bottom: none !important;
+}
+
+.nav-links a:hover {
+  color: var(--tomato) !important;
+}
+
+.logo,
+.site-logo,
+.brand {
+  font-family: var(--poster) !important;
+  font-size: clamp(22px, 3vw, 30px) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  color: var(--ink) !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.platter-btn-header,
+.platter-btn-dark,
+.button-primary,
+.primary-button,
+.button,
+.landing-button.is-primary,
+.is-primary.landing-button,
+.nav-cta {
+  background-color: var(--black) !important;
+  color: var(--cream) !important;
+  padding: 10px 20px !important;
+  border-radius: var(--radius) !important;
+  font-family: var(--sans) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  text-decoration: none !important;
+  border: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out !important;
+}
+
+.platter-btn-header:hover,
+.platter-btn-dark:hover,
+.button-primary:hover,
+.primary-button:hover,
+.button:hover,
+.landing-button.is-primary:hover,
+.nav-cta:hover {
+  background-color: var(--accent) !important;
+  color: var(--white) !important;
+}
+
+.button-secondary,
+.secondary-button,
+.landing-button.is-secondary,
+.is-secondary.landing-button,
+.button.is-secondary,
+.button.secondary {
+  background-color: var(--paper) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+  padding: 10px 20px !important;
+  border-radius: var(--radius) !important;
+  font-family: var(--sans) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.button-secondary:hover,
+.secondary-button:hover,
+.landing-button.is-secondary:hover,
+.is-secondary.landing-button:hover,
+.button.is-secondary:hover,
+.button.secondary:hover {
+  background-color: var(--black) !important;
+  color: var(--cream) !important;
+  border-color: var(--black) !important;
+}
+
+/* -----------------------------------------------------
+   6. Flat Card System
+   ----------------------------------------------------- */
+.platter-card,
+.card,
+.article-card,
+.recipe-card,
+.index-card,
+.review-card,
+.recipe-mini-card,
+.lead-story,
+.side-story,
+.recipe-panel,
+.newsletter-panel,
+.beta-panel,
+.preview-note,
+.screens-note,
+.landing-device,
+.geo-tldr-card,
+.landing-card,
+.method-card,
+.batch-card,
+.planner,
+.helper-note,
+.empty-state,
+.delivery-card,
+.promo-card,
+.lead-form,
+.prepared-summary-card,
+.day-plan-card,
+.simulator-quickjump,
+.screen-shot,
+.chef-card,
+.formula-card,
+.manifesto-panel,
+.canvas-summary,
+.table {
+  background-color: var(--paper) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-soft) !important;
+  padding: var(--card-pad) !important;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  height: 100%;
+}
+
+.platter-card img,
+.card img,
+.article-card img,
+.recipe-card img,
+.index-card img,
+.review-card img,
+.recipe-mini-card img,
+.lead-story img,
+.side-story img,
+.recipe-panel img,
+.newsletter-panel img,
+.beta-panel img,
+.preview-note img,
+.screens-note img,
+.landing-device img,
+.geo-tldr-card img,
+.landing-card img,
+.method-card img,
+.batch-card img,
+.planner img,
+.helper-note img,
+.empty-state img,
+.delivery-card img,
+.promo-card img,
+.lead-form img,
+.prepared-summary-card img,
+.day-plan-card img,
+.simulator-quickjump img,
+.screen-shot img,
+.chef-card img,
+.formula-card img,
+.manifesto-panel img,
+.canvas-summary img,
+.table img {
+  width: 100% !important;
+  aspect-ratio: 3 / 2 !important;
+  object-fit: cover !important;
+  border-radius: 0 !important;
+  margin-bottom: 16px !important;
+  display: block;
+}
+
+.platter-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px !important;
+  flex-grow: 1;
+}
+
+/* Flatten single inner wrappers so their children use the card-content gap */
+.platter-card-content > .lead-body,
+.platter-card-content > .side-body,
+.platter-card-content > .article-body,
+.platter-card-content > .card-body,
+.platter-card-content > .chef-card-body,
+.platter-card-content > .review-card-head,
+.platter-card-content > .method-card,
+.platter-card-content > .formula-head,
+.platter-card-content > .landing-card-body,
+.platter-card-content > .index-card-body,
+.platter-card-content > div:only-child {
+  display: contents;
+}
+
+.score-row,
+.review-score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.platter-card p,
+.platter-card .dek,
+.card p,
+.card .dek,
+.article-card p,
+.article-card .dek,
+.recipe-card p,
+.recipe-card .dek,
+.index-card p,
+.index-card .dek,
+.review-card p,
+.review-card .dek,
+.platter-card .description,
+.platter-card p.description,
+.card .description,
+.card p.description,
+.article-card .description,
+.article-card p.description,
+.recipe-card .description,
+.recipe-card p.description {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  text-indent: 0 !important;
+  text-align: left !important;
+}
+
+/* -----------------------------------------------------
+   7. Metadata Rows & Numerals
+   ----------------------------------------------------- */
+.story-footer,
+.card-metadata-row,
+.hero-meta,
+.recipe-meta,
+.article-meta,
+.review-score-row,
+.recipe-stats,
+.index-metrics,
+.card-metadata-row,
+.table-head,
+.meta-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px !important;
+  flex-wrap: wrap;
+  font-family: var(--sans) !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  color: var(--muted) !important;
+}
+
+.story-footer > *:not(:last-child)::after,
+.card-metadata-row > *:not(:last-child)::after,
+.hero-meta > *:not(:last-child)::after,
+.recipe-meta > *:not(:last-child)::after,
+.article-meta > *:not(:last-child)::after,
+.review-score-row > *:not(:last-child)::after,
+.recipe-stats > *:not(:last-child)::after,
+.index-metrics > *:not(:last-child)::after,
+.table-head > *:not(:last-child)::after,
+.meta-row > *:not(:last-child)::after {
+  content: "•";
+  margin-left: 12px;
+  color: var(--line);
+}
+
+.score,
+.rank-score,
+.rank-number,
+.index-metric strong,
+.recipe-stats strong,
+.score-row strong,
+.score strong,
+.rank-score strong,
+.table-row strong,
+.review-score-row strong,
+.card-metadata-row strong {
+  font-family: var(--poster) !important;
+  font-size: 14px !important;
+  letter-spacing: 0.05em !important;
+  color: var(--tomato) !important;
+  text-transform: uppercase !important;
+}
+
+.score small,
+.rank-score small,
+.score span {
+  font-family: var(--sans) !important;
+  font-size: 11px !important;
+  color: var(--muted) !important;
+}
+
+/* -----------------------------------------------------
+   8. Kickers & Eyebrows
+   ----------------------------------------------------- */
+.eyebrow,
+.eyebrow-pill,
+.card-kicker,
+.page-kicker,
+.section-kicker,
+.table-kicker,
+.kicker,
+.geo-label,
+.tag,
+.chip,
+.discovery-chip {
+  font-family: var(--poster) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: var(--tomato) !important;
+}
+
+.eyebrow-pill,
+.chip,
+.tag,
+.discovery-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: var(--accent-soft);
+  color: var(--tomato) !important;
+}
+
+/* -----------------------------------------------------
+   9. Filter Chips / Pills
+   ----------------------------------------------------- */
+.filter-chip,
+.pill,
+.recipe-topic-row a,
+.topic-bar a,
+.chip-grid a,
+.tag-row a,
+.discovery-chip,
+.eyebrow-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 6px 16px !important;
+  border-radius: 20px !important;
+  background-color: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  font-family: var(--sans) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-transform: capitalize !important;
+  color: var(--ink) !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.filter-chip:hover,
+.pill:hover,
+.recipe-topic-row a:hover,
+.topic-bar a:hover,
+.chip-grid a:hover,
+.tag-row a:hover,
+.discovery-chip:hover,
+.eyebrow-pill:hover {
+  background-color: var(--tomato) !important;
+  color: var(--white) !important;
+  border-color: var(--tomato) !important;
+}
+
+.recipe-topic-row,
+.topic-bar,
+.chip-grid,
+.tag-row,
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* -----------------------------------------------------
+   10. Hero Section
+   ----------------------------------------------------- */
+.hero {
+  padding: clamp(32px, 5vw, 64px) 0;
+}
+
+.hero-grid {
+  display: grid;
+  gap: var(--grid-gap);
+  align-items: start;
+}
+
+.hero-cover {
+  display: grid;
+  gap: 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: var(--card-pad-lg);
+}
+
+.hero-cover img,
+.hero-cover picture img,
+.hero-media img {
+  aspect-ratio: 16 / 9 !important;
+  width: 100%;
+  object-fit: cover;
+}
+
+.hero-story {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.hero-more {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gap);
+}
+
+.hero-more-label {
+  font-family: var(--poster) !important;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: var(--muted) !important;
+}
+
+.hero-link-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: var(--card-pad);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-link-card:hover {
+  background: var(--cream-deep);
+  border-color: var(--tomato);
+}
+
+.hero-link-card small {
+  font-family: var(--poster) !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  color: var(--tomato) !important;
+}
+
+.hero-link-card strong {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.hero-link-card span {
+  color: var(--muted) !important;
+}
+
+/* -----------------------------------------------------
+   11. Asymmetrical Desktop Grids
+   ----------------------------------------------------- */
+.story-grid {
+  display: grid;
+  gap: var(--grid-gap);
+  align-items: stretch;
+}
+
+.side-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gap);
+}
+
+.recipe-desk {
+  display: grid;
+  gap: var(--grid-gap);
+  align-items: stretch;
+}
+
+.recipe-search-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gap);
+}
+
+.recipe-search {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.recipe-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 16px;
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+.recipe-search button {
+  background: var(--black);
+  color: var(--cream);
+  border: none;
+  padding: 12px 20px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.recipe-search button:hover {
+  background: var(--tomato);
+}
+
+.recipe-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--grid-gap);
+}
+
+.review-layout {
+  display: grid;
+  gap: var(--grid-gap);
+  align-items: start;
+}
+
+.articles-grid,
+.recipe-grid,
+.guides-grid,
+.stories-grid,
+.latest-list,
+.review-list,
+.latest-rail {
+  display: grid;
+  gap: var(--grid-gap);
+}
+
+.grid-2 {
+  display: grid;
+  gap: var(--grid-gap);
+  align-items: stretch;
+}
+
+.grid-3 {
+  display: grid;
+  gap: var(--grid-gap);
+  align-items: stretch;
+}
+
+@media (min-width: 900px) {
+  .story-grid {
+    grid-template-columns: 8fr 4fr;
+  }
+  .recipe-desk {
+    grid-template-columns: 5fr 7fr;
+  }
+  .review-layout {
+    grid-template-columns: 5fr 7fr;
+  }
+  .articles-grid,
+  .recipe-grid,
+  .guides-grid,
+  .stories-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .hero-grid {
+    grid-template-columns: 2fr 1fr;
+    align-items: stretch;
+  }
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .latest-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 899px) {
+  .story-grid,
+  .recipe-desk,
+  .review-layout,
+  .articles-grid,
+  .recipe-grid,
+  .guides-grid,
+  .stories-grid,
+  .hero-grid,
+  .grid-2,
+  .grid-3,
+  .latest-layout {
+    grid-template-columns: 1fr;
+  }
+  .recipe-mini-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -----------------------------------------------------
+   12. Rankings Table
+   ----------------------------------------------------- */
+.ranking-table {
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--card-pad);
+}
+
+.rank-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.rank-row:last-child {
+  border-bottom: none;
+}
+
+.rank-number {
+  font-family: var(--display) !important;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--ink) !important;
+  min-width: 28px;
+  text-align: left;
+}
+
+.rank-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: 16px;
+  flex: 1;
+}
+
+.rank-brand strong {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rank-brand small {
+  color: var(--muted) !important;
+  font-size: 12px;
+}
+
+.rank-score {
+  margin-left: auto;
+  background-color: var(--tomato);
+  color: #FFFFFF !important;
+  padding: 4px 12px;
+  border-radius: 0;
+  font-family: var(--poster) !important;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* -----------------------------------------------------
+   13. Inputs & Forms
+   ----------------------------------------------------- */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea,
+.signup-form input,
+.recipe-search input,
+.lead-form input,
+.newsletter-band input,
+.search-bar input {
+  background-color: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  padding: 12px 16px !important;
+  font-family: var(--sans) !important;
+  font-size: 14px !important;
+  color: var(--ink) !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+textarea:focus,
+.signup-form input:focus,
+.recipe-search input:focus,
+.lead-form input:focus,
+.newsletter-band input:focus,
+.search-bar input:focus {
+  border-color: var(--black) !important;
+}
+
+.signup-form,
+.lead-form,
+.newsletter-band form,
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.signup-form button,
+.newsletter-band button,
+.lead-form button,
+.search-bar button {
+  background: var(--black);
+  color: var(--cream);
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.signup-form button:hover,
+.newsletter-band button:hover,
+.lead-form button:hover,
+.search-bar button:hover {
+  background: var(--tomato);
+}
+
+/* -----------------------------------------------------
+   14. Article Pages
+   ----------------------------------------------------- */
+.page-hero {
+  padding: clamp(40px, 6vw, 80px) 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero .container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.page-hero h1 {
+  max-width: 20ch;
+}
+
+.page-hero .lead {
+  max-width: 65ch;
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--charcoal) !important;
+}
+
+.article-layout {
+  display: grid;
+  gap: var(--grid-gap);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .article-layout {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.article-body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2vw, 28px);
+}
+
+.article-body h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin-top: 0.5em;
+}
+
+.article-body p,
+.article-body li {
+  max-width: 65ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--charcoal) !important;
+}
+
+.geo-tldr-card,
+.article-aside {
+  background: var(--cream-deep);
+  border: 1px solid var(--line);
+  padding: var(--card-pad);
+  height: auto;
+}
+
+.geo-tldr-card ul,
+.article-aside ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.geo-tldr-card li,
+.article-aside li {
+  padding-left: 0;
+  color: var(--charcoal) !important;
+}
+
+.meta-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meta-list a {
+  color: var(--ink) !important;
+  border-bottom: 1px solid var(--line);
+}
+
+.meta-list a:hover {
+  color: var(--tomato) !important;
+  border-bottom-color: var(--tomato);
+}
+
+/* -----------------------------------------------------
+   15. Batch App Styling
+   ----------------------------------------------------- */
+.batch-page,
+.marketing-page,
+.screens-page,
+.flow-view,
+.batch-layout {
+  background: var(--canvas) !important;
+}
+
+.option-button,
+.preset-card,
+.profile-card,
+.meal-card,
+.day-chip,
+.day-plan-card,
+.prepared-summary-card,
+.choice-note,
+.comment-box,
+.meal-match-list > *,
+.timeline-list > *,
+.review-list > *,
+.day-plan-list > * {
+  background: var(--paper) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  color: var(--ink) !important;
+  font-family: var(--sans) !important;
+}
+
+.option-button,
+.preset-card,
+.profile-card,
+.meal-card,
+.day-chip,
+.choice-note,
+.comment-box {
+  cursor: pointer;
+  padding: 14px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.option-button:hover,
+.preset-card:hover,
+.profile-card:hover,
+.meal-card:hover,
+.day-chip:hover {
+  background: var(--cream-deep) !important;
+  border-color: var(--sage-strong) !important;
+}
+
+.option-button.is-selected,
+.preset-card.is-selected,
+.profile-card.is-selected,
+.day-chip.is-active {
+  background: var(--accent-soft) !important;
+  border-color: var(--tomato) !important;
+  color: var(--tomato) !important;
+}
+
+.day-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.meal-card {
+  padding: 12px;
+  display: grid;
+  gap: 12px;
+}
+
+.profile-card {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.profile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profile-mark {
+  width: 40px;
+  height: 40px;
+  background: var(--sage);
+  color: var(--olive-ink) !important;
+  display: grid;
+  place-items: center;
+  font-family: var(--poster);
+  font-size: 18px;
+}
+
+.preset-grid,
+.option-stack,
+.cook-style-grid,
+.guardrail-stack,
+.discovery-strip,
+.profile-stack,
+.day-plan-list,
+.meal-match-list,
+.review-list,
+.timeline-list,
+.meal-plan,
+.prep-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.day-grid,
+.slot-grid,
+.preset-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.iphone-frame {
+  position: relative;
+  background-color: var(--black) !important;
+  border-radius: 42px;
+  border: 4px solid #222222;
+  box-shadow: none !important;
+  max-width: 325px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.iphone-frame .screen,
+.iphone-screen {
+  background: var(--canvas);
+}
+
+.screen-stage,
+.preview-phone {
+  background: var(--black);
+  border-radius: 42px;
+  box-shadow: none !important;
+}
+
+.preview-phone {
+  border: 6px solid #080808;
+  background: #080808;
+}
+
+.top-bar,
+.tab-bar,
+.flow-control,
+.flow-controls,
+.top-controls,
+.flow-primary,
+.flow-aside {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.build-list,
+.prep-list,
+.method-list,
+.feature-checks {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.build-list li,
+.prep-list li,
+.method-list li,
+.feature-checks li {
+  padding: 12px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--charcoal) !important;
+}
+
+.progress-track,
+.range-track {
+  background: var(--sand);
+  height: 4px;
+}
+
+.progress,
+.range-track::before {
+  background: var(--tomato);
+}
+
+.toast,
+.success-circle,
+.beta-status {
+  font-family: var(--poster) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 12px;
+}
+
+/* -----------------------------------------------------
+   16. Landing / Marketing Page
+   ----------------------------------------------------- */
+.marketing-hero,
+.screens-hero,
+.landing-copy,
+.landing-device,
+.landing-card,
+.beta-panel,
+.preview-note,
+.screens-note,
+.simulator-quickjump {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: var(--card-pad);
+}
+
+.landing-grid,
+.preview-mosaic,
+.landing-index,
+.landing-section,
+.marketing-footer {
+  display: grid;
+  gap: var(--grid-gap);
+}
+
+.landing-stats,
+.proof-strip-inner,
+.meal-plan,
+.prep-timeline,
+.canvas-summary,
+.pillars,
+.manifesto-grid {
+  display: grid;
+  gap: var(--grid-gap);
+  align-items: stretch;
+}
+
+.landing-stats {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.landing-card span,
+.beta-panel span,
+.preview-note span,
+.screens-note span {
+  color: var(--tomato) !important;
+}
+
+/* -----------------------------------------------------
+   17. Footer
+   ----------------------------------------------------- */
+.site-footer,
+.marketing-footer,
+footer {
+  background-color: var(--cream-deep) !important;
+  border-top: 1px solid var(--line);
+  padding: clamp(40px, 5vw, 64px) 0;
+  margin-top: auto;
+}
+
+.footer-grid,
+.marketing-footer .container {
+  display: grid;
+  gap: var(--grid-gap);
+  align-items: start;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-links a,
+.site-footer a,
+footer a {
+  font-family: var(--sans) !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  color: var(--ink) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent !important;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.footer-links a:hover,
+.site-footer a:hover,
+footer a:hover {
+  color: var(--tomato) !important;
+  border-bottom-color: var(--tomato) !important;
+}
+
+.site-footer p,
+.marketing-footer p,
+footer p {
+  font-size: 13px;
+  color: var(--muted) !important;
+  max-width: 45ch;
+}
+
+/* -----------------------------------------------------
+   18. Misc Utilities & Helpers
+   ----------------------------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.lead,
+.hero-copy,
+.dek,
+.page-hero p,
+.section-header-group p {
+  max-width: 65ch;
+  color: var(--charcoal) !important;
+}
+
+.lead {
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.5;
+}
+
+.dek {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted) !important;
+}
+
+.accent-word {
+  color: var(--tomato) !important;
+}
+
+.proof-strip,
+.landing-section,
+.waitlist-section,
+.newsletter-band {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  padding: clamp(32px, 4vw, 48px) 0;
+}
+
+.newsletter-band .container,
+.newsletter-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* -----------------------------------------------------
+   19. Tables
+   ----------------------------------------------------- */
+.table,
+.ranking-table,
+.table-row {
+  border-collapse: collapse;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-head {
+  font-family: var(--poster) !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: var(--muted) !important;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--rule);
+}
+
+/* -----------------------------------------------------
+   20. Responsive Fine-Tuning
+   ----------------------------------------------------- */
+@media (max-width: 680px) {
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .logo,
+  .site-logo,
+  .brand {
+    order: -1;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-cover,
+  .platter-card,
+  .card,
+  .article-card,
+  .recipe-card,
+  .index-card,
+  .review-card,
+  .recipe-mini-card,
+  .landing-card,
+  .beta-panel,
+  .preview-note,
+  .screens-note,
+  .simulator-quickjump {
+    padding: 18px !important;
+  }
+  .landing-stats {
+    grid-template-columns: 1fr;
+  }
+  .recipe-mini-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid,
+  .footer-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+/* =====================================================
+   Platter Master Overrides — Final Visual Polish
+   ===================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box !important;
+}
+
+html,
+body {
+  background-color: var(--canvas) !important;
+  color: var(--ink) !important;
+  font-family: var(--sans) !important;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body,
+main,
+section,
+.page-wrapper,
+.page-section,
+.content-section {
+  background-color: var(--canvas) !important;
+}
+
+main,
+.page-wrapper,
+.app-container,
+#root,
+.content,
+.container {
+  background: transparent !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--display) !important;
+  color: var(--ink) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
+  margin: 0;
+}
+
+p,
+li,
+span,
+td,
+th,
+label,
+input,
+textarea,
+select,
+button {
+  font-family: var(--sans) !important;
+}
+
+p,
+li,
+td,
+th {
+  color: var(--charcoal) !important;
+  line-height: 1.55 !important;
+}
+
+.prose,
+.article-body,
+.story-body,
+.recipe-summary,
+.review-description,
+.section-description,
+.intro-copy,
+.page-hero .lead,
+.lead,
+.dek,
+.section-header-group p {
+  width: 100%;
+  max-width: 65ch;
+}
+
+.article-body,
+.story-body,
+.longform-copy {
+  margin-inline: auto;
+}
+
+/* Cards */
+.platter-card,
+.card,
+.article-card,
+.recipe-card,
+.review-card,
+.rankings-card,
+.index-card,
+.recipe-mini-card,
+.hero-link-card,
+.latest-item,
+.landing-card,
+.beta-panel,
+.preview-note,
+.screens-note,
+.simulator-quickjump,
+.geo-tldr-card,
+.method-card,
+.batch-card,
+.planner,
+.helper-note,
+.empty-state,
+.delivery-card,
+.promo-card,
+.lead-form,
+.prepared-summary-card,
+.day-plan-card,
+.screen-shot,
+.chef-card,
+.formula-card,
+.manifesto-panel,
+.canvas-summary {
+  background-color: var(--paper) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+  padding: var(--card-pad) !important;
+  box-sizing: border-box !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  height: 100%;
+  min-width: 0;
+  overflow: visible !important;
+}
+
+.platter-card img,
+.card img,
+.article-card img,
+.recipe-card img,
+.review-card img,
+.index-card img,
+.recipe-mini-card img,
+.hero-link-card img,
+.latest-item img,
+.landing-card img,
+.beta-panel img,
+.preview-note img,
+.screens-note img,
+.simulator-quickjump img,
+.geo-tldr-card img,
+.method-card img,
+.batch-card img,
+.planner img,
+.helper-note img,
+.empty-state img,
+.delivery-card img,
+.promo-card img,
+.lead-form img,
+.prepared-summary-card img,
+.day-plan-card img,
+.screen-shot img,
+.chef-card img,
+.formula-card img,
+.manifesto-panel img,
+.canvas-summary img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 0 !important;
+  margin-bottom: 16px !important;
+}
+
+.platter-card-content,
+.card-content,
+.article-card-content,
+.recipe-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px !important;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.platter-card p,
+.card p,
+.article-card p,
+.recipe-card p,
+.review-card p,
+.platter-card.description,
+.card.description {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  text-indent: 0 !important;
+  text-align: left !important;
+}
+
+.card-content .button-primary,
+.card-content .platter-btn-dark,
+.card-content .card-action,
+.platter-card-content .button-primary,
+.platter-card-content .platter-btn-dark,
+.platter-card-content .card-action,
+.platter-card-content .button,
+.platter-card-content .button-secondary {
+  margin-top: auto;
+}
+
+/* Metadata */
+.card-metadata-row,
+.metadata-row,
+.recipe-meta,
+.review-meta,
+.story-footer,
+.hero-meta,
+.article-meta,
+.recipe-stats,
+.index-metrics,
+.table-head,
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px !important;
+  font-family: var(--sans) !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  color: var(--muted) !important;
+}
+
+.meta-item,
+.score-label,
+.numeric-badge,
+.category-label {
+  font-family: var(--poster) !important;
+  font-size: 14px !important;
+  letter-spacing: 0.05em !important;
+  color: var(--tomato) !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+}
+
+.score,
+.rank-score,
+.rank-number,
+.index-metric strong,
+.recipe-stats strong,
+.score-row strong,
+.score strong,
+.rank-score strong,
+.review-score-row strong,
+.card-metadata-row strong {
+  font-family: var(--poster) !important;
+  font-size: 14px !important;
+  letter-spacing: 0.05em !important;
+  color: var(--tomato) !important;
+  text-transform: uppercase !important;
+}
+
+/* Filter chips */
+.filter-chip,
+.pill,
+.tag-chip,
+.recipe-topic-row a,
+.topic-bar a,
+.chip-grid a,
+.tag-row a,
+.discovery-chip,
+.eyebrow-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 44px;
+  padding: 6px 16px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 20px !important;
+  background-color: var(--white) !important;
+  color: var(--ink) !important;
+  font-family: var(--sans) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  text-transform: capitalize !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-chip:hover,
+.filter-chip:focus-visible,
+.filter-chip.is-active,
+.pill:hover,
+.pill:focus-visible,
+.pill.is-active,
+.tag-chip:hover,
+.tag-chip:focus-visible,
+.tag-chip.is-active,
+.recipe-topic-row a:hover,
+.topic-bar a:hover,
+.chip-grid a:hover,
+.tag-row a:hover,
+.discovery-chip:hover,
+.eyebrow-pill:hover {
+  background-color: var(--tomato) !important;
+  color: var(--white) !important;
+  border-color: var(--tomato) !important;
+}
+
+/* Buttons */
+.platter-btn-dark,
+.button-primary,
+.platter-btn-header,
+button,
+a.button,
+.landing-button,
+.primary-button,
+.secondary-button,
+.button-secondary,
+.nav-cta,
+.text-button,
+.button-pair a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto;
+  min-height: 44px;
+  height: auto !important;
+  padding: 12px 24px !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
+  border-radius: var(--radius) !important;
+  background-color: var(--black) !important;
+  color: var(--cream) !important;
+  font-family: var(--sans) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.05em !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  cursor: pointer;
+  overflow: visible !important;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.platter-btn-dark:hover,
+.platter-btn-dark:focus-visible,
+.button-primary:hover,
+.button-primary:focus-visible,
+.platter-btn-header:hover,
+.platter-btn-header:focus-visible,
+button:hover,
+button:focus-visible,
+a.button:hover,
+a.button:focus-visible,
+.landing-button:hover,
+.primary-button:hover,
+.secondary-button:hover,
+.button-secondary:hover,
+.nav-cta:hover,
+.text-button:hover {
+  background-color: var(--tomato) !important;
+  color: var(--white) !important;
+}
+
+.button-secondary,
+.secondary-button,
+.is-secondary.landing-button,
+.button.is-secondary {
+  background-color: var(--paper) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+}
+
+.button-secondary:hover,
+.secondary-button:hover,
+.is-secondary.landing-button:hover,
+.button.is-secondary:hover {
+  background-color: var(--black) !important;
+  color: var(--cream) !important;
+  border-color: var(--black) !important;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 16px;
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--white);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--black);
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--tomato);
+  outline-offset: 2px;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+a:hover {
+  color: var(--tomato);
+}
+
+a.logo,
+a.platter-btn-header,
+a.button,
+a.button-primary,
+a.button-secondary,
+a.landing-button,
+a.filter-chip,
+a.pill,
+a.recipe-mini-card,
+a.hero-link-card,
+a.recipe-thumb,
+a.recipe-card,
+av a,
+.site-footer a,
+.platter-announcement-bar a,
+.platter-card a,
+.card a,
+.article-card a,
+.recipe-card a,
+.index-card a,
+.review-card a,
+.latest-item,
+.tag,
+.chip,
+.eyebrow-pill,
+.primary-button,
+.secondary-button,
+.nav-button,
+.nav-cta,
+.platter-btn-dark,
+.button-pair a {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  text-decoration: none !important;
+}
+
+/* Header / Announcement */
+.site-logo,
+.footer-logo,
+.logo,
+.brand {
+  font-family: var(--poster) !important;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.platter-announcement-bar,
+.announcement-bar {
+  width: 100% !important;
+  padding: 8px 16px !important;
+  box-sizing: border-box;
+  background-color: var(--tomato) !important;
+  text-align: center !important;
+}
+
+.platter-announcement-bar,
+.platter-announcement-bar a,
+.platter-announcement-bar span,
+.announcement-bar,
+.announcement-bar a,
+.announcement-bar span {
+  color: var(--cream) !important;
+  font-family: var(--poster) !important;
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.05em !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+}
+
+.site-header {
+  background: var(--paper) !important;
+  border-bottom: 1px solid var(--line) !important;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-footer {
+  background-color: var(--cream-deep) !important;
+  border-top: 1px solid var(--line);
+}
+
+.site-footer,
+.site-footer p,
+.site-footer li,
+.site-footer a {
+  font-family: var(--sans) !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+
+/* Rankings */
+.rank-row,
+.ranking-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.rank-row:last-child,
+.ranking-row:last-child {
+  border-bottom: 0;
+}
+
+.rank-number,
+.ranking-number {
+  flex: 0 0 auto;
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.rank-brand,
+.ranking-service {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.rank-score,
+.ranking-score {
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 4px 12px;
+  border-radius: 0;
+  background-color: var(--tomato);
+  color: var(--white) !important;
+  font-family: var(--poster);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+/* Score row */
+.score-row,
+.review-score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Section spacing */
+.page-section,
+.content-section,
+main > section {
+  margin-bottom: var(--section-gap);
+}
+
+.section-divider,
+.editorial-rule,
+hr {
+  width: 100%;
+  height: 0;
+  margin: var(--divider-gap) 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+}
+
+/* Media wrappers keep clipping */
+.image-wrapper,
+.media-wrapper,
+.card-image {
+  overflow: hidden;
+}
+
+/* Tablet and Desktop */
+@media (min-width: 900px) {
+  .editorial-grid,
+  .recipes-grid,
+  .rankings-grid,
+  .story-grid,
+  .recipe-desk,
+  .review-layout {
+    display: grid;
+    align-items: stretch;
+    gap: var(--grid-gap);
+  }
+
+  .editorial-grid,
+  .story-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  }
+
+  .editorial-grid__secondary,
+  .side-stack {
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: var(--grid-gap);
+  }
+
+  .recipes-grid,
+  .recipe-desk {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+
+  .rankings-grid,
+  .review-layout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+
+  .recipe-results-grid,
+  .recipe-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--grid-gap);
+  }
+}
+
+/* Mobile */
+@media (max-width: 599px) {
+  .container,
+  .page-container,
+  .content-container {
+    width: 100%;
+    padding-inline: 20px;
+  }
+
+  h1 {
+    font-size: 32px !important;
+    line-height: 1.15 !important;
+  }
+
+  h2 {
+    font-size: 24px !important;
+    line-height: 1.15 !important;
+  }
+
+  body,
+  p,
+  li,
+  input,
+  textarea,
+  select {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  .editorial-grid,
+  .recipes-grid,
+  .rankings-grid,
+  .recipe-results-grid,
+  .two-column-grid,
+  .three-column-grid,
+  .story-grid,
+  .recipe-desk,
+  .review-layout,
+  .articles-grid,
+  .recipe-grid,
+  .guides-grid,
+  .stories-grid,
+  .latest-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .platter-card,
+  .card,
+  .article-card,
+  .recipe-card,
+  .review-card,
+  .index-card,
+  .recipe-mini-card,
+  .landing-card,
+  .beta-panel,
+  .preview-note,
+  .screens-note,
+  .simulator-quickjump {
+    padding: var(--card-pad-mobile) !important;
+    margin-bottom: 16px;
+  }
+
+  .platter-card:last-child,
+  .card:last-child,
+  .article-card:last-child,
+  .recipe-card:last-child,
+  .review-card:last-child,
+  .index-card:last-child,
+  .recipe-mini-card:last-child,
+  .landing-card:last-child,
+  .beta-panel:last-child,
+  .preview-note:last-child,
+  .screens-note:last-child,
+  .simulator-quickjump:last-child {
+    margin-bottom: 0;
+  }
+
+  .search-form,
+  .newsletter-form,
+  .inline-form,
+  .recipe-search,
+  .signup-form,
+  .lead-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .search-form input,
+  .search-form button,
+  .newsletter-form input,
+  .newsletter-form button,
+  .recipe-search input,
+  .recipe-search button,
+  .signup-form input,
+  .signup-form button,
+  .lead-form input,
+  .lead-form button {
+    width: 100%;
+  }
+
+  .page-section,
+  .content-section,
+  main > section {
+    margin-bottom: var(--section-gap-mobile);
+  }
+
+  .section-divider,
+  .editorial-rule,
+  hr {
+    margin: var(--divider-gap-mobile) 0;
+  }
+}
+
+button,
+a.button,
+.platter-btn-dark,
+.button-primary,
+.platter-btn-header,
+.filter-chip,
+.pill,
+input,
+select {
+  min-height: 44px;
+}
+/* =====================================================
+   Batch App Polish & Spacing Reset
+   ===================================================== */
+
+*, *::before, *::after { box-sizing: border-box !important; }
+
+html, body { background-color: var(--canvas) !important; color: var(--ink) !important; font-family: var(--sans) !important; margin: 0; padding: 0; }
+
+.platter-card, .card, .recipe-card, .article-card, .review-card, .rankings-card, .index-card, .recipe-mini-card, .hero-link-card, .latest-item, .landing-card, .beta-panel, .preview-note, .screens-note, .simulator-quickjump, .geo-tldr-card, .method-card, .batch-card, .planner, .helper-note, .empty-state, .delivery-card, .promo-card, .lead-form, .prepared-summary-card, .day-plan-card, .screen-shot, .chef-card, .formula-card, .manifesto-panel, .canvas-summary, .option-button, .preset-card, .profile-card, .meal-card, .day-chip, .chip, .stat-box, .proof-item, .timeline-list > *, .meal-match-list > *, .review-list > *, .day-plan-list > * {
+  background-color: var(--paper) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+  padding: var(--card-pad) !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+  min-width: 0;
+}
+
+.platter-btn-dark, .button-primary, .platter-btn-header, button, a.button, .landing-button, .primary-button, .secondary-button, .button-secondary, .nav-cta, .text-button, .button-pair a, .option-button, .preset-card, .profile-card, .day-chip, .chip, .slot-button, .filter-chip, .pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  padding: 12px 24px !important;
+  box-sizing: border-box !important;
+  height: auto !important;
+  min-height: 44px !important;
+  overflow: visible !important;
+}
+
+.page-section, .content-section, main > section, .landing-section, .batch-section, .recipe-section, .story-section, .guide-section { margin-bottom: var(--section-gap); }
+
+.section-divider, .editorial-rule, hr, .rule { margin: var(--divider-gap) 0 !important; }
+
+.option-button, .preset-card, .profile-card, .meal-card, .choice-note, .comment-box {
+  background-color: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  font-family: var(--sans) !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  padding: 12px 24px !important;
+}
+
+.option-button:hover, .preset-card:hover, .profile-card:hover, .meal-card:hover, .day-chip:hover, .chip:hover { background-color: var(--cream-deep) !important; border-color: var(--sage-strong) !important; }
+
+.option-button.is-selected, .preset-card.is-selected, .profile-card.is-selected, .day-chip.is-active, .chip.is-active { background-color: var(--accent-soft) !important; border-color: var(--tomato) !important; color: var(--tomato) !important; }
+
+.preset-grid, .option-stack, .cook-style-grid, .guardrail-stack, .profile-stack, .day-grid, .slot-grid, .chip-grid, .discovery-strip, .day-plan-list, .meal-match-list, .review-list, .timeline-list, .meal-plan, .prep-timeline {
+  display: flex; flex-direction: column; gap: 12px; height: auto !important; min-height: 0 !important;
+}
+
+.day-grid, .slot-grid, .preset-grid, .chip-grid { flex-direction: row; flex-wrap: wrap; align-items: stretch; }
+
+.day-chip { min-height: 44px !important; padding: 8px 18px !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.04em !important; }
+.chip { min-height: 44px !important; padding: 8px 16px !important; font-size: 12px !important; font-weight: 500 !important; }
+
+.profile-card { display: grid !important; grid-template-columns: 52px 1fr !important; gap: 12px !important; text-align: left !important; align-items: center !important; }
+.profile-mark { width: 52px; height: 52px; background: var(--sage); color: var(--olive-ink) !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; font-family: var(--poster); font-size: 18px; line-height: 1; }
+.profile-meta { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+
+.meal-card { display: flex !important; flex-direction: row !important; align-items: center !important; gap: 12px !important; width: 100%; text-align: left !important; }
+.meal-card img, .chef-card-image img { width: 72px; height: 72px; object-fit: cover; aspect-ratio: 1 / 1 !important; border-radius: 0 !important; flex-shrink: 0; }
+
+.chef-card { display: flex; flex-direction: column; gap: 12px; }
+.chef-card-main { display: flex; flex-direction: row; align-items: center; gap: 16px; }
+.chef-card-body { flex: 1; min-width: 0; }
+.chef-card-image { width: 80px; height: 80px; overflow: hidden; flex-shrink: 0; }
+
+.day-plan-card .slot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.slot-button { min-height: 44px !important; padding: 8px 12px !important; background-color: var(--white) !important; font-size: 12px !important; font-weight: 500 !important; }
+.slot-button.skip { background-color: var(--sand-soft) !important; color: var(--muted) !important; }
+
+.iphone-frame { position: relative; max-width: 340px; width: 100%; margin: 0 auto; background: var(--black) !important; border: 4px solid #222; border-radius: 42px; overflow: hidden !important; }
+.iphone-screen { background: var(--canvas); padding: 16px; }
+.iphone-content { max-width: 100%; padding: 14px; font-size: 13px !important; line-height: 1.45 !important; color: var(--charcoal) !important; word-break: break-word; }
+.iphone-content h1, .iphone-content h2, .iphone-content h3, .iphone-content p, .iphone-content li { font-size: 13px !important; line-height: 1.45 !important; max-width: 100%; }
+.iphone-content .lede, .iphone-content .accent-word { font-size: 14px !important; font-weight: 700 !important; }
+.iphone-content .primary-button, .iphone-content .secondary-button, .iphone-content .text-button { min-height: 36px !important; padding: 8px 16px !important; font-size: 11px !important; }
+
+.progress-track { width: 100%; height: 6px; background: var(--sand); overflow: hidden; }
+.progress-track span { display: block; height: 100%; background: var(--tomato); }
+
+.waitlist-form, .newsletter-form, .inline-form, .search-form, .recipe-search, .signup-form, .lead-form { display: flex; flex-direction: row; align-items: stretch; gap: 12px; width: 100%; }
+.waitlist-form input, .newsletter-form input, .search-form input, .recipe-search input, .signup-form input, .lead-form input { flex: 1; min-width: 0; }
+.waitlist-form button, .newsletter-form button, .search-form button, .recipe-search button, .signup-form button, .lead-form button { flex: 0 0 auto; }
+
+.empty-state { align-items: center; justify-content: center; text-align: center; }
+.choice-note { padding: 12px 24px !important; text-align: center; color: var(--muted) !important; background: var(--cream) !important; }
+
+.accent-word { color: var(--tomato) !important; }
+.lede { font-size: 18px; line-height: 1.35; color: var(--charcoal); max-width: 55ch; }
+
+@media (min-width: 900px) {
+  .landing-grid, .preview-mosaic, .landing-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .landing-stats, .proof-strip-inner { grid-template-columns: repeat(3, 1fr); }
+  .batch-layout, .batch-page .split-view, .batch-page .two-up { display: grid; grid-template-columns: 5fr 7fr; gap: var(--grid-gap); align-items: start; }
+  .meal-match-list, .review-list, .timeline-list, .day-plan-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--grid-gap); }
+}
+
+@media (max-width: 599px) {
+  .page-section, .content-section, main > section, .landing-section, .batch-section { margin-bottom: var(--section-gap-mobile) !important; }
+  .platter-card, .card, .recipe-card, .article-card, .review-card, .index-card, .recipe-mini-card, .landing-card, .option-button, .preset-card, .profile-card, .meal-card, .day-chip, .chip, .stat-box, .proof-item { padding: var(--card-pad-mobile) !important; margin-bottom: 16px !important; }
+  .platter-card:last-child, .card:last-child, .recipe-card:last-child, .article-card:last-child, .review-card:last-child, .index-card:last-child, .recipe-mini-card:last-child, .landing-card:last-child, .option-button:last-child, .preset-card:last-child, .profile-card:last-child, .meal-card:last-child, .day-chip:last-child, .chip:last-child, .stat-box:last-child, .proof-item:last-child { margin-bottom: 0 !important; }
+  .section-divider, .editorial-rule, hr, .rule { margin: var(--divider-gap-mobile) 0 !important; }
+  .batch-page, .batch-layout, .flow-view, .split-view, .two-up, .landing-grid, .preview-mosaic, .landing-index, .landing-stats, .proof-strip-inner, .meal-plan, .prep-timeline, .day-plan-card .slot-grid, .waitlist-form, .newsletter-form, .search-form, .recipe-search, .signup-form, .lead-form { display: flex !important; flex-direction: column !important; align-items: stretch !important; height: auto !important; min-height: 0 !important; }
+  .waitlist-form, .newsletter-form, .search-form, .recipe-search, .signup-form, .lead-form { gap: 12px !important; }
+  .waitlist-form input, .newsletter-form input, .search-form input, .recipe-search input, .signup-form input, .lead-form input, .waitlist-form button, .newsletter-form button, .search-form button, .recipe-search button, .signup-form button, .lead-form button { width: 100%; }
+  .meal-card { flex-direction: column !important; align-items: flex-start !important; }
+  .chef-card-main { flex-direction: column !important; align-items: flex-start !important; }
+}
+/* =====================================================
+   Exact Requested Master Overrides
+   ===================================================== */
+
+.platter-card,
+.card,
+.recipe-card,
+.article-card,
+.review-card,
+.platter-btn-dark,
+.button-primary,
+.platter-btn-header,
+button,
+a.button {
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.platter-card,
+.card,
+.recipe-card,
+.article-card,
+.review-card {
+  padding: 32px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.platter-btn-dark,
+.button-primary,
+.platter-btn-header,
+button,
+a.button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  padding: 12px 24px !important;
+  min-height: 44px !important;
+  border-radius: 0 !important;
+  background-color: var(--black) !important;
+  color: var(--cream) !important;
+  font-family: var(--sans) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+}
+
+.page-section,
+.content-section,
+main > section {
+  margin-bottom: 80px;
+}
+
+.section-divider,
+.editorial-rule,
+hr,
+.rule {
+  margin: 32px 0 !important;
+}
+
+@media (max-width: 599px) {
+  .page-section,
+  .content-section,
+  main > section {
+    margin-bottom: 48px;
+  }
+
+  .platter-card,
+  .card,
+  .recipe-card,
+  .article-card,
+  .review-card {
+    padding: 20px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .platter-card:last-child,
+  .card:last-child,
+  .recipe-card:last-child,
+  .article-card:last-child,
+  .review-card:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .section-divider,
+  .editorial-rule,
+  hr,
+  .rule {
+    margin: 24px 0 !important;
+  }
+
+  .batch-page,
+  .batch-layout,
+  .flow-view,
+  .split-view,
+  .two-up,
+  .preset-grid,
+  .day-grid,
+  .slot-grid,
+  .chip-grid,
+  .profile-stack,
+  .option-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
+
+.option-button,
+.preset-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px !important;
+  border: 1px solid var(--line) !important;
+  background-color: var(--white) !important;
+  border-radius: var(--radius) !important;
+  font-family: var(--sans) !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.option-button:hover,
+.preset-card:hover {
+  background-color: var(--cream-deep) !important;
+  border-color: var(--sage-strong) !important;
+}
+
+.iphone-frame,
+.iphone-screen,
+.iphone-content {
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.iphone-content {
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 14px;
+}
+
+.iphone-content h1,
+.iphone-content h2,
+.iphone-content h3,
+.iphone-content p,
+.iphone-content li,
+.iphone-content span {
+  max-width: 100%;
+  word-break: break-word;
+}
+
+.waitlist-form,
+.newsletter-form,
+.inline-form {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 12px;
+}
+
+@media (max-width: 599px) {
+  .waitlist-form,
+  .newsletter-form,
+  .inline-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .waitlist-form input,
+  .waitlist-form button,
+  .newsletter-form input,
+  .newsletter-form button,
+  .inline-form input,
+  .inline-form button {
+    width: 100%;
+  }
+}
+/* =====================================================
+   Baltic Birch Core Base Reset
+   ===================================================== */
+
+html, body {
+  background-color: var(--canvas) !important;
+  color: var(--ink) !important;
+  font-family: var(--sans) !important;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main, .page-wrapper, .app-container, #root, .content, .container {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--display) !important;
+  color: var(--ink) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
+  margin: 0;
+}
+
+p, li, span, td, th {
+  font-family: var(--sans) !important;
+  line-height: 1.55 !important;
+  color: var(--charcoal) !important;
+}
+
+.prose, .article-body, .story-body, .recipe-summary, .review-description, .section-description, .intro-copy, .lead, .dek, .section-header-group p, .article-card p, .recipe-card p, .review-card p, .index-card p, .card p, .platter-card p {
+  width: 100%;
+  max-width: 65ch;
+  margin-inline: auto;
+}
+
+@media (min-width: 900px) {
+  .prose, .article-body, .story-body, .recipe-summary, .review-description, .section-description, .intro-copy, .lead, .dek, .section-header-group p {
+    margin-inline: 0;
+  }
+}
+/* =====================================================
+   Turn 2: Card Geometry & Overflow Reset
+   ===================================================== */
+
+/* Box-model overflow reset for cards and buttons */
+.platter-card,
+.card,
+.recipe-card,
+.article-card,
+.review-card,
+.index-card,
+.recipe-mini-card,
+.hero-link-card,
+.latest-item,
+.landing-card,
+.beta-panel,
+.preview-note,
+.screens-note,
+.simulator-quickjump,
+.geo-tldr-card,
+.method-card,
+.batch-card,
+.planner,
+.helper-note,
+.empty-state,
+.delivery-card,
+.promo-card,
+.lead-form,
+.prepared-summary-card,
+.day-plan-card,
+.screen-shot,
+.chef-card,
+.formula-card,
+.manifesto-panel,
+.canvas-summary,
+.option-button,
+.preset-card,
+.profile-card,
+.meal-card,
+.day-chip,
+.chip,
+.stat-box,
+.proof-item,
+.platter-btn-dark,
+.platter-btn-header,
+.platter-btn,
+.button-primary,
+.button-secondary,
+.primary-button,
+.secondary-button,
+.nav-cta,
+.text-button,
+.button-pair a,
+.slot-button,
+.filter-chip,
+.pill,
+button,
+a.button {
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+/* No hardcoded fixed heights on containers or tables */
+.platter-card,
+.card,
+.recipe-card,
+.article-card,
+.review-card,
+.index-card,
+.recipe-mini-card,
+.landing-card,
+.beta-panel,
+.preview-note,
+.screens-note,
+.geo-tldr-card,
+.method-card,
+.batch-card,
+.planner,
+.helper-note,
+.empty-state,
+.delivery-card,
+.promo-card,
+.lead-form,
+.prepared-summary-card,
+.day-plan-card,
+.screen-shot,
+.chef-card,
+.formula-card,
+.manifesto-panel,
+.canvas-summary,
+.option-button,
+.preset-card,
+.profile-card,
+.meal-card,
+.day-chip,
+.chip,
+.stat-box,
+.proof-item,
+table,
+.timeline-list > *,
+.meal-match-list > *,
+.review-list > *,
+.day-plan-list > * {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* Keep button tap targets */
+.platter-btn-dark,
+.platter-btn-header,
+.platter-btn,
+.button-primary,
+.button-secondary,
+.primary-button,
+.secondary-button,
+.nav-cta,
+.text-button,
+.button-pair a,
+.slot-button,
+.filter-chip,
+.pill,
+button,
+a.button {
+  min-height: 44px !important;
+}
+
+/* Sharp container geometry for all cards and article boxes */
+.platter-card,
+.card,
+.recipe-card,
+.article-card,
+.review-card,
+.index-card,
+.recipe-mini-card,
+.hero-link-card,
+.latest-item,
+.landing-card,
+.beta-panel,
+.preview-note,
+.screens-note,
+.simulator-quickjump,
+.geo-tldr-card,
+.method-card,
+.batch-card,
+.planner,
+.helper-note,
+.empty-state,
+.delivery-card,
+.promo-card,
+.lead-form,
+.prepared-summary-card,
+.day-plan-card,
+.screen-shot,
+.chef-card,
+.formula-card,
+.manifesto-panel,
+.canvas-summary,
+.option-button,
+.preset-card,
+.profile-card,
+.meal-card,
+.day-chip,
+.chip,
+.stat-box,
+.proof-item {
+  background-color: var(--paper) !important;
+  border: 1px solid #d8cec0 !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+/* Nested card images: sharp edges + 3:2 ratio */
+.platter-card img,
+.card img,
+.recipe-card img,
+.article-card img,
+.review-card img,
+.index-card img,
+.recipe-mini-card img,
+.hero-link-card img,
+.latest-item img,
+.landing-card img,
+.beta-panel img,
+.geo-tldr-card img,
+.method-card img,
+.batch-card img,
+.delivery-card img,
+.promo-card img,
+.lead-form img,
+.prepared-summary-card img,
+.day-plan-card img,
+.chef-card img,
+.formula-card img,
+.manifesto-panel img,
+.canvas-summary img,
+.platter-card picture,
+.card picture,
+.recipe-card picture,
+.article-card picture,
+.review-card picture,
+.index-card picture,
+.recipe-mini-card picture,
+.hero-link-card picture,
+.latest-item picture,
+.landing-card picture,
+.beta-panel picture,
+.geo-tldr-card picture,
+.method-card picture,
+.batch-card picture,
+.delivery-card picture,
+.promo-card picture,
+.lead-form picture,
+.prepared-summary-card picture,
+.day-plan-card picture,
+.chef-card picture,
+.formula-card picture,
+.manifesto-panel picture,
+.canvas-summary picture {
+  border-radius: 0 !important;
+  aspect-ratio: 3 / 2 !important;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card layout: stack content from the top */
+.platter-card,
+.card,
+.recipe-card,
+.article-card,
+.review-card,
+.index-card,
+.recipe-mini-card,
+.hero-link-card,
+.latest-item,
+.landing-card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+/* The content wrapper that groups text elements */
+.platter-card-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+  flex-grow: 1 !important;
+  width: 100% !important;
+}
+
+/* Kill accidental left margins/indents inside card copy */
+.platter-card-content p,
+.platter-card p,
+.card p,
+.recipe-card p,
+.article-card p,
+.review-card p,
+.index-card p,
+.recipe-mini-card p,
+.hero-link-card p,
+.latest-item p,
+.landing-card p,
+.platter-card-content li,
+.platter-card-content .dek,
+.platter-card-content .summary,
+.platter-card-content .description {
+  margin: 0 !important;
+  margin-left: 0 !important;
+  text-indent: 0 !important;
+  padding-left: 0 !important;
+  text-align: left !important;
+}
+
+/* Force images/figures at the top of cards to sit flush */
+.platter-card > img,
+.platter-card > picture,
+.platter-card > figure,
+.card > img,
+.card > picture,
+.card > figure,
+.recipe-card > img,
+.recipe-card > picture,
+.recipe-card > figure,
+.article-card > img,
+.article-card > picture,
+.article-card > figure,
+.review-card > img,
+.review-card > picture,
+.review-card > figure,
+.index-card > img,
+.index-card > picture,
+.index-card > figure {
+  margin: 0 0 8px 0 !important;
+  flex-shrink: 0 !important;
+  width: 100% !important;
+}
+/* =====================================================
+   Turn 3: Metadata Layout & Inline Collision Fix
+   ===================================================== */
+
+/* Force a distinct horizontal gap on adjacent inline siblings inside cards */
+.platter-card strong,
+.platter-card span,
+.platter-card a,
+.platter-card-content strong,
+.platter-card-content span,
+.platter-card-content a,
+.card strong,
+.card span,
+.card a,
+.recipe-card strong,
+.recipe-card span,
+.recipe-card a,
+.article-card strong,
+.article-card span,
+.article-card a,
+.review-card strong,
+.review-card span,
+.review-card a,
+.index-card strong,
+.index-card span,
+.index-card a {
+  display: inline-block !important;
+  margin-right: 8px !important;
+}
+
+/* Do not let separator spans themselves carry extra margin */
+.inline-separator {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0 4px !important;
+  color: var(--muted) !important;
+  font-family: var(--sans) !important;
+  font-size: 12px !important;
+  margin-right: 0 !important;
+}
+
+/* Unified flex layout for metadata rows */
+.card-metadata-row,
+.story-footer,
+.score,
+.rank-row,
+.recipe-meta,
+.index-metric,
+.card-meta,
+.metadata,
+.recipe-stats,
+.rank-score,
+.rank-number,
+.rank-brand,
+.pillar {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+/* Numeric scores, badges, and uppercase metadata tags */
+.score strong,
+.rank-score strong,
+.rank-score,
+.rank-number,
+.badge,
+.meta-tag,
+.pillar b,
+.pillars b,
+.card-metadata-row strong,
+.card-metadata-row b,
+.story-footer strong,
+.recipe-meta strong,
+.recipe-meta small,
+.index-metric strong,
+.index-metric small,
+.card-meta strong,
+.recipe-stats dt,
+.recipe-stats dd strong,
+.metadata strong {
+  font-family: var(--poster) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: var(--tomato) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+}
+/* =====================================================
+   Turn 4: Batch Page Restoration & Interaction Polish
+   ===================================================== */
+
+/* Step indicators S1-S9 */
+.step-indicator,
+.simulator-steps {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin: 16px 0 24px 0 !important;
+}
+
+.step-indicator button,
+.step,
+.simulator-steps button {
+  background-color: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  padding: 8px 12px !important;
+  font-family: var(--sans) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+  min-height: auto !important;
+}
+
+.step-indicator button.active,
+.step.active,
+.simulator-steps button.active,
+.step-indicator button.is-active,
+.step.is-active,
+.simulator-steps button.is-active {
+  background-color: var(--tomato) !important;
+  color: var(--white) !important;
+  border-color: var(--tomato) !important;
+}
+
+/* Phone mockup: vertical flex panels */
+.iphone-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.iphone-content h1,
+.iphone-content h2,
+.iphone-content h3 {
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+  margin: 0 !important;
+}
+
+.iphone-content p,
+.iphone-content li,
+.iphone-content small,
+.iphone-content span,
+.iphone-content label,
+.iphone-content strong {
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.iphone-content .lede,
+.iphone-content .accent-word {
+  font-size: 13px !important;
+}
+
+.iphone-content .preset-grid,
+.iphone-content .day-grid,
+.iphone-content .slot-grid,
+.iphone-content .chip-grid,
+.iphone-content .profile-stack,
+.iphone-content .meal-plan,
+.iphone-content .day-plan-list,
+.iphone-content .meal-match-list,
+.iphone-content .review-list,
+.iphone-content .timeline-list,
+.iphone-content .prep-list,
+.iphone-content .build-list,
+.iphone-content .feature-checks,
+.iphone-content .discovery-strip,
+.iphone-content .canvas-summary,
+.iphone-content .formula-card,
+.iphone-content .choice-note,
+.iphone-content .helper-note,
+.iphone-content .empty-state {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+/* Wizard option tiles */
+.iphone-content .option-button,
+.iphone-content .preset-card,
+.iphone-content .profile-card,
+.iphone-content .meal-card,
+.iphone-content .day-chip,
+.iphone-content .chip,
+.iphone-content .slot-button,
+.iphone-content .discovery-chip {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  width: 100% !important;
+  background-color: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 10px 14px !important;
+  box-sizing: border-box !important;
+}
+
+.iphone-content .day-grid,
+.iphone-content .slot-grid,
+.iphone-content .chip-grid {
+  flex-wrap: wrap !important;
+}
+
+.iphone-content .day-chip,
+.iphone-content .chip {
+  width: auto !important;
+  flex: 1 1 auto !important;
+}
+
+.iphone-content .meal-card img,
+.iphone-content .chef-card-image img {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+.iphone-content .profile-card {
+  display: grid !important;
+  grid-template-columns: 44px 1fr !important;
+  gap: 10px !important;
+}
+
+.iphone-content .profile-mark {
+  width: 44px !important;
+  height: 44px !important;
+  font-size: 14px !important;
+}
+
+/* Lead row inside forms */
+.lead-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+.lead-row input {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.lead-row button {
+  flex: 0 0 auto !important;
+}
+
+/* Mobile form stacking */
+@media (max-width: 599px) {
+  .lead-row,
+  .lead-form,
+  .newsletter-form,
+  .waitlist-form,
+  .inline-form,
+  .search-form,
+  .recipe-search,
+  .signup-form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+
+  .lead-row input,
+  .lead-row button,
+  .lead-form input,
+  .lead-form button,
+  .newsletter-form input,
+  .newsletter-form button,
+  .waitlist-form input,
+  .waitlist-form button,
+  .inline-form input,
+  .inline-form button,
+  .search-form input,
+  .search-form button,
+  .recipe-search input,
+  .recipe-search button,
+  .signup-form input,
+  .signup-form button {
+    width: 100% !important;
+  }
+}
+
+/* Interactive hover transitions */
+a,
+button,
+.filter-chip {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+}
+
+/* =====================================================
+   Turn 5: Master Visual Polish, Spacing Reset & QA Harness
+   ===================================================== */
+
+/* Dedicated metadata flex wrappers */
+.card-metadata-row,
+.card-meta,
+.recipe-meta,
+.index-metric,
+.rank-row,
+.score,
+.pillar {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+/* Force clean horizontal separation on adjacent inline text tags */
+.platter-card strong,
+.platter-card span,
+.platter-card a,
+.platter-card-content strong,
+.platter-card-content span,
+.platter-card-content a,
+.card strong,
+.card span,
+.card a,
+.recipe-card strong,
+.recipe-card span,
+.recipe-card a,
+.article-card strong,
+.article-card span,
+.article-card a,
+.review-card strong,
+.review-card span,
+.review-card a,
+.index-card strong,
+.index-card span,
+.index-card a {
+  display: inline-block !important;
+  margin-right: 8px !important;
+}
+
+/* Do not double-space separator punctuation */
+.inline-separator,
+.platter-card .inline-separator,
+.platter-card-content .inline-separator,
+.card .inline-separator,
+.recipe-card .inline-separator,
+.article-card .inline-separator,
+.review-card .inline-separator,
+.index-card .inline-separator,
+.recipe-meta > .inline-separator,
+.card-metadata-row > .inline-separator,
+.index-metric > .inline-separator {
+  margin-right: 0 !important;
+}
+
+/* Reinforce clipped-border + overflow-visible reset */
+.platter-card,
+.card,
+.recipe-card,
+.article-card,
+.review-card,
+.index-card,
+.recipe-mini-card,
+.hero-link-card,
+.latest-item,
+.landing-card,
+.beta-panel,
+.preview-note,
+.screens-note,
+.simulator-quickjump,
+.geo-tldr-card,
+.method-card,
+.batch-card,
+.planner,
+.helper-note,
+.empty-state,
+.delivery-card,
+.promo-card,
+.lead-form,
+.prepared-summary-card,
+.day-plan-card,
+.screen-shot,
+.chef-card,
+.formula-card,
+.manifesto-panel,
+.canvas-summary,
+.platter-btn-dark,
+.button-primary,
+.platter-btn-header,
+button,
+a.button,
+.landing-button,
+.primary-button,
+.secondary-button,
+.nav-cta,
+.text-button,
+.button-pair a,
+.option-button,
+.preset-card,
+.profile-card,
+.meal-card,
+.day-chip,
+.chip,
+.slot-button,
+.filter-chip,
+.pill {
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+/* Flexible height on content containers */
+.platter-card,
+.card,
+.recipe-card,
+.article-card,
+.review-card,
+.index-card,
+.recipe-mini-card,
+.landing-card,
+.hero-link-card,
+.latest-item,
+.beta-panel,
+.preview-note,
+.screens-note,
+.geo-tldr-card,
+.method-card,
+.batch-card,
+.planner,
+.helper-note,
+.empty-state,
+.delivery-card,
+.promo-card,
+.lead-form,
+.prepared-summary-card,
+.day-plan-card,
+.screen-shot,
+.chef-card,
+.formula-card,
+.manifesto-panel,
+.canvas-summary,
+table,
+.timeline-list > *,
+.meal-match-list > *,
+.review-list > *,
+.day-plan-list > * {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* Pixel-perfect button centering and tap targets */
+.platter-btn-dark,
+.button-primary,
+.platter-btn-header,
+button,
+a.button,
+.landing-button,
+.primary-button,
+.secondary-button,
+.nav-cta,
+.text-button,
+.button-pair a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  padding: 12px 24px !important;
+  box-sizing: border-box !important;
+  height: auto !important;
+  min-height: 44px !important;
+  overflow: visible !important;
+}
+
+/* =====================================================
+   Turn 6: Global Design-System Synchronization
+   ===================================================== */
+
+/* Re-declare typography stacks with full fallbacks */
+:root {
+  --display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --poster: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
+  --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Universal box model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box !important;
+}
+
+/* Baltic Birch canvas lock */
+body,
+main,
+section,
+.page-section,
+.content-section {
+  background-color: var(--canvas) !important;
+}
+
+.page-wrapper,
+.app-container,
+#root,
+.content,
+.container {
+  background: transparent !important;
+}
+
+/* Editorial reading measure */
+.prose,
+.article-body,
+.story-body,
+.recipe-summary,
+.review-description,
+.section-description,
+.intro-copy {
+  width: 100%;
+  max-width: 65ch;
+}
+
+.article-body,
+.story-body,
+.longform-copy {
+  margin-inline: auto;
+}
+
+/* Sharp-edged card geometry */
+.platter-card,
+.card,
+.article-card,
+.recipe-card,
+.review-card,
+.rankings-card,
+.index-card {
+  background-color: var(--paper) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+  padding: var(--card-pad) !important;
+  box-sizing: border-box !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  height: 100%;
+  min-width: 0;
+  overflow: visible !important;
+}
+
+.platter-card img,
+.card img,
+.article-card img,
+.recipe-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 0 !important;
+  margin-bottom: 16px !important;
+}
+
+.platter-card-content,
+.card-content,
+.article-card-content,
+.recipe-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px !important;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.platter-card p,
+.card p,
+.article-card p,
+.recipe-card p,
+.platter-card.description,
+.card.description {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  text-indent: 0 !important;
+  text-align: left !important;
+}
+
+.card-content .button-primary,
+.card-content .platter-btn-dark,
+.card-content .card-action,
+.platter-card-content .button-primary,
+.platter-card-content .platter-btn-dark {
+  margin-top: auto;
+}
+
+/* Metadata rows */
+.card-metadata-row,
+.metadata-row,
+.recipe-meta,
+.review-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px !important;
+}
+
+.meta-item,
+.score-label,
+.numeric-badge,
+.category-label {
+  font-family: var(--poster) !important;
+  font-size: 14px !important;
+  letter-spacing: 0.05em !important;
+  color: var(--tomato) !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+}
+
+.meta-separator,
+.inline-separator {
+  margin-right: 0 !important;
+  color: var(--muted);
+}
+
+/* Asymmetrical desktop grids */
+@media (min-width: 900px) {
+  .editorial-grid,
+  .recipes-grid,
+  .rankings-grid {
+    display: grid;
+    align-items: stretch;
+    gap: var(--grid-gap);
+  }
+  .editorial-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  }
+  .editorial-grid__secondary {
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: var(--grid-gap);
+  }
+  .recipes-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+  .rankings-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+  .page-section,
+  .content-section,
+  main > section {
+    margin-bottom: 80px;
+  }
+}
+
+.recipe-results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+/* Solid interactive filter chips */
+.filter-chip,
+.pill,
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 6px 16px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 20px !important;
+  background-color: var(--white) !important;
+  color: var(--ink) !important;
+  font-family: var(--sans) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  text-transform: capitalize !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-chip:hover,
+.filter-chip:focus-visible,
+.filter-chip.is-active,
+.pill:hover,
+.pill:focus-visible,
+.pill.is-active,
+.tag-chip:hover,
+.tag-chip:focus-visible,
+.tag-chip.is-active {
+  background-color: var(--tomato) !important;
+  color: var(--white) !important;
+  border-color: var(--tomato) !important;
+}
+
+/* Header / footer logos */
+.site-logo,
+.footer-logo,
+.logo {
+  font-family: var(--poster) !important;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Announcement bar */
+.announcement-bar,
+.platter-announcement-bar {
+  width: 100% !important;
+  padding: 8px 16px !important;
+  box-sizing: border-box;
+  background-color: var(--tomato) !important;
+  text-align: center !important;
+}
+
+.announcement-bar,
+.announcement-bar a,
+.announcement-bar span,
+.platter-announcement-bar,
+.platter-announcement-bar a,
+.platter-announcement-bar span {
+  color: var(--cream) !important;
+  font-family: var(--poster) !important;
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.05em !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+}
+
+/* Pixel-perfect CTA buttons */
+.platter-btn-dark,
+.button-primary,
+.platter-btn-header,
+button,
+a.button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto;
+  min-height: 44px;
+  height: auto !important;
+  padding: 12px 24px !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
+  border-radius: var(--radius) !important;
+  background-color: var(--black) !important;
+  color: var(--cream) !important;
+  font-family: var(--sans) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.05em !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  cursor: pointer;
+  overflow: visible !important;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.platter-btn-dark:hover,
+.platter-btn-dark:focus-visible,
+.button-primary:hover,
+.button-primary:focus-visible,
+.platter-btn-header:hover,
+.platter-btn-header:focus-visible,
+button:hover,
+button:focus-visible,
+a.button:hover,
+a.button:focus-visible {
+  background-color: var(--tomato) !important;
+  color: var(--white) !important;
+}
+
+/* Inputs and forms */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea,
+select {
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 16px;
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--white);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--black);
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--tomato);
+  outline-offset: 2px;
+}
+
+/* Section hairlines */
+.section-divider,
+.editorial-rule,
+hr {
+  width: 100%;
+  height: 0;
+  margin: 32px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+}
+
+/* Global links */
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+a:hover {
+  color: var(--tomato);
+}
+
+/* Media wrappers retain controlled clipping */
+.image-wrapper,
+.media-wrapper,
+.card-image {
+  overflow: hidden;
+}
+
+/* Footer system */
+.site-footer {
+  background-color: var(--cream-deep) !important;
+  border-top: 1px solid var(--line);
+}
+
+/* Mobile-first art direction */
+@media (max-width: 599px) {
+  .container,
+  .page-container,
+  .content-container {
+    width: 100%;
+    padding-inline: 20px;
+  }
+
+  h1 {
+    font-size: 32px !important;
+    line-height: 1.15 !important;
+  }
+
+  h2 {
+    font-size: 24px !important;
+    line-height: 1.15 !important;
+  }
+
+  body,
+  p,
+  li,
+  input,
+  textarea,
+  select {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  .editorial-grid,
+  .recipes-grid,
+  .rankings-grid,
+  .recipe-results-grid,
+  .two-column-grid,
+  .three-column-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .platter-card,
+  .card,
+  .article-card,
+  .recipe-card,
+  .review-card {
+    margin-bottom: 16px;
+  }
+
+  .platter-card:last-child,
+  .card:last-child,
+  .article-card:last-child,
+  .recipe-card:last-child,
+  .review-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .search-form,
+  .newsletter-form,
+  .inline-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .search-form input,
+  .search-form button,
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+  }
+
+  .page-section,
+  .content-section,
+  main > section {
+    margin-bottom: 48px;
+  }
+
+  .section-divider,
+  .editorial-rule,
+  hr {
+    margin: 24px 0;
+  }
+
+  .platter-card,
+  .card,
+  .article-card,
+  .recipe-card,
+  .review-card,
+  .rankings-card {
+    padding: var(--card-pad-mobile) !important;
+  }
+}
