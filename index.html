@@ -58,7 +58,7 @@
     <main>
 
       <!-- HERO — featured chef interview -->
-      <section class="hero">
+      <section class="hero" id="hero" data-issue="below" data-fold="on">
         <div class="hero__grid container">
           <article class="cover">
             <div class="cover__image">
@@ -291,6 +291,63 @@
       </div>
     </footer>
 
+    <!-- HERO LAYOUT TWEAKS -->
+    <div class="tweaks" id="tweaks">
+      <button type="button" class="tweaks__toggle" aria-expanded="false" aria-controls="tweaks-panel">Tweak hero</button>
+      <div class="tweaks__panel" id="tweaks-panel" role="region" aria-label="Hero tweaks">
+        <div class="tweaks__group">
+          <span class="tweaks__label">Issue column</span>
+          <div class="tweaks__seg" role="group" aria-label="Issue column position">
+            <button type="button" data-tweak="issue" data-value="below" aria-pressed="true">Below cover</button>
+            <button type="button" data-tweak="issue" data-value="side" aria-pressed="false">Beside cover</button>
+          </div>
+        </div>
+        <div class="tweaks__group">
+          <span class="tweaks__label">Cover fills the fold</span>
+          <div class="tweaks__seg" role="group" aria-label="Cover height">
+            <button type="button" data-tweak="fold" data-value="on"  aria-pressed="true">On</button>
+            <button type="button" data-tweak="fold" data-value="off" aria-pressed="false">Off</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="/assets/platter-site.js" defer></script>
+    <script>
+      (function () {
+        var hero    = document.getElementById('hero');
+        var tweaks  = document.getElementById('tweaks');
+        var toggle  = tweaks.querySelector('.tweaks__toggle');
+        var buttons = tweaks.querySelectorAll('button[data-tweak]');
+
+        toggle.addEventListener('click', function () {
+          var open = tweaks.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        buttons.forEach(function (b) {
+          b.addEventListener('click', function () {
+            var key = b.getAttribute('data-tweak');
+            var val = b.getAttribute('data-value');
+            hero.setAttribute('data-' + key, val);
+            tweaks.querySelectorAll('button[data-tweak="' + key + '"]').forEach(function (sib) {
+              sib.setAttribute('aria-pressed', sib === b ? 'true' : 'false');
+            });
+            try { localStorage.setItem('platter.hero.' + key, val); } catch (_) {}
+          });
+        });
+
+        ['issue','fold'].forEach(function (key) {
+          var v;
+          try { v = localStorage.getItem('platter.hero.' + key); } catch (_) {}
+          if (v) {
+            hero.setAttribute('data-' + key, v);
+            tweaks.querySelectorAll('button[data-tweak="' + key + '"]').forEach(function (sib) {
+              sib.setAttribute('aria-pressed', sib.getAttribute('data-value') === v ? 'true' : 'false');
+            });
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
