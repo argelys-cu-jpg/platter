@@ -58,7 +58,7 @@
     <main>
 
       <!-- HERO — featured chef interview -->
-      <section class="hero" id="hero" data-issue="below" data-fold="on">
+      <section class="hero" id="hero">
         <div class="hero__grid container">
           <article class="cover">
             <div class="cover__image">
@@ -76,29 +76,29 @@
               </div>
             </div>
           </article>
-
-          <aside class="also" aria-label="From the issue">
-            <div class="also__title">In this issue</div>
-
-            <a href="/recipes/" class="also__card">
-              <small class="eyebrow">Recipe</small>
-              <strong>Dish name from the interview.</strong>
-              <span>Chef name, Restaurant name.</span>
-            </a>
-
-            <a href="/essays/" class="also__card">
-              <small class="eyebrow">Essay</small>
-              <strong>Essay title on where food is going.</strong>
-              <span>A short read on GLP-1s, sourcing, or the plate ahead.</span>
-            </a>
-
-            <a href="/interviews/" class="also__card">
-              <small class="eyebrow">Archive</small>
-              <strong>The interview index.</strong>
-              <span>Every conversation Platter has published, in one place.</span>
-            </a>
-          </aside>
         </div>
+
+        <aside class="also container" aria-label="From the issue">
+          <div class="also__title">In this issue</div>
+
+          <a href="/recipes/" class="also__card">
+            <small class="eyebrow">Recipe</small>
+            <strong>Dish name from the interview.</strong>
+            <span>Chef name, Restaurant name.</span>
+          </a>
+
+          <a href="/essays/" class="also__card">
+            <small class="eyebrow">Essay</small>
+            <strong>Essay title on where food is going.</strong>
+            <span>A short read on GLP-1s, sourcing, or the plate ahead.</span>
+          </a>
+
+          <a href="/interviews/" class="also__card">
+            <small class="eyebrow">Archive</small>
+            <strong>The interview index.</strong>
+            <span>Every conversation Platter has published, in one place.</span>
+          </a>
+        </aside>
       </section>
 
       <!-- THESIS STRIP -->
@@ -210,7 +210,7 @@
       </section>
 
       <!-- ESSAYS / FOOD FUTURE -->
-      <section class="edit" style="border-top: 1px solid #000000;">
+      <section class="edit" style="border-top: 1px solid #D8CFC0;">
         <div class="container">
           <div class="section-head">
             <div class="eyebrow">Essays &amp; the food future</div>
@@ -291,63 +291,6 @@
       </div>
     </footer>
 
-    <!-- HERO LAYOUT TWEAKS -->
-    <div class="tweaks" id="tweaks">
-      <button type="button" class="tweaks__toggle" aria-expanded="false" aria-controls="tweaks-panel">Tweak hero</button>
-      <div class="tweaks__panel" id="tweaks-panel" role="region" aria-label="Hero tweaks">
-        <div class="tweaks__group">
-          <span class="tweaks__label">Issue column</span>
-          <div class="tweaks__seg" role="group" aria-label="Issue column position">
-            <button type="button" data-tweak="issue" data-value="below" aria-pressed="true">Below cover</button>
-            <button type="button" data-tweak="issue" data-value="side" aria-pressed="false">Beside cover</button>
-          </div>
-        </div>
-        <div class="tweaks__group">
-          <span class="tweaks__label">Cover fills the fold</span>
-          <div class="tweaks__seg" role="group" aria-label="Cover height">
-            <button type="button" data-tweak="fold" data-value="on"  aria-pressed="true">On</button>
-            <button type="button" data-tweak="fold" data-value="off" aria-pressed="false">Off</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <script src="/assets/platter-site.js" defer></script>
-    <script>
-      (function () {
-        var hero    = document.getElementById('hero');
-        var tweaks  = document.getElementById('tweaks');
-        var toggle  = tweaks.querySelector('.tweaks__toggle');
-        var buttons = tweaks.querySelectorAll('button[data-tweak]');
-
-        toggle.addEventListener('click', function () {
-          var open = tweaks.classList.toggle('is-open');
-          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-
-        buttons.forEach(function (b) {
-          b.addEventListener('click', function () {
-            var key = b.getAttribute('data-tweak');
-            var val = b.getAttribute('data-value');
-            hero.setAttribute('data-' + key, val);
-            tweaks.querySelectorAll('button[data-tweak="' + key + '"]').forEach(function (sib) {
-              sib.setAttribute('aria-pressed', sib === b ? 'true' : 'false');
-            });
-            try { localStorage.setItem('platter.hero.' + key, val); } catch (_) {}
-          });
-        });
-
-        ['issue','fold'].forEach(function (key) {
-          var v;
-          try { v = localStorage.getItem('platter.hero.' + key); } catch (_) {}
-          if (v) {
-            hero.setAttribute('data-' + key, v);
-            tweaks.querySelectorAll('button[data-tweak="' + key + '"]').forEach(function (sib) {
-              sib.setAttribute('aria-pressed', sib.getAttribute('data-value') === v ? 'true' : 'false');
-            });
-          }
-        });
-      })();
-    </script>
   </body>
 </html>
