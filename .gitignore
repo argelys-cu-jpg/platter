@@ -1,0 +1,24 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Local backups
+/tmp/
+*.backup
+*.bak
+
+# Claude / design exports
+*.dc.html
+*.bundle.html
+.image-slots.state.json
+.thumbnail
+image-slot.js
+support.js
+uploads/
+outline-homepage/
+team-package/
+about-github/

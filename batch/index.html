@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Batch — Platter</title>
+    <meta name="description" content="The weekly dinner planner from Platter. Plan the week you'll actually eat." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Platter" />
+    <meta property="og:title" content="Batch — Platter" />
+    <meta property="og:description" content="The weekly dinner planner from Platter. Plan the week you'll actually eat." />
+    <meta property="og:url" content="https://readplatter.com/batch/" />
+    <meta property="og:image" content="https://readplatter.com/assets/platter-cover-delivery-shortlist-horizontal.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../global.css" />
+  </head>
+  <body>
+    <div class="announcement">
+      <a href="#planner">Batch is free for the summer. No credit card. &nbsp;→</a>
+    </div>
+    <header class="site-header">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-links">
+          <a href="../interviews/">Interviews</a>
+          <a href="../recipes/">Recipes</a>
+          <a href="../essays/">Essays</a>
+          <a href="../about/">About</a>
+        </div>
+        <a class="brand" href="../" aria-label="Platter homepage">
+          <img src="../platter-logo/platter-logo-final.png" alt="Platter" />
+        </a>
+        <div class="nav-actions">
+          <a href="../newsletter/" class="nav-link">Newsletter</a>
+          <a href="../batch/" class="btn btn--blue">Open Batch</a>
+          <label for="nav-toggle" class="nav-hamburger" aria-label="Open menu">
+            <span></span>
+          </label>
+        </div>
+        <div class="nav-drawer" aria-label="Mobile menu">
+          <a href="../interviews/">Interviews</a>
+          <a href="../recipes/">Recipes</a>
+          <a href="../essays/">Essays</a>
+          <a href="../about/">About</a>
+          <a href="../newsletter/">Newsletter</a>
+          <a href="../batch/">Open Batch</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- MASTHEAD + HERO -->
+      <section class="batch-hero">
+        <div class="container" style="display:flex;flex-direction:column;gap:24px;">
+        <div class="breadcrumb">
+          <a href="../">Platter</a>
+          <span class="sep">/</span>
+          
+          <span class="current">Batch</span>
+        </div>
+          <div class="batch-hero__grid">
+            <div style="display:flex;flex-direction:column;gap:20px;">
+              <div class="page-masthead__label">Batch • The weekly planner from Platter</div>
+              <h1>Plan the week<br />you'll actually eat.</h1>
+              <p class="page-masthead__lede">Batch asks the questions a good friend would — the week's shape, the nights that matter, the energy you actually have — and gives you a realistic plan for cooking, ordering, prepping, and skipping.</p>
+              <div class="btn-row" style="margin-top:8px;">
+                <a href="#planner" class="btn btn--solid btn--xl">Try Batch — 3 minutes</a>
+                <a href="#how" class="btn btn--outline btn--xl">See how it works</a>
+              </div>
+              <div class="byline" style="margin-top:8px;">
+                <span>Free while in beta</span><span class="sep">•</span><span>No account required</span><span class="sep">•</span><span>iOS + Web</span>
+              </div>
+            </div>
+
+            <aside aria-label="Batch app preview" class="batch-hero__preview">
+              <div class="phone-frame">
+                <div class="phone-frame__topbar">
+                  <span style="font-family:'Bebas Neue',Impact,sans-serif;font-size:11px;letter-spacing:0.14em;color:#6d6258;">9:42</span>
+                  <span class="phone-frame__dots"><span></span><span></span><span></span></span>
+                </div>
+                <div class="phone-frame__screen">Batch app screen • 9:16</div>
+                <div class="phone-frame__foot">
+                  <span class="l">This week's plan</span>
+                  <span class="r">7 nights</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="trust-stats">
+            <div><strong>14k</strong><span>Beta households, US + Canada</span></div>
+            <div><strong>3.1</strong><span>Minutes to a full weekly plan</span></div>
+            <div><strong>4.8</strong><span>App Store rating, 620 reviews</span></div>
+            <div><strong>68%</strong><span>Report ordering less takeout</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLANNER -->
+      <section id="planner" class="batch">
+        <div class="batch__grid container">
+          <article class="batch__intro platter-card">
+            <div>
+              <div class="eyebrow">Try it now</div>
+              <h2>A weekly dinner plan in under three minutes.</h2>
+              <p>Four short questions. One realistic plan. Cook where it counts, order where it saves the week, prep the small things that quietly hold Wednesday together.</p>
+            </div>
+            <ul class="pros" style="margin:0;">
+              <li>Nights you can cook vs. nights you'll absolutely order in.</li>
+              <li>Realistic prep windows — no fictional "Sunday morning" assumptions.</li>
+              <li>Suggestions pulled from the Platter recipe desk + review rankings.</li>
+              <li>One-tap swap when the week changes (because it will).</li>
+            </ul>
+            <div>
+              <a href="#" class="btn btn--solid btn--lg">Get Batch on iOS</a>
+            </div>
+          </article>
+
+          <div class="planner platter-card">
+            <div class="planner__head">
+              <div class="eyebrow">Start here</div>
+              <div class="micro-label">Step 1 of 4</div>
+            </div>
+            <div class="planner__progress" aria-hidden="true">
+              <span class="on"></span><span></span><span></span><span></span>
+            </div>
+            <h3>What kind of week are you feeding?</h3>
+            <div class="planner__options">
+              <button type="button">A packed work week</button>
+              <button type="button">A mixed week</button>
+              <button type="button">A mostly home week</button>
+            </div>
+            <div class="planner__foot">Choose the closest answer. Batch will shape the weekly plan.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section id="how" class="categories">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">What Batch does</div>
+            <h2>A planner that thinks like a working cook.</h2>
+          </div>
+          <div class="feature-grid">
+            
+            <article class="feature-card">
+              <div class="feature-card__num">01</div>
+              <strong>Four questions, no personality quiz.</strong>
+              <p>Batch asks the smallest number of things it needs to build a real plan. No mood boards, no chef spirit animals.</p>
+              <span class="feature-card__tag">Ask smart, plan smart</span>
+            </article>
+            
+            <article class="feature-card">
+              <div class="feature-card__num">02</div>
+              <strong>Cook-vs-order intelligence.</strong>
+              <p>The planner splits the week into cooking nights and backup nights, then picks recipes and services that fit each slot.</p>
+              <span class="feature-card__tag">The hybrid week</span>
+            </article>
+            
+            <article class="feature-card">
+              <div class="feature-card__num">03</div>
+              <strong>Actual portions for actual people.</strong>
+              <p>Scales every recipe by household size, appetite, and how many nights you want the leftovers to work.</p>
+              <span class="feature-card__tag">Portions that hold</span>
+            </article>
+            
+            <article class="feature-card">
+              <div class="feature-card__num">04</div>
+              <strong>One-tap swap when the week breaks.</strong>
+              <p>Skip a night, drop a recipe, or swap a cook for a delivery. Batch re-plans the rest of the week around what changed.</p>
+              <span class="feature-card__tag">Resilient by default</span>
+            </article>
+            
+            <article class="feature-card">
+              <div class="feature-card__num">05</div>
+              <strong>Grocery list that respects the pantry.</strong>
+              <p>Batch remembers what you already bought and stops re-listing the olive oil. Your list gets shorter as the season goes on.</p>
+              <span class="feature-card__tag">Smart list</span>
+            </article>
+            
+            <article class="feature-card">
+              <div class="feature-card__num">06</div>
+              <strong>Rooted in the Platter desk.</strong>
+              <p>Every suggestion pulls from tested recipes and reviewed services — the same editorial standards you already know.</p>
+              <span class="feature-card__tag">Editorial by design</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SAMPLE PLAN -->
+      <section class="platter-index">
+        <div class="container">
+          <div class="section-head--split">
+            <div class="heads">
+              <div class="eyebrow">A sample plan</div>
+              <h2>One week, seven nights, no theatrics.</h2>
+              <p>This is a plan Batch would build for a two-person household with a packed work week and one guest dinner on Saturday. Cook two, order two, prep one, skip two.</p>
+            </div>
+            <div class="card-note">
+              <span class="card-note__label">Est. week cost</span>
+              <strong>$126 groceries + $54 delivery</strong>
+              <span class="card-note__meta">3h 40m cooking, across 4 nights</span>
+            </div>
+          </div>
+
+          <div class="plan-table">
+            <div class="plan-table__head">
+              <span>Night</span><span>Plan</span><span>Prep</span><span>Time</span><span>Mode</span>
+            </div>
+            
+            <div class="plan-table__row">
+              <span class="plan-table__day"><strong>Mon</strong><small>Jul 28</small></span>
+              <span class="plan-table__dinner"><strong>Salmon with lemon couscous</strong><small>Sear the salmon, couscous holds through Wednesday.</small></span>
+              <span class="plan-table__cell">None</span>
+              <span class="plan-table__cell">35 min</span>
+              <span class="mode-tag mode-tag--cook">Cook</span>
+            </div>
+            
+            <div class="plan-table__row">
+              <span class="plan-table__day"><strong>Tue</strong><small>Jul 29</small></span>
+              <span class="plan-table__dinner"><strong>CookUnity — chef's choice</strong><small>Backup night. Heat, plate, add the chili crisp.</small></span>
+              <span class="plan-table__cell">None</span>
+              <span class="plan-table__cell">8 min</span>
+              <span class="mode-tag mode-tag--order">Order</span>
+            </div>
+            
+            <div class="plan-table__row">
+              <span class="plan-table__day"><strong>Wed</strong><small>Jul 30</small></span>
+              <span class="plan-table__dinner"><strong>Rotisserie chicken rice plates</strong><small>Rice from Monday, chicken from grocery, sauce riff.</small></span>
+              <span class="plan-table__cell">Sauce Sunday</span>
+              <span class="plan-table__cell">20 min</span>
+              <span class="mode-tag mode-tag--cook">Cook</span>
+            </div>
+            
+            <div class="plan-table__row">
+              <span class="plan-table__day"><strong>Thu</strong><small>Jul 31</small></span>
+              <span class="plan-table__dinner"><strong>Skip</strong><small>Late meeting. Batch clears the night, no guilt.</small></span>
+              <span class="plan-table__cell">—</span>
+              <span class="plan-table__cell">—</span>
+              <span class="mode-tag mode-tag--skip">Skip</span>
+            </div>
+            
+            <div class="plan-table__row">
+              <span class="plan-table__day"><strong>Fri</strong><small>Aug 01</small></span>
+              <span class="plan-table__dinner"><strong>Factor — high-protein bowl</strong><small>Second delivery night, macros already inside.</small></span>
+              <span class="plan-table__cell">None</span>
+              <span class="plan-table__cell">6 min</span>
+              <span class="mode-tag mode-tag--order">Order</span>
+            </div>
+            
+            <div class="plan-table__row">
+              <span class="plan-table__day"><strong>Sat</strong><small>Aug 02</small></span>
+              <span class="plan-table__dinner"><strong>Sheet-tray harissa chicken (2×)</strong><small>Guests. One tray, leftovers become Sunday brunch.</small></span>
+              <span class="plan-table__cell">Marinate morning of</span>
+              <span class="plan-table__cell">40 min</span>
+              <span class="mode-tag mode-tag--cook">Cook</span>
+            </div>
+            
+            <div class="plan-table__row">
+              <span class="plan-table__day"><strong>Sun</strong><small>Aug 03</small></span>
+              <span class="plan-table__dinner"><strong>Leftovers + big salad</strong><small>Reset dinner. Salad from the Sunday shop.</small></span>
+              <span class="plan-table__cell">Salad greens Saturday</span>
+              <span class="plan-table__cell">15 min</span>
+              <span class="mode-tag mode-tag--prep">Prep</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPARE -->
+      <section class="compare">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">How Batch compares</div>
+            <h2>Meal kit, meal prep, or Batch?</h2>
+            <p>Three approaches to the same problem — dinner has to land. Here's what each is actually good at, and what quietly gives up.</p>
+          </div>
+          <div class="compare__grid compare__grid--3">
+            <article class="compare-card">
+              <div class="compare-card__image"><span class="placeholder placeholder--3x2">Meal kit box • 3:2</span></div>
+              <div class="compare-card__body">
+                <div class="compare-card__head">
+                  <div class="eyebrow eyebrow--blue">Boxes with recipes</div>
+                  <span class="micro-label">$$–$$$</span>
+                </div>
+                <h3>Meal kits</h3>
+                <p>Great when the goal is to cook, but you burn a whole Tuesday on prep and packaging.</p>
+                <div class="compare-card__meta">
+                  <div><small>Wins</small><span>Guided recipes, portioned ingredients.</span></div>
+                  <div><small>Watch out</small><span>Rigid week, packaging fatigue, price creep.</span></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="compare-card compare-card--dark">
+              <div class="compare-card__image"><span class="placeholder placeholder--3x2" style="color:#6d6258;">Batch weekly plan • 3:2</span></div>
+              <div class="compare-card__body">
+                <div class="compare-card__head">
+                  <div class="eyebrow">Editorial planner</div>
+                  <span class="micro-label" style="color:#8ACE00;">Free</span>
+                </div>
+                <h3>Batch</h3>
+                <p>One plan that decides where to cook, where to order, and where the week can bend without breaking.</p>
+                <div class="compare-card__meta">
+                  <div><small>Wins</small><span>Realistic weeks, hybrid cook + order, editorial recipe picks.</span></div>
+                  <div><small>Watch out</small><span>You still have to press the button.</span></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="compare-card">
+              <div class="compare-card__image"><span class="placeholder placeholder--3x2">Sunday prep containers • 3:2</span></div>
+              <div class="compare-card__body">
+                <div class="compare-card__head">
+                  <div class="eyebrow eyebrow--blue">DIY on Sunday</div>
+                  <span class="micro-label">$</span>
+                </div>
+                <h3>Meal prep</h3>
+                <p>The cheapest, most disciplined route — as long as Sunday afternoon actually stays yours.</p>
+                <div class="compare-card__meta">
+                  <div><small>Wins</small><span>Cost per meal, control, freezer stack.</span></div>
+                  <div><small>Watch out</small><span>One skipped Sunday collapses the whole week.</span></div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="categories">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">From the beta</div>
+            <h2>What early users are saying.</h2>
+          </div>
+          <div class="testimonial-grid">
+            
+            <blockquote class="testimonial-card">
+              <span class="testimonial-card__mark">"</span>
+              <p style="font-size:17px;">I stopped opening the delivery app on the couch. Batch already picked the two nights I was going to order anyway, and it picked better than I would have.</p>
+              <footer>
+                <div style="display:flex;flex-direction:column;gap:2px;">
+                  <strong>Priya A.</strong>
+                  <span class="role">Beta reader</span>
+                </div>
+                <span class="role" style="color:#002FA7;">12 weeks in</span>
+              </footer>
+            </blockquote>
+            
+            <blockquote class="testimonial-card">
+              <span class="testimonial-card__mark">"</span>
+              <p style="font-size:17px;">It reads a week the way I actually live it. Two big cook nights, two order nights, one soft skip. First tool that didn't try to turn me into someone else.</p>
+              <footer>
+                <div style="display:flex;flex-direction:column;gap:2px;">
+                  <strong>Tessa N.</strong>
+                  <span class="role">Beta reader</span>
+                </div>
+                <span class="role" style="color:#002FA7;">8 weeks in</span>
+              </footer>
+            </blockquote>
+            
+            <blockquote class="testimonial-card">
+              <span class="testimonial-card__mark">"</span>
+              <p style="font-size:17px;">The one-tap swap on Thursday is what sold me. My week always breaks Thursday, and Batch just knows.</p>
+              <footer>
+                <div style="display:flex;flex-direction:column;gap:2px;">
+                  <strong>Marco D.</strong>
+                  <span class="role">Beta reader</span>
+                </div>
+                <span class="role" style="color:#002FA7;">16 weeks in</span>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLOSING CTA -->
+      <section class="close-cta">
+        <div class="close-cta__grid container">
+          <div>
+            <div class="close-cta__label">Get Batch</div>
+            <h2>A week you'll actually eat. Three minutes to plan it.</h2>
+            <p>Free while in beta. No credit card. iOS + web. Cancel any Sunday.</p>
+          </div>
+          <div class="close-cta__ctas">
+            <a href="#" class="btn btn--green btn--xl">Get Batch on iOS &nbsp;→</a>
+            <a href="#" class="btn btn--white btn--xl">Open Batch on the web</a>
+            <span class="micro-label" style="color:#8ACE00;padding-top:8px;">Android joining fall 2026</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__grid container">
+        <div class="site-footer__brand">
+          <a href="../" class="brand brand--footer">
+            <img src="../platter-logo/platter-logo-final.png" alt="Platter" />
+          </a>
+          <p>Platter Editorial covers meal planning, delivery, cooking, wellness, and the tools shaping the home kitchen.</p>
+          <p class="copyright">© 2026 Platter Editorial.</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <a href="../interviews/">Interviews</a>
+          <a href="../recipes/">Recipes</a>
+          <a href="../essays/">Essays</a>
+          <a href="../about/">About</a>
+          <a href="../newsletter/">Newsletter</a>
+          <a href="../batch/">Open Batch</a>
+          <a href="../editorial-standards/">Editorial standards</a>
+          <a href="../about/#contact">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="../assets/platter-site.js" defer></script>
+  </body>
+</html>
