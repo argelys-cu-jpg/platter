@@ -2003,7 +2003,10 @@ p  { margin: 0; line-height: 1.55; }
 /* Stories: cover feature pullquote + issue-grid + interview grid */
 .pull-quote {
   margin: 8px 0 0; padding: 20px 24px;
-  background: #ffffff; border-left: 3px solid #C65B3E;
+  background: #ffffff;
+  border: 1px solid #D8CFC0;
+  border-left: 3px solid #C65B3E;
+  box-shadow: 0 2px 12px rgba(5, 5, 5, 0.06);
   font-family: 'Instrument Sans', sans-serif;
   font-style: italic; font-size: 19px; line-height: 1.4; color: #050505; max-width: 56ch;
 }
