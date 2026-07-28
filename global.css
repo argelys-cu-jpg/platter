@@ -7,7 +7,7 @@
      Ink 1            #050505
      Ink 2            #2b2723
      Muted            #6d6258
-     Placeholder txt  #8a7f72
+     Placeholder txt  #6d6258
      Accent (coral)   #C65B3E
      Secondary band   #9DB8C2
      Warm tan         #D8CFC0
@@ -136,8 +136,8 @@ p  { margin: 0; line-height: 1.55; }
   font-size: 13px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #8a7f72;
-  background: #e6ded2;
+  color: #6d6258;
+  background: #D8CFC0;
 }
 .placeholder--16x9 { aspect-ratio: 16 / 9; font-size: 14px; }
 .placeholder--3x2  { aspect-ratio: 3 / 2;  font-size: 14px; }
@@ -217,7 +217,7 @@ p  { margin: 0; line-height: 1.55; }
   display: flex;
   flex-direction: column;
 }
-.cover__image { width: 100%; background: #e6ded2; }
+.cover__image { width: 100%; background: #D8CFC0; }
 .cover__body {
   padding: clamp(28px, 4vw, 48px);
   display: flex;
@@ -263,7 +263,7 @@ p  { margin: 0; line-height: 1.55; }
   flex-direction: column;
   gap: 8px;
 }
-.also__card:hover { background: #e6ded2; color: #050505; }
+.also__card:hover { background: #D8CFC0; color: #050505; }
 .also__card strong {
   font-size: 18px;
   font-weight: 800;
@@ -280,7 +280,7 @@ p  { margin: 0; line-height: 1.55; }
   position: relative;
   width: 100%;
   padding-top: 56.25%; /* 16:9 */
-  background: #e6ded2;
+  background: #D8CFC0;
 }
 #hero .cover__image .placeholder {
   position: absolute;
@@ -291,7 +291,7 @@ p  { margin: 0; line-height: 1.55; }
 }
 #hero .also {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 40ch repeat(3, minmax(0, 1fr));
   gap: 18px;
   align-items: stretch;
   padding-top: 32px;
@@ -299,18 +299,16 @@ p  { margin: 0; line-height: 1.55; }
   border-top: 1px solid #D8CFC0;
 }
 #hero .also__title {
-  grid-column: 1 / -1;
-  margin: 0 0 18px 0;
+  margin: 0;
+  align-self: center;
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1.05;
-  align-self: auto;
 }
 #hero .also__card { min-width: 0; }
 @media (max-width: 900px) {
   #hero { padding: 24px 0 48px; }
   #hero .hero__grid { min-height: 0; }
   #hero .also { grid-template-columns: 1fr; }
-  #hero .also__title { grid-column: auto; }
 }
 
 /* ─── Manifesto ────────────────────────────── */
@@ -513,7 +511,7 @@ p  { margin: 0; line-height: 1.55; }
   flex-direction: column;
   flex: 1;
 }
-.article-card__image { width: 100%; background: #e6ded2; }
+.article-card__image { width: 100%; background: #D8CFC0; }
 .article-card__body {
   padding: 24px;
   display: flex;
@@ -601,7 +599,7 @@ p  { margin: 0; line-height: 1.55; }
   flex-direction: column;
 }
 .recipe-card:hover { border-color: #050505; }
-.recipe-card__image { width: 100%; background: #e6ded2; }
+.recipe-card__image { width: 100%; background: #D8CFC0; }
 .recipe-card__body {
   padding: 18px;
   display: flex;
@@ -1154,7 +1152,7 @@ p  { margin: 0; line-height: 1.55; }
   color: inherit; text-decoration: none;
 }
 .collection-card__image {
-  width: 100%; aspect-ratio: 3/2; background: #e6ded2;
+  width: 100%; aspect-ratio: 3/2; background: #D8CFC0;
   display: flex; align-items: center; justify-content: center;
 }
 .collection-card__body {
@@ -1187,7 +1185,7 @@ p  { margin: 0; line-height: 1.55; }
   display: flex; flex-direction: column;
   box-sizing: border-box;
 }
-.compare-card__image { width: 100%; aspect-ratio: 3/2; background: #e6ded2; display: flex; align-items: center; justify-content: center; }
+.compare-card__image { width: 100%; aspect-ratio: 3/2; background: #D8CFC0; display: flex; align-items: center; justify-content: center; }
 .compare-card__body { padding: 32px; display: flex; flex-direction: column; gap: 16px; }
 .compare-card__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
 .compare-card__meta { display: grid; grid-template-columns: 1fr 1fr; align-items: start; border-top: 1px solid #000000; }
@@ -1393,7 +1391,7 @@ p  { margin: 0; line-height: 1.55; }
   display: flex; flex-direction: column; box-sizing: border-box;
 }
 .person-card__image {
-  width: 100%; aspect-ratio: 1/1; background: #e6ded2;
+  width: 100%; aspect-ratio: 1/1; background: #D8CFC0;
   display: flex; align-items: center; justify-content: center;
 }
 .person-card__body {
@@ -1837,10 +1835,10 @@ p  { margin: 0; line-height: 1.55; }
 .phone-frame__dots { display: inline-flex; gap: 6px; }
 .phone-frame__dots span { width: 6px; height: 6px; background: #050505; border-radius: 50%; }
 .phone-frame__screen {
-  width: 100%; aspect-ratio: 9/16; background: #e6ded2; border: 1px solid #000000;
+  width: 100%; aspect-ratio: 9/16; background: #D8CFC0; border: 1px solid #000000;
   display: flex; align-items: center; justify-content: center;
   font-family: 'Bebas Neue', Impact, sans-serif;
-  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a7f72;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #6d6258;
 }
 .phone-frame__foot {
   display: flex; justify-content: space-between; align-items: center;
@@ -2019,7 +2017,7 @@ p  { margin: 0; line-height: 1.55; }
 
 .issue-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; align-items: stretch; }
 .issue-card { background: #ffffff; border: 1px solid #000000; display: flex; flex-direction: column; box-sizing: border-box; }
-.issue-card__image { width: 100%; aspect-ratio: 3/2; background: #e6ded2; display: flex; align-items: center; justify-content: center; }
+.issue-card__image { width: 100%; aspect-ratio: 3/2; background: #D8CFC0; display: flex; align-items: center; justify-content: center; }
 .issue-card--lead .issue-card__image { aspect-ratio: 16/9; }
 .issue-card--lead { grid-column: span 2; }
 .issue-card__body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
@@ -2041,7 +2039,7 @@ p  { margin: 0; line-height: 1.55; }
 
 .interview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
 .interview-card { background: #ffffff; border: 1px solid #000000; display: flex; flex-direction: column; box-sizing: border-box; }
-.interview-card__image { width: 100%; aspect-ratio: 1/1; background: #e6ded2; display: flex; align-items: center; justify-content: center; }
+.interview-card__image { width: 100%; aspect-ratio: 1/1; background: #D8CFC0; display: flex; align-items: center; justify-content: center; }
 .interview-card__body { padding: 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
 .interview-card h3 { font-size: 22px; }
 .interview-card__foot { margin-top: auto; padding-top: 12px; border-top: 1px solid #000000; display: flex; justify-content: space-between; align-items: center; }
@@ -2049,7 +2047,7 @@ p  { margin: 0; line-height: 1.55; }
 @media (max-width: 640px)  { .interview-grid { grid-template-columns: 1fr; } }
 
 .podcast-aside { background: #ffffff; border: 1px solid #000000; padding: 40px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box; }
-.podcast-aside__cover { width: 100%; aspect-ratio: 1/1; background: #e6ded2; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', Impact, sans-serif; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a7f72; }
+.podcast-aside__cover { width: 100%; aspect-ratio: 1/1; background: #D8CFC0; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', Impact, sans-serif; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #6d6258; }
 .podcast-aside h3 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.05; letter-spacing: -0.024em; }
 .podcast-aside__eps { display: flex; flex-direction: column; gap: 0; }
 .podcast-aside__ep {
@@ -2080,7 +2078,7 @@ p  { margin: 0; line-height: 1.55; }
 }
 .authors-list__row:last-child { border-bottom: 1px solid #000000; }
 .authors-list__initials {
-  width: 44px; height: 44px; background: #e6ded2;
+  width: 44px; height: 44px; background: #D8CFC0;
   display: inline-flex; align-items: center; justify-content: center;
   font-family: 'Bebas Neue', Impact, sans-serif; font-size: 16px; letter-spacing: 0.06em; color: #050505; line-height: 1;
 }
