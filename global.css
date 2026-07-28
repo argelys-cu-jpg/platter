@@ -592,6 +592,10 @@ p  { margin: 0; line-height: 1.55; }
   grid-template-columns: 1fr 1fr;
   gap: 18px;
 }
+.recipes__mini--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 900px) {
+  .recipes__mini--4 { grid-template-columns: repeat(2, 1fr); }
+}
 .recipe-card {
   background: #ffffff;
   border: 1px solid #000000;
@@ -927,7 +931,7 @@ p  { margin: 0; line-height: 1.55; }
   }
 }
 @media (max-width: 640px) {
-  .recipes__mini { grid-template-columns: 1fr; }
+  .recipes__mini, .recipes__mini--4 { grid-template-columns: 1fr; }
   .site-footer__grid { grid-template-columns: 1fr; }
   .index-strip { grid-template-columns: 1fr; gap: 4px; }
   .index-strip > div { border-right: 0; padding-left: 0 !important; }
