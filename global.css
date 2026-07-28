@@ -2,7 +2,7 @@
    PLATTER — global.css
    Outline design system.
    Tokens
-     Page background  #F4F1EC
+     Page background  #FAF7F0
      Card / header    #ffffff
      Ink 1            #050505
      Ink 2            #2b2723
@@ -19,7 +19,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #F4F1EC;
+  background: #FAF7F0;
   color: #2b2723;
   font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1611,7 +1611,7 @@ p  { margin: 0; line-height: 1.55; }
   padding: clamp(40px, 5vw, 72px) 0;
   border-top: 1px solid #D8CFC0;
   border-bottom: 1px solid #D8CFC0;
-  background: #F4F1EC;
+  background: #FAF7F0;
 }
 .thesis__grid {
   display: grid;
